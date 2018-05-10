@@ -1,0 +1,86 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:12px;  }
+
+A:link		{color:#000000; text-decoration: none}
+A:visited	{color:#000000; text-decoration: none}
+A:hover		{color:#000000; text-decoration: none}
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom	: 900px;  /* de volgende tekst/inhoud komt minimaal 900 pixels na dit item */
+    width			: 100%;
+  }
+}
+
+TABLE
+{ 
+  border-collapse	: collapse;
+  border			: 6px double black;
+	border-left: 2px solid black;
+	width: 99%;
+}
+TD
+{ 
+  border	: 2px solid black;
+	font-size: 11px;
+}
+TH
+{ 
+  font-weight	: bold;
+  border		: 2px solid black;
+	font-size: 11px;
+}
+.toprow1
+{
+  font-size: 18px;
+	font-weight: bold;
+  border: 6px double black;
+	border-left: 2px solid black;
+}
+
+
+.toprow
+{
+  border: 6px double black;
+	border-left: 2px solid black;
+}
+.centered
+{
+  text-align	: center; 
+}
+.tbheadsy
+{
+  margin-left: 9%;
+	display: inline-block;
+}
+.pardir
+{
+  margin-left: 65%;
+	margin-right: 8%;
+  display: inline-block;
+}
+.lastrow1
+{
+  font-size: 9px;
+}
+.placedate
+{
+  margin-left: 60%;
+	font-weight: bold;
+}
+.pardir2
+{
+  margin-left: 65%;
+  font-weight: bold;
+}
+.llncount
+{
+  margin-left: 10%;
+  font-weight: bold;
+}
+
+

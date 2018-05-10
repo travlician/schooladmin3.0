@@ -1,0 +1,177 @@
+@font-face {
+	font-family: 'LCALLIG';
+	src: url('LCALLIG.eot');
+	src: local('LCALLIG'), url('./LCALLIG.woff') format('woff'), url('./LCALLIG.ttf') format('truetype');
+}
+BODY {background-color:white; font-family: "Arial"; font-size:11px;  }
+TD
+{
+	font-size:11px;
+}
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom: 900px;
+    width: 100%;
+  }
+}
+
+.frontlogo
+{
+	float: left;
+	margin-left: 5%;
+	width: 15%;
+}
+
+.imageright
+{
+	float: right;
+	width: 50%;
+	margin-right: 25%;
+}
+
+.titlehdr
+{
+	font-family: "Times New Roman";
+	text-align: center;
+	font-family: times;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.schoolnamefront
+{
+	font-family: "LCALLIG";
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.location
+{
+	font-family: "LCALLIG";
+	text-align: center;
+	font-size: 21px;
+	font-weight: bold;
+	
+}
+
+.classdir
+{
+	margin-left: 10%;
+	font-size: 18px;
+	font-weight: bold;
+	clear: both;
+}
+
+.studname
+{
+	margin-left: 10%;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.leaderlabel
+{
+	width: 20%;
+	display: inline-block;
+}
+
+.stamboeklabel
+{
+	margin-left: 70%;
+	width: 15%;
+	font-size: 14px;
+	font-weight: bold;	
+	display: inline-block;
+}
+
+.cijferlijst   
+{ 
+  border-collapse: collapse;
+  border-top: 3px double grey;
+  border-bottom: 3px double grey;
+	border-left: none;
+	border-right: none;
+	width: 100%;
+}
+.subjectcol
+{
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+	font-size: 14px;
+	font-weight: bold;
+  width: 50%;
+}
+
+.resultcol
+{
+  border: 1px solid grey;
+  text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+  width: 9%;
+}
+.txtrescol
+{
+  text-align: center;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+	font-size: 14px;
+	font-weight: bold;
+  width: 40%;
+}
+
+.resultlabel
+{
+	font-size: 14px;
+}
+
+.resultline
+{
+	border-bottom: 1px solid black;
+	display: inline-block;
+	width: 20%;
+	font-size: 18px;
+	font-family: LCALLIG;
+	font-weight: bold;
+}
+
+.dateline
+{
+	margin-left: 20%;
+	font-size: 14px;
+}
+
+.legend
+{
+	float: left;
+	width: 45%;
+	margin-left: 5%;
+}
+
+.legdig
+{
+	width: 30px;
+	display: inline-block;
+}
+
+.signer
+{
+	float: right;
+	width: 49%;
+	font-size: 14px;
+	margin-top: 10%;
+}
+
+.signline
+{
+	width: 30%;
+	border-bottom: 1px solid black;
+	display: inline-block;
+}

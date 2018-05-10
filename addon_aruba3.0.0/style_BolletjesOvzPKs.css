@@ -1,0 +1,205 @@
+BODY {background-color:white; font-family: 'Comic Sans MS', arial, verdana, helvetica; font-size:12;  }
+@media print
+{
+  .pagebreak {page-break-after:	always;
+						 clear: both;}
+}
+@media screen
+{
+  .pagebreak
+   {
+    margin-bottom	: 900px;
+    width			: 100%;
+	text-align		: center;
+	clear: both;
+  }
+}
+.Koptekst
+{
+  margin-left		: 200px;
+  margin-top		: 10px;
+  font-size			: 14px;
+  color				: Blue;
+}
+.SubKoptekst
+{
+  margin-left		: 200px;
+  color				: Black;
+}
+LABEL
+{
+  width: 100px;
+	display: inline-block;
+}
+.Titeltekst
+{
+  font-size			: 14px;
+  color				: Blue;
+}
+.TekstRandLinks
+{
+  font-size			: 11px;
+  vertical-align	: top;
+  padding-left		: 5px;
+  width				: 200px;  
+  color				: Black;  
+  border-top		: 1px solid LightGrey;
+  border-left		: 1px solid LightGrey;
+  border-bottom		: 1px solid LightGrey;
+}
+.PeriodeRand
+{
+  font-size			: 12px;
+  width				: 110px;
+  padding-left		: 15px;
+  color				: Black;
+  border-top		: 1px solid LightGrey;
+  border-bottom		: 1px solid LightGrey;
+	vertical-align: middle;
+}
+.TekstRandRechts
+{
+  font-size			: 11px;
+  vertical-align	: top;
+  padding-left		: 1px;
+  color				: Black;
+  border-top		: 1px solid LightGrey;
+  border-right		: 1px solid LightGrey;
+  border-bottom		: 1px solid LightGrey;
+}
+.TekstLinks
+{
+  font-size			: 12px;
+  padding-left		: 5px;
+  vertical-align	: top;
+  width				: 100px;
+  border-top		: 1px solid LightGrey;
+  border-left		: 1px solid LightGrey;
+  border-bottom		: 1px solid LightGrey;
+  color				: Black;
+}
+.TekstRechts
+{
+  font-size			: 12px;
+  vertical-align	: top;
+  padding-left		: 1px;
+  color				: Black;
+  border-top		: 1px solid LightGrey;
+  border-right		: 1px solid LightGrey;
+  border-bottom		: 1px solid LightGrey;
+}
+.PlekTable
+{
+  float				: right;
+  vertical-align	: top;
+  width				: 45%;
+	border-spacing: 0;
+}
+.PlekTableLinks
+{
+  border-spacing: 0;
+  float				: left;
+  vertical-align	: top;
+  width				: 45%;
+}
+.LeftTable
+{
+  border-spacing: 0;
+  width: 55%;
+	padding-left: 10%;
+}
+.trimesterid
+{
+	width: 40px;
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+	vertical-align: bottom;
+}
+.mainsubjtxt
+{
+  border: 1px solid black;
+	font-weight: bold;
+	font-size: 14px;
+	padding-left: 5px;
+}
+.subsubjtxt
+{
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: none;
+  border-bottom: none;
+	font-size: 12px;
+	padding-left: 5px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.subsubjtxtf
+{
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: none;
+  border-bottom: 1px solid black;
+	font-size: 12px;
+	padding-left: 5px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.remarks
+{
+  border: 1px solid black;
+	font-size: 12px;
+	padding-left: 5px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.transcel
+{
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.resultcol
+{
+  border: 1px solid black;
+	font-size: 14px;
+	text-align: center;
+}
+.resultcols
+{
+  border: 1px solid black;
+	font-size: 14px;
+	text-align: center;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border-top: none;
+	border-bottom: none;
+}
+.resultcolsf
+{
+  border: 1px solid black;
+	font-size: 14px;
+	text-align: center;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border-top: none;
+}
+.tablespace
+{
+  font-size: 4px;
+}
+.rapportline
+{
+  font-size: 16px;
+	font-weight: bold;
+}
+.headingtext
+{
+	font-family: 'Comic Sans MS', arial, verdana, helvetica; 
+	font-size:12;
+}
+.logospot
+{
+  float: right;
+	height: 80px;
+	vertical-align: top;
+}

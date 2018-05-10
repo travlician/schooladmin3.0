@@ -1,0 +1,117 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:10px;  }
+A:link {color:#0000FF}
+A:visited {color:#0000FF}
+A:hover {color:#FF0000}
+P.pagebreak {page-break-before: always}
+TABLE   { border-collapse: collapse}
+.DO
+{
+  font-weight: bold;
+  font-size: 12px;
+}
+.ur
+{
+  font-weight: bold;
+  font-size: 12px;
+  text-align: right;
+  position: relative;
+  top: -14px;
+}
+.exnrhead
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: left;
+  border: thin solid #000;
+  width: 50px;
+}
+.studhead
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: left;
+  border: thin solid #000;
+  width: 350px;
+}
+.subjhead
+{
+  font-weight: normal;
+  font-size: 10px;
+  text-align: center;
+  border: thin solid #000;
+  width: 30px;
+}
+.exnr
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: left;
+  border: thin solid #000;
+  width: 50px;
+}
+.studname
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: left;
+  border: thin solid #000;
+  width: 350px;
+}
+.subjind
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  width: 30px;
+}
+.subjindbad
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  width: 30px;
+  background-color: #F77;
+}
+.subjindnc
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  width: 30px;
+  background-color: #777;
+  text-decoration:line-through
+}
+.subjindgood
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  width: 30px;
+  background-color: #7F7;
+}
+.nolines
+{
+  border: none;
+}
+.total
+{
+  font-weight: bold;
+  font-size: 12px;
+  text-align: right;
+  padding-right: 70px;
+  border: none;
+}
+.sign
+{
+  font-weight: normal;
+  font-size: 10px;
+  text-align: left;
+  position: relative;
+  top: -30px;
+  left: 450px;
+  page-break-after:always;
+}

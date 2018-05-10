@@ -1,0 +1,150 @@
+@font-face {
+	font-family: 'LCALLIG';
+	src: url('LCALLIG.eot');
+	src: local('LCALLIG'), url('./LCALLIG.woff') format('woff'), url('./LCALLIG.ttf') format('truetype');
+}
+BODY 
+{
+  background-color:white;
+  font-family: verdana, arial, helvetica;
+  font-size:14px;
+}
+.schoollogo
+{
+  position: fixed;
+  top : 0;
+  font-size: 12px;
+	width: 100px;
+}
+.maintitle
+{
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+	margin-top: -10px;
+	margin-left: 30px;
+}
+.secondtitle
+{
+  font-size: 18px;
+  text-align: center;
+	margin-top: -10px;
+	margin-left: 30px;
+}
+.maintext
+{
+  font-size: 14px;
+  margin-top: 50px;
+}
+.studname
+{
+	font-family : LCALLIG;
+	font-weight: bold;
+	font-size: 22px;
+	display: inline-block;
+}
+.profname
+{
+	font-family : LCALLIG;
+	font-weight: bold;
+	font-size: 16px;
+	display: inline-block;
+}
+TABLE   
+{ 
+  border-collapse: collapse;
+  border: 1px solid black;
+  width: 99%;
+}
+TD
+{
+  padding: 3px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  font-size: 14px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.boldfatbot
+{
+	text-align: center;
+	font-weight: bold;
+  border-bottom: 2px solid black;
+}
+.centerbolddashbot
+{
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px dashed black;
+}
+.centerfatbot
+{
+  text-align: center;
+  border-bottom: 2px solid black;
+}
+.centerfatbotdashr
+{
+  text-align: center;
+  border-bottom: 2px solid black;
+  border-right: 1px dashed black;
+}
+.fatbot
+{
+  border-bottom: 2px solid black;
+}
+.bold
+{
+  font-weight: bold;
+}
+.center
+{
+  text-align: center;
+}
+.centerdashr
+{
+  text-align: center;
+  border-right: 1px dashed black;
+}
+.vcmark
+{
+  color: #EEE;
+}
+.leftsign
+{
+  float: left;
+  margin-top: 40px;
+}
+.rightsign
+{
+  float: right;
+  margin-top: 40px;
+}
+.graybg
+{
+  background-color: #DDD;
+}
+@media print
+{
+ .footnote
+ {
+  clear: both;
+  position: fixed;
+  bottom : 0;
+  font-size: 12px;
+	margin-left: 10px;
+ }
+ .pagebreak { font-size: 1px; page-break-after: always}
+}
+@media screen
+{
+ .footnote
+ {
+  clear: both;
+  font-size: 12px;
+ }
+  .pagebreak
+  {
+    margin-bottom: 900px;
+    width: 100%;
+  }
+}

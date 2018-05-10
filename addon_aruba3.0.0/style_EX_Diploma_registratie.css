@@ -1,0 +1,97 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:11px;  }
+
+A:link		{color:#000000; text-decoration: none}
+A:visited	{color:#000000; text-decoration: none}
+A:hover		{color:#000000; text-decoration: none}
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom	: 90px;  /* de volgende tekst/inhoud komt minimaal 900 pixels na dit item */
+    width			: 100%;
+  }
+}
+
+TABLE
+{ 
+  border-collapse	: collapse;
+  border			: 2px solid black;
+}
+TD
+{ 
+  border			: 2px solid black;
+}
+TH
+{ 
+  font-weight		: bold;
+  border			: 2px solid black;
+}
+
+
+/*	Dit zijn de definities van de opmaak van de Gegevens inde tabel	*/
+.koptxt1a
+{
+  padding-left	: 5px;
+  line-height	: 20px;
+  font-weight	: bold;
+  font-size		: 18px;
+  color			: black;
+  text-align	: left;   
+}
+.koptxt1b
+{
+  line-height	: 20px;
+  font-weight	: bold;
+  font-size		: 18px;
+  color			: black;
+  text-align	: center;   
+}
+.koptxt2
+{
+  padding-left	: 5px;
+  line-height	: 20px;
+  font-weight	: normal;
+  font-size		: 16px;
+  color			: blue;
+  text-align	: left;  
+}
+.koptxt3
+{
+  line-height	: 20px;
+  font-weight	: bold;
+  font-size		: 11px;
+  color			: black;
+  text-align	: center;   
+}
+.opmaakLinks
+{
+  padding-left	: 5px;
+  text-align	: left;
+	font-size: 12px;
+}
+
+.opmaakCenter
+{
+  text-align	: Center; 
+	font-size: 12px;}
+
+	.calendar * { margin: 0; padding: 0; border: 0; font-family: Tahoma, serif; font-weight: normal; color: #000; }
+.calendar .invalidday a, .calendar .invalidday a:hover { color: #ccc; background: #fff; cursor: default; }
+.calendar .selectedday { background: #ddd; }
+.calendar .today { font-weight: bold; color: #f00; }
+.calendar a { padding: 0 2px; color: #000; text-decoration: none; }
+.calendar a:hover { background: #bbb; }
+.calendar table { border-collapse: collapse; font-size: 90%; }
+.calendar tbody td { width: 20px; }
+.calendar td, .calendar th { padding: 1px; text-align: center; }
+.calendar thead td { border-bottom: 1px solid #aaa; }
+.calendar thead td { font-weight: bold; }
+.calendar thead th a { font-size: 95%; font-weight: bold; }
+.calendar thead th { padding: 2px 0; vertical-align: middle; background: #ddd; }
+.calendar { padding-bottom: 2px; border: 1px solid #aaa; font-size: small; background: #fff; }
+.calendaricon { cursor: pointer; }
+.calendarlink, .calendaricon { margin: -2px -15px; padding-right: 1px;}

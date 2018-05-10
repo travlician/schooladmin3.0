@@ -1,0 +1,193 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:14px;  }
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom: 900px;
+    width: 100%;
+  }
+}
+.leftpage
+{
+  margin-top: 6%;
+  float: left;
+  width: 46%;
+  padding-left: 3%;
+}
+.rightpage
+{
+  margin-top: 6%;
+  margin-left: 5%;
+  float: right;
+  width: 46%;
+}
+.opmtext
+{
+  font-family: 'Bradley Hand ITC', 'Lucide Handwriting', 'Papyrus';
+  color: blue;
+}
+.rapporttext
+{
+  font-family: 'Times';
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  border-style: solid;
+  border-colr: black;
+  border-width: 1.5px;
+  margin-left: 28%;
+  margin-right: 28%;
+}
+.frontlabel
+{
+  font-size: 18px;
+  margin-left: 10%;
+  height: 10%;
+  display: block;
+}
+.frontlabelspan
+{
+ float: left;
+ position: relative;
+ width: 15%;
+ margin-top:10px;
+}
+.frontfield
+{
+  margin-top: 10px;
+  float: left;
+  position: relative;
+  left: 5%;
+  width: 75%;
+}
+.righthalf
+{
+   float: right;
+   position: relative;
+   width: 50%;
+   margin-left: 5%;
+}
+.righthalf2
+{
+   float: right;
+   position: relative;
+   width: 40%;
+}
+.lefthalf
+{
+   float: left;
+   position: relative;
+   right: 10%;
+   width: 40%;
+}
+.lefthalf2
+{
+   float: left;
+   position: relative;
+   width: 40%;
+}
+.lefthalf3
+{
+   float: left;
+   position: relative;
+   width: 40%;
+   margin-right: 5%;
+}
+.signline
+{
+  margin-top: 20px;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.subjtable
+{
+  border-collapse: collapse;
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: black;
+}
+.numasptable
+{
+  border-collapse: collapse;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}
+.subjmainrow
+{
+}
+.mainsubjname
+{
+  font-weight:bold;
+  width: 240px;
+  font-size: 12px;
+}
+.subsubjname
+{
+  font-weight:normal;
+  width: 240px;
+  font-size: 12px;
+}
+.numberaspects
+{
+  font-weight:normal;
+  width: 240px;
+  font-size: 12px;
+  border-left-width: 2px;
+  border-left-color: black;
+  border-left-style: solid;
+}
+.leftclean
+{
+ float: left;
+ position: relative;
+ width: 80%;
+ border-color: white;
+ border-style: solid;
+ border-width: 1px;
+}
+.leftbordered
+{
+ float: left;
+ position: relative;
+ width: 80%;
+ border-color: black;
+ border-style: solid;
+ border-width: 1px;
+}
+.fullbordered
+{
+ float: left;
+ position: relative;
+ width: 90%;
+ border-color: black;
+ border-style: solid;
+ border-width: 1px;
+}
+.resultblock
+{
+ float: left;
+ position: relative;
+ width: 10%;
+ text-align: center;
+ border-color: black;
+ border-style: solid;
+ border-width: 1px;
+}
+.smallfont
+{
+  font-size: 12px;
+}
+.schoolname
+{
+  font-size: 48px;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 1px 1px black, -1px -1px black, -1px 1px black, 1px -1px black;
+  color: red;
+}
+

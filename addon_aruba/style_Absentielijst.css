@@ -1,0 +1,264 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:10px;  }
+A:link {color:#0000FF}
+A:visited {color:#0000FF}
+A:hover {color:#FF0000}
+P.pagebreak {page-break-before: always}
+TABLE   
+{ 
+  border-collapse: collapse;
+}
+.DO
+{
+  font-weight: bold;
+  font-size: 12px;
+}
+.ur
+{
+  font-weight: bold;
+  font-size: 12px;
+  text-align: right;
+  position: relative;
+  top: -14px;
+}
+.headtbl
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: left;
+  border: thin solid #000;
+}
+.studhead
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: left;
+  border: thin solid #000;
+  width: 300px;
+}
+.subjhead
+{
+  font-weight: normal;
+  font-size: 10px;
+  text-align: center;
+  border: thin solid #000;
+  width: 30px;
+}
+.exnr
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: left;
+  border: thin solid #000;
+  width: 50px;
+}
+.studname
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: left;
+  border: thin solid #000;
+  width: 300px;
+}
+.subjind
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  width: 30px;
+}
+.nolines
+{
+  border: none;
+}
+.total
+{
+  font-weight: bold;
+  font-size: 12px;
+  text-align: right;
+  padding-right: 70px;
+  border: none;
+}
+.sign
+{
+  font-weight: normal;
+  font-size: 10px;
+  text-align: left;
+  position: relative;
+  top: -30px;
+  left: 450px;
+  page-break-after:always;
+}
+.stnotdb
+{
+  border-left: medium solid #000;
+  border-bottom: medium solid #000;
+}
+.stnotd
+{
+  border-left: medium solid #000;
+}
+.stnamtdb
+{
+  border-right: medium solid #000;
+  border-bottom: medium solid #000;
+  text-align: left;
+}
+.stnamtd
+{
+  border-right: medium solid #000;
+  text-align: left;
+}
+
+TD
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: left;
+  border: thin solid #000;
+  text-align: right;
+}
+.absth
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+}
+.absthb
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  width: 18px;
+  border: thin solid #000;
+  border-bottom: medium solid #000;
+}
+.abs1th
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  border-bottom: medium solid #000;
+  border-left: medium solid #000;
+}
+.absnth
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  border-bottom: medium solid #000;
+}
+.abslth
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  border-bottom: medium solid #000;
+  border-right: medium solid #000;
+}
+.namesth
+{
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  border: medium solid #000;
+}
+.monthth
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  border-bottom: medium solid #000;
+}
+.schoolname
+{
+  font-size: 20px;
+  border: none;
+}
+.typeth
+{
+  font-size: 20px;
+  border: none;
+  border-bottom: medium solid #000;
+}
+.dayl
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  width: 18px;
+  border: thin solid #000;
+  border-left: medium solid #000;
+}
+.daylb
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  width: 18px;
+  border: thin solid #000;
+  border-left: medium solid #000;
+  border-bottom: medium solid #000;
+}
+.tothead
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  border-left: medium solid #000;
+  border-right: medium solid #000;
+}
+.tdlb
+{
+  border-left: medium solid #000;
+  border-bottom: medium solid #000;
+}
+.tdltb
+{
+  border-left: medium solid #000;
+  border-top: medium solid #000;
+  border-bottom: medium solid #000;
+}
+.tdl
+{
+  border-left: medium solid #000;
+}
+.tdb
+{
+  border-bottom: medium solid #000;
+}
+.tdtb
+{
+  border-top: medium solid #000;
+  border-bottom: medium solid #000;
+}
+.tdrb
+{
+  border-right: medium solid #000;
+  border-bottom: medium solid #000;
+}
+.tdr
+{
+  border-right: medium solid #000;
+}
+.totalbelow
+{
+  border: medium solid #000;
+}
+.remark
+{
+  border: medium solid #000;
+  text-align: left;
+}
+.paraaf
+{
+  vertical-align: top;
+  border: medium solid #000;
+}
+

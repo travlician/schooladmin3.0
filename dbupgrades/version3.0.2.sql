@@ -1,0 +1,4 @@
+ALTER TABLE config COMMENT='version 3.0.2';
+CHARSET utf8;
+ALTER TABLE studentview CONVERT TO CHARACTER SET utf8;
+ALTER TABLE studentviewitems CONVERT TO CHARACTER SET utf8;

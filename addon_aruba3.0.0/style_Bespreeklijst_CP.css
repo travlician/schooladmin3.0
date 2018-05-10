@@ -1,0 +1,28 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:10px;  }
+TABLE   
+{ 
+  border-collapse: collapse;
+}
+.headleft
+{
+ text-align:left;
+}
+.cathead
+{
+  text-decoration:underline;
+  font-weight:bold;
+}
+.stfirstname
+{
+  font-weight: normal;
+}
+.footer
+{
+  page-break-after: always;
+  height: 1px;
+  font-size: 1pt;
+}
+.redcolor
+{
+  color: red;
+}

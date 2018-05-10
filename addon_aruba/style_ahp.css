@@ -1,0 +1,48 @@
+BODY {font-family: verdana, arial, helvetica; font-size:10px;  }
+A:link {color:#0000FF}
+A:visited {color:#0000FF}
+A:hover {color:#FF0000}
+P.newpage {page-break-after: always}
+TABLE   { border-collapse: collapse}
+TH {border: 1px solid black;}
+TD {border: 1px solid black; height: 27px;}
+.tophead
+{
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+.subhead
+{
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+.gname
+{
+  font-weight: normal;
+  font-size: 10px;
+  padding-right: 100px;
+  display: inline-block;
+}
+.subheaddate
+{
+  padding-left: 100px;
+  padding-right: 100px;
+  display: inline-block;
+}
+.firstcol
+{
+  text-align: left;
+  width: 40px;
+}
+.othercol
+{
+  text-align: left;
+  width: 300px;
+}
+.groupcb
+{
+  width: 150px;
+  display: inline-block;
+}

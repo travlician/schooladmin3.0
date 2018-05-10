@@ -1,0 +1,16 @@
+<?php
+require_once("inputclass_textarea.php");
+require_once("inputclass_textfield.php");
+require_once("inputclass_listfield.php");
+require_once("inputclass_datefield.php");
+require_once("inputclass_multiselect.php");
+require_once("inputclass_catmultiselect.php");
+require_once("inputclass_checkbox.php");
+require_once("inputclass_amount.php");
+require_once("inputclass_multitext.php");
+require_once("inputclass_password.php");
+require_once("inputclass_ckeditor.php");
+require_once("inputclass_integer.php");
+require_once("inputclass_autosuggest.php");
+require_once("inputclass_bolfield.php");
+?>

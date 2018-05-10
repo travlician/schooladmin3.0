@@ -1,0 +1,258 @@
+.leftpage
+{
+  float: left;
+  width: 48%;
+  padding-left: 1%;
+  margin-right: 2%;
+  font-size: 14px;
+}
+.rapporttabel   
+{ 
+  border-collapse: collapse;
+  border: none;
+  font-size: 12px;
+}
+.carapporttabel   
+{ 
+  border-collapse: collapse;
+  border: 1px solid black;
+  font-size: 16px;
+  width: 100%;
+}
+.nolines
+{
+  border: none;
+}
+.cavakkenhdr
+{
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid black;
+  vertical-align: bottom;
+}
+.trimester
+{
+  font-weight: normal;
+  text-align: center;
+  border: none;
+}
+.caresultaathdr
+{
+  font-weight: normal;
+  border: none;
+  text-align: center;
+  width: 30px;
+}
+.eindcijferhdr
+{
+  font-weight: normal;
+  border: 1px solid black;
+  text-align: center;
+  width: 65px;
+  font-size: 14px;
+}
+
+.vak
+{
+  border: none;
+  font-weight: normal;
+  text-align: left;
+  padding-right: 7px;
+}
+.cavak
+{
+  border: 1px solid black;
+  text-align: left;
+  height: 27px;
+}
+.resultaat
+{
+  font-weight: normal;
+  text-align: center;
+  border: 1px solid black;
+  width: 22px;
+}
+.caresultaat
+{
+  font-weight: normal;
+  text-align: center;
+  border: 1px solid black;
+  width: 30px;
+  vertical-align: bottom;
+}
+.spatieresultaat
+{
+  border: none;
+  width: 22px;
+}
+.caabslabel
+{
+  border: 1px solid black;
+  text-align: left;
+  vertical-align: bottom;
+  height: 27px;
+}
+.redcolor
+{
+  color: red;
+}
+.leergebiedheader
+{
+  border: 1px solid black;
+  font-weight: normal;
+  text-align: center;
+}
+.leergebied
+{
+  border: 1px solid black;  
+  font-weight: normal;
+}
+.eindcijfer
+{
+  font-weight: normal;
+  border: 1px solid black;
+  text-align: center;
+  width: 65px;
+  vertical-align: bottom;
+}
+.signdir
+{
+  margin-top: 32px;
+  text-align: left;
+}
+.cadirsign
+{
+  width: 100%;
+  border: 1px solid black;
+  vertical-align: top;
+  height: 80px;
+  font-size: 16px;
+}
+.mentorvak
+{
+  border: none;
+  text-align: right;
+  padding-right: 4px;
+}
+.rightpage
+ {
+  margin-right: 1%;
+  float: right;
+  width: 45%;
+}
+.yeardata
+{
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 1px;
+  padding-bottom: 0px;
+}
+.yearheading
+{
+  padding-left: 100px;
+}
+.studdata
+{
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 2px;
+  padding-top: 0px;
+}
+.righttable
+{
+  border-collapse: collapse;
+  border: none;
+  width: 99%;
+}
+.righttable TD
+{
+  border: 1px solid black;
+  font-size: 14px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.carighttable
+{
+  border-collapse: collapse;
+  border: 1px solid black;
+  width: 99%;
+}
+.carighttable TD
+{
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  font-size: 14px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+.topblock
+{
+  border-bottom: 1px solid black;
+}
+.rapdate
+{
+  float: right;
+  display: inline-block; 
+}
+.opmtext
+{
+  text-align: justify;
+  border-bottom: 1px dotted black;
+}
+.noopmtext
+{
+  letter-spacing: 400px;
+  border-bottom: 1px dotted black;
+}
+.caopmtext
+{
+  text-align: justify;
+  border-bottom: 1px dotted black;
+  margin-bottom: 60px;
+}
+.canoopmtext
+{
+  letter-spacing: 300px;
+  border-bottom: 1px dotted black;
+}
+.msign
+{
+  border-bottom: 1px dotted black;
+  vertical-align: top;
+  height: 50px;
+}
+.emptycenter
+{
+  border: none;
+  width: 100px;
+}
+.osign
+{
+  border-bottom: 1px dotted black;
+  width: 200px;
+  vertical-align: top;
+  height: 50px;
+}
+.packagetype
+{
+  display: inline-block;
+  text-align: center;
+  width: 80px;
+}
+
+@media print
+{
+  .pagebreak {clear: both; page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    clear: both;
+    margin-bottom: 900px;
+    width: 100%;
+  }
+}
+

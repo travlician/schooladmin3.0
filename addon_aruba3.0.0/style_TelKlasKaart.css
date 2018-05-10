@@ -1,0 +1,97 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:12px;  }
+
+A:link		{color:#000000; text-decoration: none}
+A:visited	{color:#000000; text-decoration: none}
+A:hover		{color:#000000; text-decoration: none}
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom	: 900px;  /* de volgende tekst/inhoud komt minimaal 900 pixels na dit item */
+    width			: 100%;
+  }
+}
+
+TABLE
+{ 
+  border-collapse	: collapse;
+  border			: 2px solid black;
+}
+TD
+{ 
+  border	: 2px solid black;
+}
+TH
+{ 
+  font-weight	: bold;
+  border		: 2px solid black;
+}
+
+
+.titel
+{
+  font-size		: 12px;
+}
+
+.tal1spaties
+{
+  word-spacing	: 210px;
+}
+
+/*	Dit zijn de definities van de opmaak van de Gegevens inde tabel	*/
+.koptxt
+{
+  font-weight	: bold;
+  line-height	: 30px;
+  font-size		: 15px;
+  text-align	: left;	
+}
+
+.IDkoptxt
+{
+  font-weight	: bold;
+  line-height	: 30px;
+  font-size		: 15px;
+  text-align	: center;
+  width			: 80px;
+}
+
+.LLkoptxt
+{
+  font-weight	: bold;
+  line-height	: 30px;
+  font-size		: 15px;
+  text-align	: center;
+  width			: 85px;
+}
+
+.Ckoptxt
+{
+  font-weight	: bold;
+  line-height	: 30px;
+  font-size		: 15px;
+  text-align	: center;	
+}
+
+.TblPropKaart TR TD
+{
+  height		: 19px;
+  font-size		: 11px;
+  padding-left	: 5px;
+  padding-right	: 5px;
+}
+
+.opmaakNr
+{
+  text-align	: right;
+}
+
+.opmaakCenter
+{
+  text-align	: center; 
+}
+

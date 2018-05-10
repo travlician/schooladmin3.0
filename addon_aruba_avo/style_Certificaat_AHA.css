@@ -1,0 +1,113 @@
+@font-face {
+	font-family: 'LCALLIG';
+	src: url('LCALLIG.eot');
+	src: local('LCALLIG'), url('./LCALLIG.woff') format('woff'), url('./LCALLIG.ttf') format('truetype');
+}
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:14px; margin-left: 80px; margin-right: 80px;}
+.topimg
+{
+  text-align: center;
+  height: 100px;
+}
+.certheader
+{
+  font-size: 40px;
+  text-align: center;
+  font-family: times;
+  font-style: italic;
+  font-weight: bold;
+}
+.examtype
+{
+  font-size: 16px;
+  text-align: center;
+}
+table
+{
+  border-collapse: collapse;
+  border: 2px solid black;
+  width: 99%;
+}
+td
+{
+  border: 2px solid black;
+}
+.bold
+{
+  font-weight: bold;
+}
+.center
+{
+  text-align: center;
+}
+.boldcenter
+{
+  font-weight: bold;
+  text-align: center;
+}
+.signtop
+{
+  display: inline-block;
+  height: 100px;
+  width: 33%;
+  vertical-align: top;
+}
+.signtop2
+{
+  display: inline-block;
+  height: 100px;
+  width: 40%;
+  vertical-align: top;
+}
+.signbot
+{
+  display: inline-block;
+  width: 23%;
+  margin-right: 6%;
+  height: 40px;
+  border-top: 2px solid black;
+  vertical-align: top;
+}
+.signbot3
+{
+  display: inline-block;
+  width: 37%;
+  height: 40px;
+  border-top: 2px solid black;
+  vertical-align: top;
+}
+.signbotclear
+{
+  display: inline-block;
+  width: 25%;
+  margin-right: 8%;
+  color: white;
+  height: 40px;
+  border-top: 2px solid black;
+  vertical-align: top;
+}
+@media print
+{
+ .footnote
+ {
+  clear: both;
+  position: fixed;
+  bottom : 0;
+  font-size: 12px;
+ }
+ .pagebreak {page-break-after: always}
+}
+@media screen
+{
+ .footnote
+ {
+  clear: both;
+  font-size: 12px;
+ }
+  .pagebreak
+  {
+    margin-bottom: 900px;
+    width: 100%;
+  }
+}
+

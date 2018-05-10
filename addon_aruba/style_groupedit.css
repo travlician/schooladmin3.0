@@ -1,0 +1,49 @@
+BODY {background-color:#C7FFEA;; font-family: verdana, arial, helvetica; font-size:12px;  }
+A:link		{color:#0000FF; text-decoration: underline}
+A:visited	{color:#0000FF; text-decoration: underline}
+A:hover		{color:#FF0000; text-decoration: underline}
+
+/*	Indien men het inschrijfformulier wil afdrukken moet dat kunnen:	*/
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom	: 900px;  /* de volgende tekst/inhoud komt minimaal 900 pixels na dit item */
+    width			: 100%;
+  }
+}
+
+TABLE
+{ 
+  border-collapse	: collapse;
+/*  border			: 2px solid black; */
+  margin-left		: auto;
+  margin-right		: auto;
+  text-align		: center;
+}
+TD
+{ 
+/*  border			: 2px solid black; */
+  padding			: 2px;
+}
+TH
+{ 
+  font-weight		: bold;
+/*  border			: 2px solid black; */
+}
+.txtmidden
+{
+  font-weight		: bold;
+  font-size			: 13px;
+  text-align		: center;	 
+}
+.breedtekolom
+{
+ /* width			: 400px;	*/
+}
+
+

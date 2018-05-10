@@ -1,0 +1,80 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:12px;  }
+
+A:link		{color:#000000; text-decoration: none}
+A:visited	{color:#000000; text-decoration: none}
+A:hover		{color:#000000; text-decoration: none}
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom	: 90px;  /* de volgende tekst/inhoud komt minimaal 900 pixels na dit item */
+    width			: 100%;
+  }
+}
+
+TABLE
+{ 
+  border-collapse	: collapse;
+  border			: 2px solid black;
+}
+TD
+{ 
+  border			: 2px solid black;
+}
+TH
+{ 
+  font-weight		: bold;
+  border			: 2px solid black;
+}
+
+
+/*	Dit zijn de definities van de opmaak van de Gegevens inde tabel	*/
+.koptxt1a
+{
+  padding-left	: 5px;
+  line-height	: 30px;
+  font-weight	: bold;
+  font-size		: 25px;
+  color			: red;
+  text-align	: left;   
+}
+.koptxt1b
+{
+  line-height	: 30px;
+  font-weight	: bold;
+  font-size		: 25px;
+  color			: red;
+  text-align	: center;   
+}
+.koptxt2
+{
+  padding-left	: 5px;
+  line-height	: 30px;
+  font-weight	: bold;
+  font-size		: 16px;
+  color			: blue;
+  text-align	: left;  
+}
+.koptxt3
+{
+  line-height	: 30px;
+  font-weight	: bold;
+  font-size		: 15px;
+  color			: green;
+  text-align	: center;   
+}
+.opmaakLinks
+{
+  padding-left	: 5px;
+  text-align	: left;
+}
+
+.opmaakCenter
+{
+  text-align	: Center; 
+}
+

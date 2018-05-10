@@ -1,0 +1,47 @@
+BODY {background-color:black; color:yellow; font-family: verdana, arial, helvetica; font-size:12px;  }
+
+A:link		{color:#000000; text-decoration: none}
+A:visited	{color:#000000; text-decoration: none}
+A:hover		{color:#000000; text-decoration: none}
+
+.toptable
+{
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.contenttable
+{
+  width: 100%;
+}
+.leftaddress
+{
+  width: 30%;
+  padding-left: 10px;
+}
+.rightaddress
+{
+  width: 30%;
+  padding-left: 10px;
+}
+.logo
+{
+  width: 20%;
+  text-align: center;
+}
+.contenttd
+{
+  width: 50%;
+  padding-left: 10px;
+  vertical-align: top;
+}
+.logoimage
+{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+P
+{
+  margin: 1px;
+  padding: 0px;
+}

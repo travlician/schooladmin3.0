@@ -1,0 +1,57 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:14;  }
+A:link {color:#0000FF}
+A:visited {color:#0000FF}
+A:hover {color:#FF0000}
+P.pagebreak {page-break-before: always}
+TABLE   { border-collapse: collapse;}
+TR.highlight {background-color: #FFC0C0}
+TD.highlight {background-color: #FFC0C0}
+TR.no_lesson {background-color: #66FFCC}
+A.hidelink {color:#000; text-decoration:none}
+TR.average {border-top-style: groove; border-top-width: thick}
+TH.rightaligned {text-align: right; }
+TD.endgrade {border-left-style: groove; border-left-width: thick; text-align: center}
+TD.padded {padding-left: 5px; padding-right: 5px; }
+td {min-width: 20;} 
+.per1 {background-color:#FFFFCC}
+.per2 {background-color:#FFCCFF}
+.per3 {background-color:#CCFFFF}
+.per1alt {background-color:#EEEECC}
+.per2alt {background-color:#DDBBDD}
+.per3alt {background-color:#AADDDD}
+.suggestion_list
+ {
+ background: white;
+ border: 1px solid;
+ padding: 4px;
+ }
+
+ .suggestion_list ul
+ {
+ padding: 0;
+ margin: 0;
+ width: 200px;
+ list-style-type: none;
+ }
+
+ .suggestion_list a
+ {
+ text-decoration: none;
+ color: navy;
+ }
+
+ .suggestion_list .selected
+ {
+ background: yellow;
+ color: white;
+ }
+
+ .suggestion_list .selected a
+ {
+ color: white;
+ }
+
+ #autosuggest
+ {
+ display: none;
+ }

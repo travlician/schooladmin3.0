@@ -1,0 +1,173 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:12px;  }
+A:link		{color:#000000; text-decoration: none}
+A:visited	{color:#000000; text-decoration: none}
+A:hover		{color:#000000; text-decoration: none}
+
+/*	Indien men het infrijfformulier wil afdrukken moet dat kunnen:	*/
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom	: 900px;  /* de volgende tekst/inhoud komt minimaal 900 pixels na dit item */
+    width			: 100%;
+  }
+}
+
+TABLE
+{ 
+  border-collapse	: collapse;
+  border			: 2px solid black;
+  margin-left		: auto;
+  margin-right		: auto;
+}
+TD
+{ 
+  border			: 2px solid black;
+  padding			:10;
+}
+TH
+{ 
+  font-weight		: bold;
+  border			: 2px solid black;
+}
+.titel
+{
+  font-weight	: bold;
+  font-size		: 12px;
+}
+.Koptekst
+{
+  font-weight	: bold;
+  color			: blue;
+  line-height	: 35px;
+  font-size		: 30px;
+  text-align	: center;	
+}
+.Koptxt
+{
+  font-weight	: bold;
+  color			: blue;
+  text-align	: center;	
+}
+.Tabel1Prop TR TD
+{
+  height		: 19px;
+  font-size		: 11px;
+  padding-left	: 15px;
+  padding-right	: 15px;
+  text-align	: left;	
+}
+.Opgelet
+{
+  font-weight	: bold;
+  line-height	: 30px;
+  font-size		: 24px;
+  text-align	: center;
+  font-family	: 'Comic Sans MS';
+}
+.Tip
+{
+  font-weight	: bold;
+  line-height	: 30px;
+  font-size		: 15px;
+  text-align	: center;
+  font-family	: 'Comic Sans MS';
+}
+.Paragraaftekst
+{
+  line-height	: 40px;
+  font-weight	: bold;
+  font-size		: 20px;
+  color			: blue;
+  text-align	: center;
+  border-left	: 0px;
+  border-right	: 0px;
+}
+.TekstRechts
+{
+  line-height		: 20px;
+  font-size			: 12px;
+  color				: black;
+  text-align		: right;
+  border-left		: none;
+  border-right		: none;
+  background-color	: #C7FFEA;
+}
+.TekstRechtsID
+{
+  line-height		: 20px;
+  font-size			: 12px;
+  color				: black;
+  font-weight		: bold;
+  text-align		: right;
+  border-left		: none;
+  border-right		: none;
+  background-color	: #FF998A;
+}
+.TekstRechtsINFO
+{
+  line-height		: 20px;
+  font-size			: 12px;
+  color				: black;
+  font-weight		: bold;
+  text-align		: right;
+  border-left		: none;
+  border-right		: none;
+  background-color	: #9AFE2E;
+}
+.TekstLinks
+{
+  line-height		: 20px;
+  font-size			: 12px;
+  color				: black;
+  text-align		: left;
+  border-left		: none;
+  border-right		: none;
+  background-color	: #C7FFEA;
+  width				: 200px;
+}
+.TekstLinksID
+{
+  line-height		: 20px;
+  font-size			: 12px;
+  color				: black;
+  font-weight		: bold;
+  text-align		: left;
+  border-left		: none;
+  border-right		: none;
+  background-color	: #FF998A;
+  width				: 200px;
+}
+.TekstLinksINFO
+{
+  line-height		: 20px;
+  font-size			: 12px;
+  color				: black;
+  font-weight		: bold;
+  text-align		: left;
+  border-left		: none;
+  border-right		: none;
+  background-color	: #9AFE2E;
+  width				: 200px;
+}
+
+.Tussenregel
+{
+  height			: 5px;
+  background-color	: #8AEFFF;
+  border-left		: 0px;
+  border-right		: 0px;
+}
+
+.FoutMelding
+{
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+

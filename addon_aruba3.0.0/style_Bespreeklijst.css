@@ -1,0 +1,77 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:10px;  }
+TABLE   
+{ 
+  border-collapse: collapse;
+}
+.centercel
+{
+  text-align: center;
+}
+.centercelRB
+{
+  text-align: center;
+  border-right: 2px solid black;
+}
+.headleft
+{
+ text-align:left;
+}
+.cathead
+{
+  text-decoration:underline;
+  font-weight:bold;
+}
+.stfirstname
+{
+  font-weight: normal;
+}
+.footer
+{
+  page-break-after: always;
+}
+.redcolor
+{
+  color: red;
+}
+.metahead
+{
+	font-weight: bold;
+}
+.subhead
+{
+	padding-left: 30px;
+	font-style: italic;
+}
+.rescol
+{
+	text-align: center;
+	min-width: 30px;
+}
+.rescolE
+{
+	text-align: center;
+	min-width: 30px;
+	background-color: #FFC;
+}
+.rescolB
+{
+	text-align: center;
+	min-width: 30px;
+	border-left: 2px solid black;
+}
+.baspect
+{
+	padding-left: 20px;
+}
+.studnamecel
+{
+	border-left: 2px solid black;
+}
+.leftB
+{
+	border-left: 2px solid black;
+}
+.leftE
+{
+	background-color: #FFC;
+}

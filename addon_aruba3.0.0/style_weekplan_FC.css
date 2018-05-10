@@ -1,0 +1,48 @@
+BODY {font-family: verdana, arial, helvetica; font-size:14;  }
+A:link {color:#0000FF}
+A:visited {color:#0000FF}
+A:hover {color:#FF0000}
+TABLE   { border-collapse: collapse; page-break-after: always;}
+TH
+{
+  font-size: 12;
+}
+TD
+{
+  font-size: 12;
+}
+textarea
+{
+  font-size: 12;
+  font-family: verdana, arial, helvetica;
+}
+.pw
+{
+  color: RED;
+}
+.hw
+{
+  color: BLUE;
+}
+.subjecttime
+{
+  font-weight: bold;
+}
+.heading
+{
+  text-align: center;
+}
+@media print
+{
+  .selectors
+    {
+	display: none;
+  }
+}
+@media screen
+{
+  .selectors
+    {
+	text-align: center;
+  }
+}

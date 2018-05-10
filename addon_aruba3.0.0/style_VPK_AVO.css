@@ -1,0 +1,379 @@
+BODY {background-color:white; font-family: arial, verdana, helvetica; font-size:12;  }
+@media print
+{
+  .pagebreak {page-break-after: always; text-align: center;}
+}
+@media screen
+{
+  .pagebreak
+   {
+    margin-bottom	: 900px;
+    width			: 100%;
+	text-align		: center;
+  }
+}
+/* +++++++++++++++++++++++++++++++++++++++++++ */
+/*                                             */
+/*    Labels voor Form-VakkenPakketKeuze       */
+/*                                             */
+/* +++++++++++++++++++++++++++++++++++++++++++ */
+.BodyOpmaak_VPK
+{
+  background-color	: #C7F8FF;
+}
+/* Titel, blauwe tekst, verklarende tekst  */
+.Koptekst
+{
+  font-size			: 22px;
+  font-style		: bold;
+  text-align		: center;
+  color				: Blue;
+}
+.SubKoptekst
+{
+  font-size			: 15px;
+  font-style		: bold;
+  text-align		: center;
+  color				: Blue;
+}
+.OpmVKP
+{
+  /* border-radius pakt niet is CSS */
+  border			: 10px;
+  border-collapse	: separate;
+  border-style		: solid;
+  border-color		: RoyalBlue;
+  background		: #FFEAC7;
+  /* position			: absolute; */
+  /* top				: 30%; */
+  padding			: 10px;
+  margin-left		: auto; 
+  margin-right		: auto; 
+  width				: 800px;
+}
+.Cel11Beroep
+{
+  width				: 250px;
+  padding			: 10px;
+  border  			: none;
+  border-top		: 2px solid Black;
+  border-left		: 2px solid Black;
+  background		: #C7FFCE;
+  font-style		: bold;
+  text-align		: right;
+}
+.Cel21Beroep
+{
+  width				: 400px;
+  padding			: 10px;
+  border: none;
+  border-top		: 2px solid Black;
+  border-right		: 2px solid Black;
+  background		: white;
+  font-style		: bold;
+  font-size			: 10px;
+  color				: blue;
+  text-align		: left;
+}
+.Cel12Beroep
+{
+  padding			: 10px;
+  border		: none;
+  border-left		: 2px solid Black;
+  background		: #C7FFCE;
+  border-collapse	: collapse;
+  font-style		: bold;
+  text-align		: right;
+}
+.Cel22Beroep
+{
+  padding			: 10px;
+  border		: none;
+  border-right		: 2px solid Black;
+  background		: #C7FFCE;
+  background		: white;
+  font-style		: bold;
+  font-size			: 10px;
+  color				: blue;
+  text-align		: left;
+}
+.Cel13Beroep
+{
+  padding			: 10px;
+  border: none;
+  border-left		: 2px solid Black;
+  border-bottom		: 2px solid Black;
+  background		: #C7FFCE;
+  font-style		: bold;
+  text-align		: right;
+}
+.Cel23Beroep
+{
+  padding			: 10px;
+  border-right		: 2px solid Black;
+  border-bottom		: 2px solid Black;
+  background		: white;
+  font-style		: bold;
+  font-size			: 10px;
+  color				: blue;
+  text-align		: left;
+}
+.Cel14Beroep
+{
+  padding			: 10px;
+  border			: 2px;
+  border-color		: Black;
+  border-style		: solid;
+  background		: #C7FFCE;
+  font-style		: bold;
+  text-align		: right;
+}
+.Cel24Beroep
+{
+  padding			: 10px;
+  border			: 2px solid Black;
+  background		: white;
+  font-style		: bold;
+  font-size			: 10px;
+  color				: blue;
+  text-align		: left;
+}
+/* +++++++++++++++++ */
+.Cel11Onderwijstype
+{
+  padding			: 10px;
+  border-top		: 2px solid Black;
+  border-left		: 2px solid Black;
+  background		: #F8FFC7;
+  border-collapse	: collapse;
+  font-style		: bold;
+  text-align		: right;
+}
+.Cel12Onderwijstype
+{
+  padding			: 10px;
+  border-left		: 2px solid Black;
+  background		: #F8FFC7;
+  font-style		: bold;
+  text-align		: right;
+}
+.Cel13Onderwijstype
+{
+  padding			: 10px;
+  border-left		: 2px solid Black;
+  border-bottom		: 2px solid Black;
+  background		: #F8FFC7;
+  border-collapse	: collapse;
+  font-style		: bold;
+  text-align		: right;
+}
+/* +++++++++++++++++ */
+.Tekst
+{
+  color				: blue;
+  font-size			: 16px;
+  font-style		: bold;
+  text-align		: center;
+}
+/* +++++++++++++++++ */
+.Cel11VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-bottom		: 2px solid Black;
+  font-style		: bold;
+  text-align		: right;
+  color				: red;
+}
+.Cel31VPKeuze
+{
+  width				: 300px;
+  padding			: 10px;
+  border			: 2px solid Black;
+  background		: white;
+  font-style		: bold;
+  font-size			: 10px;
+  color				: red;
+  text-align		: left;
+}
+/* +++++++ mavo ++++++++++ */
+.Cel12VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-left		: 2px solid black;
+  background-color	: #C7DBFF;
+  font-style		: bold;
+  text-align		: left;
+  color				: red;
+}
+.Cel22VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  background-color	: #C7DBFF;
+  font-style		: bold;
+  text-align		: right;
+  color				: black;
+}
+.Cel32VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-right		: 2px solid Black;
+  font-style		: bold;
+  text-align		: left;
+  color				: black;
+}
+.Cel13VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-left		: 2px solid black;
+  background-color	: #C7DBFF;
+  font-style		: bold;
+  text-align		: right;
+  color				: black;
+}
+.Cel33VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-right		: 2px solid Black;
+  background-color	: white;
+  font-style		: bold;
+  font-size			: 10px;
+  text-align		: left;
+  color				: blue;
+}
+.Cel14VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-left		: 2px solid black;
+  border-bottom		: 2px solid Black;
+  background-color	: #C7DBFF;
+  font-style		: bold;
+  text-align		: right;
+  color				: black;
+}
+.Cel34VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-bottom		: 2px solid Black;
+  border-right		: 2px solid Black;
+  background-color	: white;
+  font-style		: bold;
+  font-size			: 10px;
+  text-align		: left;
+  color				: blue;
+}
+/* +++++++ havo ++++++++++ */
+.Cel15VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-left		: 2px solid black;
+  background-color	: #FFCEC7;
+  font-style		: bold;
+  text-align		: left;
+  color				: blue;
+}
+.Cel25VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  background-color	: #FFCEC7;
+  font-style		: bold;
+  text-align		: right;
+  color				: black;
+}
+.Cel35VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-right		: 2px solid Black;
+  font-style		: bold;
+  text-align		: left;
+  color				: black;
+}
+.Cel16VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-left		: 2px solid black;
+  background-color	: #FFCEC7;
+  font-style		: bold;
+  text-align		: right;
+  color				: black;
+}
+.Cel36VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-right		: 2px solid Black;
+  background-color	: white;
+  font-style		: bold;
+  font-size			: 10px;
+  text-align		: left;
+  color				: blue;
+}
+.Cel17VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-left		: 2px solid black;
+  border-bottom		: 2px solid Black;
+  background-color	: #FFCEC7;
+  font-style		: bold;
+  text-align		: right;
+  color				: black;
+}
+.Cel37VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-bottom		: 2px solid Black;
+  border-right		: 2px solid Black;
+  background-color	: white;
+  font-style		: bold;
+  font-size			: 10px;
+  text-align		: left;
+  color				: blue;
+}
+.Cel18VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-left		: 2px solid black;
+  border-bottom		: 2px solid Black;
+  background-color	: white;
+  font-style		: bold;
+  text-align		: right;
+  color				: black;
+}
+.Cel38VPKeuze
+{
+  padding			: 10px;
+  background		: White;
+  border-bottom		: 2px solid Black;
+  border-right		: 2px solid Black;
+  background-color	: white;
+  font-style		: bold;
+  font-size			: 10px;
+  text-align		: left;
+  color				: blue;
+}
+TABLE
+{
+  border-collapse: collapse;
+}
+TR
+{
+  border: none;
+}
+TD
+{
+  border: none;
+}

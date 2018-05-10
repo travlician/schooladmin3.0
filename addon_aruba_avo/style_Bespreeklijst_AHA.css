@@ -1,0 +1,90 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:10px;  }
+TABLE   
+{ 
+  border-collapse: collapse;
+  page-break-after: always;
+}
+TH
+{
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  text-align: left;
+  padding-right: 5px;
+  font-size: 10px;
+}
+TD
+{
+  font-size: 10px;
+  padding-top: 0px;
+}
+.emptyhead
+{
+  border: none;
+}
+.emptyhead1
+{
+  border: none;
+  border-top: 2px solid black;
+}
+.mainheaderth
+{
+  text-align: center;
+  background-color: LightGray;
+}
+.subjecthead
+{
+  text-align: center;
+  border: 2px solid black;
+  width: 20px;
+}
+.remarkhead
+{
+  text-align: center;
+  border: 2px solid black;
+  width: 150px;
+}
+.remarkcol1
+{
+  text-align: left;
+  border: 1px solid black;
+  border-top: 2px solid black;
+}
+.remarkcol
+{
+  text-align: left;
+  border: 1px solid black;
+}
+
+.seqnr
+{
+  border-top: 2px solid black;
+  border-bottom: 1px solid black;
+  padding-right: 5px;
+}
+.studentname
+{
+  border-top: 2px solid black;
+  border-bottom: 1px solid black;
+}
+.lineadvice
+{
+  border-top: 2px solid black;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+.advice
+{
+  border: none;
+  text-align: center;
+}
+.result1
+{
+  border: 1px solid black;
+  border-top: 2px solid black;
+  text-align: center;
+}
+.result
+{
+  border: 1px solid black;
+  text-align: center;
+}

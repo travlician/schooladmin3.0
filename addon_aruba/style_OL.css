@@ -1,0 +1,58 @@
+BODY {background-color:#DBFFC7; font-family: verdana, arial, helvetica; font-size:14px;  }
+A {font-family: verdana, arial, helvetica; font-size:14px;  }
+
+LABEL
+{
+  width: 150px;
+  display: inline-block;
+}
+TABLE
+{ 
+  border-collapse	: collapse;
+  border			: 2px solid black;
+  position			: left;
+}
+TD
+{ 
+  border			: 1px solid black;
+  padding			: 2px;
+  font-family: verdana, arial, helvetica;
+  font-size:14px;
+  text-align: center;
+}
+TH
+{ 
+  font-weight		: bold;
+  border			: 2px solid black;
+  font-family: verdana, arial, helvetica;
+  font-size:14px;
+}
+.catclasslabel
+{
+  width: 150px;
+	display: inline-block;
+	text-align: right;
+	color: blue;
+}
+.catclass
+{
+  width: 300px;
+	display: inline-block;
+	text-align: right;
+}
+.itemclasslabel
+{
+  width: 250px;
+	display: inline-block;
+}
+.itemclass
+{
+  width: 300px;
+	display: inline-block;
+	text-align: right;
+}
+.resulttable TD
+{
+  font-size: 12px;
+	text-align: left;
+}

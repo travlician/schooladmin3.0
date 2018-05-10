@@ -1,0 +1,62 @@
+CREATE TABLE `config` (citem VARCHAR(255), cdata TEXT, PRIMARY KEY (`citem`)) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='version 3.0.0';
+CHARSET utf8;
+INSERT INTO tt_english VALUES('tpage_studgui',"<img src='PNG/studplace.png' title='Students'>");
+INSERT INTO tt_nederlands VALUES('tpage_studgui',"<img src='PNG/studplace.png' title='Studenten'>");
+INSERT INTO tt_Español VALUES('tpage_studgui',"<img src='PNG/studplace.png' title='Alumnos'>");
+INSERT INTO tt_english VALUES('Man_GUIQueries',"Student view queries");
+INSERT INTO tt_nederlands VALUES('Man_GUIQueries',"Student overzicht queries");
+INSERT INTO tt_Español VALUES('Man_GUIQueries',"Queries para la vista de alumnos");
+INSERT INTO tt_english VALUES('On_studgui',"On students page");
+INSERT INTO tt_nederlands VALUES('On_studgui',"Op studentenpagina");
+INSERT INTO tt_Español VALUES('On_studgui',"Riba la pagina de alumnos");
+INSERT INTO tt_english VALUES('BellQueryLabel',"Query for display of bell icon");
+INSERT INTO tt_nederlands VALUES('BellQueryLabel',"Query voor weergave bel icoon");
+INSERT INTO tt_Español VALUES('BellQueryLabel',"Query para mostrar la campana");
+INSERT INTO tt_english VALUES('OverallPassQueryLabel',"Query for overall positive result");
+INSERT INTO tt_nederlands VALUES('OverallPassQueryLabel',"Query voor algemeen positief resultaat");
+INSERT INTO tt_Español VALUES('OverallPassQueryLabel',"Query para resultado positivo general");
+INSERT INTO tt_english VALUES('SubjectPassQueryLabel',"Query for subject positive result");
+INSERT INTO tt_nederlands VALUES('SubjectPassQueryLabel',"Query voor vak positief resultaat");
+INSERT INTO tt_Español VALUES('SubjectPassQueryLabel',"Query para resultado positivo de materia");
+INSERT INTO tt_english VALUES('GUIOverallColor',"Query for overall result color");
+INSERT INTO tt_nederlands VALUES('GUIOverallColor',"Query voor algemene resultaat kleur");
+INSERT INTO tt_Español VALUES('GUIOverallColor',"Query para el color del resultado general");
+INSERT INTO tt_english VALUES('GUISubjectColor',"Query for subject result color");
+INSERT INTO tt_nederlands VALUES('GUISubjectColor',"Query voor vak resultaat kleur");
+INSERT INTO tt_Español VALUES('GUISubjectColor',"Query para el color del resultado de materia");
+INSERT INTO tt_english VALUES('CatchupResult',"Query for catchup of tests");
+INSERT INTO tt_nederlands VALUES('CatchupResult',"Query voor inhalen toets");
+INSERT INTO tt_Español VALUES('CatchupResult',"Query para prueba faltando");
+INSERT INTO tt_english VALUES('ActionResult',"Query for action plan");
+INSERT INTO tt_nederlands VALUES('ActionResult',"Query voor actieplan");
+INSERT INTO tt_Español VALUES('ActionResult',"Query para plan de accion");
+INSERT INTO tt_english VALUES('EmailContact',"Query for E-mail contacts");
+INSERT INTO tt_nederlands VALUES('EmailContact',"Query voor E-mail contacten");
+INSERT INTO tt_Español VALUES('EmailContact',"Query para contactos de e-mail");
+INSERT INTO tt_english VALUES('PhoneContact',"Query for phone contacts");
+INSERT INTO tt_nederlands VALUES('PhoneContact',"Query voor telefonische contacten");
+INSERT INTO tt_Español VALUES('PhoneContact',"Query para contactos de telefono");
+INSERT INTO tt_english VALUES('GUILibImagePath',"Assignable images library folder");
+INSERT INTO tt_nederlands VALUES('GUILibImagePath',"Toewijsbare plaatjes bibliotheek map");
+INSERT INTO tt_Español VALUES('GUILibImagePath',"Mapa de imagenes asignables de la bibioteca");
+
+INSERT INTO tt_english VALUES('GUIBBWhite',"Query for white text on blackboard");
+INSERT INTO tt_nederlands VALUES('GUIBBWhite',"Query voor witte tekst op het schoolbord");
+INSERT INTO tt_Español VALUES('GUIBBWhite',"Query para el texto en blanco a la tabla negra");
+
+INSERT INTO tt_english VALUES('GUIBBYellow',"Query for yellow text on blackboard");
+INSERT INTO tt_nederlands VALUES('GUIBBYellow',"Query voor gele tekst op het schoolbord");
+INSERT INTO tt_Español VALUES('GUIBBYellow',"Query para el texto en amarillo a la tabla negra");
+
+INSERT INTO tt_english VALUES('GUIBBRed',"Query for red text on blackboard");
+INSERT INTO tt_nederlands VALUES('GUIBBRed',"Query voor rode tekst op het schoolbord");
+INSERT INTO tt_Español VALUES('GUIBBRed',"Query para el texto en rojo a la tabla negra");
+
+INSERT INTO tt_english VALUES('GUIBBGreen',"Query for green text on blackboard");
+INSERT INTO tt_nederlands VALUES('GUIBBGreen',"Query voor groene tekst op het schoolbord");
+INSERT INTO tt_Español VALUES('GUIBBGreen',"Query para el texto en verde a la tabla negra");
+
+ALTER TABLE absencecats ADD COLUMN ongui TINYINT(1) DEFAULT 0 AFTER classuse;
+UPDATE absencecats SET ongui=1 WHERE acid <=5;
+CREATE TABLE `guiqueries` (qname VARCHAR(40), query TEXT, PRIMARY KEY (`qname`)) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+CREATE TABLE `guibadges` (sid INT(11),tid INT(11) UNSIGNED,libid INT(11) UNSIGNED, PRIMARY KEY (sid,tid,libid)) ENGINE=MyISAM DEFAULT CHARSET=utf8;

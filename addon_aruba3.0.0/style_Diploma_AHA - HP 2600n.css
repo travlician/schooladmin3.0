@@ -1,0 +1,153 @@
+@font-face {
+	font-family: 'LCALLIG';
+	src: url('LCALLIG.eot');
+	src: local('LCALLIG'), url('./LCALLIG.woff') format('woff'), url('./LCALLIG.ttf') format('truetype');
+}
+BODY {background-color:white; font-family: 'LCALLIG'; font-size:20px; font-weight: bold; }
+.studentname
+{
+  position: relative;
+  left: 53px;
+  top: 294px;
+}
+.birthdate
+{
+  position: relative;
+  left: 28px;
+  top: 274px;
+  text-align: center;
+  width: 40%;
+}
+.birthplace
+{
+  position: relative;
+  left: 371px;
+  top: 228px;
+}
+.profile
+{
+  position: relative;
+  left: 182px;
+  top: 296px;
+}
+.schoolname
+{
+  position: relative;
+  left: 88px;
+  top: 283px;
+}
+.schoolplace
+{
+  position: relative;
+  left: 77px;
+  top: 273px;
+}
+.diplomadate
+{
+  position: relative;
+  left: 469px;
+  top: 455px;
+}
+.diplomayear
+{
+  position: relative;
+  left: 604px;
+  top: 405px;
+}
+.subjectline1
+{
+  position: relative;
+  left: 120px;
+  top: 233px;
+}
+.subjectline2
+{
+  position: relative;
+  left: 120px;
+  top: 226px;
+}
+.subjectline3
+{
+  position: relative;
+  left: 120px;
+  top: 218px;
+}
+.subjectline4
+{
+  position: relative;
+  left: 120px;
+  top: 209px;
+}
+.subjectline5
+{
+  position: relative;
+  left: 120px;
+  top: 200px;
+}
+.subjectline6
+{
+  position: relative;
+  left: 120px;
+  top: 267px;
+}
+.subjectline7
+{
+  position: relative;
+  left: 120px;
+  top: 260px;
+}
+.subjectline8
+{
+  position: relative;
+  left: 120px;
+  top: 252px;
+}
+.subjectline9
+{
+  position: relative;
+  left: 120px;
+  top: 318px;
+}
+.subjectline10
+{
+  position: relative;
+  left: 125px;
+  top: 310px;
+}
+.subjectline11
+{
+  position: relative;
+  left: 125px;
+  top: 374px;
+}
+.subjectline12
+{
+  position: relative;
+  left: 125px;
+  top: 361px;
+}
+
+@media print
+{
+ .footnote
+ {
+  clear: both;
+  position: fixed;
+  bottom : 0;
+  font-size: 12px;
+ }
+ .pagebreak {page-break-after: always}
+}
+@media screen
+{
+ .footnote
+ {
+  clear: both;
+  font-size: 12px;
+ }
+  .pagebreak
+  {
+    margin-bottom: 900px;
+    width: 100%;
+  }
+}

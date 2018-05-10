@@ -1,0 +1,1046 @@
+BODY {background-color:white; font-family: arial, verdana, helvetica; font-size:12;  }
+@media print
+{
+  .pagebreak {page-break-after: always; text-align: center;}
+}
+@media screen
+{
+  .pagebreak
+   {
+    margin-bottom	: 900px;
+    width			: 100%;
+	text-align		: center;
+  }
+}
+/* +++++++++++++++++++++++++++++++++++++++++++ */
+/*                                             */
+/*    Labels voor Form-KeuzeOAFmavo.html       */
+/*                                             */
+/* +++++++++++++++++++++++++++++++++++++++++++ */
+.BodyOpmaakKeuzeAOF
+{
+  background-color	: #C7F8FF;
+}
+.KopieRechten
+{
+  font-size			: 10px;
+  font-style		: italic;
+  color				: #FF644D;
+ 
+}
+/* Titel, blauwe tekst, verklarende tekst  */
+.FormKeuzeTekst1
+{
+  margin-left		: 100px;
+  font-size			: 20px;
+  color				: Blue;
+}
+.FormKeuzeTekst2
+{
+  margin-left		: 100px;
+  font-size			: 14px; 
+}
+.FormKeuzeTekst3
+{
+  font-size			: 14px; 
+}
+.Commentaar1
+{
+  font-size			: 12px;
+  color				: Black;
+  font-style		: italic;
+}
+.Commentaar2
+{
+  margin-left		: 180px;
+  font-size			: 12px;
+  color				: Black;
+  font-style		: italic;
+}
+.Commentaar3
+{
+  font-size			: 12px;
+  color				: Black;
+}
+.Commentaar5
+{
+  margin-left		: 180px;
+  font-size			: 12px;
+  color				: Blue;
+}
+.Commentaar6
+{
+  margin-left		: 350px;
+  font-size			: 12px;
+  color				: Blue;
+}
+ol.Lijst
+{
+  list-style-type		: lower-alpha;
+  margin-left		: 30%;
+  color				: #FF644D;
+  font-size			: 13px;
+  font-weight		: bold;
+}
+.Opm_Print
+{
+  margin-left		: 30%;
+  color				: #FF644D;
+  font-size			: 13px;
+  font-weight		: bold;
+}
+/* +++++++++++++++++++++++++++++++++++++++++++++ */
+/*                                               */
+/*      Labels voor Form-O(A)Fmavo.html          */
+/*      OF -> OverdrachtsFormulier               */
+/*      OAF -> Overdrachts- AanmeldingsFormulier */
+/*                                               */
+/* +++++++++++++++++++++++++++++++++++++++++++++ */
+.vBladtabelOAF
+{
+  /* border-radius pakt niet is CSS */
+  border			: 10px;
+  border-collapse	: separate;
+  border-style		: solid;
+  border-color		: RoyalBlue;
+  /* position			: absolute; */
+  /* top				: 30%; */
+  padding			: 10px;
+  margin-left		: auto; 
+  margin-right		: auto; 
+  width				: 600px;
+}
+.TekstRechtsLogo
+{
+  float				: right;
+  clear				: both;
+  margin-top		: 7%;
+  margin-right		: 10%;
+  font-size			: 10px;
+  font-weight		: bold;
+}
+.vBladtabelOF
+{
+  /* border-radius pakt niet is CSS */
+  border			: 10px;
+  border-collapse	: separate;
+  border-style		: solid;
+  border-color		: Green;
+  padding			: 10px;
+  margin-left		: auto; 
+  margin-right		: auto; 
+  width				: 600px;
+}
+.KeuzeVblad
+{
+  font-size			: 11px;
+  text-align		: left;
+  border-spacing	: 30px;
+}
+.TitelVBlad
+{
+  font-size			: 20px;
+  text-align		: center;
+  border-spacing	: 30px;
+}
+.SubTitelVBlad
+{
+  font-size			: 20px;
+  font-weight		: bold;
+  text-align		: center;
+}
+.SubTitelVBladUitDB
+{
+  font-size			: 20px;
+  font-weight		: bold;
+  color				: Blue;
+  text-align		: center;
+}
+.InfoUitDB
+{
+  font-weight		: bold;
+  color				: Blue;
+  text-align		: center;
+}
+.Schoolbestuur
+{
+  font-size			: 16px;
+  font-weight		: bold;
+  text-align		: center;
+  padding			: 3px;
+  border-style		: solid;
+  border-color		: black;
+}
+.SchoolJr
+{
+  font-size			: 20px;
+  font-weight		: bold;
+}
+.tab1
+{
+  margin-left		: 165px;
+  text-decoration	: line-through;
+}
+/* puntjes genereren bij de schoolinformatie */
+.LeerlingInfo
+{
+  clear: both;
+  padding-top: 20px;
+  float				: left;
+  font-size			: 14;
+  text-align		: left;
+}
+.dots
+{
+  float				: left;
+  clear				: both;
+  width				: 20em;
+  background		: url("puntjes.png") left 85% repeat-x;
+}
+.term
+{
+  float				: left;
+  padding-right		: .5ex;
+  background-color	: #fff;
+  font-size			: 14;
+}
+.text_line
+{
+  clear:			both;
+}
+.InfoDB
+{
+  float				: right;
+  padding-left		: .5ex;
+  background-color	: #fff;
+  font-size			: 14;
+  color				: Blue;
+  font-weight		: bold;
+}
+/* Logo links -- Adresgegevens school rechts */
+.Opm_VBlad
+{
+  padding-top: 20px;
+  clear: both;
+  display: block;
+  font-size			: 20;
+  font-weight		: bold;
+  text-align		: center;
+  text-decoration	: underline;
+}
+.pagina_nrs
+{
+  margin-top		: 20px;
+  text-align		: center;
+  font-size			: 12;
+  font-weight		: bold;  
+}
+/* ++++++++++++++++ Blad 1 ******************** */
+/* Opmaak Tabel met informatie over de Leerling */
+/* ******************************************** */
+.LLGeg
+{
+  border-collapse	: collapse;
+  border			: 1px solid black;
+  margin-left		: auto; 
+  margin-right		: auto;
+  border			: 1px solid black;
+  width				: 600px;
+  font-size			: 11px;
+}
+.KopLLTabel
+{
+  background-color	: Green;
+  font-size			: 16px;
+  font-weight		: bold;
+  color				: white;
+  text-align		: left;
+  height			: 40px;
+  padding-left		: 8px;
+}
+/* ++++++++++++++++ Blad 2 ******************************** */
+/* Opmaak voor eadio button en checkbox indien geactriveerd */
+/* ******************************************************** */
+.input[type="radio"] + label
+{
+  color				: Black;
+  font-style		: normal;
+  font-size			: 16px;
+} 
+.input[type="radio"]:checked + label
+{
+  color				: Blue;
+  font-style		: normal;
+  font-size			: 13px;
+  font-weight		: bold;
+}
+input[type="checkbox"] + label
+{
+  color				: Black;
+  font-style		: normal;
+} 
+input[type="checkbox"]:checked + label
+{
+  color				: Blue;
+  font-style		: normal;
+  font-size			: 13px;
+  font-weight		: bold;
+}
+.TxtOpm00
+{
+  border			: 1px solid black;
+  width				: 50%;
+  font-weight		: bold;
+  text-align		: left;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.TxtOpm01
+{
+  border			: 1px solid black;
+  width				: 50%;
+  font-weight		: bold;
+  text-align		: left;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.TxtOpm10
+{
+  border			: 1px solid black;
+  width				: 40%;
+  font-weight		: bold;
+  text-align		: left;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.TxtOpm11
+{
+  border			: 1px solid black;
+  width				: 40%;
+  font-weight		: bold;
+  text-align		: left;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.TxtOpm12
+{
+  width				: 40%;
+  font-weight		: bold;
+  text-align		: left;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+form .radio-group span, form .radio-group input
+{
+  display			: inline-block;
+}
+.hidden
+{
+  display			: none;
+} 
+.TxtOpmBG
+{
+  border			: 1px solid black;
+  width				: 300px;
+  font-weight		: bold;
+  text-align		: left;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+/* ++++++++++++++++ Blad 1 ******************** */
+/* Opmaak Tabel met informatie over de ouders   */
+/* ******************************************** */
+.OudersGeg
+{
+  border-collapse	: collapse;
+  border			: 1px solid black;
+  margin-left		: auto; 
+  margin-right		: auto;
+  width				: 600px;
+  font-size			: 11px;
+}
+.KopOudersTabel
+{
+  background-color	: Darkblue;
+  font-size			: 16px;
+  font-weight		: bold;
+  color				: white;
+  text-align		: left;
+  height			: 40px;
+  padding-left		: 8px;
+}
+.TxtOpm20
+{
+  border			: 1px solid black;
+  width				: 50%;
+  font-weight		: bold;
+  text-align		: left;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.TxtOpm21
+{
+  border-top		: 1px solid black;
+  border-left		: 1px solid black;
+  border-bottom		: 1px solid black;
+  font-weight		: bold;
+  text-align		: left;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.TxtOpm50
+{
+  border			: 1px solid black;
+  width				: 40%;
+  font-weight		: bold;
+  text-align		: left;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.TxtOpmBG50
+{
+  border			: 1px solid black;
+  width				: 60%;
+  font-weight		: bold;
+  text-align		: left;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.spannedlist
+{
+  display: inline-block;
+  vertical-align : middle;
+  min-width: 200px;
+}
+.spannedlist1
+{
+  display: inline-block;
+  vertical-align : middle;
+  min-width: 60px;
+}
+.spannedlist2
+{
+  display: inline-block;
+  min-width: 190px;
+}
+.Commentaar4
+{
+  margin-left		: 10px;
+  font-size			: 10px;
+  font-style		: italic;
+}
+/* ++++++++++++++++ Blad 2 ***************************** */
+/* Opmaak Tabel met informatie over Sociaal Emotioneel   */
+/* ***************************************************** */
+.SocEmot
+{
+  border-collapse	: collapse;
+  border			: 1px solid black;
+  margin-left		: auto; 
+  margin-right		: auto;
+  width				: 600px;
+  font-size			: 13px;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.KopTblSocEmot
+{
+  background-color	: DarkOliveGreen;
+  font-size			: 16px;
+  font-weight		: bold;
+  color				: white;
+  text-align		: left;
+  height			: 40px;
+  padding-left		: 8px;
+}
+.KopTblSocEmot1
+{
+  background-color	: DarkOliveGreen;
+  font-size			: 16px;
+  font-weight		: bold;
+  color				: white;
+  text-align		: left;
+  height			: 20px;
+  padding-left		: 8px;
+}
+.KopTekst
+{
+  font-size			: 13px;
+  font-weight		: bold;
+  color				: black;
+  font-style		: italic;
+  text-decoration	: underline;
+  text-align		: left;
+  padding-left		: 10px;
+}
+.KopTekst1
+{
+  border-top		: 2px solid black;
+  font-size			: 13px;
+  font-weight		: bold;
+  color				: black;
+  font-style		: italic;
+  text-decoration	: underline;
+  text-align		: left;
+  padding-left		: 10px;
+}
+.Tekst1SocEmot
+{
+  font-size			: 12px;
+  color				: black;
+  text-align		: left;
+  padding-left		: 10px;
+}
+.Indent1
+{
+  margin-left		: 30px;
+}
+.Tekst2SocEmot
+{
+  font-size			: 12px;
+  font-weight		: bold;
+  color				: black;
+  text-align		: left;
+  padding-left		: 10px;
+}
+.Tekst3SocEmot
+{
+  font-size			: 12px;
+  font-weight		: bold;
+  color				: black;
+  text-align		: left;
+  padding-left		: 16px;
+}
+.Tekst4SocEmot
+{
+  font-size			: 12px;
+  text-align		: left;
+  font-weight		: normal;
+  padding-left		: 50px;
+}
+.Tekst5SocEmot
+{
+  font-size			: 12px;
+  font-weight		: bold;
+  text-align		: left;
+  padding-left		: 10px;
+}
+/* ++++++++++++++++ Blad 3 ***************************** */
+/* Opmaak Tabel met informatie over Verzuim en           */
+/* Opmaak Tabel met informatie over Speciale begeleiding */
+/* ***************************************************** */
+.VerzuimTbl
+{
+  border-collapse	: collapse;
+  border			: 1px solid black;
+  margin-left		: auto; 
+  margin-right		: auto;
+  width				: 600px;
+  font-size			: 13px;
+  font-weight		: bold;
+  padding-left		: 8px;
+}
+.KopVerzuimTbl
+{
+  background-color	: Indigo;
+  font-size			: 16px;
+  font-weight		: bold;
+  color				: white;
+  text-align		: left;
+  height			: 40px;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+/* Opmaak Tabel met informatie over Speciale begeleiding */
+.SpecBeglTbl
+{
+  border-collapse	: collapse;
+  border			: 1px solid black;
+  margin-left		: auto; 
+  margin-right		: auto;
+  width				: 600px;
+  font-size			: 12px;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.KopSpecBeglTbl
+{
+  background-color	: Teal;
+  font-size			: 16px;
+  font-weight		: bold;
+  color				: white;
+  text-align		: left;
+  height			: 40px;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.Tekst5
+{
+  border-top		: 2px solid black;
+  font-size			: 12px;
+  font-weight		: bold;
+  color				: black;
+  text-align		: left;
+  padding-left		: 10px;
+}
+.Indent51
+{
+  margin-left		: 55px;
+  font-size			: 16px;
+  font-weight		: bold;
+}
+.Indent52
+{
+  margin-left		: 55px;
+  font-size			: 14px;
+  font-style		: italic;
+}
+.SchoolMngment
+{
+  border-collapse		: collapse;
+  border				: 1px solid black;
+  margin-left			: auto; 
+  margin-right			: auto;
+  border				: 1px solid black;
+  width					: 600px;
+  font-size				: 11px;
+}
+.KopSchoolMngmt
+{
+  background-color	: #6F4E37; /* Coffee */
+  font-size			: 16px;
+  font-weight		: bold;
+  color				: white;
+  text-align		: left;
+  height			: 40px;
+  padding-left		: 8px;
+}
+.SchoolMngmtOpm
+{
+  border			: 1px solid black;
+  width				: 33%;
+  font-weight		: bold;
+  text-align		: left;
+  padding			: 3px;
+}
+.SchoolPrest
+{
+  font-size			: 11px;
+  font-weight		: bold;
+  text-align		: left;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+  border-bottom		: 1px solid black;
+}
+.HuiswerkInfo
+{
+  border-collapse	: collapse;
+  border			: 1px solid black;
+  margin-left		: auto; 
+  margin-right		: auto;
+  border				: 1px solid black;
+  width					: 600px;
+  font-size				: 11px;
+}
+.KopHsWrkTabel
+{
+  background-color		: brown;
+  font-size				: 12px;
+  font-weight			: bold;
+  color					: white;
+  text-align			: left;
+  height				: 20px;
+  padding-left			: 3px;
+}
+.HuiswerkOpm
+{
+  border			: 1px solid black;
+  font-weight		: bold;
+  text-align		: left;
+  padding			: 3px;
+}
+.Inspringen8px
+{
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.Inspringen8pxB
+{
+  font-weight		: bold;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.Inspringen10px
+{
+  padding-left		: 15px;
+}
+.Inspringen10pxB
+{
+  font-weight		: bold;
+  padding-left		: 15px;
+}
+/* Opmaak Tabel met informatie over schoolprestattie leerling */
+.Schoolpres
+{
+  border-collapse	: collapse;
+  margin-left		: auto; 
+  margin-right		: auto;
+  padding			: 5px; 
+}
+.KopSchoolpres
+{
+  background-color	: Sienna;
+  font-size			: 16px;
+  font-weight		: bold;
+  color				: white;
+  text-align		: left;
+  height			: 40px;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.Schoolpres1
+{
+  border-left			: 1px solid black;
+  border-bottom			: 1px solid black;
+  border-right			: 1px solid black;
+  width					: 370px;
+  font-size				: 11px;
+  font-weight			: bold;
+  text-align			: left;
+  padding				: 3px;
+}
+.Schoolpres10
+{
+  border-top			: 1px solid black;
+  border-bottom			: 1px solid black;
+  border-right			: 1px solid black;
+  border-left			: 1px solid black;
+  width					: 370px;
+  font-size				: 11px;
+  font-weight			: bold;
+  text-align			: center;
+  text-align			: left;
+  padding				: 3px;
+}
+.Schoolpres100
+{
+  border-top			: 1px solid black;
+  border-bottom			: 1px solid black;
+  border-right			: 1px solid black;
+  border-left			: 1px solid black;
+  font-size				: 11px;
+  font-weight			: bold;
+  text-align			: center;
+  padding				: 3px;
+}
+.Schoolpres11
+{
+  border-left			: 1px solid black;
+  border-bottom			: 1px solid black;
+  border-right			: 1px solid black;
+  width					: 20px;
+  font-size				: 11px;
+  font-weight			: bold;
+  text-align			: center;
+  padding				: 3px;
+}
+.Schoolpres2
+{
+  border-left			: 1px solid black;
+  border-bottom			: 1px solid black;
+  border-right			: 1px solid black;
+  font-size				: 11px;
+  text-align			: left;
+  padding-left			: 10px;
+}
+.Schoolpres21
+{
+  border-left			: 1px solid black;
+  border-bottom			: 1px solid black;
+  border-right			: 1px solid black;
+  width					: 20px;
+  font-size				: 11px;
+  text-align			: center;
+  padding				: 3px;
+}
+.Schoolpres3
+{
+  font-size				: 11px;
+  text-align			: center;
+  padding				: 3px;
+  text-decoration		: underline;
+  font-weight			: bold;
+}
+.Schoolpres31
+{
+  border-left			: 1px solid black;
+  border-bottom			: 1px solid black;
+  border-right			: 1px solid black;
+  font-size				: 11px;
+  text-align			: left;
+  padding-left			: 10px;
+}
+.Samengevat
+{
+  border-collapse		: collapse;
+  margin-left			: auto; 
+  margin-right			: auto;
+  padding				: 5px; 
+}
+.Dummy10
+{
+  border-bottom			: 1px solid black;
+  border-right			: 1px solid black;
+  width					: 100px;
+}
+.Resume11
+{
+  border-top			: 1px solid black;
+  border-bottom			: 1px solid black;
+  border-right			: 1px solid black;
+  font-size				: 11px;
+  text-align			: center;
+  padding-left			: 10px;
+  width					: 100px;
+}
+.Dummy11
+{
+  border-bottom			: 1px solid black;
+  border-right			: 1px solid black;
+  width					: 100px;
+}
+.Resume21
+{
+  border-left			: 1px solid black;
+  border-bottom			: 1px solid black;
+  border-right			: 1px solid black;
+  font-size				: 11px;
+  text-align			: center;
+  font-weight			: bold;
+  width					: 100px;
+}
+.Resume22
+{
+  border-bottom			: 1px solid black;
+  border-right			: 1px solid black;
+  width					: 100px;
+  font-size				: 11px;
+  text-align			: center;
+  line-height			: 50%;
+}
+.Advies
+{
+  border-collapse		: collapse;
+  margin-left			: auto; 
+  margin-right			: auto;
+}
+.Advies1
+{
+  border				: 1px solid black;
+  width					: 200px;
+  background-color		: cyan;
+  font-size				: 13px;
+  font-weight			: bold;
+  text-align			: center;
+}
+.Advies2
+{
+  border				: 1px solid black;
+  font-size				: 12px;
+  text-align			: left;
+  font-weight			: bold;
+  line-height			: "130%";
+  padding				: 15px;
+}
+.Handtekening
+{
+  border-bottom			: 1px solid black;
+  height				: 100px;
+  width					: 200px;
+  font-size				: 11px;
+  vertical-align		: top;
+  text-align			: left;
+  font-weight			: bold;
+  padding-left			: 5px;
+}
+.Dummy3
+{
+  width					: 100px;
+}
+.Stempel
+{
+  font-weight			: bold;
+  font-size				: 11px;
+  margin-left			: 200px;
+}
+/* blad 3: pk Tabel  */
+.PrestTabel
+{
+  border-collapse	: collapse;
+  border			: 1px solid Black;
+  margin-left		: auto; 
+  margin-right		: auto;
+  padding			: 5px;
+  width				: 600px;
+}
+.KopPrestTabel
+{
+  background-color	: red;
+  font-size			: 16px;
+  font-weight		: bold;
+  color				: white;
+  text-align		: left;
+  height			: 40px;
+  padding-left		: 8px;
+}
+.KopjeTxtOpmaakR1
+{
+  text-align		: left;
+  font-size			: 13px;
+  font-weight		: bold;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+}
+.KopjeTxtOpmaak
+{
+  font-size			: 13px;
+  text-align		: left;
+  font-weight		: bold;
+  padding-top		: 15px;
+  padding-left		: 8px;
+}
+.KopjeTxtOpmaakPlain
+{
+  font-size			: 13px;
+  text-align		: left;
+  font-weight		: bold;
+  padding-left		: 8px;
+}
+.TxtOpmaakPrest
+{
+  text-align		: left;
+  font-size			: 12px;
+  padding-left		: 10px;
+}
+.Indent2
+{
+  padding-left		: 30px;
+  font-size			: 12px;
+}
+.pkTabel
+{
+  border-collapse	: collapse;
+  border			: 1px solid Black;
+  margin-left		: auto; 
+  margin-right		: auto;
+  padding			: 5px;
+  width				: 600px;
+}
+.KoppkTabel
+{
+  background-color	: Purple;
+  font-size			: 16px;
+  font-weight		: bold;
+  color				: white;
+  text-align		: left;
+  height			: 40px;
+  padding-left		: 8px;
+}
+.KolomBreedte
+{
+  padding			: 5px;
+  text-align		: center;
+  font-size			: 13px;
+  font-weight		: bold;
+  vertical-align	: middle;
+}
+.pkOpmaak
+{
+  font-size			: 13px;
+  text-align		: left;
+  font-weight		: bold;
+  padding-top		: 4px;
+  padding-bottom	: 4px;
+  padding-left		: 8px;
+  line-height		: 30px;
+ 
+}
+.nnnTabel
+{
+  border-collapse	: collapse;
+  border			: 1px solid Black;
+  margin-left		: auto; 
+  margin-right		: auto;
+  padding			: 5px;
+  width				: 600px;
+}
+.KopNNNTabel
+{
+  background-color	: GoldenRod;
+  font-size			: 16px;
+  font-weight		: bold;
+  color				: white;
+  text-align		: left;
+  height			: 40px;
+  padding-left		: 8px;
+}
+ .suggestion_list
+ {
+ background: white;
+ border: 1px solid;
+ padding: 4px;
+ }
+
+ .suggestion_list ul
+ {
+ padding: 0;
+ margin: 0;
+ list-style-type: none;
+ }
+
+ .suggestion_list a
+ {
+ text-decoration: none;
+ font-size		: 13px;
+ color: navy;
+ }
+
+ .suggestion_list .selected
+ {
+ background: navy;
+ color: white;
+ }
+
+ .suggestion_list .selected a
+ {
+ color: white;
+ }
+
+ #autosuggest
+ {
+ display: none;
+ }
+
+
+

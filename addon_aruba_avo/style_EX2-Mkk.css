@@ -1,0 +1,208 @@
+BODY {font-family: verdana, arial, helvetica; font-size:10px;  }
+A:link {color:#0000FF}
+A:visited {color:#0000FF}
+A:hover {color:#FF0000}
+P.pagebreak {page-break-before: always}
+TABLE   { border-collapse: collapse}
+.DO
+{
+  font-weight: bold;
+  font-size: 12px;
+}
+.ur
+{
+  font-weight: bold;
+  font-size: 12px;
+  text-align: right;
+  position: relative;
+  top: -14px;
+}
+.exnrhead
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  width: 30px;
+  border-bottom: 2px solid black;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+.studhead
+{
+  font-weight: normal;
+  font-size: 10px;
+  text-align: left;
+  border: thin solid #000;
+  width: 300px;
+}
+.studheadln
+{
+  font-weight: bold;
+  font-size: 12px;
+  text-align: left;
+  border: thin solid #000;
+  width: 150px;
+  border-bottom: 2px solid black;
+}
+.studheadfn
+{
+  font-weight: bold;
+  font-size: 12px;
+  text-align: left;
+  border: thin solid #000;
+  width: 200px;
+  border-bottom: 2px solid black;
+}
+.studhead2
+{
+  font-weight: normal;
+  font-size: 10px;
+  text-align: left;
+  border: thin solid #000;
+  width: 350px;
+}
+.subjhead
+{
+  font-weight: normal;
+  font-size: 10px;
+  text-align: center;
+  border: thin solid #000;
+  width: 30px;
+  border-bottom: 2px solid black;
+}
+.tabhead
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: left;
+  border: thin solid #000;
+  width: auto;
+	text-align: center;
+  border-bottom: 2px solid black;
+}
+.exnr
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  width: 30px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.studname
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: left;
+  border: thin solid #000;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.subjind
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  width: 30px;
+}
+.subjindv
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  width: 30px;
+  background-color: #AAF;
+}
+.subjind7
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  width: 30px;
+  background-color: yellow;
+}
+.result
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  border: thin solid #000;
+  width: auto;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.signrow
+{
+  font-weight: normal;
+  font-size: 12px;
+  text-align: left;
+  border: thin solid #000;
+  border-right: none;
+  width: auto;
+  height: 35px;
+}
+.arrows
+{
+  font-weight: normal;
+  font-size: 14px;
+  text-align: right;
+  border: thin solid #000;
+  border-left: none;
+  border-top: none;
+  width: auto;
+}
+.nobott
+{
+  font-weight: normal;
+  font-size: 14px;
+  text-align: right;
+  border: thin solid #000;
+  border-bottom: none;
+  border-top: none;
+  width: auto;
+}
+.nolines
+{
+  border: none;
+}
+.total
+{
+  font-weight: bold;
+  font-size: 12px;
+  text-align: right;
+  padding-right: 70px;
+  border: none;
+}
+.sign
+{
+  font-weight: normal;
+  font-size: 10px;
+  text-align: left;
+  position: relative;
+  top: -0px;
+  left: 350px;
+  page-break-after:always;
+}
+.zoz
+{
+  font-weight: normal;
+  font-size: 14px;
+  text-align: right;
+  position: relative;
+  page-break-after:always;
+}
+.manualfill
+{
+  height: 10px;
+}

@@ -1,0 +1,53 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:14;  }
+A:link {color:#0000FF}
+A:visited {color:#0000FF}
+A:hover {color:#FF0000}
+P.pagebreak {page-break-before: always}
+TABLE   { border-collapse: collapse; width: 70%; margin-left: 15%}
+TR.highlight {background-color: #FFC0C0}
+TR.no_lesson {background-color: #66FFCC}
+A.hidelink {color:#000; text-decoration:none}
+TR.average {border-top-style: groove; border-top-width: thick}
+TD.endgrade {border-left-style: groove; border-left-width: thick; text-align: center}
+td {min-width: 20; } 
+.per1 {background-color:#FFFFCC}
+.per2 {background-color:#FFCCFF}
+.per3 {background-color:#CCFFFF}
+label
+{
+  float:left;
+  width: 35%;
+  text-align: right;
+  padding-right: 3%;
+}
+.tableheader
+{
+  text-align: center;
+  font-size: 16px;
+}
+.leftsign
+{
+  float: left;
+  width: 35%;
+  margin-left: 10%;
+}
+.rightsign
+{
+  float: right;
+  width: 35%;
+  margin-right: 10%;
+}
+P.remarks
+{
+  padding-left: 5%;
+  font-style: italic;
+}
+td.digit
+{
+  text-align: right;
+}
+HR
+{
+  width: 90%;
+  height: 1px;
+}

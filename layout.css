@@ -1,0 +1,357 @@
+@font-face {
+  font-family: 'MuseoSans500';
+  font-style: normal;
+  font-weight: 400;
+  src: local('MuseoSans500'), url(MuseoSans500.otf);
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+html
+{
+  font-family:  MuseoSans500;
+  height: 20%;
+}
+body 
+{
+  font-family:  MuseoSans500;
+  text-align: center; /* for IE */
+  font-size: 12px;		
+  background-color: #C7FFEA;
+}
+SELECT
+{
+  font-family:  MuseoSans500;	
+}
+OPTION
+{
+  font-family:  MuseoSans500;	
+}
+SUBMIT
+{
+  font-family:  MuseoSans500;	
+}
+INPUT
+{
+  font-family:  MuseoSans500;	
+}
+a img
+{
+  border: none;
+}
+.altbg
+{
+  background-color: #8AEFFF;
+}
+TR
+{
+}
+.no_lesson
+{
+  background-color: #DBFFC7;
+}
+TD
+{
+  font-family: MuseoSans500;
+  font-size: 12px;		
+}
+TH
+{
+  font-family: MuseoSans500;
+  font-weight:bold;
+  font-size: 12px;		
+}
+
+#page
+{
+  margin: 0 auto;   /* align for good browsers */
+  text-align: center; /* counter the body center */
+  border: 1px solid #FF998A;
+  width: 99.6%;		
+  position:absolute;
+  top: 0;
+  left:0;
+  padding: 0px;
+  height: auto;		
+}
+#pageh
+{
+  margin: 0px;   /* align for good browsers */
+  text-align: center; /* counter the body center */
+  border: 1px solid #FF998A;
+  width: 99.6%;		
+  position:absolute;
+  top: 0;
+  left:0;
+  padding: 0px;
+  height: auto;		
+}
+@media screen
+{
+#header
+{
+  position: fixed;
+  padding:0;
+  color:#000;
+  background-color:#F8FFC7;
+  background-image:url(headerlogo.png);
+  background-repeat: no-repeat;
+  width:100%;
+  border:1px solid #FF998A;
+  margin:0px;
+  font-size:14px;
+  font-family: Jokerman;
+  text-align:center;
+  height: 45px;
+}
+#loginspace
+{
+  color:#000;
+  background-color:#F8FFC7;
+  width:25%;
+  border:1px solid #FF998A;
+  border-left-color: #F8FFC7;
+  font-size:14px;
+  text-align:right;
+  font-family: MuseoSans500;
+  height: 44px;
+  top: 0px;
+  position:absolute;
+  left: 75%;
+}
+}
+@media print
+{
+  #header { display:none;}
+  #loginspace {display:none;}
+}
+#loginspace a
+{
+  font-size: 9px;
+}
+#loginspace input
+{
+  width: 40px;
+  height: 20px;
+  font-size: 9px;
+}
+#loginspace label
+{
+  font-size: 9px;
+}
+@media screen
+{
+#menudiv
+{
+  float: left;
+  top: 47px;
+  position:absolute;
+  border-left: 0px solid #FF998A;
+  border-right: 1px solid #FF998A;
+  width:150px;
+  margin-left: -1px;
+  padding-left:2px;
+  background-color: #F8FFC7;
+  z-index:999;
+}
+#menudivh
+{
+  border-left: 0px solid #FF998A;
+  border-right: 1px solid #FF998A;
+  width:100%;
+  margin-left: -2px;
+  padding-left:2px;
+  background-color: #F8FFC7;
+  z-index:999;
+  position: fixed;
+  top: 48px;
+}
+}
+@media print
+{
+  #menudiv {display:none;}
+  #menudivh {display:none;}
+}
+#menudivh HR
+{
+  display: none;
+}
+#menudivh FORM
+{
+  float: left;
+  border: 1px solid #FF998A;
+  border-top: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: -1px;
+}
+
+#submenu
+{
+  font-size: 12px;
+  border-bottom: 1px solid #FF998A;
+  border-top: 1px solid #FF998A;	
+  background-color:#F8FFC7;
+  text-align:center;
+}
+.menuitem a
+{
+  color: black;
+  text-decoration: none;
+}
+.activemenuitem a
+{
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+.menuitemh a
+{
+  float: left;
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid #FF998A;
+  border-top: none;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.activemenuitemh a
+{
+  float: left;
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  display: inline-block;
+  border: 1px solid #FF998A;
+  border-top: none;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+@media screen
+{
+	#Contents
+	{
+		display: inline-block;
+		text-align: left;
+		margin-left:5px;
+		margin-top: 50px;
+	}
+	#Contentsh
+	{
+		display: inline-block;
+		text-align: left;
+		margin-left:5px;
+		margin-top: 95px;
+		width: 100%;
+	}
+}
+@media print
+{
+	#Contents
+	{
+		display: inline-block;
+		text-align: left;
+		margin-left:5px;
+		margin-top: 50px;
+	}
+	#Contentsh
+	{
+		text-align: left;
+		margin-left:5px;
+		margin-top: 95px;
+		width: 100%;
+	}
+}
+#Contents H1
+{
+  font-size: 16px;
+  margin-bottom: 1px;
+}
+#Contentsh H1
+{
+  font-size: 16px;
+  margin-bottom: 1px;
+}
+#Contents table
+{
+  border: 2px solid #FF998A;
+}
+#Contentsh table
+{
+  border: 2px solid #FF998A;
+}
+#Contents table TH
+{
+  font-size: 14px;
+}
+#Contentsh table TH
+{
+  font-size: 14px;
+}
+#Contents table TD
+{
+}
+#Contentsh table TD
+{
+}
+table
+{
+  border-collapse:collapse;
+}
+.endgrade
+{
+  text-align:center;
+  width: 50px;
+}
+.absencedialog
+{
+  display:none;
+  float:left;
+  position:fixed;
+  left:100px;
+  top:130px;
+  border-width: 3px 3px 3px 3px;
+  border-style: solid;
+  border-color:#FF998A;
+  z-index:10;
+  width:400px;
+  height: 250px;
+  background: #CEC7FF;
+  padding-left: 10px;
+}
+
+.absencedialog LABEL
+{
+  float: left;
+  width: 150px;
+}
+
+textarea
+{
+  font-family:  MuseoSans500;
+  font-size: 12px;
+}
+
+.average
+{
+  background-color: #F8FFC7;
+}
+
+.calendar * { margin: 0; padding: 0; border: 0; font-family: MuseoSans500; font-weight: normal; color: #FF998A; }
+.calendar .invalidday a, .calendar .invalidday a:hover { color: #ccc; background: #DBFFC7; cursor: default; }
+.calendar .selectedday { background: #FFCEC7; }
+.calendar .today { font-weight: bold; color: #f00; }
+.calendar a { padding: 0 2px; color: #000; text-decoration: none; }
+.calendar a:hover { background: #bbb; }
+.calendar table { border-collapse: collapse; font-size: 90%; }
+.calendar tbody td { width: 20px; }
+.calendar td, .calendar th { padding: 1px; text-align: center; }
+.calendar thead td { border-bottom: 1px solid #aaa; }
+.calendar thead td { font-weight: bold; }
+.calendar thead th a { font-size: 95%; font-weight: bold; }
+.calendar thead th { padding: 2px 0; vertical-align: middle; background: #ddd; }
+.calendar { padding-bottom: 2px; border: 1px solid #aaa; font-size: small; background: #fff; }
+.calendaricon { cursor: pointer; }
+.calendarlink, .calendaricon { margin: -2px -20px; padding-right: 24px;}
+
+
+	

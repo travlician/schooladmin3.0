@@ -1,0 +1,28 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:10px;  }
+A:link {color:#0000FF}
+A:visited {color:#0000FF}
+A:hover {color:#FF0000}
+TABLE   
+{ 
+  border-collapse: collapse;
+}
+TH
+{
+  font-weight: bold;
+  font-size: 12px;
+  border: 1px solid black;
+}
+TD
+{
+  font-weight: normal;
+  font-size: 12px;
+  border: 1px solid black;
+}
+.leftborderthick
+{
+  border-left: 2px solid black;
+}
+.redbg
+{
+  background-color: red;
+}

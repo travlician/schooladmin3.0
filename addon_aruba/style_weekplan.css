@@ -1,0 +1,26 @@
+BODY {font-family: verdana, arial, helvetica; font-size:14;  }
+A:link {color:#0000FF}
+A:visited {color:#0000FF}
+A:hover {color:#FF0000}
+TABLE   { border-collapse: collapse}
+TH
+{
+  font-size: 12;
+}
+TD
+{
+  font-size: 12;
+}
+textarea
+{
+  font-size: 12;
+  font-family: verdana, arial, helvetica;
+}
+.pw
+{
+  color: RED;
+}
+.hw
+{
+  color: BLUE;
+}

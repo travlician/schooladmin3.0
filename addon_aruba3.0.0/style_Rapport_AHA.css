@@ -1,0 +1,89 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:14px;  }
+TABLE   
+{ 
+  border-collapse: collapse;
+  border: none;
+}
+TD
+{
+  padding: 3px;
+  border: 1px solid black;
+  font-size: 14px;
+  padding-top: 5px;
+  padding-bottom: 1px;
+}
+TH
+{
+  text-align: center;
+  border: 1px solid black;
+  border-bottom: 1px solid black;
+  font-size: 14px;
+  padding-top: 5px;
+  padding-bottom: 1px;
+}
+.leftblock
+{
+  clear: left;
+  float: left;
+  width: 42%;
+  padding-left: 10%;
+  padding-top: 10%;
+}
+.studentname
+{
+  font-weight: bold;
+}
+.resultcol
+{
+  width: 40px;
+}
+.subjectseparatortd
+{
+  border-top: 3px double black;  
+}
+.pointsremark
+{
+  font-size: 10px;
+  text-align: right;
+  padding-right: 14%;
+}
+.rightblock
+{
+  margin-right: 1%;
+  float: right;
+  width: 43%;
+  padding-top: 10%;
+}
+.imagepart
+{
+  margin-top: 20%;
+}
+.yearresult
+{
+  font-weight: bold;
+  height: 25%;
+}
+.signpart
+{
+  font-size: 12px;
+}
+.signline
+{
+  width: 50%;
+  display: inline-block;
+  border-bottom: 1px solid black;
+  margin-left: 5%;
+}
+
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom: 900px;
+    width: 100%;
+  }
+}

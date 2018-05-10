@@ -1,0 +1,211 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:12;  }
+@media print
+{
+  .pagebreak 
+   {
+   page-break-after: always; 
+   width: 100%;
+   font-size: 14px;
+   font-weight: bold;
+   text-align: center;
+  }
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom: 900px;
+    width: 100%;
+   font-size: 14px;
+   font-weight: bold;
+	text-align: center;
+  }
+}
+.schoollogo
+{
+  float: left;
+  width: 20%;
+}
+.schoolinfo
+{
+  text-align: center;
+	border: none;
+	display: inline-block;
+	padding-left: 20%;
+	padding-right: 20%;
+}
+.schoolname
+{
+	display: inline-block;
+	font-size: 24px;
+	color: #88F;
+}
+.remarktext
+{
+  font-family: 'Bradley Hand ITC', 'Lucide Handwriting', 'Papyrus';
+  color: darkblue;
+}
+.rapporttext
+{
+  font-family: 'Bookman Old Style';
+  font-weight: bold;
+  font-size: 36px;
+  text-align: center;
+}
+.frontlabel
+{
+  font-size: 14px;
+  display: block;
+  clear: both;
+}
+.frontlabelspan
+{
+ float: left;
+ position: relative;
+ width: 15%;
+ margin-top:2px;
+}
+.frontfield
+{
+  margin-top: 2px;
+  float: right;
+  position: relative;
+  right: 10%;
+  width: 75%;
+}
+.signline
+{
+  margin-top: 20px;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.subjtable
+{
+  border-collapse: collapse;
+  border: none;
+  font-size: 14px;
+  width: 90%;
+  margin-top: 20px;
+}
+.numasptable
+{
+  border-collapse: collapse;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}
+.subjmainrow
+{
+}
+.mainsubjname
+{
+  width: 400px;
+  font-size: 14px;
+}
+.subsubjname
+{
+  font-weight:normal;
+  width: 400px;
+  font-size: 14px;
+}
+.numberaspects
+{
+  font-weight:normal;
+  width: 400px;
+  font-size: 14px;
+  border-left-width: 2px;
+  border-left-color: black;
+  border-left-style: solid;
+}
+.emptyresult
+{
+  text-align: center;
+  width: 50px;
+  font-size: 14px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-top-color: black;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-right-color: black;
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+.resok
+{
+  text-align: center;
+  width: 50px;
+  font-size: 14px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-top-color: black;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-right-color: black;
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+.per4result
+{
+  text-align: center;
+  width: 50px;
+  font-size: 14px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-top-color: black;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-right-color: black;
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+TD
+{
+}
+.spaceline
+{
+  font-size: 2px;
+}
+.lettermean
+{
+  text-align: justify;
+  font-size: 10px;
+  width: 80%;
+}
+@media print
+{
+	.signtable
+	{
+		width: 90%;
+		font-size: 14px;
+		border: none;
+		border-collapse: collapse;
+   page-break-after: always; 
+	}
+}
+@media screen
+{
+	.signtable
+	{
+		width: 90%;
+		font-size: 14px;
+		border: none;
+		border-collapse: collapse;
+    margin-bottom: 900px; 
+	}
+}
+.signtable TD
+{
+	width: 30%;
+}
+.signline
+{
+	border-bottom: 1px solid black;
+}
+.signtable TR
+{
+  height: 30px;
+}

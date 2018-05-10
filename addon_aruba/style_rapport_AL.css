@@ -1,0 +1,218 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:12;  }
+@media print
+{
+  .pagebreak {page-break-after: always; text-align: center; font-weight: bold; font-size: 13px;}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom: 900px;
+    width: 100%;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+  }
+}
+.schoollogo
+{
+  float: left;
+  width: 40%;
+}
+.rapportheader
+{
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 24px;
+  padding-top: 20px;
+  text-align: left;
+}
+.schoolinfo
+{
+  float: right;
+  text-align: right;
+  width: 20%;
+  vertical-align: top;
+  margin-top: -50px;
+}
+.remarktext
+{
+  font-family: 'Bradley Hand ITC', 'Lucide Handwriting', 'Papyrus';
+  color: darkblue;
+}
+.rapporttext
+{
+  font-family: 'Bookman Old Style';
+  font-weight: bold;
+  font-size: 36px;
+  text-align: center;
+}
+.frontlabel
+{
+  font-size: 14px;
+  display: block;
+  clear: both;
+}
+.frontlabelspan
+{
+ float: left;
+ position: relative;
+ width: 15%;
+ margin-top:2px;
+ display: inline-block;
+}
+.frontfield
+{
+  margin-top: 2px;
+  float: right;
+  position: relative;
+  right: 10%;
+  width: 75%;
+  display: inline-block;
+}
+.signline
+{
+  margin-top: 20px;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.subjtable
+{
+  border-collapse: collapse;
+  border: none;
+  font-size: 14px;
+  width: 60%;
+  margin-top: -30px;
+  float: left;
+}
+.numasptable
+{
+  border-collapse: collapse;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}
+.subjmainrow
+{
+}
+.mainsubjname
+{
+  width: 250px;
+  font-size: 14px;
+}
+.subsubjname
+{
+  font-weight:normal;
+  width: 250px;
+  font-size: 14px;
+  padding-left: 20px;
+}
+.numberaspects
+{
+  font-weight:normal;
+  width: 250px;
+  font-size: 14px;
+  border-left-width: 2px;
+  border-left-color: black;
+  border-left-style: solid;
+}
+.emptyresult
+{
+  text-align: center;
+  width: 30px;
+  font-size: 14px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-top-color: black;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-right-color: black;
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+.resok
+{
+  text-align: center;
+  width: 30px;
+  font-size: 14px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-top-color: black;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-right-color: black;
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+.per4result
+{
+  text-align: center;
+  width: 30px;
+  font-size: 14px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-top-color: black;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-right-color: black;
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+TD
+{
+}
+.spaceline
+{
+  font-size: 4px;
+}
+.lettermean
+{
+  text-align: justify;
+  font-size: 10px;
+  width: 80%;
+}
+.signtable
+{
+  width: 90%;
+  font-size: 14px;
+}
+.signtable TR
+{
+  height: 30px;
+}
+.clearfloats
+{
+  clear: both;
+}
+.remarkheader
+{
+  float: right;
+  width: 32%;
+  border: none;
+}
+.remarkblock
+{
+  float: right;
+  width: 32%;
+  border: 1px solid black;
+  margin-top: -10px;
+  padding: 3px;
+}
+.adviceheader
+{
+  margin-top: 200px;
+  float: right;
+  width: 32%;
+  border: none;
+}
+.adviceblock
+{
+  float: right;
+  width: 32%;
+  border: 1px solid black;
+  margin-top: -10px;
+  padding: 3px;
+}

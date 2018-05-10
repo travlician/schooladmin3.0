@@ -1,0 +1,130 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:10px;  }
+TABLE   
+{ 
+  border-collapse: collapse;
+  page-break-after: always;
+	border: 2px solid black;
+}
+TH
+{
+  border: 2px solid black;
+  text-align: left;
+  padding-right: 5px;
+  font-size: 10px;
+}
+TD
+{
+  font-size: 10px;
+  padding-top: 0px;
+	border-right: 2px solid black;
+	border-bottom: 1px solid black;
+}
+.logoname
+{
+	font-size: 8px;
+	text-align: center;
+}
+.repnr
+{
+	font-style: italic;
+	font-size: 12px;
+}
+.schoolyearhead
+{
+	display: inline-block;
+	padding-left: 40%;
+}
+.subjhdr
+{
+	font-size: 12px;
+	text-align: center;
+}
+.subdoc
+{
+	display: inline-block;
+	font-size: 9px;
+	font-weight: normal;
+	margin-top: 20px !important;
+}
+.cathdr
+{
+	text-align: center;
+	background-color: #DDD;
+	overflow: scroll;
+}
+.cathdrt
+{
+	background-color: #DDD;
+	max-width: 15px;
+	padding-left: 0px;
+	height: 200px;
+	overflow: scroll;
+}
+.cathdrr
+{
+	max-width: 15px;
+	padding-left: 0px;
+	overflow: scroll;
+}
+.turned
+{
+	margin-left: -9px;
+	display: inline-block;
+	transform: rotate(270deg);
+	-webkit-transform: rotate(270deg);	
+	-moz-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);
+	-o-transform: rotate(270deg);
+}
+.turned2
+{
+	margin-left: -18px;
+	display: inline-block;
+	transform: rotate(270deg);
+	-webkit-transform: rotate(270deg);	
+	-moz-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);
+	-o-transform: rotate(270deg);
+}
+.shdr
+{
+	text-align: center;
+	font-weight: normal;
+}
+.shdrg
+{
+	text-align: center;
+	background-color: #DDD;
+}
+.signalrow
+{
+	border-bottom: 2px solid black;
+}
+.seq
+{
+	height: 40px;
+}
+.studname
+{
+	min-width: 140px;
+}
+.cifras
+{
+	vertical-align: top;
+	font-size: 7px;
+}
+.cifrasspan
+{
+}
+.repres
+{
+	text-align: right;
+}
+.noborder
+{
+	border: none !important;
+}
+.botcel
+{
+	text-align: center;
+}

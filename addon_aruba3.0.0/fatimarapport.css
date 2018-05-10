@@ -1,0 +1,169 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:12;  }
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom: 900px;
+    width: 100%;
+  }
+}
+.leftpage
+{
+  margin-top: 6%;
+  float: left;
+  width: 40%;
+  padding-left: 3%;
+}
+.rightpage
+{
+  margin-top: 6%;
+  margin-right: 1%;
+  float: right;
+  width: 40%;
+}
+.remarktext
+{
+  font-family: 'Bradley Hand ITC', 'Lucide Handwriting', 'Papyrus';
+  color: darkblue;
+}
+.rapporttext
+{
+  font-family: 'Bookman Old Style';
+  font-weight: bold;
+  font-size: 36px;
+  text-align: center;
+}
+.frontlabel
+{
+  font-size: 18px;
+  margin-left: 10%;
+  height: 10%;
+  display: block;
+}
+.frontlabelspan
+{
+ float: left;
+ position: relative;
+ width: 25%;
+ margin-top:10px;
+}
+.frontfield
+{
+  margin-top: 10px;
+  text-decoration: underline;
+  float: right;
+  position: relative;
+  right: 10%;
+  width: 55%;
+}
+.righthalf
+{
+   float: right;
+   position: relative;
+   width: 40%;
+   margin-left: 5%;
+}
+.righthalf2
+{
+   float: right;
+   position: relative;
+   width: 40%;
+}
+.lefthalf
+{
+   float: left;
+   position: relative;
+   right: 10%;
+   width: 40%;
+}
+.lefthalf2
+{
+   float: left;
+   position: relative;
+   width: 40%;
+}
+.lefthalf3
+{
+   float: left;
+   position: relative;
+   width: 50%;
+   margin-right: 5%;
+}
+.signline
+{
+  margin-top: 20px;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.subjtable
+{
+  border-collapse: collapse;
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: black;
+}
+.numasptable
+{
+  border-collapse: collapse;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}
+.subjmainrow
+{
+}
+.mainsubjname
+{
+  font-weight:bold;
+  width: 240px;
+  font-size: 12px;
+}
+.subsubjname
+{
+  font-weight:normal;
+  width: 240px;
+  font-size: 12px;
+}
+.numberaspects
+{
+  font-weight:normal;
+  width: 240px;
+  font-size: 12px;
+  border-left-width: 2px;
+  border-left-color: black;
+  border-left-style: solid;
+}
+.emptyresult
+{
+  width: 25px;
+  font-size: 12px;
+}
+.resok
+{
+  text-align: center;
+  width: 25px;
+  font-size: 12px;
+}
+.per4result
+{
+  width: 25px;
+  font-size: 12px;
+  border-bottom-width: 2px;
+  background-color:#EEEEEE;
+}
+TD
+{
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: black;
+  border-right-width: 2px;
+  border-right-style: solid;
+  border-right-color: black;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: black;  
+}

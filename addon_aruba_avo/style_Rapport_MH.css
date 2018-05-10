@@ -1,0 +1,228 @@
+@font-face { font-family: 'Perisphere'; src: url('./perisphere.eot'); src: url('./perisphere.eot?#iefix') format('embedded-opentype'), url('./perisphere.svg#Perisphere') format('svg'), url('./perisphere.woff') format('woff'), url('./perisphere.ttf') format('truetype'); font-weight: normal; font-style: normal;}
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:14px;  }
+TABLE   
+{ 
+  border-collapse: collapse;
+  border: none;
+}
+.lefttable
+{
+  margin-top: -30px;
+}
+.headleft
+{
+  font-size: 36px;
+  font-weight: bold;
+  font-family: perisphere;
+  margin-bottom: 20px;
+  margin-top: -30px;
+  padding-top: 0px;
+  margin-left: -15px;
+}
+.schoolyear
+{
+  font-size: 24px;
+  font-weight: bold;
+  font-family: perisphere;
+  margin-bottom: 20px;
+  margin-top: -30px;
+  padding-top: 0px;
+  margin-left: -15px;
+}
+.groupname
+{
+  font-size: 25px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+.groupnameblue
+{
+  display: inline-block;
+  color: blue;
+}
+.mentorcode
+{
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+.cathead
+{
+  text-decoration:underline;
+  font-weight:bold;
+}
+.redcolor
+{
+  color: red;
+}
+.leftblock
+{
+  clear: left;
+  float: left;
+  width: 50%;
+  padding-left: 1%;
+  padding-top: 3%;
+}
+.subjname
+{
+  padding-left: 30px;
+}
+.subsubjname
+{
+  padding-left: 30px;
+	font-size: 11px;
+}
+.rightblock
+{
+  margin-right: 1%;
+  float: right;
+  width: 43%;
+}
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom: 900px;
+    width: 100%;
+  }
+}
+.resultcol
+{
+  width: 36px;
+}
+.leftsign
+{
+  margin-top: 20%;
+  width: 40%;
+  float: left;
+  border-top: solid black 2px;
+}
+.rightsign
+{
+  margin-top: 20%;
+  width: 40%;
+  float: right;
+  border-top: solid black 2px;
+}
+.bn
+{
+  padding-top: 30%;
+  clear: both;
+}
+.dateprint
+{
+  margin-top: 30%;
+}
+.heading
+{
+  text-align: center;
+}
+TD
+{
+  padding: 3px;
+  border: none;
+  font-size: 14px;
+  padding-top: 2px;
+  padding-bottom: 1px;
+}
+.centertd
+{
+  text-align: center;
+  width: 20px;
+}
+.centertdsmall
+{
+  text-align: center;
+  width: 20px;
+  font-size: 10px;
+}
+TH
+{
+  text-align: left;
+  border: none;
+  font-size: 14px;
+  padding-top: 2px;
+  padding-bottom: 1px;
+}
+.studentname
+{
+}
+.stfirstname
+{
+  padding-left: 5px;
+  font-family: Vivaldi, Arial;
+  font-size: 32px;
+  font-weight: bold;
+  color: blue;
+}
+.stlastname
+{
+  font-family: Vivaldi, Arial;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: blue;
+}
+.footer
+{
+  page-break-after: always;
+  height: 1px;
+  font-size: 1pt;
+}
+.centerth
+{
+  text-align: center;
+  width: 45px;
+}
+.dateline
+{
+  padding-top: 20px;
+}
+.opmbox
+{
+  margin-top: 30px;
+  width: 95%;
+  height: 20%;
+  border: 1px solid grey;
+  padding-left: 5px;
+}
+.explained
+{
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 12px;
+  margin-left: 50px;
+}
+.exdigit
+{
+  text-align: right;
+  width: 20px;
+  display: inline-block;
+  padding-right: 4px;
+}
+.extext
+{
+  width: 150px;
+  display: inline-block;
+}
+.signbox
+{
+  margin-top: 30%;
+  border-top: 1px solid gray;
+  width: 95%;
+}
+.signboxdir
+{
+  border-top: 1px solid gray;
+  width: 95%;
+}
+.signimg
+{
+  margin-top: 20%;
+	display: block;
+	width: 40%;
+	height: 0%;
+}

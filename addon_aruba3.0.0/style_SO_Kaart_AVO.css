@@ -1,0 +1,290 @@
+BODY {font-family: verdana, arial, helvetica; font-size:12px;  }
+A:link		{color:#0000FF}
+A:visited	{color:#0000FF}
+A:hover		{color:#FF0000}
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom: 100px;  /* de volgende tekst/inhoud komt minimaal 900 pixels na dit item */
+    width: 100%;
+  }
+}
+
+TABLE   
+{ 
+  border-collapse		: collapse;
+}
+
+.titel
+{
+  font-weight	: bold;
+  font-size		: 12px;
+}
+
+.koptxt
+{
+  font-weight	: bold;
+  line-height	: 18px;
+  width			: 680px;
+  font-size		: 16px;
+  text-align	: center;	  
+}
+.LLdata
+{
+  line-height	: 16px;
+  font-size		: 14px;
+}
+.Examenklas
+{
+  font-weight	: bold;
+  font-size		: 30px;
+  color			: red;
+}
+.OpmaakKaart  TR TD
+{
+  padding		: 5px;
+}
+.Tekstgrootte
+{
+  font-size		: 12px;
+}
+.SierTekst
+{
+  font-size		: 12px;
+  font-weight	: Bold;
+}
+.zonderlijnen TD
+{
+  border-left	: white;
+  border-right	: white;
+  height		: 20px;
+}
+.breedte1
+{
+  height		: 30px;
+  font-size		: 15px;
+  font-weight	: bold;
+  text-align	: center;
+  width			: 240px;
+  border		: 1px solid #000;
+}
+.breedte2
+{
+  font-weight	: bold;
+  font-size		: 13px;
+  text-align	: center;
+  width			: 50px;
+  border		: 1px solid #000;
+}
+.breedte2a
+{
+  font-weight	: bold;
+  font-size		: 13px;
+  text-align	: center;
+  width			: 43px;
+  border		: 1px solid #000;
+}
+.breedte2b
+{
+  font-weight	: bold;
+  font-size		: 13px;
+  text-align	: center;
+  width			: 60px;
+  border		: 1px solid #000;
+}
+.LijnOnderWeg
+{
+  font-size		: 12px;
+  border-bottom	: 0px;
+}
+.LijnenHer
+{
+  font-size			: 12px;
+  border-left		: 1px solid #000;
+  border-bottom		: 1px solid #000;
+  border-right		: 2px solid #000;
+}
+.LijnenHerBG
+{
+  font-size			: 12px;
+  border-left		: none;
+  border-bottom		: 1px solid #000;
+  border-right		: 2px solid #000;
+  background-color	: #CEF6F5;
+}
+.LijnenWegHerBG
+{
+  font-size			: 12px;
+  border-left		: none;
+  border-bottom		: none;
+  border-right		: 2px solid #000;
+  background-color	: #CEF6F5;
+}
+.LijnenWeg
+{
+  font-size				: 12px;
+  border-left-color		: white;
+  border-bottom-color	: white;
+}
+.DunneLijnOnder
+{
+  font-size		: 12px;
+  border-bottom	: 1px solid #000;
+}
+.DunneLijnOnderEnLinks
+{
+  font-size		: 12px;
+  border-bottom	: 1px solid #000;
+  border-left	: 1px solid #000;
+}
+.Dikte3LijnTop 
+{
+  border-top	: 3px solid #000;
+}
+.Dikte3Lijn
+{
+  font-size		: 12px;
+  font-size		: 12px;
+  border-bottom	: 3px solid #000;
+  border-right	: 3px solid #000;
+}
+.Dikte3LijnOnder
+{
+  font-size		: 12px;
+  border-bottom	: 3px solid #000;
+  border-right	: 3px solid #000;
+	border-left: 1px solid black;
+}
+.Dikte3LijnRechts
+{
+  font-size		: 12px;
+  font-size		: 12px;
+  border-right	: 3px solid #000;
+}
+.Dikte3LijnRechtsDunOnder
+{
+  font-size		: 12px;
+  font-size		: 12px;
+  border-right	: 3px solid #000;
+  border-bottom	: 1px solid #000;
+}
+.Dikte3LijnRechtsA
+{
+  font-size		: 12px;
+  border-right	: 3px solid #000;
+  border-bottom	: 1px solid #000;
+}
+.Dikkelijnen
+{
+  font-size		: 12px;
+  border-left	: 2px solid #000;
+  border-right	: 2px solid #000;
+}
+.CKVResultaat
+{
+  font-size		: 12px;
+  border-left	: 2px solid #000;
+  border-right	: 2px solid #000;
+  border-bottom	: 1px solid #000;
+  text-align    : center;
+}
+.DikkelijnenA
+{
+  font-size		: 12px;
+  border-left	: 2px solid #000;
+  border-right	: 2px solid #000;
+  border-bottom	: 1px solid #000;
+}
+.DikkelijnenB
+{
+  font-size		: 12px;
+  border-left	: 2px solid #000;
+  border-right	: 1px solid #000;
+  border-bottom	: 1px solid #000;
+}
+.DikkelijnenC
+{
+  font-size		: 12px;
+  border-left	: 2px solid #000;
+  border-right	: 2px solid #000;
+  border-bottom	: 3px solid #000;
+}
+.Dunnelijnen
+{
+  font-size		: 12px;
+  border-left	: 1px solid #000;
+  border-right	: none;
+}
+.DunnelijnenA
+{
+  font-size		: 12px;
+  border-left	: 1px solid #000;
+  border-right	: 1px solid #000;
+  border-bottom	: 1px solid #000;
+}
+.TigSpaties
+{
+/*  word-spacing	: 90px */;
+	float			: right;
+}
+
+.breedte3
+{
+  width			: 300px;
+  font-size		: 12px;
+}
+.Voorbeelden
+{
+  font-size		: 12px;
+}
+.dirsign
+{
+  float: right;
+  page-break-after: always;
+}
+/*	De minitabel met Schoolgeld en Aircogeld betaald is van de baan	*/
+/*	Dit zijn de definities van het blok links boven - sw zg. minitabel	*/
+.rechtsboven
+{
+  float			: right;
+  width			: 21%;
+}
+.minitabel
+{
+  border-style		: none;
+  background-color	: white;
+  width				: 150px;
+}
+.minitabel TR TD
+{
+  font-size			: 9px;
+  text-align		: left;	
+}
+.HerSubText
+{
+  font-size			: 9px;
+  text-align		: right;
+  float: right;
+  background-color	: #CEF6F5;
+  display: inline-block;
+}
+.Remarks
+{
+  width: 50%;
+  border-bottom: 1.5px solid black;
+  padding-bottom: 20px;
+}
+.Legenda
+{
+  float: left;
+}
+.legenditem
+{
+  display: inline-block;
+  width: 30px;
+}

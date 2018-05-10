@@ -1,0 +1,207 @@
+BODY {background-color:white; font-family: "Comic Sans MS"; font-size:12px; margin-top: -12px; }
+TABLE   
+{ 
+  border-collapse: collapse;
+  border-style: double;
+  border-width: 3px;
+  border-color: black;
+}
+.headleft
+{
+ text-align:left;
+}
+.cathead
+{
+  font-weight:bold;
+  vertical-align: top;
+}
+.stfirstname
+{
+  font-weight: normal;
+}
+.footer
+{
+  page-break-after: always;
+}
+.redcolor
+{
+  color: red;
+}
+.schoolimage
+{
+  float: left;
+}
+.leftpage
+{
+  margin-top: 6%;
+  float: left;
+  width: 45%;
+  padding-left: 1%;
+}
+.rightpage
+{
+  margin-top: 0%;
+  margin-right: 1%;
+  float: right;
+  width: 45%;
+}
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom: 900px;
+    width: 100%;
+  }
+}
+TH
+{
+  font-style: normal;
+  font-weight: normal;
+  text-align: left;
+  border-style: dotted;
+  border-color: black;
+  border-width: 1px;
+  vertical-align: top;
+  font-size: 12px;
+}
+TD
+{
+  border-style: dotted;
+  border-color: black;
+  border-width: 1px;
+  font-size: 11px;
+  padding-right: 6px;
+}
+.rth
+{
+  height: 50px;
+  vertical-align: middle;
+  width: 25px;
+}
+.rOth
+{
+  height: 50px;
+  vertical-align: middle;
+  border-left-style: solid;
+  width: 25px;
+}
+.rapres
+{
+  text-align: center;
+  padding-right: 0px;
+  font-size: 12px;
+}
+.rapOres
+{
+  text-align: center;
+  border-left-style: solid;
+  padding-right: 0px;
+  font-size: 10px;
+}
+.studdata
+{
+  margin-left: 150px;
+  margin-top: 39px;
+  margin-bottom: 33px;
+  line-height: 200%;
+  font-size: 12px;
+}
+.resultrap
+{
+  margin-top: 28px;
+  text-align: right;
+  line-height: 180%;
+}
+.signdir
+{
+  margin-top: -20px;
+  padding-top: 15px;
+  text-align: right;
+  padding-right: 150px;
+  height: 55px;
+  vertical-align: bottom;
+  //border: 1px solid black;
+  background-image: url('dirsignature.png');
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+.meanings
+{
+  margin-top: 8px;
+  float: left;
+  line-height: 120%;
+}
+.meaninghead
+{
+  font-size: 11px;
+  font-weight: bold;
+}
+.mdigit
+{
+  display: inline-block;
+  width: 12px;
+  font-size: 7px;
+  min-width: 11px;
+}
+.meaning
+{
+  display: inline-block;
+  width: 66px;
+  font-size: 8px;
+  min-width: 66px;
+}
+.rapheader
+{
+  font-size: 14px;
+  font-weight: bold;
+  padding-left: 170px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  margin-top: 2px;
+}
+.rapblock
+{
+  border-style: double;
+  border-width: 3px;
+  width: 100%;
+  border-color: black;
+}
+.remarks
+{
+  border-style: dotted;
+  border-width: 1px;
+  width: 90%;
+  border-color: black;
+  margin-left: 20px;
+  padding-left: 5px;
+  height: 65px;
+  font-size: 8px;
+}
+.signlabel
+{
+  margin-top: 17px;
+  display: inline-block;
+  width: 170px;
+}
+.referitem
+{
+  margin-left: 70px;
+}
+.leftresult
+{
+  float: left;
+}
+.rightresult
+{
+  float: right;
+  padding-right: 40px;
+}
+.clearfix
+{
+  clear: both;
+}
+

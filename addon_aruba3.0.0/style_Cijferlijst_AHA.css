@@ -1,0 +1,120 @@
+BODY 
+{
+  background-color:white;
+  font-family: verdana, arial, helvetica;
+  font-size:14px;
+  //background-image: url('schoollogo.png');
+  //background-position: 0 0;
+  //background-repeat: no-repeat;
+	//background-attachment:fixed;
+}
+.maintitle
+{
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+	margin-top: -100px;
+}
+.secondtitle
+{
+  font-size: 18px;
+  text-align: center;
+}
+.maintext
+{
+  font-size: 14px;
+  margin-top: 50px;
+}
+
+TABLE   
+{ 
+  border-collapse: collapse;
+  border: 1px solid black;
+  width: 99%;
+}
+TD
+{
+  padding: 3px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  font-size: 14px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.boldfatbot
+{
+  font-weight: bold;
+  border-bottom: 2px solid black;
+}
+.centerbolddashbot
+{
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px dashed black;
+}
+.centerfatbot
+{
+  text-align: center;
+  border-bottom: 2px solid black;
+}
+.centerfatbotdashr
+{
+  text-align: center;
+  border-bottom: 2px solid black;
+  border-right: 1px dashed black;
+}
+.fatbot
+{
+  border-bottom: 2px solid black;
+}
+.bold
+{
+  font-weight: bold;
+}
+.center
+{
+  text-align: center;
+}
+.centerdashr
+{
+  text-align: center;
+  border-right: 1px dashed black;
+}
+.vcmark
+{
+  color: #EEE;
+}
+.leftsign
+{
+  float: left;
+  margin-top: 100px;
+}
+.rightsign
+{
+  float: right;
+  margin-top: 100px;
+}
+@media print
+{
+ .footnote
+ {
+  clear: both;
+  position: fixed;
+  bottom : 0;
+  font-size: 12px;
+ }
+ .pagebreak {page-break-after: always}
+}
+@media screen
+{
+ .footnote
+ {
+  clear: both;
+  font-size: 12px;
+ }
+  .pagebreak
+  {
+    margin-bottom: 900px;
+    width: 100%;
+  }
+}

@@ -1,0 +1,113 @@
+BODY {background-color:#CCCCFF; font-family: verdana, arial, helvetica; font-size:14px;  }
+
+/*	Indien men het infrijfformulier wil afdrukken moet dat kunnen:	*/
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom	: 900px;  /* de volgende tekst/inhoud komt minimaal 900 pixels na dit item */
+    width			: 100%;
+  }
+}
+
+.topheading
+{
+  float: left;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 10%;
+  padding-right: 10%;
+  line-height: 200%;
+}
+
+.toplogo
+{
+  border: none;
+  float: right;
+  padding-left: 5%;
+	width: 100px;
+}
+
+.loginheading
+{
+  clear: both;
+}
+.shortlabel
+{
+  width: 150px;
+}
+
+LABEL
+{
+  width: 30%;
+  display: inline-block;
+}
+
+.errormsg
+{
+  clear: both;
+  color: red;
+  font-size: 18px;
+}
+
+.fieldarea
+{
+  clear: both;
+}
+.studentlist
+{
+  border-collapse	: collapse;
+  border			: 1px solid black;
+  margin-left		: auto;
+  margin-right		: auto;
+}
+.studentlist TD
+{ 
+  border			: 1px solid black;
+  padding			: 1px;
+}
+TABLE
+{ 
+  border-collapse	: collapse;
+  border			: 2px solid black;
+  margin-left		: auto;
+  margin-right		: auto;
+}
+TD
+{ 
+  border			: 2px solid black;
+  padding			: 10px;
+}
+TH
+{ 
+  font-weight		: bold;
+  border			: 2px solid black;
+}
+.packagetable TR TD
+{
+  font-size: 10px;
+  padding: 2px;
+}
+.subjectlist
+{
+  padding-left: 10%;
+  border: none;
+}
+.subjectlist TR TH 
+{
+  display: none;
+}
+.subjectlist TR TD
+{
+  border: none;
+  width: 20%;
+}
+LEGEND
+{
+  font-size: 18px;
+  font-weight: bold;
+}

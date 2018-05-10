@@ -1,0 +1,88 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:14px;  }
+TABLE   
+{ 
+  border-collapse: collapse;
+}
+TH 
+{
+  padding-left: 3px;
+  padding-right: 3px;
+}
+TD
+{
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.leftblock
+{
+  clear: left;
+  float: left;
+  width: 47%;
+  padding-left: 5%;
+  padding-top: 10%;
+}
+.rightblock
+{
+  margin-right: 1%;
+  float: right;
+  width: 43%;
+  padding-left: 5px;
+  margin-top: 10%;
+  border: 1px solid black;
+}
+
+.headleft
+{
+ text-align:left;
+}
+.cathead
+{
+  text-decoration:underline;
+  font-weight:bold;
+}
+.studentname
+{
+  font-weight: bold;
+}
+.groupname
+{
+  font-weight: bold;
+}
+.footer
+{
+  page-break-after: always;
+  font-size: 1px;
+}
+.redcolor
+{
+  color: red;
+}
+.remarks
+{
+  padding-bottom: 30%;
+}
+.ritem
+{
+  padding-bottom: 10%;
+}
+.halfwidth
+{
+  display: inline-block;
+  width: 48%;
+}
+.signlabel
+{
+  display: inline-block;
+  width: 43%;
+}
+.signpart
+{
+  padding-bottom: 15%;
+}
+.signline
+{
+  width: 50%;
+  display: inline-block;
+  border-bottom: 1px solid black;
+  margin-left: 5%;
+}

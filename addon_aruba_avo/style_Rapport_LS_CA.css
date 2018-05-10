@@ -1,0 +1,309 @@
+BODY {background-color:white; font-family: "Ariel"; font-size:12px;  }
+TABLE   
+{ 
+  border-collapse: collapse;
+  border: none;
+}
+.headleft
+{
+ text-align:left;
+}
+.cathead
+{
+  vertical-align: middle;
+  border-style: solid;
+  width: 140px;
+}
+.subjname
+{
+  border-style: solid;
+  font-size: 12px;
+  height: 31px;
+}
+.subjshort
+{
+  border-style: solid;
+  text-align: center;
+}
+.stfirstname
+{
+  font-weight: normal;
+}
+.footer
+{
+  page-break-after: always;
+}
+.redcolor
+{
+  color: red;
+}
+.leftpage
+{
+  margin-top: 6%;
+  float: left;
+  width: 45%;
+  padding-left: 1%;
+}
+.rightpage
+{
+  margin-top: 6%;
+  margin-right: 1%;
+  float: right;
+  width: 45%;
+}
+@media print
+{
+  .pagebreak {page-break-after: always}
+}
+@media screen
+{
+  .pagebreak
+  {
+    margin-bottom: 900px;
+    width: 100%;
+  }
+}
+TH
+{
+  font-style: normal;
+  font-weight: normal;
+  text-align: left;
+  border-style: dotted;
+  border-color: black;
+  border-width: 1px;
+  vertical-align: top;
+  font-size: 12px;
+}
+TD
+{
+  border-style: dotted;
+  border-color: black;
+  border-width: 1px;
+  font-size: 12px;
+}
+.rth
+{
+  font-size: 11px;
+  height: 40px;
+  vertical-align: middle;
+  width: 32px;
+  padding: 1px;
+  margin: 0px;
+  border-style: solid;
+transform: rotate(270deg);
+-webkit-transform: rotate(270deg);	
+-moz-transform: rotate(270deg);
+-ms-transform: rotate(270deg);
+-o-transform: rotate(270deg);
+}
+.rOth
+{
+  font-size: 11px;
+  height: 40px;
+  vertical-align: middle;
+  border-style: solid;
+  width: 32px;
+transform: rotate(270deg);
+-webkit-transform: rotate(270deg);	
+-moz-transform: rotate(270deg);
+-ms-transform: rotate(270deg);
+-o-transform: rotate(270deg);
+}
+.rapres
+{
+  text-align: center;
+  padding-right: 0px;
+  font-size: 12px;
+  border-style: solid;
+}
+.rapOres
+{
+  text-align: center;
+  border-style: solid;
+  padding-right: 0px;
+  font-size: 12px;
+}
+.yeardata
+{
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+}
+.yearheading
+{
+  padding-left: 70px;
+}
+.studdata
+{
+  font-size: 12px;
+  font-weight: bold;
+}
+.resultrap
+{
+  margin-top: 28px;
+  text-align: right;
+  line-height: 180%;
+}
+.signdir
+{
+  margin-top: 32px;
+  text-align: right;
+  margin-right: 130px;
+}
+.meanings
+{
+  margin-top: 8px;
+  float: left;
+  line-height: 120%;
+}
+.meaninghead
+{
+  font-size: 9px;
+  font-weight: bold;
+}
+.mdigit
+{
+  display: inline-block;
+  width: 11px;
+  font-size: 7px;
+  min-width: 11px;
+}
+.meaning
+{
+  display: inline-block;
+  width: 66px;
+  font-size: 7px;
+  min-width: 66px;
+}
+.rapheader
+{
+  font-size: 12px;
+  font-weight: bold;
+  padding-left: 170px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  margin-top: 2px;
+}
+.rapblock
+{
+  border-style: double;
+  border-width: 3px;
+  width: 100%;
+  border-color: black;
+}
+.remarks
+{
+  border-style: dotted;
+  border-width: 1px;
+  width: 90%;
+  border-color: black;
+  margin-left: 20px;
+  padding-left: 5px;
+  height: 35px;
+}
+.signlabel
+{
+  margin-top: 17px;
+  display: inline-block;
+  width: 170px;
+}
+.referitem
+{
+  margin-left: 170px;
+}
+.subjectarea
+{
+  border: none;
+  vertical-align: bottom;
+}
+.subjectname
+{
+  border: none;
+  vertical-align: bottom;
+  text-align: center;
+  width: 200px;
+}
+.lspacer
+{
+  border: none;
+  height: 11px;
+  font-size: 0px;
+}
+.spacer
+{
+  border: none;
+  height: 11px;
+  font-size: 0px;
+}
+.lefttitle
+{
+  border: 1px solid black;
+  width: 100px;
+}
+.lefttitlec
+{
+  border: 1px solid black;
+  width: 100px;
+  text-align: center;
+}
+.boldtlb
+{
+  width: 20px;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 1px solid black;
+  text-align: center;
+}
+.boldtb
+{
+  width: 20px;
+  border-top: 2px solid black;
+  border-left: 1px solid black;
+  border-bottom: 2px solid black;
+  border-right: 1px solid black;
+  text-align: center;
+}
+.boldtrb
+{
+  width: 20px;
+  border-top: 2px solid black;
+  border-left: 1px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  text-align: center;
+}
+.boldl
+{
+  width: 20px;
+  border-top: 1px solid black;
+  border-left: 2px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  text-align: center;
+}
+.boldr
+{
+  width: 20px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 2px solid black;
+  text-align: center;
+}
+.boldn
+{
+  width: 20px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  text-align: left;
+  font-size: 13px;
+}
+.resselect
+{
+  padding-left: 40px;
+  padding-right: 40px;
+}
+

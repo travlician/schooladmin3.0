@@ -1,0 +1,125 @@
+
+.catselbut
+{
+  margin: 20px;
+  padding: 10px;
+  display: inline-block;
+  background-color: #ccc;
+  border: 1px solid black;
+  border-radius: 30px;
+}
+.catselbutselected
+{
+  margin: 20px;
+  padding: 10px;
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 30px;
+}
+.studentTSview
+{
+  margin: 5px;
+  padding: 10px;
+  width: 14%;
+  display: inline-block;
+  background-color: #ccf;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+.studentStateIcon
+{
+  float: right;
+  background: red;
+  display: inline-block;
+}
+.studentStateIconHidden
+{
+  float: right;
+  background: red;
+  display: inline-block;
+  visibility: hidden; 
+}
+/* default styling */
+.nav, .nav ul {list-style-type:none; margin:0; padding:0;}
+.nav a {text-decoration:none;}
+.nav {font-family: arial, sans-serif; font-size:12px; width:547px; margin:0 auto; text-align:left; height:32px;}
+
+/* style the links */
+/* needs a background for IE6 - can be a color or a transparent gif */
+.nav a {background:#f00; height:50px; padding: 5px; margin: 0px; border-radius: 15px;} 
+.nav ul a {height:auto;}
+/* style the <b> element so that is does not affect the size of the link */
+.nav a i {position:absolute; left:-9999px;}
+
+.nav a b {display:block; border:1px solid #1552ad; border-width:1px 1px 0 1px; background:#fff; color:#444; font-size:11px; line-height:15px; font-weight:normal;padding:10px; cursor:pointer;} 
+.nav a b.last {border-bottom-width:1px;}
+.nav b img {display:block; float:left; padding-right:5px; border:0;}
+.nav b span {display:block; font-size:14px; color:#069; padding-top:5px; font-weight:bold;}
+/* WIDTH change this WITH CARE to suit your requirements */
+
+/* FOR NAV1 */
+.nav1, .nav1 a {width:70px;}
+.nav1 a {background:url(home.gif) no-repeat left top;}
+
+/* FOR NAV2 */
+.nav2, .nav2 a {width:152px;}
+.nav2 a {margin-right:-151px; background-color: #eef; border: solid black 2px;} /* 1px less than the top level link width */
+.nav2 ul li {max-width:151px;}
+
+/* FOR NAV3 */
+.nav3, .nav3 a {width:95px;}
+.nav3 a {margin-right:-94px; background:url(services.gif) no-repeat left top;} /* 1px less than the top level link width */
+.nav3 ul li {max-width:94px;}
+
+/* FOR NAV3 */
+.nav4, .nav4 a {width:143px;}
+.nav4 a {margin-right:-142px; background:url(offers.gif) no-repeat left top;} /* 1px less than the top level link width */
+.nav4 ul li {max-width:142px;}
+
+/* FOR NAV5 */
+.nav5, .nav5 a {width:137px;}
+.nav5 a {background:url(privacy.gif) no-repeat left top;}
+
+.nav li.drop ul li a {width:200px; margin-right:-200px;}
+/* ----------------------------------------------------------------------------	*/
+
+/* DO NOT CHANGE ANYTHING BELOW */
+.nav li {float:left;} /* fixes several IE related bugs, and allows for clearing */
+.nav ul {float:left; position:relative; z-index:20; left:1px; top:-1px;} /* necessary for float drop and to stack the <ul>s */
+.nav ul li {clear:left;} /* must clear the floated list item inside sublist */
+.nav a {position:relative; display:block;} /* needs to have a position, to be above the rest */
+.nav a.main {float:left; /* necessary for float drop */
+    margin-top:10000px;} /* bring the top level links back into view */
+.nav .drop {margin-top:-10000px;} /* hide the sub links and their containers, opera has low upper limits */
+.nav ul {margin-bottom:-5000px;} /* avoid any interaction between the subs, can be any large size */
+/* ----------------------------------------------------------------------------	*/
+
+/* The bit that does ALL the work to bring the sub menus into view */
+.nav a:hover,
+.nav a:focus,
+.nav a:active {margin-right:0; z-index:10; outline:0; background-position:left bottom;}
+
+.nav a:hover b,
+.nav a:focus b,
+.nav a:active b {background:#f8f8f8;}
+
+.nav .nav2 ul a:hover,
+.nav .nav2 ul a:focus,
+.nav .nav2 ul a:active {margin-right:-128px;} /* The margin-right value is the dropdown link width minus the top level link width */
+
+.nav .nav3 ul a:hover,
+.nav .nav3 ul a:focus,
+.nav .nav3 ul a:active {margin-right:-135px;} /* The margin-right value is the dropdown link width minus the top level link width */
+
+.nav .nav4 ul a:hover,
+.nav .nav4 ul a:focus,
+.nav .nav4 ul a:active {margin-right:-87px;} /* The margin-right value is the dropdown link width minus the top level link width */
+
+/* OPERA fix */
+.nav ul:hover {clear:left;} /* to stop intermittent sub link :hover problems */
+
+/* IE6 and 7 fix */
+a:active {}
+
+/* ----------------------------------------------------------------------------	*/

@@ -1,0 +1,133 @@
+.disabledday
+{
+  width:17%;
+  height: 75px;
+  /* max-width: 17% */;
+  max-height: 75px;
+  display: inline-block;
+  border: 1px solid transparent;
+  background-color: transparent;
+  margin-left: 2px;
+  margin-right: 1px;
+  margin-top: 2px;
+  margin-bottom: 1px;
+  /* float: left */;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  vertical-align: top;
+}
+.disablednwday
+{
+  width:5%;
+  height: 75px;
+  /* max-width: 6%; */
+  max-height: 75px;
+  display: inline-block;
+  border: 1px solid transparent;
+  background-color: transparent;
+  margin-left: 2px;
+  margin-right: 1px;
+  margin-top: 2px;
+  margin-bottom: 1px;
+  /* float: left */;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  vertical-align: top;
+  
+}
+.realday
+{
+  width:17%;
+  height: 75px;
+  /* max-width: 17% */;
+  max-height: 75px;
+  display: inline-block;
+  border: 1px solid black;
+  background-color: white;
+  margin-left: 2px;
+  margin-right: 1px;
+  margin-top: 2px;
+  margin-bottom: 1px;
+  /* float: left */;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  vertical-align: top;
+  
+}
+.noworkday
+{
+  width:5%;
+  height: 75px;
+  /* max-width: 6% */;
+  max-height: 75px;
+  display: inline-block;
+  border: 1px solid black;
+  background-color: gray;
+  margin-left: 2px;
+  margin-right: 1px;
+  margin-top: 2px;
+  margin-bottom: 1px;
+  /* float: left */;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  vertical-align: top;
+  
+}
+.offday
+{
+  width:17%;
+  height: 75px;
+  /* max-width: 17% */;
+  max-height: 75px;
+  display: inline-block;
+  border: 1px solid black;
+  background-color: orange;
+  margin-left: 2px;
+  margin-right: 1px;
+  margin-top: 2px;
+  margin-bottom: 1px;
+  /* float: left */;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  vertical-align: top;
+  
+}
+.lessonday
+{
+  width:17%;
+  height: 75px;
+  /* max-width: 17% */;
+  max-height: 75px;
+  display: inline-block;
+  border: 1px solid black;
+  background-color: transparent;
+  margin-left: 2px;
+  margin-right: 1px;
+  margin-top: 2px;
+  margin-bottom: 1px;
+  /* float: left */;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  vertical-align: top;
+}
+.layerlabel
+{
+  display: inline-block;
+  width: 300px;
+  max-width: 300px;
+}
+.timetableactivitiesview TH
+{
+  text-align: center;
+  border: 1px solid black;
+  border-bottom: 2px solid black;
+}
+.timetableactivitiesview TD
+{
+  text-align: center;
+  border: 1px solid black;
+}
+.break
+{
+   clear: both;
+}

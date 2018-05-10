@@ -1,0 +1,334 @@
+BODY {background-color:white; font-family: verdana, arial, helvetica; font-size:10px;  }
+A:link {color:#0000FF}
+A:visited {color:#0000FF}
+A:hover {color:#FF0000}
+P.pagebreak {page-break-after: always}
+TABLE
+{ 
+  border-collapse: collapse;
+  font-size: 9px;
+  border: thin;
+  border-color: black;
+  border-style:solid;
+}
+.ex5table
+{
+}
+TABLE TR 
+{
+  border-color: white;
+}
+TABLE TR TD
+{
+  border: thin;
+  border-color: black;
+  border-style: none solid solid solid;
+}
+.toprow1
+{
+  display: inline-block;
+  margin-top: 12%;
+  display: inline-block;
+  width: 10%;
+}
+.toprow2
+{
+  display: inline-block;
+  width: 20%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+.toprow3
+{
+  display: inline-block;
+  width: 42%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+.toprow4
+{
+  display: inline-block;
+  width: 20%;
+  text-align: right;
+  font-weight: bold;
+}
+.nobot
+{
+  border-bottom-style: none;
+  border-bottom-color: white;
+}
+.nobotgreen
+{
+  border-bottom-style: none;
+  border-bottom-color: white;
+  background-color:#80FF80;  
+}
+TABLE TR TD.nobot
+{
+  border-bottom-style: thin;
+  border-bottom-color: white;
+}
+TD.fatbot
+{
+  border-bottom-width:thick;
+}
+TD.fatbotgreen
+{
+  border-bottom-width:thick;
+  text-align: center;
+  background-color:#80FF80;  
+}
+TD.fatbotgreenleft
+{
+  border-bottom-width:thick;
+  text-align: left;
+  background-color:#80FF80;  
+}
+TD.herbot
+{
+  border-bottom-width:thick;
+  background-color:#C0C0FF;
+}
+TD.gemdeel
+{
+  text-align: center;
+  background-color: #FFC020;
+}
+TD.subjheadergem
+{
+  text-align: center;
+  border-bottom-width:thick;
+  vertical-align: bottom;
+  background-color: #FFC020;
+}
+TD.subjheader
+{
+  text-align: center;
+  border-bottom-width:thick;
+  vertical-align: bottom;
+  background-color: #FFFF20;
+}
+TD.dbot
+{
+  border-bottom-style: double;
+  border-bottom-color: black;
+  border-bottom-width: medium;
+}
+TD.dbotgreen
+{
+  border-bottom-style: double;
+  border-bottom-color: black;
+  border-bottom-width: medium;
+  background-color:#80FF80;  
+}
+TD.dbotresult
+{
+  border-bottom-style: double;
+  border-bottom-color: black;
+  border-bottom-width: medium;
+  text-align: right;
+}
+TD.lastname
+{
+  border-bottom-style: none;
+  border-bottom-color: white;
+  width: 150px;
+  background-color:#80FF80;
+}
+TD.firstnamehead
+{
+  border-bottom-style: none;
+  border-bottom-color: white;
+  width: 100px;
+  background-color:#80FF80;
+}
+TD.firstname
+{
+  border-bottom-style: double;
+  border-bottom-color: black;
+  border-bottom-width: medium;
+  vertical-align: top;
+  width: 100px;
+	white-space: nowrap;
+}
+TD.exnrdbot
+{
+   background-color:#50A6FF;
+   border-bottom-style: double;
+  border-bottom-color: black;
+  border-bottom-width: medium;
+}
+TD.result
+{
+  text-align: right;
+}
+TD.repeat
+{
+  background-color:#C0C0FF;
+  text-align: right;
+}
+TD.herhead
+{
+  background-color:#C0C0FF;
+  text-align: center;
+}
+TD.absentm
+{
+  background-color:#C0FFFF;
+  text-align: right;
+}
+TD.absents
+{
+  background-color:#FFC0C0;
+  text-align: right;
+}
+TD.free
+{
+  background-color:#80FF80;
+  text-align: right;
+}
+TD.repeatdbot
+{
+   background-color:#C0C0FF;
+   border-bottom-style: double;
+  border-bottom-color: black;
+  border-bottom-width: medium;
+  text-align: right;
+}
+TD.absentdbot
+{
+   background-color:#FFC0C0;
+   border-bottom-style: double;
+  border-bottom-color: black;
+  border-bottom-width: medium;
+  text-align: right;
+}
+TD.freedbot
+{
+   background-color:#80FF80;
+   border-bottom-style: double;
+  border-bottom-color: black;
+  border-bottom-width: medium;
+  text-align: right;
+}
+TD.endresult
+{
+   background-color:#FFFFC0;
+   border-bottom-style: double;
+  border-bottom-color: black;
+  border-bottom-width: medium;
+  text-align: right;
+}
+TD.ckvv
+{
+  border-bottom-style: double;
+  border-bottom-color: black;
+  border-bottom-width: medium;
+  text-align: center;
+  vertical-align: bottom;
+}
+TD.ckvnv
+{
+  background-color: red;
+  border-bottom-style: double;
+  border-bottom-color: black;
+  border-bottom-width: medium;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+
+TD.notchoosen
+{
+   background-color:#CCCCCC;
+}
+TD.notchoosendbot
+{
+  background-color:#CCCCCC;
+  border-bottom-style: double;
+  border-bottom-color: black;
+  border-bottom-width: medium;
+}
+TD.exnrnobot
+{
+   background-color:#50A6FF;
+  border-bottom-style: none;
+  border-bottom-color: white;
+}
+
+H1
+{
+  clear: both;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.schoollogo
+{
+  width: 140px;
+  float: left;
+  left: 10px;
+  margin-top: 8%;
+}
+.summarytable
+{
+  width : 99%;
+  page-break-after: avoid;
+}
+.topsumrow
+{
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+.sumheader
+{
+  width: 24.75%;
+  padding-bottom: 10px;
+  font-size: 14px;
+  vertical-align: top;
+}
+.sumdata
+{
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+.summarysign
+{
+  padding-top: 50px;
+  float: left;
+  width: 49%;
+  font-size: 14px;
+  page-break-before: avoid;
+}
+.schooldata
+{
+  padding-left: 200px;
+  padding-top: 120px;
+  font-size: 14px;
+}
+.footer
+{
+  margin-top: 90px;
+  page-break-after: always;
+}
+.formdata
+{
+  width: 33%;
+  text-align: left;
+  display: inline-block;
+}
+.pagenr
+{
+  width: 30%;
+  text-align: center;
+  display: inline-block;
+}
+.dirsign
+{
+  width: 36%;
+  text-align: right;
+  display: inline-block;
+}
