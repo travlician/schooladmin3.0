@@ -201,7 +201,7 @@
 					echo("<span class=legdig>7</span>mas cu suficiente<BR><BR>");
 					echo("<span class=legdig>6</span>suficiente<BR><BR>");
 					echo("<span class=legdig>5</span>casi bon<BR><BR>");
-					echo("<span class=legdig>4</span>no sificiente</p>");
+					echo("<span class=legdig>4</span>no suficiente</p>");
 					
 					echo("<P class=signer>Director". ($location=="Savaneta" ? "" : "a"). " adhunto <span class=signline>&nbsp</span></p>");
 
