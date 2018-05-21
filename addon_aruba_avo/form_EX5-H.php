@@ -14,11 +14,11 @@
   include ("schooladminfunctions.php");
   
   // Subject translation tables
-  $offsubjects = array(1 => "Ne","En","Sp","Wa","Wb","Na","Sk","Bi","Mo","Ec","Gs","Ak","CKV","Fa","Inf");
+  $offsubjects = array(1 => "Ne","En","Sp","Wa","Wb","Na","Sk","Bi","Mo","Ec","Gs","Ak","CKV","Fa","Inf","Pa");
   $noexam = array("Ak","CKV");
 	$coresubs = array("Ne","En","Wa","Wb");
   $altsubjects = array("Ne"=>1,"En"=>2,"Sp"=>3,"Wi-A"=>4,"Wi-B"=>5,"Na"=>6,"Sk"=>7,"Bio"=>8,"Ec"=>10,"M&O"=>9,"Ak"=>12,"Gs"=>11,"Pfw"=>14,"CKV"=>13,
-                       "ne"=>1,"en"=>2,"sp"=>3,"wiA"=>4,"wiB"=>5,"na"=>6,"sk"=>7,"bio"=>8,"ec"=>10,"m&o"=>9,"ak"=>12,"gs"=>11,"pws"=>14,"ckv"=>13,"Fa"=>14,"Inf"=>15);
+                       "ne"=>1,"en"=>2,"sp"=>3,"wiA"=>4,"wiB"=>5,"na"=>6,"sk"=>7,"bio"=>8,"ec"=>10,"m&o"=>9,"ak"=>12,"gs"=>11,"pws"=>14,"ckv"=>13,"Fa"=>14,"Inf"=>15,"Pa"=>16);
   $countries = array("AUA" => "Aruba", "NED" => "Nederland", "BON" => "Bonaire", "CUR" => "Curaçao", "SXM" => "Sint Maarten", "SUR" => "Suriname",
                      "COL" => "Colombia", "CHI" => "Chili", "CHN" => "China", "DOM" => "Dominicaanse Republiek", "HTI" => "Haïti", "JAM" => "Jamaica",
 					 "PER" => "Peru", "PHL" => "Philipijnen", "USA" => "Verenigde Staten van Amerika", "CUB" => "Cuba", "VEN" => "Venezuela",

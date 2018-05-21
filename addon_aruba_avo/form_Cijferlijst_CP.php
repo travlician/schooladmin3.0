@@ -102,6 +102,7 @@
   $pksubs['MM11'] = array('ne','en','wiA','ak','gs','pap');
   $pksubs['MM12'] = array('ne','en','wiA','ec','gs','pap');
   $pksubs['MM13'] = array('ne','en','wiA','ec','ak','m&o');
+  $pksubs['MM14'] = array('ne','en','wiB','ec','ak','m&o');
   $pksubs['NW01'] = array('ne','en','wiA','na','sk','bio');
   $pksubs['NW02'] = array('ne','en','wiA','sk','bio','sp');
   $pksubs['NW03'] = array('ne','en','wiA','sk','bio','ec');
@@ -117,6 +118,8 @@
   $pksubs['NW13'] = array('ne','en','wiA','sk','bio','pap');
   $pksubs['NW14'] = array('ne','en','wiA','sk','bio','pap');
   $pksubs['NW15'] = array('ne','en','wiB','na','sk','pap');
+  $pksubs['NW16'] = array('ne','en','wiA','na','sk','m&o');
+  $pksubs['NW17'] = array('ne','en','wiA','na','sk','pap');
   
   $sub2full = array("ne"=>"Nederlandse taal en literatuur", "en"=>"Engelse taal en literatuur", "wiA"=>"Wiskunde A",
                     "ak"=>"Aardrijkskunde", "gs"=>"Geschiedenis en staatsinrichting", "sp"=>"Spaanse taal en literatuur",
