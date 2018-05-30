@@ -739,12 +739,21 @@
 			// Border (knikpunt 6) depends on phase, so get it (it's specified as percentage so divide by 100)
 			$border = $this->get_item($phase=="s" ? "signalborder" : ($phase=="c" ? "controlborder" : "terminalborder"));
 			$minpts = $this->get_item($phase=="s" ? "signalmin" : ($phase=="c" ? "controlmin" : "terminalmin"));
+
+			/* Changed may 29th 2018: using converter instead of static conversion with knee (which was'nt a knee) at 6.0
 			$rc = 4.0 / ($mpt -  ($mpt * $border / 100.0));
 			$res = 10.0 - ($rc * $spts);
 			if($res < $minpts)
 				return($minpts);
 			else
 				return($res);
+			*/
+			$perc = 100.0 - (($spts / $mpt) * 100.0); // Conversion works with percentage only!
+			if($perc < 0)
+				$perc=0.0;
+			$converter = new SCTconversion($this->get_conversiontype());
+			$res = $converter->convert_result($perc,$border,$minpts,true);
+			return($res);
 		}
 		protected function get_phase_result_errors_subject($sid,$phase,$year,$mid)
 		{
