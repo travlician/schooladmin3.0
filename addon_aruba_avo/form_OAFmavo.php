@@ -67,7 +67,9 @@
 -->
 <body summary="Overdrachts-Aanmeldingsformulier SKOA voor mavo">
   <!-- Voorblad van het Overdrachts-Aanmeldingsformulier voor de mavo -->
-  <img style="position:absolute; top:55px; left:110px; border="0" src="/PNG/LogoSKOA.jpg" width="100" alt="Logo";>
+<?
+  echo("<img style='position:absolute; top:55px; left:110px;' border='0' src='/PNG/LogoSKOA.jpg' width='100' alt='Logo';>");
+?>
   <p class="TekstRechtsLogo">Copernicusstraat 11 P.O.Box 1065<br>
 						     Oranjestad, Aruba.<br>
 						     Tel.: (297) 582 1848, Fax (297) 582 0780<br>

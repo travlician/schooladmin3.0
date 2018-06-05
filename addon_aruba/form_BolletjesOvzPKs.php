@@ -69,16 +69,16 @@ foreach($lllist AS $stud)
 		$splittext = explode("-",$aspectdescription,2);
 		echo('<tr>	  <td class="TekstRandLinks"> <b>');
 		echo($splittext[0]);
-		echo('</b></td><td class="PeriodeRand">');
+		echo("</b></td><td class='PeriodeRand'>");
 		for($per=1; $per <= 3; $per++)
 		{
 			echo($per);
-			echo('&nbsp;&nbsp;<img src="PNG/BolS');
+			echo("&nbsp;&nbsp;<img src='PNG/BolS");
 			if(isset($llar[$aspect][$per]))
 				echo($llar[$aspect][$per]);
 			else
 				echo("0");
-			echo('.PNG" border="0">');
+			echo(".PNG' border='0'>");
 			if($per < 3)
 				echo("<BR>");			
 		}
@@ -118,12 +118,12 @@ foreach($lllist AS $stud)
 		for($per=1; $per <= 3; $per++)
 		{
 			echo($per);
-			echo('&nbsp;&nbsp;<img src="PNG/BolS');
+			echo("&nbsp;&nbsp;<img src='PNG/BolS");
 			if(isset($llar[$aspect][$per]))
 				echo($llar[$aspect][$per]);
 			else
 				echo("0");
-			echo('.PNG" border="0">');
+			echo(".PNG' border='0'>");
 			if($per < 3)
 				echo("<BR>");			
 		}

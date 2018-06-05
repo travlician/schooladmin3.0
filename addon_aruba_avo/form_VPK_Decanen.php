@@ -54,7 +54,9 @@
 -->
 <body summary="Invulformulier voor Decanen t.a.v. vakkenpakketkeuze" class="BodyOpmaak_VPK" >
   <!-- PR voor deze aktieviteit -->
-  <img style="position:absolute; top:8px; left:110px; border="0" src="/PNG/LogoAim4meBlueWhite.PNG" width="100px" alt="Logo";>
+<?
+  echo("<img style='position:absolute; top:8px; left:110px;' border='0' src='/PNG/LogoAim4meBlueWhite.PNG' width='100px' alt='Logo';>");
+?>
   <hr color="#000000" width="80%" style="border-style: dotted"; style="position:absolute; top:155px; left:110px;">
   <DIV class="Koptekst">Vakkenpakketten AVO</DIV>
   <DIV class="SubKoptekst">gekoppeld aan beroepen</DIV>

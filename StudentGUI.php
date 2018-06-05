@@ -500,7 +500,9 @@ class StudentGUI extends extendableelement
 			margin: 0px;
 			padding: 0px;
 			width: 24px;
-			background-image: url(PNG/bell.jpg);
+<?
+	echo("background-image: url(PNG/bell.jpg);");
+?>
 			background-size: 24px 9px;
 			background-repeat: no-repeat;
 			height: 9px;
@@ -510,7 +512,9 @@ class StudentGUI extends extendableelement
 			margin: 0px;
 			padding: 0px;
 			width: 72px;
-			background-image: url(PNG/bell.jpg);
+<?
+	echo("background-image: url(PNG/bell.jpg);");
+?>
 			background-size: 72px 27px;
 			background-repeat: no-repeat;
 			height: 27px;
