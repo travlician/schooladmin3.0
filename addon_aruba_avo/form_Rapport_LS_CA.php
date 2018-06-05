@@ -420,7 +420,7 @@
 					$stcalpo[$sx][$pi] <= 2 && $stcalpno[$sx][$pi] <= 2 &&  $stcalpno[$sx][$pi] == $stcalpnc[$sx][$pi] && $stcalczo[$sx][$pi] == 0)
 						echo("VOLDOENDE"); // BEV
 					else if($stcalp[$sx][$pi] >= 78.0 && $stcalo[$sx][$pi] <= 4 && $stcalc[$sx][$pi] <= 6 && $stcalpno[$sx][$pi] <= 2 && 
-					$stcalpo[$sx][$pi] <= 2 && $stcalpno[$sx][$pi] <= 2 &&  $stcalpno[$sx][$pi] == $stcalpnc[$sx][$pi] && $stcalczo[$sx][$pi] == 0)
+					$stcalpo[$sx][$pi] <= 2 && $stcalpno[$sx][$pi] <= 2 &&  $stcalpno[$sx][$pi] == $stcalpnc[$sx][$pi])
 						echo("&nbsp;"); // BES
 					else
 						echo("ONVOLDOENDE");
