@@ -159,6 +159,7 @@
 					for($sx = 1; $sx <= $scnt; $sx++)
 					{
 						$failed = false;
+						$calco = 0;
 						$sres = SA_loadquery("SELECT period, result, shortname FROM gradestore LEFT JOIN subject USING(mid) WHERE sid=". $students['sid'][$llnoffset+$sx]. " AND year=\"". $schoolyear. "\" ");
 						if(isset($sres))
 							foreach($sres['period'] AS $rix => $perid)
@@ -178,6 +179,8 @@
 									echo(colored($stres[$llnoffset+$sx][$vkn][0]));
 									if($stres[$llnoffset+$sx][$vkn][0] > 0 && $stres[$llnoffset+$sx][$vkn][0] < 4)
 										$failed=true;
+									if($stres[$llnoffset+$sx][$vkn][0] > 0 && $stres[$llnoffset+$sx][$vkn][0] < 6)
+										$calco += 6 - round($stres[$llnoffset+$sx][$vkn][0],0);
 									echo("</TD><TD class=txtrescol>");
 									if(isset($num2txt[$stres[$llnoffset+$sx][$vkn][0]]))
 										echo($num2txt[$stres[$llnoffset+$sx][$vkn][0]]);
@@ -188,6 +191,8 @@
 							}
 						} // End for each subject
 					} // End subject categories
+					if($calco > 3)
+						$failed=true;
 					echo("</TABLE>");
 					echo("<P><BR><SPAN class=resultlabel>Resultado  :  </span><SPAN class=resultline>");
 					if($failed)

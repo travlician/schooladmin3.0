@@ -87,19 +87,24 @@
 					$repres[$tvk] = $represqr['repres'][$tix];
 			// Now show the results
 			$validresult=true;
-			$failed=false;
+			$calco = 0;
 			foreach($subjdata AS $avk => $subshort)
 			{
 				echo("<TD class=repres style='text-align: center;'>");
 				if(isset($repres[$avk]))
 				{
 					if($repres[$avk] > 0.1 && $repres[$avk] < 5.5)
+					{
 						echo("<font color=red>". number_format($repres[$avk],0,',','.'). "</font>");
+						$calco += 6 - round($repres[$avk],0);
+						if($repres[$avk] < 3.5)
+							$calco++; // This makes a 3 as result sure to have the student fail.
+					}
 					else if ($repres[$avk] > 0.1)
+					{
 						echo(number_format($repres[$avk],0,',','.'));
+					}
 					else echo($repres[$avk]);
-					if($repres[$avk] < 4)
-						$failed=true;
 				}
 				else
 				{
@@ -108,6 +113,7 @@
 				}
 				echo("</td>");
 			}
+			$failed = $calco > 3;
 			// Show result
 			if($validresult)
 				echo("<TD style='text-align: center;'>". ($failed ? "Afgewezen" : "Geslaagd"). "</td>");
