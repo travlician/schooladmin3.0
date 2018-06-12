@@ -278,12 +278,12 @@
   echo("<BR><LABEL>Telefoonnummer mobiel:</LABEL> ");
   $lnfld = new inputclass_textfield("stelcel",40,NULL,"telmobile","inschrijvingAHA",$rid,"rid",NULL,"inschrijfAHhandler.php");
   $lnfld->echo_html();
-	echo("<DIV style='display: none'>");
+	//echo("<DIV style='display: none'>");
   echo("<BR><LABEL>Bank en rekeningnummer:</LABEL> ");
   $lnfld = new inputclass_textfield("stelbank",30,NULL,"bankrekening","inschrijvingAHA",$rid,"rid",NULL,"inschrijfAHhandler.php");
   $lnfld->echo_html();
   echo(" Bijvoorbeeld: `CMB 617.168.00`.");
-	echo("</div>");
+	//echo("</div>");
   echo("<BR><LABEL>Werkzaam bij:</LABEL> ");
   $lnfld = new inputclass_textfield("sworkat",40,NULL,"werkzaambij","inschrijvingAHA",$rid,"rid",NULL,"inschrijfAHhandler.php");
   $lnfld->echo_html();
@@ -384,14 +384,36 @@
   else
   {
     echo("<B>Stort het vermelde bedrag op het CMB rekeningnummer 617.168.00<BR>
-	Dit formulier uitprinten en samen met het betalingsbewijs, een kopie van een geldig identificatie document (paspoort of rijbewijs), een kopie van een diploma of rapport, een censo formulier van afl5.- op de Avond Havo inleveren voor 5 juli 2017.</b>");
-    echo("<BR><INPUT TYPE=SUBMIT VALUE='PRINT' onClick='window.print()'>");
-    echo("<BR><INPUT TYPE=SUBMIT VALUE='KLAAR' onClick='var win = window.open(\"about:blank\", \"_self\"); win.close();'>");
+	Dit formulier uitprinten en samen met het betalingsbewijs, een kopie van een geldig identificatie document (paspoort of rijbewijs), een kopie van een diploma of rapport, een censo formulier van afl5.- op de Avond Havo inleveren voor 10 juli 2018.</b>");
+    echo("<BR><INPUT TYPE=SUBMIT VALUE='PRINT' onClick='printform()'>");
+    echo("<BR><INPUT TYPE=SUBMIT VALUE='KLAAR' onClick='closeform()'>");
   }
   
 	
 ?>
 <script>
+// Action when printing
+function printform()
+{
+	bankfield=document.getElementById("stelbank");
+	if(bankfield.value == "")
+		alert("Er moet een bankrekeningnummer worden ingevuld!");
+	else
+		window.print();
+}
+
+function closeform()
+{
+	bankfield=document.getElementById("stelbank");
+	if(bankfield.value == "")
+		alert("Er moet een bankrekeningnummer worden ingevuld!");
+	else
+	{
+		var win = window.open("about:blank", "_self"); 
+		win.close();
+	}
+}
+
 // Popup window code
 function newWindow(url) {
 	popupWindow = window.open(
