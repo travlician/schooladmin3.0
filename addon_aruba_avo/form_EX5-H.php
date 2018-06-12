@@ -698,17 +698,17 @@
 			$exavg = $extotval / $extotcnt;
 		else
 			$exavg = 0;
-		if((($certconditions && $subjcount >= 7 && $negpoints == 0) ||
-			 (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-			 (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6) && $negpoints <= 2 && $coreshort < 2) ||
-			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints == 3 && $coreshort < 2 && $fullfail == 0 && ($fails - $choicesubfail) <= 1)) && $exavg >= 5.5)
+		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 2 && $coreshort < 2) ||
+			 (!$certconditions && $subjcount >= 9 && $totpoints >= ($subjcount * 6) && $negpoints == 3 && $coreshort < 2 && $fullfail == 0 && ($fails - $choicesubfail) <= 1)) && $exavg >= 5.5)
 			$passedtv1 = true;
 		else
 			$passedtv1 = false;
 
-		// Now maybe this student has 8 subjects, failed according to 8 subjects and can drop 1 to pass anyway...
+		// Now maybe this student has 9 subjects, failed according to 9 subjects and can drop 1 to pass anyway...
 		unset($midlist);
-		if($subjcount > 8 && !$passedtv1)
+		if($subjcount > 9 && !$passedtv1)
 		{
 			// Create a list of mids for which this student has done exams
 			$midindex = 1;
@@ -777,9 +777,9 @@
 					$newexavg = $newextotval / $newextotcnt;
 				else
 					$newexavg = 0.0;
-				if((!(($certconditions && $newsubjcount >= 7 && $newnegpoints == 0) ||
-						 (!$certconditions && $newsubjcount >= 7 && $newtotpoints >= ($newsubjcount * 6 - 1) && $newnegpoints == 1) || 
-						 (!$certconditions && $newsubjcount >= 7 && $newtotpoints >= ($newsubjcount * 6) && $newnegpoints <= 2 && $newcoreshort <= 1))) || $newexavg < 5.5)
+				if((!(($certconditions && $newsubjcount >= 8 && $newnegpoints == 0) ||
+						 (!$certconditions && $newsubjcount >= 8 && $newtotpoints >= ($newsubjcount * 6 - 1) && $newnegpoints == 1) || 
+						 (!$certconditions && $newsubjcount >= 8 && $newtotpoints >= ($newsubjcount * 6) && $newnegpoints <= 2 && $newcoreshort <= 1))) || $newexavg < 5.5)
 				{
 					unset($pkcandidates[$pkname]);
 				}
@@ -896,10 +896,10 @@
 		}
 		else
 			$exavg = 0;
-		if((($certconditions && $subjcount >= 7 && $negpoints == 0) ||
-			 (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-			 (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6) && $negpoints <= 2 && $coreshort <= 1) ||
-			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints == 3 && $coreshort <= 1 && $fullfail == 0 && ($fails - $choicesubfail) <= 1)) && $exavg >= 5.5)
+		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 2 && $coreshort <= 1) ||
+			 (!$certconditions && $subjcount >= 9 && $totpoints >= ($subjcount * 6) && $negpoints == 3 && $coreshort <= 1 && $fullfail == 0 && ($fails - $choicesubfail) <= 1)) && $exavg >= 5.5)
 			$passedtv2 = true;
 		else
 		{
@@ -909,7 +909,7 @@
 
 		// Now maybe this student has 8 subjects, failed according to 8 subjects and can drop 1 to pass anyway...
 		unset($midlist);
-		if($subjcount > 8 && !$passedtv2)
+		if($subjcount > 9 && !$passedtv2)
 		{
 			// Create a list of mids for which this student has done exams
 			$midindex = 1;
@@ -980,9 +980,9 @@
 				}
 				else
 					$newexavg = 0;
-					if((!(($certconditions && $newsubjcount >= 7 && $newnegpoints == 0) ||
-						 (!$certconditions && $newsubjcount >= 7 && $newtotpoints >= ($newsubjcount * 6 - 1) && $newnegpoints == 1) || 
-						 (!$certconditions && $newsubjcount >= 7 && $newtotpoints >= ($newsubjcount * 6) && $newnegpoints <= 2 && $newcoreshort <= 1))) || $newexavg < 5.5)
+					if((!(($certconditions && $newsubjcount >= 8 && $newnegpoints == 0) ||
+						 (!$certconditions && $newsubjcount >= 8 && $newtotpoints >= ($newsubjcount * 6 - 1) && $newnegpoints == 1) || 
+						 (!$certconditions && $newsubjcount >= 8 && $newtotpoints >= ($newsubjcount * 6) && $newnegpoints <= 2 && $newcoreshort <= 1))) || $newexavg < 5.5)
 				{
 						unset($pkcandidates[$pkname]);
 				}
