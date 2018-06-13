@@ -16,8 +16,8 @@
   // Subject translation tables
   $offsubjects = array(1 => "Ne","En","Sp","Pa","Wa","Wb","Na","Sk","Bi","Mo","Ec","Gs","Ak","CKV","Inf");
   $noexam = array("Ak","Inf");
-  $altsubjects = array("Ne"=>1,"En"=>2,"Sp"=>3,"Wi-A"=>5,"Wi-B"=>6,"Na"=>7,"Sk"=>8,"Bio"=>9,"Ec"=>11,"M&O"=>10,"Ak"=>13,"Gs"=>12,"Pfw"=>15,"CKV"=>14,
-                       "ne"=>1,"en"=>2,"sp"=>3,"pap"=>4,"wiA"=>5,"wiB"=>6,"na"=>7,"sk"=>8,"bio"=>9,"ec"=>11,"m&o"=>10,"ak"=>13,"gs"=>12,"pfw"=>15,"ckv"=>14,"inf"=>15);
+  $altsubjects = array("Ne"=>1,"En"=>2,"Sp"=>3,"Wi-A"=>5,"Wi-B"=>6,"Na"=>7,"Sk"=>8,"Bio"=>9,"Ec"=>11,"M&O"=>10,"Ak"=>13,"Gs"=>12,"Pfw"=>15,
+                       "ne"=>1,"en"=>2,"sp"=>3,"pap"=>4,"wiA"=>5,"wiB"=>6,"na"=>7,"sk"=>8,"bio"=>9,"ec"=>11,"m&o"=>10,"ak"=>13,"gs"=>12,"pfw"=>15,"ckvex"=>14,"inf"=>15);
   $countries = array("AUA" => "Aruba", "NED" => "Nederland", "BON" => "Bonaire", "CUR" => "Curaçao", "SXM" => "Sint Maarten", "SUR" => "Suriname",
                      "COL" => "Colombia", "CHI" => "Chili", "CHN" => "China", "DOM" => "Dominicaanse Republiek", "HTI" => "Haïti", "JAM" => "Jamaica",
 					 "PER" => "Peru", "PHL" => "Philipijnen", "USA" => "Verenigde Staten van Amerika", "CUB" => "Cuba", "VEN" => "Venezuela",
@@ -108,15 +108,17 @@
   $schoolyear = $schoolyear['year'][1];
   
   // Get a list of subjects applicable to the exam subjects
-  $subjectsqr = SA_loadquery("SELECT shortname,subjectpackage.mid FROM subjectpackage LEFT JOIN subject USING(mid) GROUP BY mid ORDER BY mid");
+  $subjectsqr = SA_loadquery("SELECT shortname,subjectpackage.mid FROM subjectpackage LEFT JOIN subject USING(mid) UNION SELECT shortname,mid FROM subject WHERE shortname='ckvex' GROUP BY mid ORDER BY mid ");
 
   // Get subject based on defined standard using translation tables as defined at start of this file.
   foreach($offsubjects AS $osix => $sjname)
   {
+		//echo("Processing translation for ". $sjname. "<BR>"); // Debug
     foreach($subjectsqr['shortname'] AS $sbix => $subsn)
 		{
 			if(isset($altsubjects[$subsn]) && $altsubjects[$subsn] == $osix)
 			{
+				//echo("Alternate found is ". $subsn. "<BR>"); // Debug
 				$subjects['shortname'][$osix] = $sjname;
 				$subjects['mid'][$osix] = $subjectsqr['mid'][$sbix];
 				$mids[$sjname] = $subjectsqr['mid'][$sbix];
@@ -136,6 +138,29 @@
   {
     $packmids[$pkname][$pnix] = $packages['mid'][$pnix];
   }
+	
+	// CKVEX issue: convert CKV mid to ckvex mid
+	$ckvmidsqr = SA_loadquery("SELECT shortname,mid FROM subject WHERE shortname='ckv' OR shortname='ckvex'");
+	if(isset($ckvmidsqr['mid']))
+		foreach($ckvmidsqr['shortname'] AS $six => $ssn)
+		{
+			if($ssn == "ckv")
+				$ockvmid = $ckvmidsqr['mid'][$six];
+			if($ssn == "ckvex")
+				$ockvexmid = $ckvmidsqr['mid'][$six];
+		}
+	if(isset($ockvmid) && isset($ockvexmid))
+	{
+		foreach($packages['mid'] AS $pix => $pmid)
+			if($pmid == $ockvmid)
+				$packages['mid'][$pix] = $ockvexmid;
+		
+		foreach($packmids AS $apm)
+			foreach($apm AS $apix => $apmid)
+				if($apmid == $ockvmid)
+					$apm[$apix] = $ockvexmid;
+	}
+	// End of fix on ckv issue
   
   // Get a list of students with the subject package and extra subject
   $squery = "SELECT sid,lastname,firstname,s_exnr.data AS exnr,packagename,extrasubject,extrasubject2,extrasubject3,s_ASGender.data AS gender,";
@@ -435,7 +460,7 @@
 	  foreach($packages['packagename'] AS $subix => $pname)
 	  {
 	    if($pname == $studs['packagename'][$six] && $mid == $packages['mid'][$subix])
-	    $hassubject = 1;
+	    $hassubject = 1;			
 	  }
 	  if($mid == $studs['extrasubject'][$six])
 	    $hassubject = 1;
