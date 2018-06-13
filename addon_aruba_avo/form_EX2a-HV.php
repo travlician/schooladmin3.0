@@ -12,7 +12,7 @@
 
   $login_qualify = 'ACT';
   include ("schooladminfunctions.php");
-  $noexam = array("Ak","ak","CKV");
+  $noexam = array("Ak","ak","Inf");
   
   // Functions
   function get_initials($name)

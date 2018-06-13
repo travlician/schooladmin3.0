@@ -126,7 +126,7 @@
 					"ec"=>"Economie", "m&o"=>"Management en organisatie", "sk"=>"Scheikunde", "na"=>"Natuurkunde",
 					"wiB"=>"Wiskunde B", "bio"=>"Biologie","CKV"=>"Culturele en kunstzinnige vorming","ckv"=>"Culturele en kunstzinnige vorming","pap"=>"Papiamentse taal en cultuur");
   $digittext = array(1=>"een","twee","drie","vier","vijf","zes","zeven","acht","negen","tien");
-  $noexam = array("ak","ckv");
+  $noexam = array("ak","inf");
 	$coresubs = array("ne","en","wiA","wiB");
 
 
@@ -522,10 +522,9 @@
 		$exavg = 0;
 	//echo("AVG=". $exavg. "<BR>");
 	$certconditions = isset($certs);
-	if((($certconditions && $subjcount >= 7 && $negpoints == 0) ||
-	   (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-	   (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6) && $negpoints <= 2 && $coreshort <= 1) ||
-	   (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints == 3 && $coreshort <= 1 && $fullfail == 0 && ($fails - $choicesubfail) <= 1)) && $exavg >= 5.5)
+		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0) && $exavg >= 5.5)
 	  $passed = true;
 	else
 	{

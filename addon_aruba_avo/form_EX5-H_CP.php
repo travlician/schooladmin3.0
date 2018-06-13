@@ -15,7 +15,7 @@
   
   // Subject translation tables
   $offsubjects = array(1 => "Ne","En","Sp","Pa","Wa","Wb","Na","Sk","Bi","Mo","Ec","Gs","Ak","CKV","Inf");
-  $noexam = array("Ak","CKV");
+  $noexam = array("Ak","Inf");
   $altsubjects = array("Ne"=>1,"En"=>2,"Sp"=>3,"Wi-A"=>5,"Wi-B"=>6,"Na"=>7,"Sk"=>8,"Bio"=>9,"Ec"=>11,"M&O"=>10,"Ak"=>13,"Gs"=>12,"Pfw"=>15,"CKV"=>14,
                        "ne"=>1,"en"=>2,"sp"=>3,"pap"=>4,"wiA"=>5,"wiB"=>6,"na"=>7,"sk"=>8,"bio"=>9,"ec"=>11,"m&o"=>10,"ak"=>13,"gs"=>12,"pfw"=>15,"ckv"=>14,"inf"=>15);
   $countries = array("AUA" => "Aruba", "NED" => "Nederland", "BON" => "Bonaire", "CUR" => "Curaçao", "SXM" => "Sint Maarten", "SUR" => "Suriname",
@@ -764,10 +764,9 @@
 	else
 	  $exavg = 0;
 	// Decide if passed exam for TV1 
-		if((($certconditions && $subjcount >= 7 && $negpoints == 0) ||
-			 (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-			 (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6) && $negpoints <= 2 && $coreshort < 2) ||
-			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints == 3 && $coreshort < 2 && $fullfail == 0 && ($fails - $choicesubfail) <= 1)) && $exavg >= 5.5)
+		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0) && $exavg >= 5.5)
 	  $passedtv1 = true;
 	else
 	  $passedtv1 = false;
@@ -847,9 +846,9 @@
 		  $newexavg = $newextotval / $newextotcnt;
 		else
 		  $newexavg = 0.0;
-				if((!(($certconditions && $newsubjcount >= 7 && $newnegpoints == 0) ||
-						 (!$certconditions && $newsubjcount >= 7 && $newtotpoints >= ($newsubjcount * 6 - 1) && $newnegpoints == 1) || 
-						 (!$certconditions && $newsubjcount >= 7 && $newtotpoints >= ($newsubjcount * 6) && $newnegpoints <= 2 && $newcoreshort <= 1))) || $newexavg < 5.5)
+				if((!(($certconditions && $newsubjcount >= 8 && $newnegpoints == 0) ||
+						 (!$certconditions && $newsubjcount >= 8 && $newtotpoints >= ($newsubjcount * 6 - 1) && $newnegpoints == 1) || 
+						 (!$certconditions && $newsubjcount >= 8 && $newtotpoints >= ($newsubjcount * 6) && $newnegpoints <= 3 && $newcoreshort <= 1))) || $newexavg < 5.5)
 			{
 	      unset($pkcandidates[$pkname]);
 			}
@@ -969,10 +968,10 @@
 	}
 	else
 	  $exavg = 0;
-		if((($certconditions && $subjcount >= 7 && $negpoints == 0) ||
-			 (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-			 (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6) && $negpoints <= 2 && $coreshort <= 1) ||
-			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints == 3 && $coreshort <= 1 && $fullfail == 0 && ($fails - $choicesubfail) <= 1)) && $exavg >= 5.5)
+		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0) && $exavg >= 5.5)
+$choicesubfail) <= 1)) && $exavg >= 5.5)
 	  $passedtv2 = true;
 	else
 	{
@@ -1056,9 +1055,9 @@
 				}
 				else
 					$newexavg = 0;
-					if((!(($certconditions && $newsubjcount >= 7 && $newnegpoints == 0) ||
-						 (!$certconditions && $newsubjcount >= 7 && $newtotpoints >= ($newsubjcount * 6 - 1) && $newnegpoints == 1) || 
-						 (!$certconditions && $newsubjcount >= 7 && $newtotpoints >= ($newsubjcount * 6) && $newnegpoints <= 2 && $newcoreshort <= 1))) || $newexavg < 5.5)
+					if((!(($certconditions && $newsubjcount >= 8 && $newnegpoints == 0) ||
+						 (!$certconditions && $newsubjcount >= 8 && $newtotpoints >= ($newsubjcount * 6 - 1) && $newnegpoints == 1) || 
+						 (!$certconditions && $newsubjcount >= 8 && $newtotpoints >= ($newsubjcount * 6) && $newnegpoints <= 3 && $newcoreshort <= 1))) || $newexavg < 5.5)
 				{
 					unset($pkcandidates[$pkname]);
 				}

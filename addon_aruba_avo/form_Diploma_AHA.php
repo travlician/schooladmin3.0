@@ -88,7 +88,7 @@
                     "Ak"=>"Aardrijkskunde", "Gs"=>"Geschiedenis en staatsinrichting", "Sp"=>"Spaanse taal en literatuur",
 					"Ec"=>"Economie", "M&O"=>"Management en organisatie", "Sk"=>"Scheikunde", "Na"=>"Natuurkunde",
 					"Wi-B"=>"Wiskunde B", "Bio"=>"Biologie","CKV"=>"Culturele en kunstzinnige vorming");
-  $noexam = array("Ak","CKV","Pfw");
+  $noexam = array("Ak","Inf","Pfw");
 	$coresubs = array("Ne","En","Wi-A","Wi-B");
   $digittext = array(1=>"een","twee","drie","vier","vijf","zes","zeven","acht","negen","tien");
   
@@ -171,7 +171,7 @@
 	      $vrijst[$vmid] = $vrcertqr['xstatus'][$vix]+2;
 			else
 			{
-				if(in_array($vmid,$pksubs[$profid]))
+				if(isset($pksubs[$profid]) && in_array($vmid,$pksubs[$profid]))
 					$certs[$vmid] = $vrcertqr['xstatus'][$vix]-3;
 			}
 	  }
@@ -279,7 +279,7 @@
 	if(isset($results_array[0]))
 	  foreach($results_array[0] AS $ssn => $res)
 	  {
-			if($ssn != "I&S" && $ssn != "Pfw" && in_array($ssn,$pksubs[$profid]) && (isset($results_array[3][$ssn]) || in_array($ssn,$noexam) || isset($certs[$ssn]) || isset($vrijst[$ssn])))
+			if($ssn != "I&S" && $ssn != "Pfw" && isset($pksubs[$profid]) && in_array($ssn,$pksubs[$profid]) && (isset($results_array[3][$ssn]) || in_array($ssn,$noexam) || isset($certs[$ssn]) || isset($vrijst[$ssn])))
 			{
 				$subjcount++;
 				//echo("Added subject ". $ssn. "<BR>");
@@ -338,27 +338,20 @@
 		$exavg = $extotval / (1.0 * $excnt);
 	else
 		$exavg = 0;
-	$certconditions = isset($certs);
-	if(($certconditions && $subjcount >= 7 && $negpoints == 0) ||
-	   (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-	   (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6) && $negpoints <= 2 && $coreshort <= 1) ||
-	   (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints == 3 && $coreshort <= 1 && $fullfail == 0 && ($fails - $choicesubfail) <= 1))
-	{
-		if($exavg >= 5.5)
-	    $passed = true;
-		else
-		{
-			$passed = false;
-		}
-	}
+	// Change on request from Giovann Geerman june 12th 2018; certificate candidates can pass just like regular candidates
+	$certconditions = false;
+	//$certconditions = isset($certs);
+	if((($certconditions && $subjcount >= 7 && $negpoints == 0) ||
+			 (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
+			 (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0) && $exavg >= 5.5)
+		$passed = true;
 	else
-	{
 	  $passed = false;
-	}
+
 	  
 	if(!$passed)
 	{
-	  //echo($student->get_lastname(). ",". $student->get_firstname(). " Not passed (". $certconditions. ",". $subjcount. ",". $negpoints. ",". $totpoints. ",". $coreshort. ",". $fullfail. ",". $fails. ",". $choicesubfail. ",". round($exavg,2). ",". $extotval. ",". $excnt. ")<BR>");
+	  echo($student->get_lastname(). ",". $student->get_firstname(). " Not passed (". $certconditions. ",". $subjcount. ",". $negpoints. ",". $totpoints. ",". $coreshort. ",". $fullfail. ",". $fails. ",". $choicesubfail. ",". round($exavg,2). ",". $extotval. ",". $excnt. ")<BR>");
 	  return;
 	}
  

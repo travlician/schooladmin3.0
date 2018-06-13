@@ -87,7 +87,7 @@
 					"Ec"=>"Economie", "M&O"=>"Management en organisatie", "Sk"=>"Scheikunde", "Na"=>"Natuurkunde",
 					"Wi-B"=>"Wiskunde B", "Bio"=>"Biologie","CKV"=>"Culturele en kunstzinnige vorming");
   $digittext = array(1=>"een","twee","drie","vier","vijf","zes","zeven","acht","negen","tien");
-  $noexam = array("Ak","CKV","Pfw");
+  $noexam = array("Ak","Pfw","Inf");
 	$coresubs = array("Ne","En","Wi-A","Wi-B");
 
 
@@ -402,11 +402,12 @@
 	else
 		$exavg = 0;
 	//echo("AVG=". $exavg. "<BR>");
-	$certconditions = isset($certs);
-	if((($certconditions && $subjcount >= 7 && $negpoints == 0) ||
-	   (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-	   (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6) && $negpoints <= 2 && $coreshort <= 1) ||
-	   (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints == 3 && $coreshort <= 1 && $fullfail == 0 && ($fails - $choicesubfail) <= 1)) && $exavg >= 5.5)
+	// Changed on request Giovann Geerman: Certificates are equal to non certificate candidates
+	$certconditions = false;
+	//$certconditions = isset($certs);
+		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0) && $exavg >= 5.5)
 	  $passed = true;
 	else
 	{

@@ -76,14 +76,14 @@
   $pksubs['20'] = array('Ne','En','Wi-B','Na','Sk','Sp');
   $pksubs['21'] = array('Ne','En','Wi-B','Na','Sk','Bio');
   $pksubs['22'] = array('Ne','En','Wi-B','Na','Sk','Ec');
-  $pksubs[0] = array('Ne','En','Wi-A','Ak','Gs','Sp','Ec','M&O','Bio','Wi-B','Na','Sk');
+  $pksubs[0] = array('Ne','En','Wi-A','Ak','Gs','Sp','Ec','M&O','Bio','Wi-B','Na','Sk','Pa','Inf');
   
   $sub2full = array("Ne"=>"Nederlandse taal en literatuur", "En"=>"Engelse taal en literatuur", "Wi-A"=>"Wiskunde A",
                     "Ak"=>"Aardrijkskunde", "Gs"=>"Geschiedenis en staatsinrichting", "Sp"=>"Spaanse taal en literatuur",
 					"Ec"=>"Economie", "M&O"=>"Management en organisatie", "Sk"=>"Scheikunde", "Na"=>"Natuurkunde",
-					"Wi-B"=>"Wiskunde B", "Bio"=>"Biologie");
+					"Wi-B"=>"Wiskunde B", "Bio"=>"Biologie","Pa"=>"Papiamentse taal en cultuur","Inf"=>"Informatica");
   $digittext = array(1=>"een","twee","drie","vier","vijf","zes","zeven","acht","negen","tien");
-  $noexam=array("Ak","Gs");
+  $noexam=array("Ak","Inf");
   
 
   // Get a list of students
@@ -226,11 +226,11 @@
 	unset($pfwres);
 	unset($combires);
 	if(isset($results_array[0]['I&S']) && $results_array[0]['I&S'] > 0.0)
-	  $isres = $result_array['I&S'];
+	  $isres = $results_array[0]['I&S'];
 	else if(isset($ahx['I&S']) && $ahx['I&S'] > 0.0)
 	  $isres = $ahx['I&S'];
 	if(isset($results_array[0]['Pfw']) && $results_array[0]['Pfw'] > 0.0)
-	  $pfwres = $result_array['Pfw'];
+	  $pfwres = $results_array[0]['Pfw'];
 	else if(isset($ahx['Pfw']) && $ahx['Pfw'] > 0.0)
 	  $pfwres = $ahx['Pfw'];
 	if(isset($isres) && isset($pfwres))
@@ -242,17 +242,18 @@
 	$fullfail = 0;
 	$fails = 0;
 	$choicesubfail = 0;
+
 	if(isset($results_array[0]))
 	  foreach($results_array[0] AS $ssn => $res)
 	  {
 	    $subjcount++;
-		if($res < 6)
-		  $negpoints += 6 - $res;
-		$totpoints += $res;
-		if($res < 4)
-		  $fullfail++;
-		if(isset($profile) && $ssn == $pksubs[$profid][5] && $res < 6)
-		  $choicesubfail++;
+			if($res < 6)
+				$negpoints += 6 - $res;
+			$totpoints += $res;
+			if($res < 4)
+				$fullfail++;
+			if(isset($profile) && $ssn == $pksubs[$profid][5] && $res < 6)
+				$choicesubfail++;
 	  }
 	if(isset($combires))
 	{
@@ -302,11 +303,11 @@
 	  if($res < 4)
 	    $fullfail++;
 	}
-	$certconditions = isset($certs);
-	if(($certconditions && $subjcount >= 7 && $negpoints == 0) ||
-	   (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-	   (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6) && $negpoints <= 2) ||
-	   (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints == 3 && $fullfail == 0 && ($fails - $choicesubfail) <= 1))
+	//$certconditions = isset($certs);
+	$certconditions = false;
+		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3) && $fullfail == 0))
 	  $passed = true;
 	else
 	  $passed = false;
@@ -315,6 +316,9 @@
 	  return; // If passed, a diploma will be issued 
 	// Now find out if any certificates apply!
 	unset($certprint);
+	// Debugging
+	//echo("Evaluating ". $student->get_lastname() . ", " . $student->get_firstname(). "<BR>");
+	// 
 	if(isset($pksubs[$profid]))
 	foreach($pksubs[$profid] AS $sbix => $ssn)
 	{
@@ -323,7 +327,14 @@
 		 isset($results_array[0][$ssn]) && 
 		 $results_array[0][$ssn] > 5.5 &&
 		 (!isset($ev) || $ssn!=$ev))
-	    $certprint[$sbix] = $ssn;
+		 {
+	     $certprint[$sbix] = $ssn;
+			 // Debugging
+			 //echo("Has cert for ". $ssn. "<BR>");
+		 }
+		// Debugging
+		//else
+			//echo("No cert for ". $ssn. "<BR>");
 	}
 	if(isset($ev) && !isset($certs[$ev]) && !isset($vrijst[$ev]) && isset($results_array[0][$ev]) && $results_array[0][$ev] > 5.5)
 	  $certprint[1000] = $ev;

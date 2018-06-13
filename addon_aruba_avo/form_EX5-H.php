@@ -15,7 +15,7 @@
   
   // Subject translation tables
   $offsubjects = array(1 => "Ne","En","Sp","Wa","Wb","Na","Sk","Bi","Mo","Ec","Gs","Ak","CKV","Fa","Inf","Pa");
-  $noexam = array("Ak","CKV");
+  $noexam = array("Ak","CKV","Inf");
 	$coresubs = array("Ne","En","Wa","Wb");
   $altsubjects = array("Ne"=>1,"En"=>2,"Sp"=>3,"Wi-A"=>4,"Wi-B"=>5,"Na"=>6,"Sk"=>7,"Bio"=>8,"Ec"=>10,"M&O"=>9,"Ak"=>12,"Gs"=>11,"Pfw"=>14,"CKV"=>13,
                        "ne"=>1,"en"=>2,"sp"=>3,"wiA"=>4,"wiB"=>5,"na"=>6,"sk"=>7,"bio"=>8,"ec"=>10,"m&o"=>9,"ak"=>12,"gs"=>11,"pws"=>14,"ckv"=>13,"Fa"=>14,"Inf"=>15,"Pa"=>16);
@@ -698,10 +698,11 @@
 			$exavg = $extotval / $extotcnt;
 		else
 			$exavg = 0;
+		// 12th june 2018: according to Giovann, certificates will now need to be treated equal to non certificates!
+		$certconditions=false;
 		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 2 && $coreshort < 2) ||
-			 (!$certconditions && $subjcount >= 9 && $totpoints >= ($subjcount * 6) && $negpoints == 3 && $coreshort < 2 && $fullfail == 0 && ($fails - $choicesubfail) <= 1)) && $exavg >= 5.5)
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0) && $exavg >= 5.5)
 			$passedtv1 = true;
 		else
 			$passedtv1 = false;
@@ -779,7 +780,7 @@
 					$newexavg = 0.0;
 				if((!(($certconditions && $newsubjcount >= 8 && $newnegpoints == 0) ||
 						 (!$certconditions && $newsubjcount >= 8 && $newtotpoints >= ($newsubjcount * 6 - 1) && $newnegpoints == 1) || 
-						 (!$certconditions && $newsubjcount >= 8 && $newtotpoints >= ($newsubjcount * 6) && $newnegpoints <= 2 && $newcoreshort <= 1))) || $newexavg < 5.5)
+						 (!$certconditions && $newsubjcount >= 8 && $newtotpoints >= ($newsubjcount * 6) && $newnegpoints <= 3 && $newcoreshort <= 1))) || $newexavg < 5.5)
 				{
 					unset($pkcandidates[$pkname]);
 				}
@@ -898,8 +899,7 @@
 			$exavg = 0;
 		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 2 && $coreshort <= 1) ||
-			 (!$certconditions && $subjcount >= 9 && $totpoints >= ($subjcount * 6) && $negpoints == 3 && $coreshort <= 1 && $fullfail == 0 && ($fails - $choicesubfail) <= 1)) && $exavg >= 5.5)
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0) && $exavg >= 5.5)
 			$passedtv2 = true;
 		else
 		{
@@ -982,7 +982,7 @@
 					$newexavg = 0;
 					if((!(($certconditions && $newsubjcount >= 8 && $newnegpoints == 0) ||
 						 (!$certconditions && $newsubjcount >= 8 && $newtotpoints >= ($newsubjcount * 6 - 1) && $newnegpoints == 1) || 
-						 (!$certconditions && $newsubjcount >= 8 && $newtotpoints >= ($newsubjcount * 6) && $newnegpoints <= 2 && $newcoreshort <= 1))) || $newexavg < 5.5)
+						 (!$certconditions && $newsubjcount >= 8 && $newtotpoints >= ($newsubjcount * 6) && $newnegpoints <= 3 && $newcoreshort <= 1))) || $newexavg < 5.5)
 				{
 						unset($pkcandidates[$pkname]);
 				}
