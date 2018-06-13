@@ -78,7 +78,7 @@
   $pksubs['20'] = array('Ne','En','Wi-B','Na','Sk','Sp');
   $pksubs['21'] = array('Ne','En','Wi-B','Na','Sk','Bio');
   $pksubs['22'] = array('Ne','En','Wi-B','Na','Sk','Ec');
-  $pksubs['23'] = array('Ne','En','Wi-B','Sk','Bio','Inf');
+  $pksubs['23'] = array('Ne','En','Wi-A','Sk','Bio','Inf');
   // HU 90+ with CKV!
 	$pksubs['94'] = array('Ne','En','Sp','Ak','Gs','Pa');
 	$pksubs['95'] = array('Ne','En','Sp','Ak','Gs','CKV');
@@ -90,7 +90,7 @@
   $sub2full = array("Ne"=>"Nederlandse taal en literatuur", "En"=>"Engelse taal en literatuur", "Wi-A"=>"Wiskunde A",
                     "Ak"=>"Aardrijkskunde", "Gs"=>"Geschiedenis en staatsinrichting", "Sp"=>"Spaanse taal en literatuur",
 					"Ec"=>"Economie", "M&O"=>"Management en organisatie", "Sk"=>"Scheikunde", "Na"=>"Natuurkunde",
-					"Wi-B"=>"Wiskunde B", "Bio"=>"Biologie","CKV"=>"Culturele en kunstzinnige vorming");
+					"Wi-B"=>"Wiskunde B", "Bio"=>"Biologie","CKV"=>"Culturele en kunstzinnige vorming","Inf"=>"Informatica","Pa"=>"Papiamentse taal en cultuur","Fa"=>"Franse taal en literatuur");
   $noexam = array("Ak","Inf","Pfw");
 	$coresubs = array("Ne","En","Wi-A","Wi-B");
   $digittext = array(1=>"een","twee","drie","vier","vijf","zes","zeven","acht","negen","tien");
