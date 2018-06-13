@@ -26,66 +26,66 @@
   
   function print_head($subjectindex)
   {
-    global $schoolyear,$schoolname,$subjects,$subtotal,$studs, $packages, $pexdata;
-	$subjecttext = $subjects['fullname'][$subjectindex];
-    echo("<div class=do>DIRECTIE ONDERWIJS ARUBA</div>");
-    echo("<div class=ur>EX. 2a</div>");
- 	  // Tijdvak 1 or 2, depends on "herexamen" or "Afw, Examen" being selected.
-	  if(isset($_POST['pcb1']) || isset($_POST['pcb4']))
-	    echo(" <div class=ur>TV2</div>");
-	  else
-	    echo(" <div class=ur>TV1</div>");
-   echo("<p style='margin-top:-15px;'>LIJST VAN CIJFERS, bedoeld in de artikelen 21, lid 1, 29, lid 3 en 67, lid 4 van het Landsbesluit eindexamens dagscholen VWO, HAVO, MAVO,");
-    echo("<BR> AB 1991 No. GT 35 voor het vak <u><b>". $subjecttext. "</b></u>");
-	// Now if this list is for a single group, show teacher name, groupname and students without excemption
-	$gcount = 0;
-	foreach($_POST AS $pkey => $dummy)
-	{
-	  if(substr($pkey,0,3) == "gcb")
-	  {
-	    $gcount++;
-		$gid = substr($pkey,3);
-	  }
-	}
-	if($gcount == 1)
-	{ // We do need to show teacher, group and #students!
-	  // First get the teacher name
-	  $mid = $subjects['mid'][$subjectindex];
-	  $tnqr = SA_loadquery("SELECT firstname,lastname FROM class LEFT JOIN teacher USING(tid) WHERE mid=". $mid. " AND gid=". $gid);
-	  echo(" Docent: <u><b>". $tnqr['firstname'][1]. " ". $tnqr['lastname'][1]. "</b></u>");
-	  // Get the group name
-	  $gnqr = SA_loadquery("SELECT groupname FROM sgroup WHERE active=1 AND groupname NOT LIKE '%VWO%' AND gid=". $gid);
-	  echo(" Groep: <u><b>". $gnqr['groupname'][1]. "</b></u>");
-	  // Get the student count
-	  $studcount = 0;
-      foreach($studs['gid'] AS $six => $gid)
-      {
-        $hassubject = 0;
-	    // check for subjects here!
-	    foreach($packages['packagename'] AS $subix => $pname)
-	    {
-	      if($pname == $studs['packagename'][$six] && $mid == $packages['mid'][$subix])
-	      $hassubject = 1;
-	    }
-	    if($mid == $studs['extrasubject'][$six] || $mid == $studs['extrasubject2'][$six] || $mid == $studs['extrasubject3'][$six])
-	      $hassubject = 1;
-	    // Now filter out those that are not to be shown
-	    if((isset($_POST['pcb1']) || isset($_POST['pcb2']) || isset($_POST['pcb3']) || isset($_POST['pcb4']) )&& 
-	       (!isset($pexdata[$studs['sid'][$six]][$mid]) || $pexdata[$studs['sid'][$six]][$mid] == 0))
-	      $hassubject = 0;
-	    if(isset($pexdata[$studs['sid'][$six]][$mid]) && $pexdata[$studs['sid'][$six]][$mid] > 4)
-	      $hassubject = 0;
-		if($hassubject != 0)
-		  $studcount++;
-	  }
-	  echo(" Aantal leerlingen: ". $studcount. "</p>");
-	}
-	echo("</p>");
-    echo("<p>EINDEXAMEN HAVO/VWO, in het schooljaar <u>". $schoolyear. "</u></p>");
-    echo("<p>Naam van de school: <u>". $schoolname. "</u></p>");
-    echo("<table class=studlist><TR><TH class=exnrhead ROWSPAN=2>Ex.<BR>nr.</TH><TH class=studhead2 COLSPAN=2>Naam van de kandidaat (in alfabetische volgorde)</TH>");
-	echo("<TH class=tabhead ROWSPAN=2>Cijfer schoolonderzoek<BR>(mond. ex.)</TH><TH class=tabhead ROWSPAN=2>Punten<BR>Schriftelijk<BR>examen</TH><TH class=tabhead ROWSPAN=2>Cijfers<BR>Schriftelijk<BR>examen</TH><TH class=tabhead ROWSPAN=2>Eindcijfer</TH>");
-    echo("</TR><TR><TH class=studheadln>Achternaam</TH><TH class=studheadfn>Alle voornamen voluit</TH></TR>");
+			global $schoolyear,$schoolname,$subjects,$subtotal,$studs, $packages, $pexdata;
+		$subjecttext = $subjects['fullname'][$subjectindex];
+			echo("<div class=do>DIRECTIE ONDERWIJS ARUBA</div>");
+			echo("<div class=ur>EX. 2a</div>");
+			// Tijdvak 1 or 2, depends on "herexamen" or "Afw, Examen" being selected.
+			if(isset($_POST['pcb1']) || isset($_POST['pcb4']))
+				echo(" <div class=ur>TV2</div>");
+			else
+				echo(" <div class=ur>TV1</div>");
+		 echo("<p style='margin-top:-15px;'>LIJST VAN CIJFERS, bedoeld in de artikelen 21, lid 1, 29, lid 3 en 67, lid 4 van het Landsbesluit eindexamens dagscholen VWO, HAVO, MAVO,");
+			echo("<BR> AB 1991 No. GT 35 voor het vak <u><b>". $subjecttext. "</b></u>");
+		// Now if this list is for a single group, show teacher name, groupname and students without excemption
+		$gcount = 0;
+		foreach($_POST AS $pkey => $dummy)
+		{
+			if(substr($pkey,0,3) == "gcb")
+			{
+				$gcount++;
+			$gid = substr($pkey,3);
+			}
+		}
+		if($gcount == 1)
+		{ // We do need to show teacher, group and #students!
+			// First get the teacher name
+			$mid = $subjects['mid'][$subjectindex];
+			$tnqr = SA_loadquery("SELECT firstname,lastname FROM class LEFT JOIN teacher USING(tid) WHERE mid=". $mid. " AND gid=". $gid);
+			echo(" Docent: <u><b>". $tnqr['firstname'][1]. " ". $tnqr['lastname'][1]. "</b></u>");
+			// Get the group name
+			$gnqr = SA_loadquery("SELECT groupname FROM sgroup WHERE active=1 AND groupname NOT LIKE '%VWO%' AND gid=". $gid);
+			echo(" Groep: <u><b>". $gnqr['groupname'][1]. "</b></u>");
+			// Get the student count
+			$studcount = 0;
+				foreach($studs['gid'] AS $six => $gid)
+				{
+					$hassubject = 0;
+				// check for subjects here!
+				foreach($packages['packagename'] AS $subix => $pname)
+				{
+					if($pname == $studs['packagename'][$six] && $mid == $packages['mid'][$subix])
+					$hassubject = 1;
+				}
+				if($mid == $studs['extrasubject'][$six] || $mid == $studs['extrasubject2'][$six] || $mid == $studs['extrasubject3'][$six])
+					$hassubject = 1;
+				// Now filter out those that are not to be shown
+				if((isset($_POST['pcb1']) || isset($_POST['pcb2']) || isset($_POST['pcb3']) || isset($_POST['pcb4']) )&& 
+					 (!isset($pexdata[$studs['sid'][$six]][$mid]) || $pexdata[$studs['sid'][$six]][$mid] == 0))
+					$hassubject = 0;
+				if(isset($pexdata[$studs['sid'][$six]][$mid]) && $pexdata[$studs['sid'][$six]][$mid] > 4)
+					$hassubject = 0;
+			if($hassubject != 0)
+				$studcount++;
+			}
+			echo(" Aantal leerlingen: ". $studcount. "</p>");
+		}
+		echo("</p>");
+			echo("<p>EINDEXAMEN HAVO/VWO, in het schooljaar <u>". $schoolyear. "</u></p>");
+			echo("<p>Naam van de school: <u>". $schoolname. "</u></p>");
+			echo("<table class=studlist><TR><TH class=exnrhead ROWSPAN=2>Ex.<BR>nr.</TH><TH class=studhead2 COLSPAN=2>Naam van de kandidaat (in alfabetische volgorde)</TH>");
+		echo("<TH class=tabhead ROWSPAN=2>Cijfer schoolonderzoek<BR>(mond. ex.)</TH><TH class=tabhead ROWSPAN=2>Punten<BR>Schriftelijk<BR>examen</TH><TH class=tabhead ROWSPAN=2>Cijfers<BR>Schriftelijk<BR>examen</TH><TH class=tabhead ROWSPAN=2>Eindcijfer</TH>");
+			echo("</TR><TR><TH class=studheadln>Achternaam</TH><TH class=studheadfn>Alle voornamen voluit</TH></TR>");
   }
   
   function print_foot()
@@ -130,6 +130,18 @@
   
   // Get the data of the exam subject collections
   $packages = SA_loadquery("SELECT * FROM subjectpackage");
+	// CKVEX issue: convert CKV mid to ckvex mid
+	$ckvmidsqr = SA_loadquery("SELECT shortname,mid FROM subject WHERE shortname='ckv' OR shortname='ckvex'");
+	if(isset($ckvmidsqr['mid']))
+		foreach($ckvmidsqr['shortname'] AS $six => $ssn)
+		{
+			if($ssn == "ckv")
+				$ockvmid = $ckvmidsqr['mid'][$six];
+			if($ssn == "ckvex")
+				$ockvexmid = $ckvmidsqr['mid'][$six];
+		}
+	// End of fix on ckv issue
+
   
   // Get a list of students with the subject package and extra subject
   $squery = "SELECT sid,lastname,firstname,gid,s_exnr.data AS exnr,packagename,extrasubject,extrasubject2,extrasubject3 FROM student LEFT JOIN sgrouplink USING(sid)";
@@ -177,6 +189,10 @@
 				{
 					foreach($cres['sid'] AS $cix => $csid)
 					{
+						// Another part of fixing the ckvex issue
+						if(isset($ockvmid) && isset($ockvexmid))
+							if($cres['mid'][$cix] == $ockvexmid)
+								$cres['mid'][$cix] = $ockvmid;
 						$exptarray[$csid][$cres['mid'][$cix]] = $cres['result'][$cix];
 					}
 				}
