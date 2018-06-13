@@ -607,7 +607,7 @@
 	    else if(in_array($subjects['shortname'][$mix],$noexam))
 			{ // we set an exam result to fake exam being done...
 				if(isset($soarray[$studs['sid'][$six]][$mid]))
-					$hendarray[$studs['sid'][$six]][$mid] = $soarray[$studs['sid'][$six]][$mid];
+					$hendarray[$studs['sid'][$six]][$mid] = round($soarray[$studs['sid'][$six]][$mid],0);
 				echo("nvt");
 			}
 	    else
@@ -663,7 +663,7 @@
 	  echo("X");
 	echo("</td>");
 	echo("<TD class=dbot>&nbsp;</TD>");
-	
+	$failstr="";
 	echo("<td class=dbot>e</td>");
 	// Maintain some counters for this calculation of pass for TV1 (and prep for TV2)
 	$choicesubfail = 0;
@@ -678,6 +678,7 @@
 	  {
 	    $negpoints = 6 - round($combires[$studs['sid'][$six]]);
 		$fails = 1;
+		$failstr .= "combi,";
 		$fullfail = ($combires[$studs['sid'][$six]] < 4 ? 1 : 0);
 	  }
 	  else
@@ -691,6 +692,7 @@
 	  $totpoints = 0;
 	  $negpoints = 6;
 	  $fails = 1;
+		$failstr .= "No combi,";
 	  $fullfail = 1;
 	}
 	$certconditions = false;
@@ -715,60 +717,62 @@
 	    $hassubject = 0;
       if($hassubject != 0)
 	  {
-		$subjcount++;
-		// See what result was retrieved for the exam and ajust totals for it.
-    if(isset($hexarray[$sid][$mid]))
-		{
-		  $extotval += $hexarray[$sid][$mid];
-		  $extotcnt++;
-		}
-	  // Show exam result
-		if(isset($exstatus[$sid][$mid]) && $exstatus[$sid][$mid] >= 9)
-		  echo("<TD class=certdbot>");
-		else if(isset($exstatus[$sid][$mid]) && $exstatus[$sid][$mid] >= 5)
-		  echo("<TD class=freedbot>");
-		else
-	      echo("<TD class=endresult>");
-		// Vrijstelling?
-		if(isset($exstatus[$studs['sid'][$six]][$mid]) && $exstatus[$studs['sid'][$six]][$mid] >= 9)
-		{
-		  echo($exstatus[$studs['sid'][$six]][$mid] - 3);
-		  $totpoints += $exstatus[$studs['sid'][$six]][$mid] - 3;
-		  $certconditions = true;
-		}
-		else if(isset($exstatus[$studs['sid'][$six]][$mid]) && $exstatus[$studs['sid'][$six]][$mid] >= 5)
-		{
-		  echo($exstatus[$studs['sid'][$six]][$mid] + 2);
-		  $totpoints += $exstatus[$studs['sid'][$six]][$mid] + 2;
-		}
-        else if(isset($hendarray[$studs['sid'][$six]][$mid]))
-		{
-	      echo(number_format($hendarray[$studs['sid'][$six]][$mid],0,",","."));
-		  $totpoints += round($hendarray[$studs['sid'][$six]][$mid]);
-		  if($hendarray[$studs['sid'][$six]][$mid] < 6)
-		  {
-		    $negpoints += 6 - round($hendarray[$studs['sid'][$six]][$mid]);
-			$fails++;
-						if(in_array($mid2sjname[$mid],$coresubs))
-							$coreshort += 6 - round($hendarray[$studs['sid'][$six]][$mid]);
-			if($hendarray[$studs['sid'][$six]][$mid] < 4)
-			  $fullfail++;
-			// See if this is a choice subject
-			if((isset($choicesubjs[$studs['packagename'][$six]]) && $mids[$choicesubjs[$studs['packagename'][$six]]] == $mid) ||
-			   (isset($studs['extrasubject'][$six]) && $studs['extrasubject'][$six] == $mid) || (isset($studs['extrasubject2'][$six]) && $studs['extrasubject2'][$six] == $mid) || (isset($studs['extrasubject3'][$six]) && $studs['extrasubject3'][$six] == $mid))
-			{ // This is a choice subject and failed
-			  $choicesubfail++;
+			$subjcount++;
+			// See what result was retrieved for the exam and ajust totals for it.
+			if(isset($hexarray[$sid][$mid]))
+			{
+				$extotval += $hexarray[$sid][$mid];
+				$extotcnt++;
 			}
-		  }
-		}
-	    else
-		{
-  	      echo("X");
-		  $negpoints += 6;
-		  $fails++;
-		  $fullfail++;
-		}
-        echo("</TD>");
+			// Show exam result
+			if(isset($exstatus[$sid][$mid]) && $exstatus[$sid][$mid] >= 9)
+				echo("<TD class=certdbot>");
+			else if(isset($exstatus[$sid][$mid]) && $exstatus[$sid][$mid] >= 5)
+				echo("<TD class=freedbot>");
+			else
+					echo("<TD class=endresult>");
+			// Vrijstelling?
+			if(isset($exstatus[$studs['sid'][$six]][$mid]) && $exstatus[$studs['sid'][$six]][$mid] >= 9)
+			{
+				echo($exstatus[$studs['sid'][$six]][$mid] - 3);
+				$totpoints += $exstatus[$studs['sid'][$six]][$mid] - 3;
+				$certconditions = true;
+			}
+			else if(isset($exstatus[$studs['sid'][$six]][$mid]) && $exstatus[$studs['sid'][$six]][$mid] >= 5)
+			{
+				echo($exstatus[$studs['sid'][$six]][$mid] + 2);
+				$totpoints += $exstatus[$studs['sid'][$six]][$mid] + 2;
+			}
+					else if(isset($hendarray[$studs['sid'][$six]][$mid]))
+			{
+					echo(number_format($hendarray[$studs['sid'][$six]][$mid],0,",","."));
+				$totpoints += round($hendarray[$studs['sid'][$six]][$mid]);
+				if($hendarray[$studs['sid'][$six]][$mid] < 6)
+				{
+					$negpoints += 6 - round($hendarray[$studs['sid'][$six]][$mid]);
+					$fails++;
+					$failstr .= $mid. "=". $hendarray[$studs['sid'][$six]][$mid]. ",";
+					if(in_array($mid2sjname[$mid],$coresubs))
+						$coreshort += 6 - round($hendarray[$studs['sid'][$six]][$mid]);
+					if($hendarray[$studs['sid'][$six]][$mid] < 4)
+						$fullfail++;
+					// See if this is a choice subject
+					if((isset($choicesubjs[$studs['packagename'][$six]]) && $mids[$choicesubjs[$studs['packagename'][$six]]] == $mid) ||
+						 (isset($studs['extrasubject'][$six]) && $studs['extrasubject'][$six] == $mid) || (isset($studs['extrasubject2'][$six]) && $studs['extrasubject2'][$six] == $mid) || (isset($studs['extrasubject3'][$six]) && $studs['extrasubject3'][$six] == $mid))
+					{ // This is a choice subject and failed
+						$choicesubfail++;
+					}
+				}
+			}
+			else
+			{
+				echo("X");
+				$negpoints += 6;
+				$fails++;
+				$failstr .= $mid. "X,";
+				$fullfail++;
+			}
+					echo("</TD>");
 	  }
 	  else
 	  { // Does not have the subject
@@ -914,6 +918,7 @@
 	}
 	echo("</center></td>");
 	echo("<td class=dbot><center>". ($passedtv1 ? "&nbsp;" : "afgew"). "</center></td>");
+	//echo("<td class=dbot><center>". ($passedtv1 ? "&nbsp;" : ($subjcount. ",". $negpoints. ",". $coreshort. ",". $fails. ",". $fullfail. ",". $failstr)). "</center></td>");
 	// Now we might have a repeated subject
 	$repcnt = 0;
 	foreach($subjects['mid'] AS $sbix => $mid)
