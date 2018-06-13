@@ -74,6 +74,7 @@
   $pksubs['20'] = array('Ne','En','Wi-B','Na','Sk','Sp');
   $pksubs['21'] = array('Ne','En','Wi-B','Na','Sk','Bio');
   $pksubs['22'] = array('Ne','En','Wi-B','Na','Sk','Ec');
+  $pksubs['23'] = array('Ne','En','Wi-B','Sk','Bio','Inf');
   // HU 90+ with CKV!
 	$pksubs['94'] = array('Ne','En','Sp','Ak','Gs','Pa');
 	$pksubs['95'] = array('Ne','En','Sp','Ak','Gs','CKV');
@@ -402,9 +403,9 @@
 	else
 		$exavg = 0;
 	//echo("AVG=". $exavg. "<BR>");
-	// Changed on request Giovann Geerman: Certificates are equal to non certificate candidates
-	$certconditions = false;
-	//$certconditions = isset($certs);
+	// Changed on request Giovann Geerman: Certificates are equal to non certificate candidates, revoked 13th june 2018
+	//$certconditions = false;
+	$certconditions = isset($certs);
 		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0) && $exavg >= 5.5)

@@ -14,10 +14,10 @@
   include ("schooladminfunctions.php");
   
   // Subject translation tables
-  $offsubjects = array(1 => "Ne","En","I&S","Sp","Pa","Wi-A","Wi-B","Na","Sk","Bio","Ec","M&O","Ak","Gs","Inf","Pfw","CKV");
+  $offsubjects = array(1 => "Ne","En","I&S","Sp","Pa","Wi-A","Wi-B","Na","Sk","Bio","Ec","M&O","Ak","Gs","Inf","Pfw","CKV","Fa");
   // AH & CP alternates
   $altsubjects = array("Ne"=>1,"En"=>2,"I&S"=>3,"Sp"=>4,"Pa"=>5,"Wi-A"=>6,"Wi-B"=>7,"Na"=>8,"Sk"=>9,"Bio"=>10,"Ec"=>11,"M&O"=>12,"Ak"=>13,"Gs"=>14,"Inf"=>15,"Pfw"=>16,"CKV"=>17,
-                       "ne"=>1,"en"=>2,"i&s"=>3,"sp"=>4,"pap"=>5,"wiA"=>6,"wiB"=>7,"na"=>8,"sk"=>9,"bio"=>10,"ec"=>11,"m&o"=>12,"ak"=>13,"gs"=>14,"inf"=>15,"pfw"=>16,"ckv"=>17);
+                       "ne"=>1,"en"=>2,"i&s"=>3,"sp"=>4,"pap"=>5,"wiA"=>6,"wiB"=>7,"na"=>8,"sk"=>9,"bio"=>10,"ec"=>11,"m&o"=>12,"ak"=>13,"gs"=>14,"inf"=>15,"pfw"=>16,"ckv"=>17,"Fa"=>18);
   
   // Functions
   function get_initials($name)

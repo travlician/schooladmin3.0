@@ -698,8 +698,8 @@
 			$exavg = $extotval / $extotcnt;
 		else
 			$exavg = 0;
-		// 12th june 2018: according to Giovann, certificates will now need to be treated equal to non certificates!
-		$certconditions=false;
+		// 12th june 2018: according to Giovann, certificates will now need to be treated equal to non certificates! Revoked june 13th
+		//$certconditions=false;
 		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0) && $exavg >= 5.5)
