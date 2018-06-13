@@ -408,7 +408,7 @@
 	$certconditions = isset($certs);
 		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0) && $exavg >= 5.5)
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0 && $fails < 3) && $exavg >= 5.5)
 	  $passed = true;
 	else
 	{

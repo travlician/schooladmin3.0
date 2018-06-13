@@ -766,7 +766,7 @@
 	// Decide if passed exam for TV1 
 		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0) && $exavg >= 5.5)
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2 && $fails < 3) && $fullfail == 0) && $exavg >= 5.5)
 	  $passedtv1 = true;
 	else
 	  $passedtv1 = false;
@@ -970,7 +970,7 @@
 	  $exavg = 0;
 		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0) && $exavg >= 5.5)
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2 && $fails < 3) && $fullfail == 0) && $exavg >= 5.5)
 	  $passedtv2 = true;
 	else
 	{

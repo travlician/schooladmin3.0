@@ -315,7 +315,7 @@
 	//$certconditions = false;
 		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3) && $fullfail == 0))
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3) && $fullfail == 0 && $fails < 3))
 	  $passed = true;
 	else
 	  $passed = false;
