@@ -66,10 +66,10 @@
   $students = student::student_list($mygroup);
   if(isset($students))
   {
-		echo("<TABLE><TR><TH class=logoname><img src=schoollogo.png width=70%><BR>Scol Practico pa Ofishi<BR>Locatie ". (substr($mygroup->get_groupname(),1,1) == "C" ? "Santa Cruz" : "Savaneta"). "<BR>Schooljaar ". $schoolyear. "<BR><BR>Klas ". $mygroup->get_groupname(). "<BR>Datum: ". date("d-m-Y"). "<BR><BR><BR><BR><BR><BR><B>Leerling:</b></TH>");
+		echo("<TABLE style='page-break-after: avoid;'><TR><TH class=logoname><img src=schoollogo.png width=70%><BR>Scol Practico pa Ofishi<BR>Locatie ". (substr($mygroup->get_groupname(),1,1) == "C" ? "Santa Cruz" : "Savaneta"). "<BR>Schooljaar ". $schoolyear. "<BR><BR>Klas ". $mygroup->get_groupname(). "<BR>Datum: ". date("d-m-Y"). "<BR><BR><BR><BR><BR><BR><B>Leerling:</b></TH>");
 		foreach($subjdata AS $asubj)
 		{ // Show the heading info
-			echo("<TH class=cathdr><SPAN class=turned2>". $asubj["fullname"]. "</SPAN></TH>");
+			echo("<TH class=cathdr><SPAN class=turned2 style='min-width: 50px;'>". $asubj["fullname"]. "</SPAN></TH>");
 		}
 		echo("<TH>Uitslag:</th></tr>");
 		echo("<TR>");
