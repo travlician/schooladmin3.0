@@ -34,7 +34,7 @@
   $sub2full = array("Ne"=>"Nederlandse taal en literatuur", "En"=>"Engelse taal en literatuur", "Wa"=>"Wiskunde A",
                     "Ak"=>"Aardrijkskunde", "Gs"=>"Geschiedenis en staatsinrichting", "Sp"=>"Spaanse taal en literatuur",
 					"Ec"=>"Economie", "Mo"=>"Management en organisatie", "Sk"=>"Scheikunde", "Na"=>"Natuurkunde",
-					"Wb"=>"Wiskunde B", "Bi"=>"Biologie","CKV"=>"Culturele en kunstzinnige vorming");
+					"Wb"=>"Wiskunde B", "Bi"=>"Biologie","CKV"=>"Culturele en kunstzinnige vorming","Pa"=>"Papiamentse taal en cultuur","Inf"=>"Informatica");
 	$valuetext = array(0=>"-","Zeer<BR>slecht","Slecht","Zeer<BR>onvoldoende","Onvoldoende","Voldoende","Voldoende","Ruim<BR>voldoende","Goed","Zeer<BR>goed","Uitmuntend");
 	$subcor=1;
   
