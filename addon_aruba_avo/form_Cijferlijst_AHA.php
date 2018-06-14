@@ -404,8 +404,8 @@
 		$exavg = 0;
 	//echo("AVG=". $exavg. "<BR>");
 	// Changed on request Giovann Geerman: Certificates are equal to non certificate candidates, revoked 13th june 2018
-	//$certconditions = false;
-	$certconditions = isset($certs);
+	$certconditions = false;
+	//$certconditions = isset($certs);
 		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0 && $fails < 3) && $exavg >= 5.5)

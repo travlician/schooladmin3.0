@@ -348,8 +348,8 @@
 	else
 		$exavg = 0;
 	// Change on request from Giovann Geerman june 12th 2018; certificate candidates can pass just like regular candidates, revoked june 13th
-	//$certconditions = false;
-	$certconditions = isset($certs);
+	$certconditions = false;
+	//$certconditions = isset($certs);
 	if((($certconditions && $subjcount >= 7 && $negpoints == 0) ||
 			 (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
 			 (!$certconditions && $subjcount >= 7 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0 && $fails < 3) && $exavg >= 5.5)

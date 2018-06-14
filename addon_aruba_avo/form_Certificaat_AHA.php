@@ -311,8 +311,8 @@
 	  if($res < 4)
 	    $fullfail++;
 	}
-	$certconditions = isset($certs);
-	//$certconditions = false;
+	//$certconditions = isset($certs);
+	$certconditions = false;
 		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3) && $fullfail == 0 && $fails < 3))
