@@ -874,6 +874,9 @@
 					if($endarray[$studs['sid'][$six]][$mid] < 6)
 					{
 						$negpoints += 6 - round($endarray[$studs['sid'][$six]][$mid]);
+						$fails++;
+						if($endarray[$studs['sid'][$six]][$mid] < 4)
+							$fullfail++;
 						if(in_array($mid2sjname[$mid],$coresubs))
 							$coreshort += 6 - $endarray[$studs['sid'][$six]][$mid];
 					}
