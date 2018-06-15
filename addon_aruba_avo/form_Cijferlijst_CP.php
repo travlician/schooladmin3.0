@@ -171,7 +171,7 @@
 	unset($results_array);
 	unset($results_prv);
 	unset($prvyear);
-    $sql_query = "SELECT gradestore.*,shortname FROM gradestore LEFT JOIN subject USING(mid) WHERE sid=". $student->get_id(). " ORDER BY period DESC, year DESC";
+    $sql_query = "SELECT gradestore.*,shortname FROM gradestore LEFT JOIN subject USING(mid) WHERE sid=". $student->get_id(). " ORDER BY period DESC, year";
     $grades = inputclassbase::load_query($sql_query);
     if(isset($grades))
       foreach($grades['result'] AS $grix => $gres)
@@ -188,11 +188,14 @@
 			{
 				if(isset($prvyear) && $prvyear != $grades['year'][$grix])
 					unset($results_prv); // a newer year with results is entered now! So forget ealier year
-					if($grades['period'][$grix] > 0 && $gres > 0.0)
+				if($grades['period'][$grix] > 0 && $gres > 0.0)
 							$results_prv[$grades['period'][$grix]][$grades['shortname'][$grix]] = $gres;
 				else
 					if($gres > 0 && isset($results_prv[2][$grades['shortname'][$grix]]) && isset($results_prv[3][$grades['shortname'][$grix]]))
-								$results_prv[$grades['period'][$grix]][$grades['shortname'][$grix]] = $gres;
+					{
+						$results_prv[$grades['period'][$grix]][$grades['shortname'][$grix]] = $gres;
+						//echo("SET resultprv period=". $grades['period'][$grix]. ", short=". $grades['shortname'][$grix]. ", year=". $grades['year'][$grix]. ", result=". $gres."<BR>");
+					}
 			}
 	  }
 	$certgrades = inputclassbase::load_query("SELECT * FROM excertdata LEFT JOIN subject USING(mid) WHERE sid=". $student->get_id());
