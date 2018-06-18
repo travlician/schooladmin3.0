@@ -53,6 +53,13 @@
 
   // Decide for which period report is produced
   $repper = 3;
+	
+	// Get the number of exams taken per subject
+	$examcntqr = SA_loadquery("SELECT mid,sid,testcount FROM testdef LEFT JOIN class USING(cid) LEFT JOIN sgrouplink USING(gid) LEFT JOIN (SELECT sid,mid,COUNT(result) AS testcount FROM student LEFT JOIN testresult USING(sid) LEFT JOIN testdef USING(tdid) LEFT JOIN class USING(cid) WHERE type='Exam' AND year='". $schoolyear. "' AND result IS NOT NULL GROUP BY sid,mid) AS t2 USING(sid,mid) WHERE year='". $schoolyear. "' AND type='Exam' GROUP BY sid,mid");
+	if(isset($examcntqr['sid']))
+		foreach($examcntqr['sid'] AS $eix => $esid)
+			if($examcntqr['testcount'][$eix] > 0)
+				$exdone[$esid][$examcntqr['mid'][$eix]] = true;
   
 	// First part of the page
   echo("<html><head><title>Bespreeklijst</title></head><body link=blue vlink=blue>");
@@ -100,6 +107,12 @@
 			$calco = 0;
 			foreach($subjdata AS $avk => $subshort)
 			{
+				if($avk != "Lo" && $avk != "St")
+					if(!isset($exdone[$student->get_id()][$subjdata[$avk]["mid"]]))
+					{
+						$calco+=100; // Did not do the exam so fails!
+						//echo("No exam for mid=". $subjdata[$avk]["mid"]. "<BR>");
+					}
 				echo("<TD class=repres style='text-align: center;'>");
 				if(isset($repres[$avk]))
 				{
