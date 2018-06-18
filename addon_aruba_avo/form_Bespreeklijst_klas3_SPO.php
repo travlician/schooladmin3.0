@@ -66,12 +66,16 @@
   $students = student::student_list($mygroup);
   if(isset($students))
   {
-		echo("<SPAN style='padding-left: 50px; padding-right: 50px; display: inline-block; font-size: 140%;'>Beslissingsvergadering</span>
-					<SPAN style='padding-left: 50px; padding-right: 50px; display: inline-block; font-size: 140%;'>Cijferlijst</span>
-					<SPAN style='padding-left: 50px; padding-right: 50px; display: inline-block; font-size: 140%;'>Tijdvak ". (date("m") == 6 ? 1 : 2). "</span>
-					<SPAN style='padding-left: 50px; padding-right: 50px; display: inline-block; font-size: 140%;'>". $schoolyear. "</span><BR>
+		echo("<SCRIPT> var printdate = prompt('Datum:','". date("d-m-Y"). "'); </script>");
+		echo("<SPAN style='padding-left: 50px; padding-right: 50px; display: inline-block; font-size: 160%;'>Beslissingsvergadering</span>
+					<SPAN style='padding-left: 50px; padding-right: 50px; display: inline-block; font-size: 160%;'>Cijferlijst</span>
+					<SPAN style='padding-left: 50px; padding-right: 50px; display: inline-block; font-size: 160%;'>Tijdvak ". (date("m") == 6 ? 1 : 2). "</span>
+					<SPAN style='padding-left: 50px; padding-right: 50px; display: inline-block; font-size: 160%;'>". $schoolyear. "</span><BR><BR>
 						");
-		echo("<TABLE style='page-break-after: avoid;'><TR><TH class=logoname colspan=2><img src=schoollogo.png width=70%><br><BR><SPAN style='font-size: 140%;'><BR>Scol Practico pa Ofishi<BR>Locatie ". (substr($mygroup->get_groupname(),1,1) == "C" ? "Santa Cruz" : "Savaneta"). "<BR>Schooljaar ". $schoolyear. "<BR><BR>Klas ". $mygroup->get_groupname(). "<BR>Datum: ". date("d-m-Y"). "<BR><BR><BR><B>Leerling:</b></span></TH><TH>Geb. datum</th>");
+		echo("<TABLE style='page-break-after: avoid;'><TR><TH class=logoname colspan=2><br><img src=schoollogo.png width=70%><br><BR><SPAN style='font-size: 140%;'><BR>Scol Practico pa Ofishi<BR>Locatie ". (substr($mygroup->get_groupname(),1,1) == "C" ? "Santa Cruz" : "Savaneta"). "<BR>Schooljaar ". $schoolyear. "<BR><BR>Klas ". $mygroup->get_groupname());
+		echo("<BR>Mentor: ". $mygroup->get_mentor()->get_teacher_detail("*teacher.firstname"). " ". $mygroup->get_mentor()->get_teacher_detail("*teacher.lastname"). "<BR>Datum: ");
+		echo("<SCRIPT> document.write(printdate); </script>");
+		echo("<BR><BR><BR><B>Leerling:</b></span></TH><TH>Fecha di nacemento</th>");
 		foreach($subjdata AS $asubj)
 		{ // Show the heading info
 			echo("<TH class=cathdr><SPAN class=turned2 style='width: 50px; float:left; margin-left:5px;'>". $asubj["fullname"]. "</SPAN></TH>");
@@ -129,9 +133,7 @@
 			$seqno++;
 		} // End foreach loop students
 		echo("</table>");
-		echo("<BR><BR><BR><BR><BR>Inspecteur: __________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adj. Directeur: __________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-		echo("Mentor: ". $mygroup->get_mentor()->get_teacher_detail("*teacher.firstname"). " ". $mygroup->get_mentor()->get_teacher_detail("*teacher.lastname"));
-		echo("<BR>Datum: ". date("d-m-Y"));
+		echo("<BR><BR><BR><BR><BR><SPAN style='font-size: 140%; display: inline-block;'>Inspecteur: __________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adj. Directeur: __________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>");
   } // End if students defined
   else echo("<html>Geen leerlingen gevonden");
       
