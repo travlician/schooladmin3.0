@@ -133,7 +133,7 @@
 			$seqno++;
 		} // End foreach loop students
 		echo("</table>");
-		echo("<BR><BR><BR><BR><BR><SPAN style='font-size: 140%; display: inline-block;'>Inspecteur: __________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adj. Directeur: __________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>");
+		echo("<BR><BR><SPAN style='font-size: 140%; display: inline-block;'>Inspecteur: __________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adj. Directeur: __________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>");
   } // End if students defined
   else echo("<html>Geen leerlingen gevonden");
       
