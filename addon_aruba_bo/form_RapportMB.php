@@ -12,6 +12,8 @@
   require_once("student.php");
   // Link with database
   inputclassbase::dbconnect($userlink);
+	if(!isset($pngsource))
+		$pngsource="PNG";
 	// Check if rapportdatum is valid format
 	if(isset($_POST['rapportdatum']))
 	{
@@ -267,7 +269,7 @@ foreach($lllist AS $stud)
 		else
 		{
 			show_avi("Technisch lezen","AVI",$curyear);
-			show_result("AVIniveau","AVI",false,false,false,true,true,false,true);
+			show_result("AVIniveau","AVI",false,false,false,true,true,false);
 		}
 		echo("<tr><td class=tablespace colspan=4></td></tr>");
 		
@@ -334,7 +336,7 @@ foreach($lllist AS $stud)
 			for($per=1; $per <= 3; $per++)
 			{
 				echo($per);
-				echo("&nbsp;&nbsp;<img src='PNG/BolS");
+				echo("&nbsp;&nbsp;<img src='". $pngsource. "/BolS");
 				if(isset($llar[$aspect][$per]))
 					echo($llar[$aspect][$per]);
 				else
@@ -372,7 +374,7 @@ foreach($lllist AS $stud)
 			for($per=1; $per <= 3; $per++)
 			{
 				echo($per);
-				echo("&nbsp;&nbsp;<img src='PNG/BolS");
+				echo("&nbsp;&nbsp;<img src='". $pngsource. "/BolS");
 				if(isset($llar[$aspect][$per]))
 					echo($llar[$aspect][$per]);
 				else
