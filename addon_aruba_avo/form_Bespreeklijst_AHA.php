@@ -1,4 +1,4 @@
-3<?php
+<?php
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | Schooladmin -- Version 2.1                                           |
@@ -120,6 +120,7 @@
 		  $tekorten = 0;
 			$tekortenn = 0;
 		  $compensatie = 0;
+			$onvold = 0;
 		  $subjcount = 0;
 		  foreach($ptvakken AS $subj)
 		  {
@@ -141,7 +142,10 @@
 					{
 						$tekorten += 6 - $rs;
 						if(in_array($subj,$newvakken))
-							$tekortenn += 6 - $rs;							
+							$tekortenn += 6 - $rs;	
+						$onvold++;
+						if($rs < 4)
+							$tekorten +=10; // TO make sure won't pass!
 					}
 					else
 						$compensatie += $rs - 6;
@@ -149,10 +153,10 @@
 			}
 			if($tekorten < 2 && $subjcount > 0)
 				$advice = "v";
-			else if($tekorten == 2 && $tekortenn < 2 && $compensatie > 1 && $subjcount > 0)
+			else if($tekorten <= 3 && $tekortenn < 2 && $compensatie >= $tekorten && $onvold < 3 && $subjcount > 0)
 				$advice = "v";
-			else if($tekorten == 2 && $tekortenn < 2 && $compensatie == 1 && $subjcount > 0)
-				$advice = "b";
+			//else if($tekorten == 2 && $tekortenn < 2 && $compensatie == 1 && $subjcount > 0)
+				//$advice = "b";
 			else
 				$advice = "o";
 		  
@@ -198,37 +202,43 @@
 		    echo("&nbsp");
 		  echo("</td>");
 		  // Show credit
-		  if($advice == "v" && $period != 3 && $student->get_student_detail("s_inschrijfgeld") > 50.0)
-		  {
-		    echo("<TD class=". ($period == 1 ? "emptyhead1" : "emptyhead"). ">". number_format($subjcount * ($period == 4 ? 25.00 : 12.50),2). "</td>");
-				// Put amount in database, but only for the current period!
-				if($repper == $period || ($repper==3 && $period==4))
+			if(substr($mygroup->get_groupname(),2,1) == "3")
+			{ // No reward calcultation for last year as it is done in EX5
+					echo("<td class=". ($period == 1 ? "emptyhead1" : "emptyhead"). ">EX5</td>");
+			}
+			else
+			{
+				if($advice == "v" && $period != 3 && $student->get_student_detail("s_inschrijfgeld") > 50.0)
 				{
-					$bonus=$subjcount * ($period == 4 ? 25.00 : 12.50);
-					if($period != 4)
+					echo("<TD class=". ($period == 1 ? "emptyhead1" : "emptyhead"). ">". number_format($subjcount * ($period == 4 ? 25.00 : 12.50),2). "</td>");
+					// Put amount in database, but only for the current period!
+					if($repper == $period || ($repper==3 && $period==4))
 					{
-						$bonq = "REPLACE INTO s_beloning_". $period. "_". substr($curyear,0,4). " (sid,data) VALUES(". $student->get_id(). ",$bonus)";
+						$bonus=$subjcount * ($period == 4 ? 25.00 : 12.50);
+						if($period != 4)
+						{
+							$bonq = "REPLACE INTO s_beloning_". $period. "_". substr($curyear,0,4). " (sid,data) VALUES(". $student->get_id(). ",$bonus)";
+						}
+						else
+						{ // 4th period is 3rd bonus!
+							$bonq = "REPLACE INTO s_beloning_3_". substr($curyear,0,4). " (sid,data) VALUES(". $student->get_id(). ",$bonus)";
+						}
+						mysql_query($bonq,$userlink);
 					}
-					else
-					{ // 4th period is 3rd bonus!
-						$bonq = "REPLACE INTO s_beloning_3_". substr($curyear,0,4). " (sid,data) VALUES(". $student->get_id(). ",$bonus)";
+				}
+				else
+				{
+					//echo("repper=". $repper. ", period=". $period. "<BR>");
+					// If a cheque number is already defined, don't clear the reward amount!
+					$cnrqr = inputclassbase::load_query("SELECT data FROM s_beloning_". ($period < 3 ? $period : "3"). "_cheque_". substr($curyear,0,4). " WHERE sid=". $student->get_id());
+					echo("<td class=". ($period == 1 ? "emptyhead1" : "emptyhead"). ">&nbsp;</td>");
+					if($period != 3 && $student->get_student_detail("s_inschrijfgeld") > 50.0 && !isset($cnrqr['data'][0]))
+					{ // Remove any reward that may be assign by previous runs of this list while not fully complete
+							if($student->get_student_detail("s_beloning_". ($period != 3 ? $period : "3"). "_cheque_". substr($curyear,0,4)) == "")
+								mysql_query("DELETE FROM s_beloning_". $period. "_". substr($curyear,0,4). " WHERE sid=". $student->get_id(), $userlink);
 					}
-					mysql_query($bonq,$userlink);
 				}
 		  }
-		  else
-		  {
-				//echo("repper=". $repper. ", period=". $period. "<BR>");
-		    // If a cheque number is already defined, don't clear the reward amount!
-				$cnrqr = inputclassbase::load_query("SELECT data FROM s_beloning_". ($period < 3 ? $period : "3"). "_cheque_". substr($curyear,0,4). " WHERE sid=". $student->get_id());
-		    echo("<td class=". ($period == 1 ? "emptyhead1" : "emptyhead"). ">&nbsp;</td>");
-		    if($period != 3 && $student->get_student_detail("s_inschrijfgeld") > 50.0 && !isset($cnrqr['data'][0]))
-				{ // Remove any reward that may be assign by previous runs of this list while not fully complete
-						if($student->get_student_detail("s_beloning_". ($period != 3 ? $period : "3"). "_cheque_". substr($curyear,0,4)) == "")
-							mysql_query("DELETE FROM s_beloning_". $period. "_". substr($curyear,0,4). " WHERE sid=". $student->get_id(), $userlink);
-				}
-		  }
-		  
 		  echo("</TR>");
 		}
 	    $llnoffset++;
