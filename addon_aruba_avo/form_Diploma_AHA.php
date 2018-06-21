@@ -354,7 +354,7 @@
 	  
 	if(!$passed)
 	{
-	  echo($student->get_lastname(). ",". $student->get_firstname(). " Not passed (". $certconditions. ",". $subjcount. ",". $negpoints. ",". $totpoints. ",". $coreshort. ",". $fullfail. ",". $fails. ",". $choicesubfail. ",". round($exavg,2). ",". $extotval. ",". $excnt. ")<BR>");
+	  //echo($student->get_lastname(). ",". $student->get_firstname(). " Not passed (". $certconditions. ",". $subjcount. ",". $negpoints. ",". $totpoints. ",". $coreshort. ",". $fullfail. ",". $fails. ",". $choicesubfail. ",". round($exavg,2). ",". $extotval. ",". $excnt. ")<BR>");
 	  return;
 	}
  
