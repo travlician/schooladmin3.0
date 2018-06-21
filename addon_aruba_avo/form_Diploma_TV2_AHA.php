@@ -56,7 +56,7 @@
   echo '<LINK rel="stylesheet" type="text/css" href="style_Diploma_AHA.css" title="style1">';
   
   // Translation of subject package to subjects (short names)
- $pksubs['01'] = array('Ne','En','Wi-A','Ak','Gs','Sp');
+  $pksubs['01'] = array('Ne','En','Wi-A','Ak','Gs','Sp');
   $pksubs['02'] = array('Ne','En','Wi-A','Ec','Gs','Sp');
   $pksubs['03'] = array('Ne','En','Wi-A','Ec','Ak','Sp');
   $pksubs['04'] = array('Ne','En','Wi-A','Ak','Gs','M&O');
@@ -79,6 +79,7 @@
   $pksubs['21'] = array('Ne','En','Wi-B','Na','Sk','Bio');
   $pksubs['22'] = array('Ne','En','Wi-B','Na','Sk','Ec');
   $pksubs['23'] = array('Ne','En','Wi-A','Sk','Bio','Inf');
+	$pksubs['24'] = array('Ne','En','Wi-A','Sk','Bio','Pa');
   // HU 90+ with CKV!
 	$pksubs['94'] = array('Ne','En','Sp','Ak','Gs','Pa');
 	$pksubs['95'] = array('Ne','En','Sp','Ak','Gs','CKV');

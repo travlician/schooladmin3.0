@@ -75,6 +75,7 @@
   $pksubs['21'] = array('Ne','En','Wi-B','Na','Sk','Bio');
   $pksubs['22'] = array('Ne','En','Wi-B','Na','Sk','Ec');
   $pksubs['23'] = array('Ne','En','Wi-A','Sk','Bio','Inf');
+	$pksubs['24'] = array('Ne','En','Wi-A','Sk','Bio','Pa');
   // HU 90+ with CKV!
 	$pksubs['94'] = array('Ne','En','Sp','Ak','Gs','Pa');
 	$pksubs['95'] = array('Ne','En','Sp','Ak','Gs','CKV');
