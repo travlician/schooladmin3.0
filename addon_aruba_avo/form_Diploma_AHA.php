@@ -247,12 +247,18 @@
 	  $evcomp = explode(" : ",$package);
 	  if(isset($evcomp[1]))
 		{
-			$evs = explode(",",$evcomp[1]);
+			$evs = explode(" ",$evcomp[1]);
 	    $ev=$evs[0];
-			if(isset($evs[1]))
-				$ev2 = $evs[1];
-			if(isset($evs[2]))
-				$ev3 = $evs[2];
+		}
+	  if(isset($evcomp[2]))
+		{
+			$evs = explode(" ",$evcomp[2]);
+	    $ev2=$evs[0];
+		}
+	  if(isset($evcomp[3]))
+		{
+			$evs = explode(" ",$evcomp[3]);
+	    $ev3=$evs[0];
 		}
 	}
 
@@ -432,6 +438,12 @@
 	  echo("<P class=subjectline10>". $sub2full[$ev]. "</p>");
 	else
 	  echo("<P class=subjectline10>- - - - -</p>");
+	/* // PArt below won't work on standard diplomas!
+	if(isset($ev2))
+	  echo("<P class=subjectline10>". $sub2full[$ev2]. "</p>");
+	if(isset($ev3))
+	  echo("<P class=subjectline10>". $sub2full[$ev3]. "</p>");
+	// Till here!	 */
 	
 	echo("<P class=subjectline11>". $student->get_student_detail("s_pfwvak")."&nbsp;</p>");
 	echo("<P class=subjectline12>- - - - -</p>");
