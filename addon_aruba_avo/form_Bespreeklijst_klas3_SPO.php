@@ -76,7 +76,7 @@
 		echo("<SCRIPT> var printdate = prompt('Datum:','". date("d-m-Y"). "'); </script>");
 		echo("<SPAN style='padding-left: 50px; padding-right: 50px; display: inline-block; font-size: 160%;'>Beslissingsvergadering</span>
 					<SPAN style='padding-left: 50px; padding-right: 50px; display: inline-block; font-size: 160%;'>Cijferlijst</span>
-					<SPAN style='padding-left: 50px; padding-right: 50px; display: inline-block; font-size: 160%;'>Tijdvak ". (date("m") == 6 ? 1 : 2). "</span>
+					<SPAN style='padding-left: 50px; padding-right: 50px; display: inline-block; font-size: 160%;'>Tijdvak ". ((date("m") > 5 && date("d") > 15) ? 2 : 1). "</span>
 					<SPAN style='padding-left: 50px; padding-right: 50px; display: inline-block; font-size: 160%;'>". $schoolyear. "</span><BR><BR>
 						");
 		echo("<TABLE style='page-break-after: avoid;'><TR><TH class=logoname colspan=2><br><img src=schoollogo.png width=70%><br><BR><SPAN style='font-size: 140%;'><BR>Scol Practico pa Ofishi<BR>Locatie ". (substr($mygroup->get_groupname(),1,1) == "C" ? "Santa Cruz" : "Savaneta"). "<BR>Schooljaar ". $schoolyear. "<BR><BR>Klas ". $mygroup->get_groupname());
