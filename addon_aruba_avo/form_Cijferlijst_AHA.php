@@ -108,26 +108,26 @@ require_once("AHA_pksubs.php");
     $grades = inputclassbase::load_query($sql_query);
     if(isset($grades))
       foreach($grades['result'] AS $grix => $gres)
-	  {
-	    if($grades['year'][$grix] == $schoolyear)
 			{
-					if($grades['period'][$grix] > 0 && $gres > 0.0)
-							$results_array[$grades['period'][$grix]][$grades['shortname'][$grix]] = number_format($gres,1,',','.');
+				if($grades['year'][$grix] == $schoolyear)
+				{
+						if($grades['period'][$grix] > 0 && $gres > 0.0)
+								$results_array[$grades['period'][$grix]][$grades['shortname'][$grix]] = number_format($gres,1,',','.');
+					else
+						if($gres > 0 && ((isset($results_array[2][$grades['shortname'][$grix]]) && isset($results_array[3][$grades['shortname'][$grix]])) || in_array($grades['shortname'][$grix],$noexam)))
+									$results_array[$grades['period'][$grix]][$grades['shortname'][$grix]] = $gres;
+				}
 				else
-					if($gres > 0 && ((isset($results_array[2][$grades['shortname'][$grix]]) && isset($results_array[3][$grades['shortname'][$grix]])) || in_array($grades['shortname'][$grix],$noexam)))
-								$results_array[$grades['period'][$grix]][$grades['shortname'][$grix]] = $gres;
+				{
+					if(isset($prvyear) && $prvyear != $grades['year'][$grix])
+						unset($results_prv); // a newer year with results is entered now! So forget ealier year
+						if($grades['period'][$grix] > 0 && $gres > 0.0)
+								$results_prv[$grades['period'][$grix]][$grades['shortname'][$grix]] = number_format($gres,1,',','.');
+					else
+						if($gres > 0 && isset($results_prv[2][$grades['shortname'][$grix]]) && isset($results_prv[3][$grades['shortname'][$grix]]))
+									$results_prv[$grades['period'][$grix]][$grades['shortname'][$grix]] = $gres;
+				}
 			}
-			else
-			{
-				if(isset($prvyear) && $prvyear != $grades['year'][$grix])
-					unset($results_prv); // a newer year with results is entered now! So forget ealier year
-					if($grades['period'][$grix] > 0 && $gres > 0.0)
-							$results_prv[$grades['period'][$grix]][$grades['shortname'][$grix]] = number_format($gres,1,',','.');
-				else
-					if($gres > 0 && isset($results_prv[2][$grades['shortname'][$grix]]) && isset($results_prv[3][$grades['shortname'][$grix]]))
-								$results_prv[$grades['period'][$grix]][$grades['shortname'][$grix]] = $gres;
-			}
-	  }
 	$certgrades = inputclassbase::load_query("SELECT * FROM excertdata LEFT JOIN subject USING(mid) WHERE sid=". $student->get_id());
 	if(isset($certgrades['shortname']))
 	{
@@ -149,7 +149,7 @@ require_once("AHA_pksubs.php");
 	    if($vrcertqr['xstatus'][$vix] < 9)
 	      $vrijst[$vmid] = $vrcertqr['xstatus'][$vix]+2;
 		else
-			if(in_array($vmid,$pksubs[$profid]))
+			//if(in_array($vmid,$pksubs[$profid])) // Don't understand why this condition was here!
 				$certs[$vmid] = $vrcertqr['xstatus'][$vix]-3;
 	  }
 	
@@ -181,17 +181,18 @@ require_once("AHA_pksubs.php");
 	if(isset($certs))
 	  foreach($certs AS $ssn => $res)
 	  {
-		$results_array[0][$ssn] = $res; // set end result
-	    if(isset($results_prv[0][$ssn]) && $results_prv[0][$ssn] == $res)
-		{ // result from previous year is present and matches set result, so can use these results for this list
-		  $results_array[2][$ssn] = $results_prv[2][$ssn];
-		  $results_array[3][$ssn] = $results_prv[3][$ssn];
-		}
-		else
-		{ // No valid result from previous year present, set end and mark SE and CE result in light grey as vrijstelling source
-		  $results_array[2][$ssn] = "<span class=vcmark>Cert</span>";
-		  $results_array[3][$ssn] = "<span class=vcmark>Cert</span>";		  
-		}
+			//echo("Processing cert for ". $ssn. "<BR>");
+			$results_array[0][$ssn] = $res; // set end result
+				if(isset($results_prv[0][$ssn]) && $results_prv[0][$ssn] == $res)
+			{ // result from previous year is present and matches set result, so can use these results for this list
+				$results_array[2][$ssn] = $results_prv[2][$ssn];
+				$results_array[3][$ssn] = $results_prv[3][$ssn];
+			}
+			else
+			{ // No valid result from previous year present, set end and mark SE and CE result in light grey as vrijstelling source
+				$results_array[2][$ssn] = "<span class=vcmark>Cert</span>";
+				$results_array[3][$ssn] = "<span class=vcmark>Cert</span>";		  
+			}
 	  }
 
 	// Get prefilled I&S and PFW results
