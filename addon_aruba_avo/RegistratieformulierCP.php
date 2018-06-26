@@ -65,7 +65,7 @@
 		echo("Er is geen logo");
 	};
 
-	echo("<form method=post action=handle_inschrijving.php name=inschrijving id=inschrijving>");
+	echo("<form method=post action=handle_inschrijvingCP.php name=inschrijving id=inschrijving>");
 	echo("<input type=hidden name='tablename' value='nieuwe_registratie'>");
 	
 
@@ -310,7 +310,7 @@
 // Als de inschrijfer (administratie en/of de systeembeheerder dit bekijkt, mag deze knop niet verschijnen:
 // if ...	
 	// versturen
-	echo("<div align=center><img src=PNG/KnopVersturen.png width=100 align=middle onClick=inschrijving.submit()></div>");
+	echo("<div align=center><img src='". $pngsource. "/KnopVersturen.png' width=100 align=middle onClick=inschrijving.submit()></div>");
 /*
 // Dit stukje is alleen voor de inschrijver - administratie en/of de systeembeheerder:	
 // PARAGRAAF 9: 5 velden >> Informatie over bezochte scholen van de leerling
@@ -332,7 +332,7 @@
 // Als de inschrijfer (administratie en/of de systeembeheerder akkoord is:
 // if ...	
 	// versturen
-	echo("<div align=center><img src=PNG/KnopInschrijven.png width=100 align=middle></div>");
+	echo("<div align=center><img src=". $pngsource. "/KnopInschrijven.png width=100 align=middle></div>");
 */	
   // close the page
   echo("</html>");
