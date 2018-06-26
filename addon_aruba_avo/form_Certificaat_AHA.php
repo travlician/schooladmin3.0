@@ -17,6 +17,9 @@
   require_once("student.php");
   require_once("group.php");
   require_once("teacher.php");
+
+	$coresubs = array("Ne","En","Wi-A","Wi-B");
+	$coresubs = array("Ne","En","Wi-A","Wi-B");
   
   // First see if date is already typed, if not ask for it!
   if(!isset($_POST['rdate']))
@@ -54,7 +57,7 @@
   echo '<LINK rel="stylesheet" type="text/css" href="style_Certificaat_AHA.css" title="style1">';
   
   // Translation of subject package to subjects (short names)
-require_once("AHA_pksubs.php");  
+	require_once("AHA_pksubs.php");  
   $pksubs[0] = array('Ne','En','Wi-A','Ak','Gs','Sp','Ec','M&O','Bio','Wi-B','Na','Sk','Pa','Inf');
   
   $sub2full = array("Ne"=>"Nederlandse taal en literatuur", "En"=>"Engelse taal en literatuur", "Wi-A"=>"Wiskunde A",
@@ -70,7 +73,7 @@ require_once("AHA_pksubs.php");
 
   if(isset($students))
   {
-	echo("<P class=footnote>Doorhalingen en/of wijzigingen maken dit certificaat ongeldig.</p>");
+		echo("<P class=footnote>Doorhalingen en/of wijzigingen maken dit certificaat ongeldig.</p>");
     foreach($students AS $student)
      stud_grades($student, $schoolyear,$mygroup);
   } // End if student for the group
@@ -79,7 +82,7 @@ require_once("AHA_pksubs.php");
     
   function stud_grades($student,$schoolyear,$group)
   {
-    global $noexam;
+    global $noexam, $coresubs;
     $sid = $student->get_id();
     global $schoolname,$schoolyear,$pksubs,$sub2full,$digittext;
 
@@ -103,30 +106,30 @@ require_once("AHA_pksubs.php");
 	unset($results_array);
 	unset($results_prv);
 	unset($prvyear);
-    $sql_query = "SELECT gradestore.*,shortname FROM gradestore LEFT JOIN subject USING(mid) WHERE sid=". $student->get_id(). " ORDER BY period DESC, year DESC";
-    $grades = inputclassbase::load_query($sql_query);
-    if(isset($grades))
-      foreach($grades['result'] AS $grix => $gres)
-	  {
-	    if($grades['year'][$grix] == $schoolyear)
+	$sql_query = "SELECT gradestore.*,shortname FROM gradestore LEFT JOIN subject USING(mid) WHERE sid=". $student->get_id(). " ORDER BY period DESC, year DESC";
+	$grades = inputclassbase::load_query($sql_query);
+	if(isset($grades))
+		foreach($grades['result'] AS $grix => $gres)
 		{
-	      if($grades['period'][$grix] > 0 && $gres > 0.0)
-            $results_array[$grades['period'][$grix]][$grades['shortname'][$grix]] = number_format($gres,1,',','.');
-		  else
-		    if($gres > 0 && isset($results_array[2][$grades['shortname'][$grix]]) && 
-			(isset($results_array[3][$grades['shortname'][$grix]]) || in_array($grades['shortname'][$grix],$noexam)))
-              $results_array[$grades['period'][$grix]][$grades['shortname'][$grix]] = $gres;
-		}
-		else
-		{
-		  if(isset($prvyear) && $prvyear != $grades['year'][$grix])
-		    unset($results_prv); // a newer year with results is entered now! So forget ealier year
-	      if($grades['period'][$grix] > 0 && $gres > 0.0)
-            $results_prv[$grades['period'][$grix]][$grades['shortname'][$grix]] = number_format($gres,1,',','.');
-		  else
-		    if($gres > 0 && isset($results_prv[2][$grades['shortname'][$grix]]) && isset($results_prv[3][$grades['shortname'][$grix]]))
-              $results_prv[$grades['period'][$grix]][$grades['shortname'][$grix]] = $gres;
-		}
+			if($grades['year'][$grix] == $schoolyear)
+			{
+					if($grades['period'][$grix] > 0 && $gres > 0.0)
+							$results_array[$grades['period'][$grix]][$grades['shortname'][$grix]] = number_format($gres,1,',','.');
+				else
+					if($gres > 0 && isset($results_array[2][$grades['shortname'][$grix]]) && 
+				(isset($results_array[3][$grades['shortname'][$grix]]) || in_array($grades['shortname'][$grix],$noexam)))
+								$results_array[$grades['period'][$grix]][$grades['shortname'][$grix]] = $gres;
+			}
+			else
+			{
+				if(isset($prvyear) && $prvyear != $grades['year'][$grix])
+					unset($results_prv); // a newer year with results is entered now! So forget ealier year
+					if($grades['period'][$grix] > 0 && $gres > 0.0)
+							$results_prv[$grades['period'][$grix]][$grades['shortname'][$grix]] = number_format($gres,1,',','.');
+				else
+					if($gres > 0 && isset($results_prv[2][$grades['shortname'][$grix]]) && isset($results_prv[3][$grades['shortname'][$grix]]))
+								$results_prv[$grades['period'][$grix]][$grades['shortname'][$grix]] = $gres;
+			}
 	  }
 	
 	// Get "Vrijstellingen" and certificates
@@ -142,36 +145,45 @@ require_once("AHA_pksubs.php");
 		  $certs[$vmid] = $vrcertqr['xstatus'][$vix]-3;
 	  }
 	
-	// If a "vrijstelling" or certificate is applicable, see if we get results from previous year.
+	// If a "vrijstelling" or certificate is applicable, see if we get results from excertdata.
+	$excertdataqr = inputclassbase::load_query("SELECT * FROM excertdata LEFT JOIN subject USING(mid) WHERE sid=". $student->get_id(). " ORDER BY year DESC");
+	if(isset($excertdataqr['sid']))
+		foreach($excertdataqr['sid'] AS $cdix => $sid)
+		{
+			$results_prv[2][$excertdataqr['shortname'][$cdix]] = $excertdataqr['seresult'][$cdix];
+			$results_prv[3][$excertdataqr['shortname'][$cdix]] = $excertdataqr['exresult'][$cdix];
+			$results_prv[2][$excertdataqr['shortname'][$cdix]] = $excertdataqr['endresult'][$cdix];
+		}
+
 	if(isset($vrijst))
 	  foreach($vrijst AS $ssn => $res)
 	  {
-		$results_array[0][$ssn] = $res; // set end result
-	    if(isset($results_prv[0][$ssn]) && $results_prv[0][$ssn] == $res)
-		{ // result from previous year is present and matches set result, so can use these results for this list
-		  $results_array[2][$ssn] = $results_prv[2][$ssn];
-		  $results_array[3][$ssn] = $results_prv[3][$ssn];
-		}
-		else
-		{ // No valid result from previous year present, set end and mark SE and CE result in light grey as vrijstelling source
-		  $results_array[2][$ssn] = "<span class=vcmark>Vrijst</span>";
-		  $results_array[3][$ssn] = "<span class=vcmark>Vrijst</span>";		  
-		}
+			$results_array[0][$ssn] = $res; // set end result
+				if(isset($results_prv[0][$ssn]) && $results_prv[0][$ssn] == $res)
+			{ // result from previous year is present and matches set result, so can use these results for this list
+				$results_array[2][$ssn] = $results_prv[2][$ssn];
+				$results_array[3][$ssn] = $results_prv[3][$ssn];
+			}
+			else
+			{ // No valid result from previous year present, set end and mark SE and CE result in light grey as vrijstelling source
+				$results_array[2][$ssn] = "<span class=vcmark>Vrijst</span>";
+				$results_array[3][$ssn] = "<span class=vcmark>Vrijst</span>";		  
+			}
 	  }
 	if(isset($certs))
 	  foreach($certs AS $ssn => $res)
 	  {
-		$results_array[0][$ssn] = $res; // set end result
-	    if(isset($results_prv[0][$ssn]) && $results_prv[0][$ssn] == $res)
-		{ // result from previous year is present and matches set result, so can use these results for this list
-		  $results_array[2][$ssn] = $results_prv[2][$ssn];
-		  $results_array[3][$ssn] = $results_prv[3][$ssn];
-		}
-		else
-		{ // No valid result from previous year present, set end and mark SE and CE result in light grey as vrijstelling source
-		  $results_array[2][$ssn] = "<span class=vcmark>Cert</span>";
-		  $results_array[3][$ssn] = "<span class=vcmark>Cert</span>";		  
-		}
+			$results_array[0][$ssn] = $res; // set end result
+				if(isset($results_prv[0][$ssn]) && $results_prv[0][$ssn] == $res)
+			{ // result from previous year is present and matches set result, so can use these results for this list
+				$results_array[2][$ssn] = $results_prv[2][$ssn];
+				$results_array[3][$ssn] = $results_prv[3][$ssn];
+			}
+			else
+			{ // No valid result from previous year present, set end and mark SE and CE result in light grey as vrijstelling source
+				$results_array[2][$ssn] = "<span class=vcmark>Cert</span>";
+				$results_array[3][$ssn] = "<span class=vcmark>Cert</span>";		  
+			}
 	  }
 
 	// Get prefilled I&S and PFW results
@@ -186,17 +198,22 @@ require_once("AHA_pksubs.php");
 	unset($ev2);
 	unset($ev3);
 	if(substr($package,-1) != ")")
-	{  //student has extra subject(s)
+	{  //student has extra subject
 	  $evcomp = explode(" : ",$package);
 	  if(isset($evcomp[1]))
 		{
-			$evlist = explode(",",$evcomp[1]);
-			if(isset($evlist[0]))
-				$ev=$evlist[0];
-			if(isset($evlist[1]))
-				$ev2=$evlist[1];
-			if(isset($evlist[2]))
-				$ev3=$evlist[2];
+			$evs = explode(" ",$evcomp[1]);
+	    $ev=$evs[0];
+		}
+	  if(isset($evcomp[2]))
+		{
+			$evs = explode(" ",$evcomp[2]);
+	    $ev2=$evs[0];
+		}
+	  if(isset($evcomp[3]))
+		{
+			$evs = explode(" ",$evcomp[3]);
+	    $ev3=$evs[0];
 		}
 	}
 
@@ -221,18 +238,48 @@ require_once("AHA_pksubs.php");
 	$fullfail = 0;
 	$fails = 0;
 	$choicesubfail = 0;
+	$coreshort = 0;
+	$extotval = 0.0;
+	$excnt = 0.0;
+
+	// Need to know which subjects are in the package
+	unset($mysubs);
+	$mysubsqr = inputclassbase::load_query("SELECT shortname FROM s_package LEFT JOIN subjectpackage USING(packagename) LEFT JOIN subject USING(mid) WHERE sid=". $student->get_id(). " AND shortname != 'I&S' AND shortname != 'Pfw'");
+	if(isset($mysubsqr['shortname']))
+		foreach($mysubsqr['shortname'] AS $ssn)
+			$mysubs[$ssn] = $ssn;
 
 	if(isset($results_array[0]))
 	  foreach($results_array[0] AS $ssn => $res)
 	  {
-	    $subjcount++;
-			if($res < 6)
-				$negpoints += 6 - $res;
-			$totpoints += $res;
-			if($res < 4)
-				$fullfail++;
-			if(isset($profile) && $ssn == $pksubs[$profid][5] && $res < 6)
-				$choicesubfail++;
+			if(in_array($ssn,$mysubs))
+			{
+				$subjcount++;
+				if(isset($results_array[3][$ssn]) && $results_array[3][$ssn] > 0)
+					$exres = str_replace(",",".",$results_array[3][$ssn]);
+				else if(isset($results_prv[3][$ssn]))
+					$exres = $results_prv[3][$ssn];
+				else
+					unset($exres);
+				if($res < 6)
+				{
+						$negpoints += 6 - $res;
+						//echo("Negpoints set to ". $negpoints. " after processing ". $ssn. "<BR>");
+						if(in_array($ssn,$coresubs))
+							$coreshort += 6 - $res;
+						//else
+							//echo($ssn. " not in coresubs<BR>");
+				}
+				$totpoints += $res;
+				if(isset($exres))
+				{
+					$extotval += $exres;
+					$excnt++;
+					//echo("extotval set to ". $extotval. " (". $exres. ") after evaluating ". $ssn. " and excnt=". $excnt. "<BR>");
+				}
+				if($res < 4)
+					$fullfail++;
+			}
 	  }
 	if(isset($combires))
 	{
@@ -250,11 +297,23 @@ require_once("AHA_pksubs.php");
 	  if($res < 6)
 	  {
 	    $negpoints += 6 - $res;
-		$choicesubfail++;
+			$choicesubfail++;
 	  }
 	  $totpoints += $res;
 	  if($res < 4)
 	    $fullfail++;
+		if(isset($results_array[3][$ev]) && $results_array[3][$ev] > 0)
+			$exres = str_replace(",",".",$results_array[3][$ev]);
+		else if(isset($results_prv[3][$ev]))
+			$exres = $results_prv[3][$ev];
+		else
+			unset($exres);
+		if(isset($exres))
+		{
+			$extotval += $exres;
+			$excnt++;
+			//echo("extotval set to ". $extotval. " (". $exres. ") after evaluating ". $ev. " and excnt=". $excnt. "<BR>");
+		}
 	}
 	if(isset($ev3) && isset($results_array[0][$ev3]))
 	{
@@ -268,6 +327,18 @@ require_once("AHA_pksubs.php");
 	  $totpoints += $res;
 	  if($res < 4)
 	    $fullfail++;
+		if(isset($results_array[3][$ev3]) && $results_array[3][$ev3] > 0)
+			$exres = str_replace(",",".",$results_array[3][$ev3]);
+		else if(isset($results_prv[3][$ev3]))
+			$exres = $results_prv[3][$ev3];
+		else
+			unset($exres);
+		if(isset($exres))
+		{
+			$extotval += $exres;
+			$excnt++;
+			//echo("extotval set to ". $extotval. " (". $exres. ") after evaluating ". $ev3. " and excnt=". $excnt. "<BR>");
+		}
 	}
 	if(isset($ev2) && isset($results_array[0][$ev2]))
 	{
@@ -281,18 +352,38 @@ require_once("AHA_pksubs.php");
 	  $totpoints += $res;
 	  if($res < 4)
 	    $fullfail++;
+		if(isset($results_array[3][$ev2]) && $results_array[3][$ev2] > 0)
+			$exres = str_replace(",",".",$results_array[3][$ev2]);
+		else if(isset($results_prv[3][$ev2]))
+			$exres = $results_prv[3][$ev2];
+		else
+			unset($exres);
+		if(isset($exres))
+		{
+			$extotval += $exres;
+			$excnt++;
+			//echo("extotval set to ". $extotval. " (". $exres. ") after evaluating ". $ev. " and excnt=". $excnt. "<BR>");
+		}
 	}
+	if($excnt > 0.0)
+		$exavg = $extotval / $excnt;
+	else
+		$exavg = 0;
 	//$certconditions = isset($certs);
 	$certconditions = false;
 		if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3) && $fullfail == 0 && $fails < 3))
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2) && $fullfail == 0 && $fails < 3) && $exavg >= 5.5)
 	  $passed = true;
 	else
 	  $passed = false;
 	  
 	if($passed)
+	{
+		//echo("No certificate for ". $student->get_lastname(). ", ". $student->get_firstname(). " bacause passed exam (coreshort=". $coreshort. ", exavg=". $exavg. ")<BR>");
 	  return; // If passed, a diploma will be issued 
+	}
+	//echo("Not passed, subjcount=". $subjcount. ", negpoints=". $negpoints. ", totpoints=". $totpoints. ", coreshort=". $coreshort. ", fullfail=". $fullfail. ", exavg=". $exavg. "<BR>");
 	// Now find out if any certificates apply!
 	unset($certprint);
 	// Debugging
