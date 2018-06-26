@@ -250,7 +250,7 @@
 				show_result($llnoffset+1,"gods",false,true);
 				echo("</tr><TR><td class=subjectcol><B>Lezen</b></td></tr>");
 				echo("</tr><TR><td class=subjectcol><SPAN class=ident>Technisch lezen</span></td>");
-				show_result($llnoffset+1,"lztl");
+				show_result($llnoffset+1,"lztl",true);
 				echo("</tr><TR><td class=subjectcol><SPAN class=ident>AVI - niveau</span></td>");
 				show_result($llnoffset+1,"lzavi",false,true);
 				echo("</tr><TR class=boldseps><td class=subjectcol><B>Schrijven</b></td>");
