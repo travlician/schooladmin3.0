@@ -212,11 +212,26 @@ require_once("AHA_pksubs.php");
 		  
 	// Check if there is an extra subject
 	unset($ev);
+	unset($ev2);
+	unset($ev3);
 	if(substr($package,-1) != ")")
 	{  //student has extra subject
 	  $evcomp = explode(" : ",$package);
 	  if(isset($evcomp[1]))
-	    $ev=$evcomp[1];
+		{
+			$evs = explode(" ",$evcomp[1]);
+	    $ev=$evs[0];
+		}
+	  if(isset($evcomp[2]))
+		{
+			$evs = explode(" ",$evcomp[2]);
+	    $ev2=$evs[0];
+		}
+	  if(isset($evcomp[3]))
+		{
+			$evs = explode(" ",$evcomp[3]);
+	    $ev3=$evs[0];
+		}
 	}
 	  
 	// Now comes the table with results...
@@ -273,28 +288,45 @@ require_once("AHA_pksubs.php");
 	       (isset($results_array[0][$pksubs[$profid][4]]) ? $digittext[$results_array[0][$pksubs[$profid][4]]] : "-"). "</td></tr>");
 	// Choice subject(s)
 	echo("<tr><td class=bold colspan=5>KEUZEDEEL</td></tr>");
-	if(isset($ev))
-	{
-	  echo("<tr><td>". $sub2full[$pksubs[$profid][5]]. "</td><td class=center>". 
-	       (isset($results_array[2][$pksubs[$profid][5]]) ? $results_array[2][$pksubs[$profid][5]] : "-"). "</td><td class=center>".
-	       (isset($results_array[3][$pksubs[$profid][5]]) ? $results_array[3][$pksubs[$profid][5]] : "-"). "</td><td class=centerdashr>".
-	       (isset($results_array[0][$pksubs[$profid][5]]) ? $results_array[0][$pksubs[$profid][5]] : "-"). "</td><td>".
-	       (isset($results_array[0][$pksubs[$profid][5]]) ? $digittext[$results_array[0][$pksubs[$profid][5]]] : "-"). "</td></tr>");
-	  echo("<tr><td class=fatbot>". $sub2full[$ev]. "</td><td class=centerfatbot>". 
-	       (isset($results_array[2][$ev]) ? $results_array[2][$ev] : "-"). "</td><td class=centerfatbot>".
-	       (isset($results_array[3][$ev]) ? $results_array[3][$ev] : "-"). "</td><td class=centerfatbotdashr>".
-	       (isset($results_array[0][$ev]) ? $results_array[0][$ev] : "-"). "</td><td class=fatbot>".
-	       (isset($results_array[0][$ev]) ? $digittext[$results_array[0][$ev]] : "-"). "</td></tr>");
-	}
+	if(isset($ev) || isset($ev2) || isset($ev3))
+		$clspost = "";
 	else
-	{
-	  echo("<tr><td class=fatbot>". $sub2full[$pksubs[$profid][5]]. "</td><td class=centerfatbot>". 
-	       (isset($results_array[2][$pksubs[$profid][5]]) ? $results_array[2][$pksubs[$profid][5]] : "-"). "</td><td class=centerfatbot>".
-	       (isset($results_array[3][$pksubs[$profid][5]]) ? $results_array[3][$pksubs[$profid][5]] : "-"). "</td><td class=centerfatbotdashr>".
-	       (isset($results_array[0][$pksubs[$profid][5]]) ? $results_array[0][$pksubs[$profid][5]] : "-"). "</td><td class=fatbot>".
-	       (isset($results_array[0][$pksubs[$profid][5]]) ? $digittext[$results_array[0][$pksubs[$profid][5]]] : "-"). "</td></tr>");
-	}
-	// Combi result buildup
+		$clspost = "fatbot";
+
+	echo("<tr><td>". $sub2full[$pksubs[$profid][5]]. "</td><td class=center". $clspost. ">". 
+			 (isset($results_array[2][$pksubs[$profid][5]]) ? $results_array[2][$pksubs[$profid][5]] : "-"). "</td><td class=center". $clspost. ">".
+			 (isset($results_array[3][$pksubs[$profid][5]]) ? $results_array[3][$pksubs[$profid][5]] : "-"). "</td><td class=center". $clspost. "dashr>".
+			 (isset($results_array[0][$pksubs[$profid][5]]) ? $results_array[0][$pksubs[$profid][5]] : "-"). "</td><td>".
+			 (isset($results_array[0][$pksubs[$profid][5]]) ? $digittext[$results_array[0][$pksubs[$profid][5]]] : "-"). "</td></tr>");
+	if(isset($ev2) || isset($ev3))
+		$clspost = "";
+	else
+		$clspost = "fatbot";
+	if(isset($ev))
+		echo("<tr><td class=". $clspost. ">". $sub2full[$ev]. "</td><td class=center". $clspost. ">". 
+			 (isset($results_array[2][$ev]) ? $results_array[2][$ev] : "-"). "</td><td class=center". $clspost. ">".
+			 (isset($results_array[3][$ev]) ? $results_array[3][$ev] : "-"). "</td><td class=center". $clspost. "dashr>".
+			 (isset($results_array[0][$ev]) ? $results_array[0][$ev] : "-"). "</td><td class=". $clspost. ">".
+			 (isset($results_array[0][$ev]) ? $digittext[$results_array[0][$ev]] : "-"). "</td></tr>");
+	if(isset($ev3))
+		$clspost = "";
+	else
+		$clspost = "fatbot";
+	if(isset($ev2))
+		echo("<tr><td class=". $clspost. ">". $sub2full[$ev2]. "</td><td class=center". $clspost. ">". 
+			 (isset($results_array[2][$ev2]) ? $results_array[2][$ev2] : "-"). "</td><td class=center". $clspost. ">".
+			 (isset($results_array[3][$ev2]) ? $results_array[3][$ev2] : "-"). "</td><td class=center". $clspost. "dashr>".
+			 (isset($results_array[0][$ev2]) ? $results_array[0][$ev2] : "-"). "</td><td class=". $clspost. ">".
+			 (isset($results_array[0][$ev2]) ? $digittext[$results_array[0][$ev2]] : "-"). "</td></tr>");
+	$clspost = "fatbot";
+	if(isset($ev3))
+		echo("<tr><td class=". $clspost. ">". $sub2full[$ev3]. "</td><td class=center". $clspost. ">". 
+			 (isset($results_array[2][$ev3]) ? $results_array[2][$ev3] : "-"). "</td><td class=center". $clspost. ">".
+			 (isset($results_array[3][$ev3]) ? $results_array[3][$ev3] : "-"). "</td><td class=center". $clspost. "dashr>".
+			 (isset($results_array[0][$ev3]) ? $results_array[0][$ev3] : "-"). "</td><td class=". $clspost. ">".
+			 (isset($results_array[0][$ev3]) ? $digittext[$results_array[0][$ev3]] : "-"). "</td></tr>");
+
+  // Combi result buildup
 	echo("<tr><td class=bold colspan=5>*Onderdelen van het combinatiecijfer</td></tr>");
 	echo("<tr><td>Individu en samenleving/maatschappijleer</td><td class=center>". (isset($isres) ? number_format($isres,1,',','.') : "").
 	      "</td><td>&nbsp;</td><td class=dashr>&nbsp;</td><td>&nbsp;</td></tr>");
@@ -365,6 +397,48 @@ require_once("AHA_pksubs.php");
 		if(isset($results_array[3][$ev]) && $results_array[3][$ev] != "-")
 		{
 			$extotval += str_replace(",",".",$results_array[3][$ev]);
+			$excnt += 1.0;
+			//echo("Added ". str_replace(",",".",$results_array[3][$ev]). " to CSE avg for ". $ev. "<BR>");
+		}
+	}
+	if(isset($ev2) && isset($results_array[0][$ev2]))
+	{
+	  $res = $results_array[0][$ev2];
+	  $subjcount++;
+	  if($res < 6)
+	  {
+	    $negpoints += 6 - $res;
+			$choicesubfail++;
+			if(in_array($ev2,$coresubs))
+				$coreshort += 6 - $res;
+	  }
+	  $totpoints += $res;
+	  if($res < 4)
+	    $fullfail++;
+		if(isset($results_array[3][$ev2]) && $results_array[3][$ev2] != "-")
+		{
+			$extotval += str_replace(",",".",$results_array[3][$ev2]);
+			$excnt += 1.0;
+			//echo("Added ". str_replace(",",".",$results_array[3][$ev]). " to CSE avg for ". $ev. "<BR>");
+		}
+	}
+	if(isset($ev3) && isset($results_array[0][$ev3]))
+	{
+	  $res = $results_array[0][$ev3];
+	  $subjcount++;
+	  if($res < 6)
+	  {
+	    $negpoints += 6 - $res;
+			$choicesubfail++;
+			if(in_array($ev3,$coresubs))
+				$coreshort += 6 - $res;
+	  }
+	  $totpoints += $res;
+	  if($res < 4)
+	    $fullfail++;
+		if(isset($results_array[3][$ev3]) && $results_array[3][$ev3] != "-")
+		{
+			$extotval += str_replace(",",".",$results_array[3][$ev3]);
 			$excnt += 1.0;
 			//echo("Added ". str_replace(",",".",$results_array[3][$ev]). " to CSE avg for ". $ev. "<BR>");
 		}
