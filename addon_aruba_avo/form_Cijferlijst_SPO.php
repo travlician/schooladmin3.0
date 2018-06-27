@@ -141,11 +141,13 @@
 					if(sizeof($students['sid']) - $llnoffset < $scnt)
 						$scnt = sizeof($students['sid']) - $llnoffset;
 					// Show frontpage
-					echo("<img src=schoollogo.png class=frontlogo><DIV class=imageright><P class=titlehdr>LISTA DI CIFRA</p><P class=schoolnamefront>Scol Practico pa Ofishi</p><P class=location>". (substr($_SESSION['CurrentGroup'],1,1) == "C" ? "Santa Cruz" : "Savaneta"). ", Aruba</p></div><P class=classdir><SPAN class=leaderlabel>Seccion:</SPAN>");
-					if($class!="AF")
-						echo("Tecnica / Cuido di Mata y Bestia");
-					else
+					echo("<img src=schoollogo.png class=frontlogo><DIV class=imageright><P class=titlehdr>LISTA DI CIFRA". ($class == "FT" ? " TRAYECTO CU GUIA INDIVIDUAL" : ""). "</p><P class=schoolnamefront>Scol Practico pa Ofishi</p><P class=location>". (substr($_SESSION['CurrentGroup'],1,1) == "C" ? "Santa Cruz" : "Savaneta"). ", Aruba</p></div><P class=classdir><SPAN class=leaderlabel>Seccion:</SPAN>");
+					if($class=="AF")
 						echo("Administracion y Comercio / Facilitair");
+					else if($class == "FT")
+						echo("Comercio / Administracion / Tecnica / Cuido di Mata y Bestia");						
+					else
+						echo("Tecnica / Cuido di Mata y Bestia");
 					echo("</p><p class=studname><span class=leaderlabel>Otorga na:</span>");
 					echo($students['lastname'][1+$llnoffset]. ", ". $students['firstname'][1+$llnoffset]. "</p>");
 					echo("<p><span class=stamboeklabel>Stamboek no : ". $students['altsid'][1+$llnoffset]. "</span></p>");
@@ -197,7 +199,7 @@
 					echo("<P><BR><SPAN class=resultlabel>Resultado  :  </span><SPAN class=resultline>");
 					if($failed)
 						echo("no ");
-					echo(" a slaag</span><span class=dateline>Aruba, 1 juli ". date("Y"). "</span></p>");
+					echo(" a slaag</span><span class=dateline>Aruba, 2 juli ". date("Y"). "</span></p>");
 					
 					echo("<BR><P class=legend>Significacion di cifra<BR><BR>");
 					echo("<span class=legdig>10</span>excelente<BR><BR>");
