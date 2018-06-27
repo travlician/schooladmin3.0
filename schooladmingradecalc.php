@@ -548,6 +548,7 @@ function SA_calcMeta($sid, $cid)
   global $userlink;
   global $altwftable;
   global $allownongradedperiods;
+	global $LSMetarule; // This case the final result is the avage of the final results of the sub subjects!
   // Get the mid value and gid of the meta subject
   $sql_query = "SELECT * FROM class inner join subject using (mid) WHERE cid='$cid'";
   $mysql_query = $sql_query;
@@ -808,6 +809,12 @@ function SA_calcMeta($sid, $cid)
   // calculate the final grade
   if($fincnt > 0.0)
     $finsum = round($finsum / $fincnt, $digits);
+	if(isset($LSMetarule) && $LSMetarule)
+	{ // Exception on how to calculate the final result. In this case the value is based on the final results of the underleying subjects
+		$finqr = SA_loadquery("SELECT SUM(result) AS finsum, COUNT(result) AS fincnt FROM gradestore LEFT JOIN subject USING(mid) LEFT JOIN period ON(id=3) WHERE meta_subject=". $mid. " AND sid=". $sid. " AND gradestore.year=period.year and gradestore.period=0");
+		if(isset($finqr['fincnt']) && $finqr['fincnt'][1] > 0)
+    $finsum = round($finqr['finsum'][1] / $finqr['fincnt'][1], $digits);			
+	}
 
   // Store final grade or remove it if not valid
   $isValid = 'N';
@@ -1111,13 +1118,16 @@ function SA_calcMetaNonAverage($sid,$cid,$period)
 function SA_CalcSpecialFormula($sid,$mid,$gid,$period)
 {
 	global $userlink,$specialformulalock;
+	//echo("Special formula entry");
 	if(isset($specialformulalock) && $specialformulalock)
 		return;
+	//echo("Specialformulas for ". $mid);
 	$sflistqr = SA_loadquery("SELECT * FROM specialformulas WHERE sourcemid=". $mid);
 	if(isset($sflistqr['formulaid']))
 	{ // So there are special formulas applicable with result source in the subject to be used as source.
     // Create a temporary table for storage of results
-		mysql_query("CREATE TEMPORARY TABLE IF NOT EXISTS specialresults (data TEXT, short_desc VARCHAR(7), tdid int(11), sid int(11)) ENGINE=InnoDB CHARSET=utf8", $userlink);
+		//echo("Special formulas found");
+		mysql_query("CREATE TABLE IF NOT EXISTS specialresults (data TEXT, short_desc VARCHAR(7), tdid int(11), sid int(11)) ENGINE=InnoDB CHARSET=utf8", $userlink);
 		echo(mysql_error($userlink));
 		// Get the schoolyear
 		$yearqr = SA_loadquery("SELECT year FROM period WHERE id=". $period);
