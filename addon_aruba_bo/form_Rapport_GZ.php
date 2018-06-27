@@ -142,7 +142,7 @@
 				echo("</TABLE>");
 				echo("</DIV>");
 				// Show frontpage
-				echo("<DIV class=frontpage><P class=raptitle>RAPPORT VAN</p><P class=rapname>". firstonly($students['firstname'][1+$llnoffset]). " ". $students['lastname'][1+$llnoffset]. "</p><img src=schoollogo.png class=frontlogo width=40%><P class=schoolnamefront><B>Graf von Zinzendorfschool</b><BR>
+				echo("<DIV class=frontpage><P class=raptitle>RAPPORT VAN</p><P class=rapname>". firstonly($students['firstname'][1+$llnoffset]). " ". $students['lastname'][1+$llnoffset]. "</p><p class=rapname>Klas ". $_SESSION['CurrentGroup']. "</p><img src=schoollogo.png class=frontlogo width=40%><P class=schoolnamefront><B>Graf von Zinzendorfschool</b><BR>
 					Bernhardstraat 259<BR>
 					P.O. BOX 2131<BR>
 					San Nicolaas - ARUBA<BR><BR>
@@ -247,7 +247,10 @@
 				// Subject results
 				echo("");
 				echo("<TR class=boldseps><td class=subjectcol><B>Godsdienst</b></td>");
-				show_result($llnoffset+1,"gods",false,true);
+				if(substr($_SESSION['CurrentGroup'],3,1) == 6)
+					show_result($llnoffset+1,"gods",true);
+				else
+					show_result($llnoffset+1,"gods",false,true);
 				echo("</tr><TR><td class=subjectcol><B>Lezen</b></td></tr>");
 				echo("</tr><TR><td class=subjectcol><SPAN class=ident>Technisch lezen</span></td>");
 				show_result($llnoffset+1,"lztl",true);
