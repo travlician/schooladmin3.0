@@ -142,7 +142,7 @@
 				echo("</TABLE>");
 				echo("</DIV>");
 				// Show frontpage
-				echo("<DIV class=frontpage><P class=raptitle>RAPPORT VAN</p><P class=rapname>". firstonly($students['firstname'][1+$llnoffset]). " ". $students['lastname'][1+$llnoffset]. "</p><p class=rapname>Klas ". $_SESSION['CurrentGroup']. "</p><img src=schoollogo.png class=frontlogo width=40%><P class=schoolnamefront><B>Graf von Zinzendorfschool</b><BR>
+				echo("<DIV class=frontpage><P class=raptitle>RAPPORT VAN</p><P class=rapname>". firstonly($students['firstname'][1+$llnoffset]). " ". $students['lastname'][1+$llnoffset]. "</p><p class=rapname>Klas ". substr($_SESSION['CurrentGroup'],3). "</p><img src=schoollogo.png class=frontlogo width=40%><P class=schoolnamefront><B>Graf von Zinzendorfschool</b><BR>
 					Bernhardstraat 259<BR>
 					P.O. BOX 2131<BR>
 					San Nicolaas - ARUBA<BR><BR>
@@ -154,6 +154,7 @@
 
 				// On to the page with data
 				echo("<DIV class=leftpage>");
+				echo("<p><B>Klas ". substr($_SESSION['CurrentGroup'],3). ", ". firstonly($students['firstname'][1+$llnoffset]). " ". $students['lastname'][1+$llnoffset]. ", ". $schoolyear. "</b></p>");
 				echo("<TABLE class=cijferlijst>");
 				echo("<TR><TD class=raphead>&nbsp;</td>");
 				echo("<td class=raphead>R1</td>");
@@ -232,7 +233,7 @@
 				echo("<P class=bevline><SPAN class=bevbullit>O</span><SPAN class=bevtxt>Stroomt door naar klas:</span><span class=bevfill>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>");
 				echo("<P class=bevline><SPAN class=bevbullit>O</span><SPAN class=bevtxt>Over wegens leeftijd naar klas:</span><span class=bevfill>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>");
 				echo("<P class=bevline><SPAN class=bevbullit>O</span><SPAN class=bevtxt>Niet bevorderd</span></p>");
-				echo("<table class=signtable><tr><td>Leerkracht</td><td>Schoolhoofd</td><td>Ouder / Voogd</td></tr><tr><td> <BR><BR></td><td> <BR><BR></td><td> <BR><BR></td><tr><td> <BR><BR></td><td> <BR><BR></td><td> <BR><BR></td><tr><td> <BR><BR></td><td> <BR><BR></td><td> <BR><BR></td></table>");
+				echo("<table class=signtable><tr><td>Leerkracht</td><td>Schoolhoofd</td><td>Ouder / Voogd</td></tr><tr><td> <BR><BR></td><td> <BR><BR></td><td> <BR><BR></td></tr></table>");
 				echo("</DIV><DIV class=rightpage>");
 
 				echo("<TABLE class=cijferlijst>");
