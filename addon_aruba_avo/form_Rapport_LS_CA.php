@@ -348,7 +348,12 @@
 						}
 					}
 					if(isset($package[$students['sid'][$sx+$llnoffset]]))
-						$pvaks = explode(",",$package[$students['sid'][$sx+$llnoffset]]);
+					{
+						$vakpak = $package[$students['sid'][$sx+$llnoffset]];
+						$vakpak = str_replace(",LO","",$vakpak);
+						$vakpak = str_replace(",REK","", $vakpak);
+						$pvaks = explode(",",$vakpak);
+					}
 					else
 						$pvaks = $newvakken;
 					foreach($newvakken AS $vak)
