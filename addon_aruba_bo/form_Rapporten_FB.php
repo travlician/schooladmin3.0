@@ -15,7 +15,7 @@
   $mainsubjects = array( 1 => "VERKEER", "ENGELS", "SPAANS", (substr($CurrentGroup,0,1) != 3 ? "LICHAMELIJKE OPVOEDING" : "ZWEMNIVEAU"), "HANDVAARDIGHEID", "TEKENEN", "MUZIKALE VORMING",
                               "GODSDIENST", "NEDERLANDSE TAAL", "LEZEN", "REKENEN", "SCHRIJVEN", "AARDRIJKSKUNDE", "GESCHIEDENIS", "KENNIS DER NATUUR", "MAATSCHAPPIJLEER");
   $mainsubjectabbrevs = array( 1 => "Verkeer","EN","Spa","LO","HV","Tekenen","Muziek","Godsd","Ned","Lez","Rek","Schr","AK","Gesch","KdN","Maats.L");
-  $subsubjects["Ned"] = array(1 => "&nbsp;&nbsp;&nbsp;<i>Dictee</i>", "&nbsp;&nbsp;&nbsp;<i>Taaloefening</i>","&nbsp;&nbsp;&nbsp;<i>Tekst</i>");
+  //$subsubjects["Ned"] = array(1 => "&nbsp;&nbsp;&nbsp;<i>Dictee</i>", "&nbsp;&nbsp;&nbsp;<i>Taaloefening</i>","&nbsp;&nbsp;&nbsp;<i>Tekst</i>");
   $subsubjectabbrevs["Ned"] = array(1 => "Dictee","Taal oe","Tekst");
   //$subsubjects["re"] = array(1 => "getalbegrip", "hoofdbewerking", "meten/grafieken/meetkunde","verhouding/statistiek","inzicht");
   //$subsubjectabbrevs["re"] = array(1 => "gb","hb","mm","vs","iz");
