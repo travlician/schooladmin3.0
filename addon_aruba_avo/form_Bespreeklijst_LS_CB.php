@@ -71,7 +71,7 @@
   $schoolyear = $schoolyear['year'][1];
   
   // Get a list of groups
-  $groups = SA_loadquery("SELECT * FROM sgroup LEFT JOIN ". $teachercode. " ON(tid_mentor=tid) WHERE active=1 AND groupname LIKE '". $groepfilter. "' ORDER BY groupname");
+  $groups = SA_loadquery("SELECT * FROM sgroup LEFT JOIN ". $teachercode. " ON(tid_mentor=tid) WHERE active=1 AND groupname LIKE '". $groepfilter. "' AND active=1 ORDER BY groupname");
   
   // Get a list of last test dates for periods
   //$perends = SA_loadquery("SELECT period,CEIL(date) AS edate FROM testdef GROUP BY period ORDER BY period");
@@ -102,6 +102,8 @@
 	  $pquery = "SELECT period, FLOOR(date) AS sdate, CEIL(date) AS edate FROM testdef LEFT JOIN class USING(cid)";
 	  $pquery .= " WHERE year=\"". $schoolyear. "\" AND gid=". $gid. " AND period < 4 GROUP BY period";
 	  $perdata = SA_loadquery($pquery);
+		if(!isset($perdata['period']))
+			echo("No period data for gid=". $gid. "<BR>");
 	  foreach($perdata['period'] AS $pix => $pid)
 	  {
 	    $pdata[$pid]["sdate"] = $perdata["sdate"][$pix];
