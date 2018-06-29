@@ -248,6 +248,10 @@
   if(isset($cres))
     foreach($cres['sid'] AS $cix => $csid)
 	{
+		// Rows below to fix ckvex issue
+		if(isset($ockvmid) && isset($ockvexmid))
+			if($cres['mid'][$cix] == $ockvmid)
+				$cres['mid'][$cix] = $ockvexmid; // END of CKVex issue fix
 	  $exstatus[$csid][$cres['mid'][$cix]] = $cres['xstatus'][$cix];
 	}
   $cres = SA_loadquery("SELECT sid,mid,xstatus FROM ahxdata WHERE xstatus>0 AND year='". $schoolyear. "'");
