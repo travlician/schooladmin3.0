@@ -287,8 +287,16 @@
 				show_result($llnoffset+1,"expmu",true);
 				echo("</tr><TR><td class=subjectcol><SPAN class=ident>Handvaardigheid</span></td>");
 				show_result($llnoffset+1,"exphv",true);
-				echo("</tr><TR><td class=subjectcol><SPAN class=ident>Bewegingsonderwijs</span></td>");
-				show_result($llnoffset+1,"expbo",true);
+				if(substr($_SESSION['CurrentGroup'],0,4) == "BO-3")
+				{
+					echo("</tr><TR><td class=subjectcol><SPAN class=ident>Zwemniveau</span></td>");
+					show_result($llnoffset+1,"expbo",false,true);
+				}
+				else
+				{
+					echo("</tr><TR><td class=subjectcol><SPAN class=ident>Bewegingsonderwijs</span></td>");
+					show_result($llnoffset+1,"expbo",true);
+				}
 				echo("</tr><TR class=boldseps><td class=subjectcol><B>Verkeer</b></td>");
 				show_result($llnoffset+1,"wovk",true);
 				echo("</tr><TR class=boldseps><td class=subjectcol><B>Maatschappijleer</b></td>");
