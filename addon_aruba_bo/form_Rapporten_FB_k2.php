@@ -17,17 +17,17 @@
   $mainsubjectabbrevs = array( 1 => "Verkeer","Engels","Spaans","Lich. Opvoeding","Handv.","Tekenen","Muziek","Godsdienst","Nederlands","Lezen","Rekenen","Schrijven","Aardrijkskunde","Geschiedenis","Natuniek","Maats.L");
 	if(substr($CurrentGroup,0,1) == 1)
 	{
-		//$subsubjects["Nederlands"] = array(1 => "&nbsp;&nbsp;&nbsp;<i>Dictee</i>", "&nbsp;&nbsp;&nbsp;<i>Taaloefeningen</i>","&nbsp;&nbsp;&nbsp;<i>Tekst</i>");
-		//$subsubjectabbrevs["Ned"] = array(1 => "Dictee","Taal oe","Taal ve","Tekst");
-		//$subsubjectabbrevs["Nederlands"] = array(1 => "Dictee","Taal oefeningen","Tekst");
+		$subsubjects["Nederlands"] = array(1 => "&nbsp;&nbsp;&nbsp;<i>Dictee</i>", "&nbsp;&nbsp;&nbsp;<i>Taaloefeningen</i>","&nbsp;&nbsp;&nbsp;<i>Tekst</i>");
+		$subsubjectabbrevs["Ned"] = array(1 => "Dictee","Taal oe","Taal ve","Tekst");
+		$subsubjectabbrevs["Nederlands"] = array(1 => "Dictee","Taal oefeningen","Tekst");
 	}
 	else
 	{
-		//$subsubjects["Nederlands"] = array(1 => "&nbsp;&nbsp;&nbsp;<i>Dictee</i>", "&nbsp;&nbsp;&nbsp;<i>Woordenschat</i>","&nbsp;&nbsp;&nbsp;<i>Taal verkennen</i>","&nbsp;&nbsp;&nbsp;<i>Tekst</i>");
-		//$subsubjectabbrevs["Nederlands"] = array(1 => "Dictee","Woordenschat","Taal verkennen","Tekst");
+		$subsubjects["Nederlands"] = array(1 => "&nbsp;&nbsp;&nbsp;<i>Dictee</i>", "&nbsp;&nbsp;&nbsp;<i>Woordenschat</i>","&nbsp;&nbsp;&nbsp;<i>Taal verkennen</i>","&nbsp;&nbsp;&nbsp;<i>Tekst</i>");
+		$subsubjectabbrevs["Nederlands"] = array(1 => "Dictee","Woordenschat","Taal verkennen","Tekst");
 	}
-	$subsubjects["Lezen"] = array(1 => "&nbsp;&nbsp;&nbsp;<i>AVI-Niveau</i>");
-	$subsubjectabbrevs["Lezen"] = array(1 => "Avi-lezen");
+	//$subsubjects["Lezen"] = array(1 => "&nbsp;&nbsp;&nbsp;<i>AVI-Niveau</i>");
+	//$subsubjectabbrevs["Lezen"] = array(1 => "Avi-lezen");
   //$subsubjects["re"] = array(1 => "getalbegrip", "hoofdbewerking", "meten/grafieken/meetkunde","verhouding/statistiek","inzicht");
   //$subsubjectabbrevs["re"] = array(1 => "gb","hb","mm","vs","iz");
   $subjects4period = array(1 => 0,0,0,0,0,0,0,0,1,0,1,0,1,1,1,0);
