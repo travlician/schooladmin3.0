@@ -292,7 +292,7 @@
 	  else if($yrresult[$sidx] == "NIET OVER")
 	    echo("Niet bevorderd");
 	  else if($yrresult[$sidx] == "O.W.L.")
-	    echo("Gaat wegens leeftijd naar ". (substr($CurrentGroup,0,1) < 6 ? "klas ". (substr($CurrentGroup,0,1) + 1) : "EPB"));
+	    echo("Niet bevorderd. Gaat wegens leeftijd naar ". (substr($CurrentGroup,0,1) < 6 ? "klas ". (substr($CurrentGroup,0,1) + 1) : "EPB"));
 	  else if($yrresult[$sidx] == "S.V.")
 	    echo("Niet bevorderd; verwezen naar ". (isset($ref[$sidx]) ? $ref[$sidx] : " een andere school"). ".");
     }
