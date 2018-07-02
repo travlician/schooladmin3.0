@@ -290,7 +290,7 @@
 				if(substr($_SESSION['CurrentGroup'],0,4) == "BO-3")
 				{
 					echo("</tr><TR><td class=subjectcol><SPAN class=ident>Zwemniveau</span></td>");
-					show_result($llnoffset+1,"expbo",false,true);
+					show_result($llnoffset+1,"zwe",false,true);
 				}
 				else
 				{
