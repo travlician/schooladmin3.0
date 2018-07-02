@@ -28,8 +28,8 @@
 		// $subsubjectabbrevs["ne"] = array(1 => "ws","tv","spe");	
 	}
 	// 16 mrt 2018: AVI niveau below LEZEN
-	$subsubjects['le'] = array(1 => "AVI Niveau");
-	$subsubjectabbrevs['le'] = array(1 => "an");
+	//$subsubjects['le'] = array(1 => "AVI Niveau");
+	//$subsubjectabbrevs['le'] = array(1 => "an");
   //$subsubjects["re"] = array(1 => "getalbegrip", "hoofdbewerking", "meten/grafieken/meetkunde","verhouding/statistiek","inzicht");
   //$subsubjectabbrevs["re"] = array(1 => "gb","hb","mm","vs","iz");
   $subjects4period = array(1 => 0,0,0,0,0,0,0,0,1,0,1,0,1,1,1,0,0);
