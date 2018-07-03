@@ -199,8 +199,8 @@
 	echo("<TR><TD class=spaceline>&nbsp;</TD><TD class=spaceline>&nbsp;</TD><TD class=spaceline>&nbsp;</TD><TD class=spaceline>&nbsp;</TD></TR>");
 	if(substr($CurrentGroup,0,1) < 3)
 		show_subject(10);
-	show_subject(17,true);
-	echo("<TR><TD class=spaceline>&nbsp;</TD><TD class=spaceline>&nbsp;</TD><TD class=spaceline>&nbsp;</TD><TD class=spaceline>&nbsp;</TD></TR>");
+	//show_subject(17,true);
+	//echo("<TR><TD class=spaceline>&nbsp;</TD><TD class=spaceline>&nbsp;</TD><TD class=spaceline>&nbsp;</TD><TD class=spaceline>&nbsp;</TD></TR>");
 	show_subject(11);
 	echo("<TR><TD class=spaceline>&nbsp;</TD><TD class=spaceline>&nbsp;</TD><TD class=spaceline>&nbsp;</TD><TD class=spaceline>&nbsp;</TD></TR>");
 	show_subject(12);
