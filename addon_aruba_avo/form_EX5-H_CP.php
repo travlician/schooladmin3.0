@@ -280,7 +280,7 @@
 			$isres[$asid] = round($isresq['xstatus'][$six]);
 //			$isres[$asid] = round($isresq['xstatus'][$six],1);
 	// if I&S is not entered in EX1-5 entry, it may be retrievable from previous year(s)
-	$isresq = SA_loadquery("SELECT sid,result FROM gradestore WHERE period=0 AND mid=". $ismid. " ORDER BY year");
+	$isresq = SA_loadquery("SELECT sid,result FROM gradestore WHERE period=0 AND mid=". $ismid. " ORDER BY year DESC");
 	if(isset($isresq['result']))
 		foreach($isresq['sid'] AS $six => $asid)
 			if(!isset($isres[$asid]))
@@ -932,9 +932,12 @@
 	  {  // Do this repeated subject
 	    if(isset($herxarray[$sid][$mid]))
 			{
-				$extotval -= $hexarray[$sid][$mid];
-				$extotval += $herxarray[$sid][$mid];
+				if($hexarray[$sid][$mid] < $herxarray[$sid][$mid])
+				{
+					$extotval -= $hexarray[$sid][$mid];
+					$extotval += $herxarray[$sid][$mid];
 				//echo("Replacing ". $hexarray[$sid][$mid]. " for ". $herxarray[$sid][$mid]);
+				}
 			}
 			else
 				echo("No herresult, mid=". $mid. ", sid=". $sid);
@@ -1005,7 +1008,7 @@
 	  $exavg = 0;
 	if((($certconditions && $subjcount >= 8 && $negpoints == 0) ||
 			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6 - 1) && $negpoints == 1) || 
-			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2 && $fails < 3) && $fullfail == 0) && $exavg >= 5.5)
+			 (!$certconditions && $subjcount >= 8 && $totpoints >= ($subjcount * 6) && $negpoints <= 3 && $coreshort < 2 && $fails < 3) && $fullfail == 0) && $exavg >= 5.4999999)
 	{
 	  $passedtv2 = true;
 		//echo($sid. " Passed TV2 with fails=". $fails. "<BR>");

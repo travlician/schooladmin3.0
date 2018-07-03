@@ -25,7 +25,7 @@
   }
   
   // Avoid sorting on students messed up
-  unset($_SESSION['ssortertable']);
+  //unset($_SESSION['ssortertable']);
   // Connect library to database
   inputclassbase::dbconnect($userlink);
   
@@ -427,6 +427,7 @@
 				if($res < 6)
 				{
 					$negpoints += 6 - $res;
+					$fails++;
 					if(in_array($ssn,$coresubs))
 						$coreshort += 6 - $res;
 				}
@@ -448,7 +449,10 @@
 		//echo("Add combires to subjects<BR>");
 	  $subjcount++;
 	  if($combires < 6)
+		{
 	    $negpoints += 6 - $combires;
+			$fails++;
+		}
 	  $totpoints += $combires;
 	  if($combires < 4)
 	    $fullfail++;
@@ -462,6 +466,7 @@
 	  {
 	    $negpoints += 6 - $res;
 			$choicesubfail++;
+			$fails++;
 			if(in_array($ev,$coresubs))
 				$coreshort += 6 - $res;
 	  }
@@ -483,6 +488,7 @@
 	  if($res < 6)
 	  {
 	    $negpoints += 6 - $res;
+			$fails++;
 			$choicesubfail++;
 			if(in_array($ev,$coresubs))
 				$coreshort += 6 - $res;
@@ -506,6 +512,7 @@
 	  {
 	    $negpoints += 6 - $res;
 			$choicesubfail++;
+			$fails++;
 			if(in_array($ev,$coresubs))
 				$coreshort += 6 - $res;
 	  }
