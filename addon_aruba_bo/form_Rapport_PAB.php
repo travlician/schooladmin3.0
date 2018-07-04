@@ -427,7 +427,7 @@
 	function show_res_per($res, $letter, $convertletter)
 	{
 		if($letter || !($res > 0.9) || $res == "-")
-			if($res == 0)
+			if($res == "0")
 				echo("-");
 			else
 				echo($res);
