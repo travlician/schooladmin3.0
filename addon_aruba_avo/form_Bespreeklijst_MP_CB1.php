@@ -26,7 +26,7 @@
   $newan = array("NED","ENG","WIS","ASW","N&T");
   $newanp = array("NED","ENG","WIS","ASW","N&T","PV");
 	$new = array("NED","ENG","WIS");
-  $ptvakken = array("KGL","PV","LO","ASW","PAP","NED","ENG","SPA","CKVB","N&T","WIS","IK");
+  $ptvakken = array("KGL","PV","LO","ASW","PAP","NED","ENG","SPA","CKV","N&T","WIS","IK");
   
   /* Test systeem 
   $vakhead["Individu"] = array("kgl","pv","lo");
