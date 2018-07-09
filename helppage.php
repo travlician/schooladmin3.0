@@ -26,6 +26,10 @@
     session_start();
   require_once("displayelements/menulistelement.php");
 	require_once("teacher.php");
+	
+	if(!isset($pngsource))
+		$pngsource="PNG";
+
 	if(isset($_GET['context']) || isset($_POST['helpitem']))
 	{
 		// Connect to the database
@@ -73,7 +77,7 @@
 	{
 		public function show_content()
 		{
-			global $currentuser,$defaultlanguage,$commonhelpdbprefix;
+			global $currentuser,$defaultlanguage,$commonhelpdbprefix,$pngsource;
 			
 			$currentuser = new teacher();
 			$currentuser->load_current();
@@ -87,7 +91,7 @@
 					$hpq .= " UNION SELECT DISTINCT hid FROM ". $commonhelpdbprefix. "helpcontent LEFT JOIN ". $commonhelpdbprefix. "helproles USING(hid) LEFT JOIN teacherroles USING(role) WHERE lang='". $_SESSION['currentlanguage']. "' AND (role IS NULL OR tid=". $currentuser->get_id(). ") AND pageref='". $_GET['context']. "'";
 				$hpqr = inputclassbase::load_query($hpq);
 				if(!isset($hpqr['hid']))
-				{ // Second priority: Page belonging to conext, in the default language
+				{ // Second priority: Page belonging to context, in the default language
 					$hpq = "SELECT DISTINCT hid FROM helpcontent LEFT JOIN helproles USING(hid) LEFT JOIN teacherroles USING(role) WHERE lang='". $defaultlanguage. "' AND (role IS NULL OR tid=". $currentuser->get_id(). ") AND pageref='". $_GET['context']. "'";
 					if(isset($commonhelpdbprefix))
 						$hpq .= " UNION SELECT DISTINCT hid FROM ". $commonhelpdbprefix. "helpcontent LEFT JOIN ". $commonhelpdbprefix. "helproles USING(hid) LEFT JOIN teacherroles USING(role) WHERE lang='". $defaultlanguage. "' AND (role IS NULL OR tid=". $currentuser->get_id(). ") AND pageref='". $_GET['context']. "'";
@@ -114,57 +118,77 @@
 			}
 			else
 				$hid = $_POST['helpitem'];
-			if($currentuser->has_role("admin"))
-			{ // Depending on which item is to be displayed, we show icons to edit, create new and delete.
-				if($hid != 0)
-				{ // Show the edit icon
-					echo(" <IMG onClick=editlink(". $hid. "); SRC='PNG/reply.png'>");
+			// IF multiple items are found we list them, else we show the content of a single page.
+			if(isset($hpqr['hid']) && count($hpqr['hid']) > 1)
+			{
+				//echo("Count helpitems = ". count($hpqr['hid']). "<BR>");
+				foreach($hpqr['hid'] AS $ahid)
+				{
+					$subhq = "SELECT helptitle,hid FROM helpcontent LEFT JOIN helproles USING(hid) LEFT JOIN teacherroles USING(role) WHERE (role IS NULL OR tid=". $currentuser->get_id(). ") AND hid=". $ahid;
+					if(isset($commonhelpdbprefix))
+						$subhq .= " UNION SELECT helptitle,hid FROM ". $commonhelpdbprefix. "helpcontent LEFT JOIN ". $commonhelpdbprefix. "helproles USING(hid) LEFT JOIN teacherroles USING(role) WHERE (role IS NULL OR tid=". $currentuser->get_id(). ") AND hid=". $ahid;
+					$subhqr = inputclassbase::load_query($subhq);
+					if(isset($subhqr['hid']))
+					{
+						foreach($subhqr['hid'] AS $hix => $shid)
+							echo("<a href=# onClick=helplink(". $shid. ");>". $subhqr['helptitle'][$hix]. "</a><BR>");
+					}
 				}
-				// Show the icon to create a new help item
-			 echo(" <IMG onClick=editlink(0); SRC='PNG/action_add.png'>");
+			}
+			else
+			{ // Single item
+				if($currentuser->has_role("admin"))
+				{ // Depending on which item is to be displayed, we show icons to edit, create new and delete.
+					if($hid != 0 && $hid<10000)
+					{ // Show the edit icon
+						echo(" <IMG onClick=editlink(". $hid. "); SRC='". $pngsource. "/reply.png'>");
+					}
+					// Show the icon to create a new help item
+				 echo(" <IMG onClick=editlink(0); SRC='". $pngsource. "/action_add.png'>");
+					
+					if($hid < 10000)
+					{ // Show the icon to delete an item
+						echo(" <IMG onClick=deletelink(". $hid. "); SRC='". $pngsource. "/action_delete.png'>");					
+					}
+					echo("<FORM METHOD=POST ID=editlinkform><INPUT TYPE=hidden NAME=edit VALUE=1><INPUT TYPE=hidden NAME=helpitem VALUE=0 ID=edithid></FORM>");
+					echo("<FORM METHOD=POST ID=dellinkform><INPUT TYPE=hidden NAME=delete VALUE=1><INPUT TYPE=hidden NAME=helpitem VALUE=0 ID=delhid></FORM>");
+					echo("<SCRIPT> function editlink(ehid) { document.getElementById('edithid').value=ehid; document.getElementById('editlinkform').submit(); } </SCRIPT>");
+					echo("<SCRIPT> function deletelink(ehid) { document.getElementById('delhid').value=ehid; document.getElementById('dellinkform').submit(); } </SCRIPT>");
+				}
 				
-				if($hid > 5000)
-				{ // Show the icon to delete an item
-					echo(" <IMG onClick=deletelink(". $hid. "); SRC='PNG/action_delete.png'>");					
-				}
-				echo("<FORM METHOD=POST ID=editlinkform><INPUT TYPE=hidden NAME=edit VALUE=1><INPUT TYPE=hidden NAME=helpitem VALUE=0 ID=edithid></FORM>");
-				echo("<FORM METHOD=POST ID=dellinkform><INPUT TYPE=hidden NAME=delete VALUE=1><INPUT TYPE=hidden NAME=helpitem VALUE=0 ID=delhid></FORM>");
-				echo("<SCRIPT> function editlink(ehid) { document.getElementById('edithid').value=ehid; document.getElementById('editlinkform').submit(); } </SCRIPT>");
-				echo("<SCRIPT> function deletelink(ehid) { document.getElementById('delhid').value=ehid; document.getElementById('dellinkform').submit(); } </SCRIPT>");
-			}
-			
-			// Show the help content
-			$helpcontentq = "SELECT * FROM helpcontent WHERE hid=". $hid;
-			if(isset($commonhelpdbprefix))
-				$helpcontentq .= " UNION SELECT * FROM ". $commonhelpdbprefix. "helpcontent WHERE hid=". $hid;
-			$hcqr = inputclassbase::load_query($helpcontentq);
-			if(isset($hcqr['content']))
-			{
-				echo($hcqr['content'][0]);
-			}
-			// Now get the related items
-			$subhq = "SELECT helptitle,hid FROM helpcontent LEFT JOIN helproles USING(hid) LEFT JOIN teacherroles USING(role) WHERE (role IS NULL OR tid=". $currentuser->get_id(). ") AND parentid=". $hid;
-			if(isset($commonhelpdbprefix))
-				$subhq .= " UNION SELECT helptitle,hid FROM ". $commonhelpdbprefix. "helpcontent LEFT JOIN ". $commonhelpdbprefix. "helproles USING(hid) LEFT JOIN teacherroles USING(role) WHERE (role IS NULL OR tid=". $currentuser->get_id(). ") AND parentid=". $hid;
-			$subhqr = inputclassbase::load_query($subhq);
-			if(isset($subhqr['hid']))
-			{
-				echo("<BR>". $_SESSION['dtext']['RelatedHelp']. " : <BR>");
-				foreach($subhqr['hid'] AS $hix => $shid)
-					echo("<a href=# onClick=helplink(". $shid. "); style='margin-left: 100px;'>". $subhqr['helptitle'][$hix]. "</a><BR>");
-			}
-			// Now get the parent items
-			if($hcqr['parentid'][0] > 0)
-			{
-				$subhq = "SELECT helptitle,hid FROM helpcontent LEFT JOIN helproles USING(hid) LEFT JOIN teacherroles USING(role) WHERE (role IS NULL OR tid=". $currentuser->get_id(). ") AND hid=". $hcqr['parentid'][0];
+				// Show the help content
+				$helpcontentq = "SELECT * FROM helpcontent WHERE hid=". $hid;
 				if(isset($commonhelpdbprefix))
-					$subhq .= " UNION SELECT helptitle,hid FROM ". $commonhelpdbprefix. "helpcontent LEFT JOIN ". $commonhelpdbprefix. "helproles USING(hid) LEFT JOIN teacherroles USING(role) WHERE (role IS NULL OR tid=". $currentuser->get_id(). ") AND hid=". $hcqr['parentid'][0];
+					$helpcontentq .= " UNION SELECT * FROM ". $commonhelpdbprefix. "helpcontent WHERE hid=". $hid;
+				$hcqr = inputclassbase::load_query($helpcontentq);
+				if(isset($hcqr['content']))
+				{
+					echo($hcqr['content'][0]);
+				}
+				// Now get the related items
+				$subhq = "SELECT helptitle,hid FROM helpcontent LEFT JOIN helproles USING(hid) LEFT JOIN teacherroles USING(role) WHERE (role IS NULL OR tid=". $currentuser->get_id(). ") AND parentid=". $hid;
+				if(isset($commonhelpdbprefix))
+					$subhq .= " UNION SELECT helptitle,hid FROM ". $commonhelpdbprefix. "helpcontent LEFT JOIN ". $commonhelpdbprefix. "helproles USING(hid) LEFT JOIN teacherroles USING(role) WHERE (role IS NULL OR tid=". $currentuser->get_id(). ") AND parentid=". $hid;
 				$subhqr = inputclassbase::load_query($subhq);
 				if(isset($subhqr['hid']))
 				{
-					echo("<BR>". $_SESSION['dtext']['BackHelp']. " : <BR>");
+					echo("<BR>". $_SESSION['dtext']['RelatedHelp']. " : <BR>");
 					foreach($subhqr['hid'] AS $hix => $shid)
-						echo("<a href=# onClick=helplink(". $shid. ");>". $subhqr['helptitle'][$hix]. "</a><BR>");
+						echo("<a href=# onClick=helplink(". $shid. "); style='margin-left: 100px;'>". $subhqr['helptitle'][$hix]. "</a><BR>");
+				}
+				// Now get the parent items
+				if($hcqr['parentid'][0] > 0)
+				{
+					$subhq = "SELECT helptitle,hid FROM helpcontent LEFT JOIN helproles USING(hid) LEFT JOIN teacherroles USING(role) WHERE (role IS NULL OR tid=". $currentuser->get_id(). ") AND hid=". $hcqr['parentid'][0];
+					if(isset($commonhelpdbprefix))
+						$subhq .= " UNION SELECT helptitle,hid FROM ". $commonhelpdbprefix. "helpcontent LEFT JOIN ". $commonhelpdbprefix. "helproles USING(hid) LEFT JOIN teacherroles USING(role) WHERE (role IS NULL OR tid=". $currentuser->get_id(). ") AND hid=". $hcqr['parentid'][0];
+					$subhqr = inputclassbase::load_query($subhq);
+					if(isset($subhqr['hid']))
+					{
+						echo("<BR>". $_SESSION['dtext']['BackHelp']. " : <BR>");
+						foreach($subhqr['hid'] AS $hix => $shid)
+							echo("<a href=# onClick=helplink(". $shid. ");>". $subhqr['helptitle'][$hix]. "</a><BR>");
+					}
 				}
 			}
 			echo("<FORM METHOD=POST ID=hlink><INPUT TYPE=HIDDEN NAME=helpitem ID=hlinkitem VALUE=0></FORM>");
