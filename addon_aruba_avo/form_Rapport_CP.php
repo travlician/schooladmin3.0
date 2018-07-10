@@ -52,7 +52,7 @@
 	  $vakhead["Cultuur en Kunst"] = array("bv","de","da","mu","ckv");
 	  $vakhead["Onderwijs Ondersteunend"] = array("i&s","lo","rek");
 	  $newan = array("ne","en","wi","asw","n&t");
-	  $ptvakken = array("i&s","lo","ec","m&o","ak","gs","ne","en","sp","ckv","na","sk","bio","wiA","wiB");
+	  $ptvakken = array("i&s","lo","ec","m&o","ak","gs","ne","en","sp","ckv","na","sk","bio","wiA","wiB","inf");
   }
   else if(substr($_SESSION['CurrentGroup'],0,2) == "H4")
   {	 
@@ -65,7 +65,7 @@
 	  $vakhead["Cultuur en Kunst"] = array("bv","de","da","mu","ckv");
 	  $vakhead["Onderwijs Ondersteunend"] = array("i&s","lo","rek");
 	  $newan = array("ne","en","wi","asw","n&t");
-	  $ptvakken = array("i&s","lo","ec","m&o","ak","gs","ne","en","sp","pap","ckv","na","sk","bio","wiA","wiB");
+	  $ptvakken = array("i&s","lo","ec","m&o","ak","gs","ne","en","sp","pap","ckv","na","sk","bio","wiA","wiB","inf");
   }
   
   /* Test systeem 
