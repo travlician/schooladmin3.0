@@ -111,7 +111,7 @@ if(($_POST['fieldid'] == "slname" && $_POST['slname'] != "") ||
 	$sdata['sbyr'] = $_SESSION['inputobjects']['sbyr']->__toString();
 	// Overwrite the current value
 	$sdata[$_POST['fieldid']] = $_POST[$_POST['fieldid']];
-  $ridsearch = inputclassbase::load_query("SELECT rid FROM inschrijvingAHA WHERE firstname LIKE \"". $sdata['sfname']. "\" AND lastname LIKE \"". $sdata['slname']. "\" AND gebdag=\"". $sdata['sbday']. "\" AND gebmaand=\"". $sdata['sbmon']. "\" AND gebjaar=\"". $sdata['sbyr']. "\" ORDER BY rid");
+  $ridsearch = inputclassbase::load_query("SELECT rid FROM inschrijvingAHA WHERE firstname LIKE \"". $sdata['sfname']. "\" AND lastname LIKE \"". $sdata['slname']. "\" AND gebdag=\"". $sdata['sbday']. "\" AND gebmaand=\"". $sdata['sbmon']. "\" AND gebjaar=\"". $sdata['sbyr']. "\"  AND year='". $schoolyear. "' ORDER BY rid");
   if(isset($ridsearch['rid'][0]) && $ridsearch['rid'][0] != $_SESSION['inputobjects'][$_POST['fieldid']]->get_key())
   {
     echo("OK<REREGISTER>");
