@@ -31,7 +31,7 @@
 	}
 	
 	//  Create the list of source groups
-	$sgrpqr = inputclassbase::load_query("SELECT * FROM (SELECT gid,groupname FROM sgroup WHERE groupname LIKE '1_' OR groupname LIKE '2_' OR groupname LIKE '3_' OR groupname LIKE '4_' OR groupname LIKE '5_' OR groupname LIKE '6_' ORDER BY groupname DESC) AS t1 UNION SELECT * FROM (SELECT gid,groupname FROM sgroup WHERE groupname LIKE 'K_' ORDER BY groupname DESC) AS t2");
+	$sgrpqr = inputclassbase::load_query("SELECT * FROM (SELECT gid,groupname FROM sgroup WHERE groupname LIKE '1_' OR groupname LIKE '2_' OR groupname LIKE '3_' OR groupname LIKE '4_' OR groupname LIKE '5_' OR groupname LIKE '6_' OR groupname LIKE 'KO__' ORDER BY groupname DESC) AS t1 UNION SELECT * FROM (SELECT gid,groupname FROM sgroup WHERE groupname LIKE 'K_' ORDER BY groupname DESC) AS t2");
 	$dgrpqr = inputclassbase::load_query("SELECT gid,groupname FROM sgroup ORDER BY groupname DESC");
   echo("<html><head><title>Groep rapportage verschuiven</title></head><body link=blue vlink=blue>");
 	echo("<H1>Groep rapportages verschuiven</H1>");
