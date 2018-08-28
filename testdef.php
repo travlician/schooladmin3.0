@@ -472,11 +472,12 @@ class testdef
   
   public function need_results()
   {
+		global $testnotmadealternative;
     if($this->tdid <= 0)
 	  return false;
 		$mygroup = inputclassbase::load_query("SELECT gid FROM class WHERE cid=". $this->get_icid());
 		$studcount = inputclassbase::load_query("SELECT COUNT(sid) AS res FROM sgrouplink WHERE gid=". $mygroup['gid'][0]. " AND sid<>0");
-		$testcount = inputclassbase::load_query("SELECT COUNT(sid) AS res FROM testresult WHERE result IS NOT NULL AND tdid=". $this->tdid);
+		$testcount = inputclassbase::load_query("SELECT COUNT(sid) AS res FROM testresult WHERE result IS NOT NULL". (isset($testnotmadealternative) ? " AND result <> \"". $testnotmadealternative. "\"" : ""). " AND tdid=". $this->tdid);
 		if($testcount['res'][0] == 0 || $testcount['res'][0] >= $studcount['res'][0])
 			return false;
 		else
@@ -495,10 +496,11 @@ class testdef
 	
 	public function list_missing_names($oderquery = "lastname,firstname")
 	{
+		global $testnotmadealternative;
     if($this->tdid <= 0)
 			return ("");
 		$mygroup = inputclassbase::load_query("SELECT gid FROM class WHERE cid=". $this->get_icid());
-		$namesq = "SELECT GROUP_CONCAT(firstname,' ',lastname) AS names FROM sgrouplink LEFT JOIN student USING(sid) LEFT JOIN (SELECT sid,result FROM testresult WHERE tdid=". $this->tdid. ") AS t1 USING(sid) WHERE result IS NULL AND gid=". $mygroup['gid'][0]. " ORDER BY ". $oderquery;
+		$namesq = "SELECT GROUP_CONCAT(firstname,' ',lastname) AS names FROM sgrouplink LEFT JOIN student USING(sid) LEFT JOIN (SELECT sid,result FROM testresult WHERE tdid=". $this->tdid. ") AS t1 USING(sid) WHERE (result IS NULL". (isset($testnotmadealternative) ? " OR result=\"". $testnotmadealternative. "\"" : ""). ") AND gid=". $mygroup['gid'][0]. " ORDER BY ". $oderquery;
 		$namesqr = inputclassbase::load_query($namesq);
 		if(isset($namesqr['names']))
 			return($namesqr['names'][0]);
