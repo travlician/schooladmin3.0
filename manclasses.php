@@ -27,12 +27,20 @@
 
   $login_qualify = 'A';
   include ("schooladminfunctions.php");
+	
+	if(!isset($pngsource))
+		$pngsource="PNG";
 
   $uid = $_SESSION['uid'];
   $CurrentUID = $uid;
   $CurrentGroup = $_SESSION['CurrentGroup'];
   
   $uid = intval($uid);
+	
+	if(isset($_POST['mentor']))
+	{
+		mysql_query("UPDATE `class` SET tid=". $_POST['mentor']. " WHERE gid=". $_POST['gid'], $userlink);
+	}
 
   // First we get all the data from existing classes in an array.
   $sql_query = "SELECT * FROM class,sgroup WHERE active=1 AND sgroup.groupname='$CurrentGroup' AND class.gid=sgroup.gid ORDER BY groupname,show_sequence";
@@ -101,7 +109,7 @@
   $subject_n = $nrows;
 
   // Create a separate array with the groups
-  $sql_query = "SELECT gid,groupname FROM sgroup WHERE active=1 ORDER BY groupname";
+  $sql_query = "SELECT gid,groupname,tid_mentor FROM sgroup WHERE active=1 ORDER BY groupname";
   $sql_result = mysql_query($sql_query,$userlink);
   //echo mysql_error($userlink);
   $nrows = 0;
@@ -139,12 +147,19 @@
   for($gc=1;$gc<=$group_n;$gc++)
   { // Add an option for each group, select the one currently active
     if($CurrentGroup == $group_array['groupname'][$gc])
+		{
       $IsSelected = " selected";
+			$curgid=$group_array['gid'][$gc];
+			$curment=$group_array['tid_mentor'][$gc];
+		}
     else
       $IsSelected = "";
     echo("<option value=" . $group_array['groupname'][$gc]."$IsSelected>" . $group_array['groupname'][$gc]."</option>");
   }
   echo("</select><input type=submit value=" . $dtext['Change'] . "></form>");
+	
+	// Show the button to assign all subject to the mentor (added functionality 28 aug 2018)
+	echo("<form method=post><input type=hidden name=gid value=". $curgid. "><input type=hidden name=mentor value=". $curment. "><input type=submit name=ass2all value='". $dtext['assignall2mentor']. "'></form>");
   
   // Create the heading row for the table
   echo("<table border=1 cellpadding=0>");
@@ -190,12 +205,12 @@
     echo("<td><input type=text size=2 name=show_sequence value=" .$grade_array['show_sequence'][$r]. "></td>");
     // Add the change button
     //echo("<td><center><input type=submit value=" . $dtext['Change'] . "></td></form>");
-    echo("<td><center><img src='PNG/action_check.png' title='". $dtext['Change']. "' onclick='document.uc". $r. ".submit();'></td></form>");
+    echo("<td><center><img src='". $pngsource. "/action_check.png' title='". $dtext['Change']. "' onclick='document.uc". $r. ".submit();'></td></form>");
     // Add the delete button
     echo("<form method=post action=delclass.php name=dc". $r. "><input type=hidden name=cid value=");
     echo($grade_array['cid'][$r]);
     //echo("><td><center><input type=submit value=" . $dtext['Delete'] . "></td></form></tr>");
-    echo("><td><center><img src='PNG/action_delete.png' title='". $dtext['Delete']. "' onclick='if(confirm(\"". $dtext['man_class_expl_5']. "\")) { document.dc". $r. ".submit(); }'></td></form></tr>");
+    echo("><td><center><img src='". $pngsource. "/action_delete.png' title='". $dtext['Delete']. "' onclick='if(confirm(\"". $dtext['man_class_expl_5']. "\")) { document.dc". $r. ".submit(); }'></td></form></tr>");
   }
   // Insert the row for a new class
   echo("<tr><form method=post action=updclass.php name=newc>");
@@ -231,7 +246,7 @@
   echo("<td><input type=text size=2 name=show_sequence value=" .($row_n+1). "></td>");
   // Add the ADD button
   //echo("<td><center><input type=submit value=" . $dtext['ADD_CAP'] . "></td></form>");
-  echo("<td><center><img src='PNG/action_add.png' title='". $dtext['ADD_CAP']. "' onclick='document.newc.submit();'></td></form>");
+  echo("<td><center><img src='". $pngsource. "/action_add.png' title='". $dtext['ADD_CAP']. "' onclick='document.newc.submit();'></td></form>");
   // Here we don't have a delete button!
   echo("</tr>");
   
