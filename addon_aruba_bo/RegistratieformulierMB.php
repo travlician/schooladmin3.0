@@ -1137,7 +1137,7 @@
 			{
 				foreach($matchersqr['sid'] AS $msix => $msid)
 				{
-					$smatchqr .= " UNION SELECT ". $msid. ",'". $matchersqr['lastname'][$msix]. ", ". $matchersqr['firstname'][$msix]. " (". $matchersqr['groupname'][$msix]. ")'"; 
+					$smatchqr .= " UNION SELECT ". $msid. ",'". str_replace("'","\\'",$matchersqr['lastname'][$msix]). ", ". str_replace("'","\\'",$matchersqr['firstname'][$msix]). " (". $matchersqr['groupname'][$msix]. ")'"; 
 				}
 				echo("<BR><LABEL>Komt overeen met:</LABEL> ");
 				$mfld = new inputclass_listfield("smatch",$smatchqr,NULL,"sid","inschrijvingMB2",$rid,"rid",NULL,"inschrijfMBhandler.php");
