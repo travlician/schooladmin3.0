@@ -17,8 +17,8 @@
  
   // Subject translation tables
   // WATCH OUT!!!! THIS LIST IS NOT THE SAME AS FOR OTHER EX FORMS!
-  $offsubjects = array(1 => "Ne","En","Sp","Wi","Na","Sk","Bio","EcMo","Ak","Gs","Pa","Re");
-   $altsubjects = array("ne"=>1,"en"=>2,"sp"=>3,"wi"=>4,"NaSk1"=>5,"NaSk2"=>6,"bi"=>7,"ecmo"=>8,"ak"=>9,"gs"=>10,"pa"=>11,"rek"=>12);
+  $offsubjects = array(1 => "Ne","En","Sp","Wi","Na","Sk","Bio","EcMo","Ak","Gs","Pa","CKV","Re");
+   $altsubjects = array("ne"=>1,"en"=>2,"sp"=>3,"wi"=>4,"NaSk1"=>5,"NaSk2"=>6,"bi"=>7,"ecmo"=>8,"ak"=>9,"gs"=>10,"pa"=>11,"ckv"=>12,"rek"=>13);
 
 
   $uid = $_SESSION['uid'];
