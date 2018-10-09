@@ -89,7 +89,7 @@
   $students = SA_loadquery("SELECT CONCAT(lastname,', ',firstname) AS name,sid,packagename,extrasubject,extrasubject2,extrasubject3,s_exnr.data AS exnr, groupname FROM student LEFT JOIN s_package USING(sid) LEFT JOIN s_exnr USING(sid) LEFT JOIN sgrouplink USING(sid) LEFT JOIN sgroup USING(gid) WHERE active=1 AND s_exnr.data IS NOT NULL AND groupname LIKE 'Exam%' GROUP BY sid ORDER BY groupname,s_exnr.data");
 
   // Get a list of applicable subjects
-  $subjectsqr = SA_loadquery("SELECT shortname,subjectpackage.mid FROM subjectpackage LEFT JOIN subject USING(mid) GROUP BY mid ORDER BY mid");
+  $subjectsqr = SA_loadquery("SELECT shortname,subjectpackage.mid FROM subjectpackage LEFT JOIN subject USING(mid) UNION SELECT shortname,extrasubject FROM s_package LEFT JOIN subject ON(extrasubject=mid) GROUP BY mid ORDER BY mid");
   foreach($offsubjects AS $osix => $sjname)
   {
     foreach($subjectsqr['shortname'] AS $sbix => $subsn)
