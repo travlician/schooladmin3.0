@@ -26,7 +26,6 @@ A:hover		{color:#000000; text-decoration: none}
 }
 .logo
 {
-  width: 20%;
   text-align: center;
 }
 .contenttd
@@ -39,6 +38,7 @@ A:hover		{color:#000000; text-decoration: none}
 {
   padding-left: 5%;
   padding-right: 5%;
+	width: 200px;
 }
 P
 {
