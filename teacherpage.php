@@ -154,7 +154,7 @@
     $menu->add_element(new plainelement(NULL,NULL,"<HR>"));
   }
   $menu->add_item($_SESSION['dtext']['tpage_teachdets'],"Teacherdetails");
-  if($currentuser->has_role("admin") || $currentuser->has_role("counsel") || $currentuser->has_role("mentor"))
+  //if($currentuser->has_role("admin") || $currentuser->has_role("counsel") || $currentuser->has_role("mentor"))
   { 
     $menu->add_element(new plainelement(NULL,NULL,"<HR>"));
     $menu->add_item($_SESSION['dtext']['tpage_stupw'],"Passwords");
@@ -208,6 +208,11 @@
     $page->add_element(new vanisher());
   echo($page->show());
   include("touchfix.js");
+	if(isset($_SESSION['pw_expiry_warn']))
+	{ // Show a warning is password is about to expire and not shown yet
+		echo("<SCRIPT> alert('". $dtext['cpw_expiry_warning1']. $_SESSION['pw_expiry_warn']. "'); </SCRIPT>");
+		unset($_SESSION['pw_expiry_warn']);
+	}
 	if($firstpage)
 	{ // See if there are any messages
 		$msgs = message::list_messages("t",$_SESSION['uid']);

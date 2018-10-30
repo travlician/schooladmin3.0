@@ -135,22 +135,25 @@ class teacher
   
   public function validate_password($password)
   {
+		echo("Validating password ". $password);
     if($this->userid == 0)
 	  return false;
     if(!isset($this->passwfld))
-	  $this->passwfld = new inputclass_passwordfield("upassw". $this->userid,40,NULL,"password","teacher",$this->tid,"tid",NULL,"datahandler.php");
-	$storedpassw = $this->passwfld->__toString();
-	$validateok = false;
-	if($storedpassw == "" && $password == "")
-	  $validateok = true;
-	if($storedpassw == md5($password))
-	  $validateok = true;
-	if($validateok)
-	{ // Store this one as the current user
-	  $_SESSION['userid'] = $this->userid;
-	  $_SESSION['username'] = $this->get_username();
-	}
-	return $validateok;
+			$this->passwfld = new inputclass_password("upassw". $this->userid,40,NULL,"password","teacher",$this->userid,"tid",NULL,"datahandler.php");
+		$storedpassw = $this->passwfld->__toString();
+		$validateok = false;
+		if($storedpassw == "" && $password == "")
+			$validateok = true;
+		if($storedpassw == md5($password))
+			$validateok = true;
+		if($storedpassw == $password)
+			$validateok = true;
+		if($validateok)
+		{ // Store this one as the current user
+			$_SESSION['userid'] = $this->userid;
+			$_SESSION['username'] = $this->get_username();
+		}
+		return $validateok;
   }
   
   public function get_password()
@@ -185,6 +188,12 @@ class teacher
   {
     if(!isset($this->gonefld))
 	  $this->gonefld = new inputclass_checkbox("upgone". $this->userid,0,NULL,"is_gone","teacher",$this->userid,"tid",NULL,"datahandler.php");   
+  }
+  
+  public function get_pwexpiry()
+  {
+	  $expiryfld = new inputclass_datefield("pwexpiry". $this->userid,0,NULL,"pwexpirydate","teacher",$this->userid,"tid",NULL,"datahandler.php"); 
+		return($expiryfld->__toString());
   }
   
   public function is_gone()

@@ -408,6 +408,19 @@ if(substr($_POST['fieldid'],0,7) == "repdate" ||
 	mysql_query("UPDATE reports SET protect='". $defprotvalqr['defrepaccess'][0]. "' WHERE rid=". $xfld->get_key(). " AND protect IS NULL", $userlink);
 }
 
+if($_POST['fieldid'] == "pwc_expiry")
+{ // Password expiry changed, set expiry dates accordingly!
+	if($_POST['pwc_expiry'] == "")
+	{ // Reset expiry
+		mysql_query("UPDATE teacher SET pwexpirydate=NULL");
+	}
+	else
+	{ // Set expiry
+		mysql_query("UPDATE teacher SET pwexpirydate=DATE_ADD(CURDATE(), INTERVAL ". $_POST['pwc_expiry']. " DAY)");
+		echo(mysql_error());
+	}
+}
+
 // Just for demo purposes: show the fields posted(note that the library only shows an alert with this data if something went wrong)
 foreach($_POST AS $parm => $val)
 {

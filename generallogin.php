@@ -106,9 +106,9 @@
   if($radio1 == "teacher")
   {
     if(isset($teachercode))
-      $sql_query = "SELECT teacher.* FROM teacher LEFT JOIN ". $teachercode. " USING(tid) WHERE (teacher.tid = "  . $uid. " OR data=\"" .$HTTP_POST_VARS['uid']. "\") AND password = '$pword' AND is_gone <> 'Y'";
+      $sql_query = "SELECT teacher.* FROM teacher LEFT JOIN ". $teachercode. " USING(tid) WHERE (teacher.tid = "  . $uid. " OR data=\"" .$HTTP_POST_VARS['uid']. "\") AND password = '$pword' AND is_gone <> 'Y' AND (pwexpirydate IS NULL OR CURDATE() <= pwexpirydate)";
 	else
-      $sql_query = "SELECT teacher.* FROM teacher WHERE tid = "  . $uid. " AND password = '$pword' AND is_gone <> 'Y'";
+      $sql_query = "SELECT teacher.* FROM teacher WHERE tid = "  . $uid. " AND password = '$pword' AND is_gone <> 'Y' AND (pwexpirydate IS NULL OR CURDATE() <= pwexpirydate)";
   }
   else if($radio1 == "student")
   {
@@ -155,14 +155,18 @@
      $LoginType = "S";
    else
    {
-     $I = new teacher($uid);
-	 if($I->has_role("admin"))
-	   $LoginType = "A";
-	 else if($I->has_role("counsel"))
-	   $LoginType = "C";
-	 else
-       $LoginType = "T";
-   }
+		$I = new teacher($uid);
+		if($I->has_role("admin"))
+			$LoginType = "A";
+		else if($I->has_role("counsel"))
+			$LoginType = "C";
+		else
+      $LoginType = "T";
+		$expwts = mktime(0,0,0,date("n")+1,date("j"),date("Y"));
+		$expwarn = date("Y-m-d",$expwts);
+		if($grade_array['pwexpirydate'][1] != "" && $expwarn > $grade_array['pwexpirydate'][1]) 
+			$_SESSION['pw_expiry_warn'] = $I->get_pwexpiry();
+  }
    $usertype = $radio1;
    if($LoginType == "S")
      $uid = $grade_array['sid'][1];
