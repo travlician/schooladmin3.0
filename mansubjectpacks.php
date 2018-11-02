@@ -57,22 +57,22 @@
   echo("<font size=+2><center>" . $dtext['subpack_title'] . "</font><p>");
   echo '<a href="admin.php">';
   echo($dtext['back_admin'] . "</a><br>");
-  echo("</center><table border=1 cellpadding=0>");
+  echo("</center><section><div class=fixheader><table border=1 cellpadding=0>");
 
   // Create the heading row for the table
-  echo("<tr><th><center>" . $dtext['Subpack'] . "</th>");
+  echo("<thead><tr><th><center>" . $dtext['Subpack'] . "<div><center>" . $dtext['Subpack'] . "</div></th>");
   foreach($subjects['shortname'] AS $sname)
-    echo("<th>". $sname. "</th>");
-  echo("<th>&nbsp</th><th>&nbsp</th></tr>");
+    echo("<th>". $sname. "<div>". $sname. "</div></th>");
+  echo("<th>&nbsp<div>&nbsp</div></th><th>&nbsp<div>&nbsp</div></th></tr></thead>");
 
   // Create a row for new entry
-  echo("<tr><form name=newpack method=post action=updsubpack.php><td><input type=text name=pname size=20></td>");
+  echo("<tbody><tr><form name=newpack method=post action=updsubpack.php><td><input type=text name=pname size=20></td>");
   // Add the possible subjects
   foreach($subjects['mid'] AS $sname)
   {
     echo("<td><center><input type=checkbox name='". $sname. "'></td>");
   }
-  echo("<td><center><img src='PNG/action_add.png' title='". $dtext['ADD_CAP']. "' onclick='document.newpack.submit();'></td></form></tr>");
+  echo("<td><center><img src='". $pngsource. "/action_add.png' title='". $dtext['ADD_CAP']. "' onclick='document.newpack.submit();'></td></form></tr>");
   // Create a row in the table for every existing reportcalc record
   $ppname="";
   if(isset($pack))
@@ -89,13 +89,13 @@
 	  echo("<td><center><input type=checkbox name='". $sname. "' ". (isset($pdets[$sname]) ? "checked " : ""). "></td>");
 	}
     // Add the change button
-    echo("<td><center><img src='PNG/action_check.png' title='". $dtext['Change']. "' onclick='document.up". $r. ".submit();'></td></form>");
+    echo("<td><center><img src='". $pngsource. "/action_check.png' title='". $dtext['Change']. "' onclick='document.up". $r. ".submit();'></td></form>");
     // Add the delete button
     echo("<form method=post action=delsubpack.php name=dp". $r. "><input type=hidden name=pname value='");
     echo($pname);
-    echo("'><td><center><img src='PNG/action_delete.png' title='". $dtext['Delete']. "' onclick='if(confirm(\"". $dtext['confirm_delete']. "\")) { document.dp". $r. ".submit(); }'></td></form></tr>");
+    echo("'><td><center><img src='". $pngsource. "/action_delete.png' title='". $dtext['Delete']. "' onclick='if(confirm(\"". $dtext['confirm_delete']. "\")) { document.dp". $r. ".submit(); }'></td></form></tr>");
   }
-  echo("</table>");
+  echo("</tbody></table></div></section>");
   
   // Show a selectable for groups that can choose the subject package
   if(isset($groups))
@@ -171,12 +171,12 @@
 	  if(substr($gname,0,1) != $fchar)
 	  { // New row
 	    if($fchar != "^")
-		{
-		  echo("</TR>");
-		}
-		$fchar = substr($gname,0,1);
-		echo("<TR>");
-		$curpos = 0;
+			{
+				echo("</TR>");
+			}
+			$fchar = substr($gname,0,1);
+			echo("<TR>");
+			$curpos = 0;
 	  }
 	  $curpos++;
 	  echo("<TD><INPUT TYPE=checkbox NAME=filtsel". $groups['gid'][$gix]);

@@ -81,9 +81,9 @@
   $curyear = $curyearqr['year'][1];
     
   // The states are predefined, here is the query to get that list (actually no DB access but the library works that way...)
-  $statquery = "SELECT 0 AS id, '' AS tekst UNION SELECT 1 AS id,'Her' AS tekst UNION SELECT 2,'Afw. Mo' UNION SELECT 3,'Afw. SO' UNION SELECT 4,'Afw. Ex' 
-                UNION SELECT 5,'Vrijst. 7' UNION SELECT 6,'Vrijst. 8' UNION SELECT 7,'Vrijst. 9' UNION SELECT 8,'Vrijst. 10'
-                UNION SELECT 9,'Cert. 6' UNION SELECT 10,'Cert. 7' UNION SELECT 11,'Cert. 8' UNION SELECT 12,'Cert. 9' UNION SELECT 13,'Cert. 10'";
+  $statquery = "SELECT 0 AS id, '' AS tekst UNION SELECT 1 AS id,'Her' AS tekst UNION SELECT 2,'Af.M' UNION SELECT 3,'Af.S' UNION SELECT 4,'Af.E' 
+                UNION SELECT 5,'V 7' UNION SELECT 6,'V 8' UNION SELECT 7,'V 9' UNION SELECT 8,'V 10'
+                UNION SELECT 9,'C 6' UNION SELECT 10,'C 7' UNION SELECT 11,'C 8' UNION SELECT 12,'C 9' UNION SELECT 13,'C 10'";
   
   // Get a list of all applicable students
   $students = SA_loadquery("SELECT CONCAT(lastname,', ',firstname) AS name,sid,packagename,extrasubject,extrasubject2,extrasubject3,s_exnr.data AS exnr, groupname FROM student LEFT JOIN s_package USING(sid) LEFT JOIN s_exnr USING(sid) LEFT JOIN sgrouplink USING(sid) LEFT JOIN sgroup USING(gid) WHERE active=1 AND s_exnr.data IS NOT NULL AND groupname LIKE 'Exam%' GROUP BY sid ORDER BY groupname,s_exnr.data");
@@ -225,13 +225,13 @@
   $curgname = "ExamMavo";
   echo("<H1>MAVO</H1>");
   // Create the heading row for the table
-  echo("<table border=1 cellpadding=0>");
-  echo("<tr><td>Exnr.</td><td><center>Studentnaam</td>");
+  echo("<section><div class=fixheader><table><thead>");
+  echo("<tr><th>Exnr.<div>Exnr.</div></th><th><center>Studentnaam<div><center>Studentnaam</div></th>");
   foreach($subjects['shortname'] AS $sname)
   {
-    echo("<td><center>". $sname. "</td>");
+    echo("<th><center>". $sname. "<div><center>". $sname. "</div></th>");
   }
-  echo("<td><center>I&S</center></td><td><center>PFW</center></td><td><center>Uitslag</center></td></tr>");
+  echo("<th><center>I&S</center><div><center>I&S</center></div></th><th><center>PFW</center><div><center>PFW</center></div></th><th><center>Uitslag</center><div><center>Uitslag</center></div></th></tr></thead><tbody>");
 
   // Create a row in the table for each student
   $negix = 0;
@@ -327,7 +327,7 @@
 	$resfield->echo_html();
 	echo("</td></tr>");
   }
- echo("</table>");
+ echo("</tbody></table></div></section>");
   echo '<a href=# onClick="window.close();">';
   echo $dtext['back_teach_page'];
   //echo "</a><BR><BR><a href='" .$_SERVER['PHP_SELF']. "?extractfromprevyear=1'>Haal vrijstellingen en CKV resultaat uit resultaten vorig jaar</a>";
