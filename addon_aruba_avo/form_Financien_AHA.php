@@ -16,6 +16,8 @@
   require_once("inputlib/inputclasses.php");
   require_once("student.php");
   require_once("groupselector.php");
+	if(!isset($pngsource))
+		$pngsource = "PNG";
   
   // Link database resource with input library
   inputclassbase::dbconnect($userlink);
@@ -322,7 +324,7 @@
   {
     if((selform.options[i].text.substr(0,2) != "OS" || selform.options[i].text.length > 3) &&
 	   (selform.options[i].text.substr(0,2) != "SN" || selform.options[i].text.length > 3) &&
-	   (selform.options[i].text.substr(0,3) != "weg") &&
+	   (selform.options[i].text.substr(0,2) != "wg") &&
 	   (selform.options[i].text != "AHATotaal") &&
 	   (selform.options[i].text != "VWO") &&
 	   (selform.options[i].text.substr(0,6) != "NW<? echo date("Y"); ?>")
@@ -470,7 +472,7 @@
 	
 	
 	// Show the download letter icon with link
-	echo("<td><a href='". $_SERVER['REQUEST_URI']. "?print=". $sid. "'><img src='PNG/download.png' BORDER=0></a></td>");
+	echo("<td><a href='". $_SERVER['REQUEST_URI']. "?print=". $sid. "'><img src='". $pngsource. "/download.png' BORDER=0></a></td>");
 	
 	echo("</tr>");
    }
