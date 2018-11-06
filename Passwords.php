@@ -134,7 +134,7 @@ class Passwords extends displayelement
 			echo("<SCRIPT> function confirm_reset(formid) { var form=document.getElementById(formid); if(confirm('". $dtext['cpw_stud_confirm']. "')) form.submit(); } </SCRIPT>");
 		}
 		// Any teacher can change their own password
-		echo("<H2>". $dtext['Chng_pw']. "</h2>");
+		echo("<H2>". $dtext['Chng_pw']. " ". $I->get_teacher_detail("*teacher.firstname"). " ". $I->get_teacher_detail("*teacher.lastname"). "</h2>");
 		echo("<FORM METHOD=POST>". $dtext['Cur_pw']. " <INPUT TYPE=PASSWORD NAME=curpw><br>");
 		echo($dtext['New_pw']. " <INPUT TYPE=PASSWORD NAME=newpw><br>");
 		echo($dtext['New_pw']. " <INPUT TYPE=PASSWORD NAME=newpw2><br>");
