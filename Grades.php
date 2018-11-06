@@ -64,334 +64,334 @@ class Grades extends displayelement
   
   private function main_grades()
   {
-    global $teachercode;
-	global $altwftable;
-	global $carecodetable,$carecodecolors;
-	$dtext = $_SESSION['dtext'];
-	// Javascript to unhide hidden results
-	echo("<SCRIPT> function unhide(mid) 
-	{ objs2=document.getElementsByTagName('span'); for(i in objs2) 
-	  { if(objs2[i].className == 'mgrade'+mid) 
-	    {objs2[i].style.fontSize='12px';} 
-	  } 
-	  objs2=document.getElementsByTagName('td'); for(i in objs2) 
-	  { if(objs2[i].className == 'mgrade'+mid) objs2[i].style.fontSize='12px'; }
-   }   </SCRIPT>");
-    // First we get the data from existing students in an array.
-	$group = new group();
-	$group->load_current();
-	$stud_list = student::student_list($group);
-	$me = new teacher();
-	$me->load_current();
+    global $teachercode,$noendfiltergroups;
+		global $altwftable;
+		global $carecodetable,$carecodecolors;
+		$dtext = $_SESSION['dtext'];
+		// Javascript to unhide hidden results
+		echo("<SCRIPT> function unhide(mid) 
+		{ objs2=document.getElementsByTagName('span'); for(i in objs2) 
+			{ if(objs2[i].className == 'mgrade'+mid) 
+				{objs2[i].style.fontSize='12px';} 
+			} 
+			objs2=document.getElementsByTagName('td'); for(i in objs2) 
+			{ if(objs2[i].className == 'mgrade'+mid) objs2[i].style.fontSize='12px'; }
+		 }   </SCRIPT>");
+			// First we get the data from existing students in an array.
+		$group = new group();
+		$group->load_current();
+		$stud_list = student::student_list($group);
+		$me = new teacher();
+		$me->load_current();
 
-    // Get the list of periods with their details
-	$periods = inputclassbase::load_query("SELECT * FROM period ORDER BY id");
-    // Depending on the states of the periods we set the state of the final period.
-    $all_final = 'Y';
-    $any_open = 'N';
-    foreach($periods['status'] AS $pix => $pstat)
-    {
-      if($periods['id'][$pix] != 0)
-	  {
-        if($pstat == 'open')
-          $any_open = 'Y';
-        if($pstat != 'final')
-          $all_final = 'N';
-	  }
-    }
-	// See which period needs to be unsupressed (0 meaning final grade if weight factors are defined per period, otherwise the period matching current date)
-	$periodweights = inputclassbase::load_query("SELECT * FROM finalcalc WHERE weigth > 0.0");
-	if(isset($periodweights['period']))
-	{
-	  $showperiod = 0;
-	}
-	else
-	{
-	  $showperiod = 1;
-	  foreach($periods['id'] AS $pix => $pid)
-	  {
-		if($periods['startdate'][$pix] <= date('Y-m-d') && $periods['enddate'][$pix] >= date('Y-m-d'))
-		  $showperiod = $pid;
-	  }
-	}
-	// Get the weight factors per period for the student where alternative weight factors are applicable
-	if(isset($altwftable))
-	{
-	  $wfresults = inputclassbase::load_query("SELECT sid,period,weigth FROM `". $altwftable. "` LEFT JOIN finalcalc ON (mid=0-CAST(data AS SIGNED))");
-	  if(isset($wfresults))
-	  {
-	    foreach($wfresults['sid'] AS $wfix => $wfsid)
-		  $wfps[$wfsid][$wfresults['period'][$wfix]] = $wfresults['weigth'][$wfix];
-	  }
-	}
-
-    // Get the list of applicable subjects with their details
-    if(isset($teachercode))
-      $sql_query = "SELECT class.mid,cid,shortname,fullname, GROUP_CONCAT(distinct ". $teachercode. ".data) AS `tcode` FROM class LEFT JOIN subject using (mid) LEFT JOIN ". $teachercode. " USING(tid) ";
-    else
-      $sql_query = "SELECT class.mid,cid,shortname,fullname FROM class LEFT JOIN subject using (mid) ";
-    $sql_query .= "LEFT JOIN (SELECT gid FROM (SELECT sid FROM sgrouplink WHERE gid=". $group->get_id(). " GROUP BY sid) AS t1 LEFT JOIN sgrouplink USING(sid)
-                   GROUP BY gid) AS t2 USING(gid) WHERE t2.gid IS NOT NULL AND show_sequence IS NOT NULL ";
-	if(!isset($_GET['showallsubs']) && !$me->has_role("admin"))
-	  $sql_query .= "AND class.tid = ". $me->get_id(). " ";
-	$sql_query .= "GROUP BY mid ORDER BY show_sequence";
-	$subjects = inputclassbase::load_query($sql_query);
-
-    // Get the list of grades for periods
-    //~23mrt12 $sql_query = "SELECT gradestore.* FROM gradestore LEFT JOIN sgrouplink USING(sid) LEFT JOIN period ON(period.id=gradestore.period) WHERE gid=". $group->get_id(). " AND gradestore.year=period.year AND period > 0";
-    $sql_query = "SELECT gradestore.* FROM gradestore LEFT JOIN sgrouplink USING(sid) LEFT JOIN period ON(period.id=gradestore.period) 
-	              LEFT JOIN (SELECT mid,sid FROM sgrouplink LEFT JOIN class USING (gid)) AS t1 ON(t1.mid=gradestore.mid AND t1.sid=sgrouplink.sid) 
-				  WHERE sgrouplink.gid=". $group->get_id(). " AND
-				  t1.sid IS NOT NULL AND gradestore.year='". $periods['year'][0]. "' GROUP BY period,mid,sid";
-    $grades = inputclassbase::load_query($sql_query);
-    if(isset($grades))
-      foreach($grades['result'] AS $grix => $gres)
-      {
-        if($grades['period'][$grix] != 0)	  
-          $results_array[$grades['period'][$grix]][$grades['mid'][$grix]][$grades['sid'][$grix]] = $gres;
-		else
-	      $final_results_array[$grades['mid'][$grix]][$grades['sid'][$grix]] = $gres;
-      }
-    // Get the list of average grades for normal periods
-    $sql_query = "SELECT AVG(result) as `average`,period,mid FROM gradestore LEFT JOIN sgrouplink USING(sid) LEFT JOIN period ON(period.id=gradestore.period) WHERE gradestore.year=period.year AND sgrouplink.gid=". $group->get_id(). " GROUP BY period,mid";
-    $avgrades = inputclassbase::load_query($sql_query);
-    if(isset($avgrades))
-      foreach($avgrades['average'] AS $grix => $grav)
-	    $average_array[$avgrades['period'][$grix]][$avgrades['mid'][$grix]] = $grav;
-
-    // Get the list of average final grades
-    $sql_query = "SELECT mid,AVG(result) as `average` FROM gradestore LEFT JOIN sgrouplink USING(sid) where period='0' AND gradestore.year='" . $periods['year'][0] . "' AND sgrouplink.gid=". $group->get_id(). " GROUP BY mid";
-	$favgrades = inputclassbase::load_query($sql_query);
-	if(isset($favgrades))
-	  foreach($favgrades['average'] AS $grix => $fgrav)
-	    $final_average_array[$favgrades['mid'][$grix]] = $fgrav;
-
-    // Get the list of pass criteria per subject
-    $sql_query = "SELECT * FROM class LEFT JOIN coursepasscriteria USING(masterlink)";
-    $passcrits = inputclassbase::load_query($sql_query);
-	if(isset($passcrits))
-	  foreach($passcrits['minimumpass'] AS $crix => $mpass)
-	    $passpoint[$passcrits['mid'][$crix]] = $mpass;
-  
-    $digits = inputclassbase::load_query("SELECT MAX(digitsafterdot) AS digits FROM reportcalc");
-		
-		// get the digits for period and final per subject
-		$digmidq = "SELECT digitsafterdotperiod,digitsafterdotfinal,mid from class left join coursepasscriteria using(masterlink) WHERE gid=". $group->get_id(). " UNION SELECT MAX(digitsafterdotperiod),MAX(digitsafterdotfinal),0 FROM coursepasscriteria";
-		$digmidqr = inputclassbase::load_query($digmidq);
-		foreach($digmidqr['mid'] AS $dmix => $mid)
-		{
-			$digmidp[$mid] = $digmidqr['digitsafterdotperiod'][$dmix];
-			$digmidf[$mid] = $digmidqr['digitsafterdotfinal'][$dmix];
-		}
-	
-	// Create an array of subjects per student so we can mark absence of result different from having and not having the subject
-	$shassq = "SELECT sid,mid FROM sgrouplink LEFT JOIN student USING(sid) LEFT JOIN (SELECT sid,mid FROM class LEFT JOIN sgrouplink USING(gid) GROUP BY sid,mid) AS t1 USING(sid) WHERE gid=". $group->get_id();
-	$shassqr = inputclassbase::load_query($shassq);
-	if(isset($shassqr['mid']))
-	{
-	  foreach($shassqr['sid'] AS $six => $ssid)
-	  {
-	    $shass[$ssid][$shassqr['mid'][$six]] = true;
-	  }
-	}
-	 
-    echo("<font size=+2><center>" . $dtext['grdo_title'] . " ". $dtext['group']. " ". $_SESSION['CurrentGroup']. "</font><p>");
-    echo("<br><div align=left>" . $dtext['grdo_expl_1'] );
-	if(!isset($_GET['showallsubs']) && !$me->has_role("admin"))
-	  echo(" <a href='". $_SERVER['REQUEST_URI']. "&showallsubs=1'>". $dtext['Showallsubs']. "</a>");
-	echo("</div><br>"); 
-	// Show a box for sorting selection
-	$ssortbox = new studentsorter();
-	$ssortbox->show();
-
-    // Now create a table with all students in the group to enable to go to their grade details
-    // Create the first heading row for the table
-	$seqno = 1;
-    echo("<table border=1 cellpadding=0 ID=gradeTable>");
-    echo("<tr><th ROWSPAN=2>". $dtext['numb_token']. "</th><th ROWSPAN=2><center>" . $dtext['Lastname'] . "</th>");
-    echo("<th ROWSPAN=2><center>" . $dtext['Firstname'] . "</th>");
-    // Now add the heading for the subjects
-	if(isset($subjects))
-	 foreach($subjects['cid'] AS $sbix => $cid)
-    {
-	  // Add inline style hiding results
-	  $mid = $subjects['mid'][$sbix];
-	  echo("<STYLE> .mgrade". $mid. " { font-size: 0; } </STYLE>");
-	  
-      echo("<th COLSPAN=" . ($showperiod == 0 ? COUNT($periods['id'])+1 : COUNT($periods['id'])) . "><center>");
-      echo("<a href=". $_SERVER['REQUEST_URI']. "&cid=" . $cid . " onMouseover='unhide(". $mid. ");' title='". $subjects['fullname'][$sbix]. "'>");
-      echo($subjects['shortname'][$sbix]);
-      echo("</a>");
-	  if(isset($subjects['tcode'][$sbix]) && $subjects['tcode'][$sbix] != "")
-	  {
-	    echo("<span class=mgrade". $mid. ">(". $subjects['tcode'][$sbix]. ")</span>");
-	  }
-	  echo("</th>");
-    }
-    echo("</tr>");
-    // Create the second heading row for the table
-    echo("<tr>");
-    // Now add the periods below each subject
-	if(isset($subjects))
-	foreach($subjects['cid'] AS $sbix => $cid)
-    {
-	  $mid = $subjects['mid'][$sbix];
-      foreach($periods['id'] AS $pix => $pid)
-      {
-	    if($pid != $showperiod)
-          echo("<td class=mgrade". $mid. "><center><a href=". $_SERVER['REQUEST_URI']. "&period=$pid&cid=" . $cid . ">". $dtext['Period_marker']. $pid . "</a></td>");
-	    else
-          echo("<td><center><a href=". $_SERVER['REQUEST_URI']. "&period=$pid&cid=" . $cid . ">". $dtext['Period_marker']. $pid . "</a></td>");
-      }
-	  if($showperiod == 0)
-        echo("<td><center>" . $dtext['fin_per_ind'] . "</td>");
-    }
-    echo("</tr>");
-
-    // Create a row in the table for every existing student in the group
-	$altrow = false;
-	$lastsortval = "";
-	if(isset($stud_list))
-	foreach($stud_list AS $cstud)
-    {
-	 if($cstud <> null)
-	 { 
-      $sid = $cstud->get_id();
-	  // See if carecodes are applicable and define the prefix for it if so
-	  if(isset($carecodetable))
-	  {
-		$careprefix = inputclassbase::load_query("SELECT `". $carecodecolors. "`.tekst AS pref FROM `". $carecodetable. "` LEFT JOIN `". $carecodecolors. "` ON(data=id) WHERE sid=". $sid);
-	    // See what label the carecode field has
-	    $cclabelqr = inputclassbase::load_query("SELECT label FROM student_details WHERE table_name='". $carecodetable. "'");
-		if(isset($cclabelqr['label']))
-	      $cctitle = $cclabelqr['label'][0]. ": ". $cstud->get_student_detail($carecodetable);
-	  }
-	  if(isset($_SESSION['ssortertable']) && $_SESSION['ssortertable'] != '' && $_SESSION['ssortertable'] != '-')
-        $lastsortval = $cstud->get_student_detail($_SESSION['ssortertable']);
-      echo("<tr". ($altrow ? ' class=altbg' : ''). (isset($careprefix['pref'][0]) ? " style='". $careprefix['pref'][0]. "'" : ''). (isset($cctitle) ? " title='". $cctitle. "'" : ''). "><td style='text-align: right'>". $seqno++. "</td>");
-      echo("<td onClick='window.location=\"teacherpage.php?Page=Grades&sid=" . $sid ."\";'>");
-      echo($cstud->get_lastname(). "</td>");
-      echo("<td onClick='window.location=\"teacherpage.php?Page=Grades&sid=" . $sid ."\";'>");
-      echo($cstud->get_firstname(). "</td>");
-      // Add the Grades
-	  if(isset($subjects))
-	  foreach($subjects['mid'] AS $sbix => $mid)
-      { // each subject
-        foreach($periods['id'] AS $pix => $pp)
-        { // add the grades for regular periods
-		  if($pp > 0)
-		  {
-		    if($pp != $showperiod)
-              echo("<td class=mgrade". $mid. ">");
-		    else
-              echo("<td onMouseover='unhide(". $mid. ");'>");
-			echo("<center><a href=". $_SERVER['REQUEST_URI']. "&period=$pp&sid=$sid&mid=$mid>");
-            if(isset($results_array[$pp][$mid][$sid]))
-            { 
-              $result = $results_array[$pp][$mid][$sid];
-              // Colour depends on pass criteria
-			  if($result < '@')
-			  { //Numeric result
-			    if(isset($wfps[$sid][$pp]) && $wfps[$sid][$pp] == 0.0) echo("<font color=gray>");
-                else if($passpoint[$mid] > $result) echo("<font color=red>");
-                else echo("<font color=blue>");
-                if($periods['status'][$pix] == 'final') echo("<b>"); else echo("<i>");
-                echo(number_format($results_array[$pp][$mid][$sid],(isset($digmidp[$mid]) ? $digmidp[$mid] : $digmidp[0]),$dtext['dec_sep'],$dtext['mil_sep']));
-                if($periods['status'][$pix] == 'final') echo("</b>"); else echo("</i>");
-                echo("</font>");
-				// Maintain the partial average
-			    if(isset($part_average[$pp][$mid]))
-			    {
-			      $part_average[$pp][$mid] += $result;
-			      $part_avg_count[$pp][$mid] += 1.0;
-			    }
-			    else
-			    {
-			      $part_average[$pp][$mid] = $result;
-			      $part_avg_count[$pp][$mid] = 1.0;
-			    }
-			  }
-			  else // Alpha result
-			    echo($result);
-            }
-            else
-              echo("-");
-            echo("</a></td>");
-          }
-		}
-        // Add the final grade
-		if($showperiod == 0)
-		{
-			echo("<td onMouseover='unhide(". $mid. ");'><center>");
-			if(isset($final_results_array[$mid][$sid]))
+			// Get the list of periods with their details
+		$periods = inputclassbase::load_query("SELECT * FROM period ORDER BY id");
+			// Depending on the states of the periods we set the state of the final period.
+			$all_final = 'Y';
+			$any_open = 'N';
+			foreach($periods['status'] AS $pix => $pstat)
 			{
-			  $result = $final_results_array[$mid][$sid];
-			  // Colour depends on pass criteria
-			  if($result < '@')
-			  { // Numeric result
-				if($passpoint[$mid] > $result) echo("<font color=red>");
-				else echo("<font color=blue>");
-				if($any_open == 'N') echo("<b>"); else echo("<i>");
-				echo($final_results_array[$mid][$sid]);
-				if($any_open == 'N') echo("</b>"); else echo("</i>");
-				echo("</font>");
-				// Maintain the partial average
-				if(isset($part_average[0][$mid]))
+				if($periods['id'][$pix] != 0)
+			{
+					if($pstat == 'open')
+						$any_open = 'Y';
+					if($pstat != 'final')
+						$all_final = 'N';
+			}
+			}
+		// See which period needs to be unsupressed (0 meaning final grade if weight factors are defined per period, otherwise the period matching current date)
+		$periodweights = inputclassbase::load_query("SELECT * FROM finalcalc WHERE weigth > 0.0");
+		if(isset($periodweights['period']) && (!isset($noendfiltergroups) || !preg_match($noendfiltergroups,$_SESSION['CurrentGroup'])))
+		{
+			$showperiod = 0;
+		}
+		else
+		{
+			$showperiod = 1;
+			foreach($periods['id'] AS $pix => $pid)
+			{
+			if($periods['startdate'][$pix] <= date('Y-m-d') && $periods['enddate'][$pix] >= date('Y-m-d'))
+				$showperiod = $pid;
+			}
+		}
+		// Get the weight factors per period for the student where alternative weight factors are applicable
+		if(isset($altwftable))
+		{
+			$wfresults = inputclassbase::load_query("SELECT sid,period,weigth FROM `". $altwftable. "` LEFT JOIN finalcalc ON (mid=0-CAST(data AS SIGNED))");
+			if(isset($wfresults))
+			{
+				foreach($wfresults['sid'] AS $wfix => $wfsid)
+				$wfps[$wfsid][$wfresults['period'][$wfix]] = $wfresults['weigth'][$wfix];
+			}
+		}
+
+			// Get the list of applicable subjects with their details
+			if(isset($teachercode))
+				$sql_query = "SELECT class.mid,cid,shortname,fullname, GROUP_CONCAT(distinct ". $teachercode. ".data) AS `tcode` FROM class LEFT JOIN subject using (mid) LEFT JOIN ". $teachercode. " USING(tid) ";
+			else
+				$sql_query = "SELECT class.mid,cid,shortname,fullname FROM class LEFT JOIN subject using (mid) ";
+			$sql_query .= "LEFT JOIN (SELECT gid FROM (SELECT sid FROM sgrouplink WHERE gid=". $group->get_id(). " GROUP BY sid) AS t1 LEFT JOIN sgrouplink USING(sid)
+										 GROUP BY gid) AS t2 USING(gid) WHERE t2.gid IS NOT NULL AND show_sequence IS NOT NULL ";
+		if(!isset($_GET['showallsubs']) && !$me->has_role("admin"))
+			$sql_query .= "AND class.tid = ". $me->get_id(). " ";
+		$sql_query .= "GROUP BY mid ORDER BY show_sequence";
+		$subjects = inputclassbase::load_query($sql_query);
+
+			// Get the list of grades for periods
+			//~23mrt12 $sql_query = "SELECT gradestore.* FROM gradestore LEFT JOIN sgrouplink USING(sid) LEFT JOIN period ON(period.id=gradestore.period) WHERE gid=". $group->get_id(). " AND gradestore.year=period.year AND period > 0";
+			$sql_query = "SELECT gradestore.* FROM gradestore LEFT JOIN sgrouplink USING(sid) LEFT JOIN period ON(period.id=gradestore.period) 
+									LEFT JOIN (SELECT mid,sid FROM sgrouplink LEFT JOIN class USING (gid)) AS t1 ON(t1.mid=gradestore.mid AND t1.sid=sgrouplink.sid) 
+						WHERE sgrouplink.gid=". $group->get_id(). " AND
+						t1.sid IS NOT NULL AND gradestore.year='". $periods['year'][0]. "' GROUP BY period,mid,sid";
+			$grades = inputclassbase::load_query($sql_query);
+			if(isset($grades))
+				foreach($grades['result'] AS $grix => $gres)
 				{
-				  $part_average[0][$mid] += $result;
-				  $part_avg_count[0][$mid]+= 1.0;
+					if($grades['period'][$grix] != 0)	  
+						$results_array[$grades['period'][$grix]][$grades['mid'][$grix]][$grades['sid'][$grix]] = $gres;
+			else
+					$final_results_array[$grades['mid'][$grix]][$grades['sid'][$grix]] = $gres;
+				}
+			// Get the list of average grades for normal periods
+			$sql_query = "SELECT AVG(result) as `average`,period,mid FROM gradestore LEFT JOIN sgrouplink USING(sid) LEFT JOIN period ON(period.id=gradestore.period) WHERE gradestore.year=period.year AND sgrouplink.gid=". $group->get_id(). " GROUP BY period,mid";
+			$avgrades = inputclassbase::load_query($sql_query);
+			if(isset($avgrades))
+				foreach($avgrades['average'] AS $grix => $grav)
+				$average_array[$avgrades['period'][$grix]][$avgrades['mid'][$grix]] = $grav;
+
+			// Get the list of average final grades
+			$sql_query = "SELECT mid,AVG(result) as `average` FROM gradestore LEFT JOIN sgrouplink USING(sid) where period='0' AND gradestore.year='" . $periods['year'][0] . "' AND sgrouplink.gid=". $group->get_id(). " GROUP BY mid";
+		$favgrades = inputclassbase::load_query($sql_query);
+		if(isset($favgrades))
+			foreach($favgrades['average'] AS $grix => $fgrav)
+				$final_average_array[$favgrades['mid'][$grix]] = $fgrav;
+
+			// Get the list of pass criteria per subject
+			$sql_query = "SELECT * FROM class LEFT JOIN coursepasscriteria USING(masterlink)";
+			$passcrits = inputclassbase::load_query($sql_query);
+		if(isset($passcrits))
+			foreach($passcrits['minimumpass'] AS $crix => $mpass)
+				$passpoint[$passcrits['mid'][$crix]] = $mpass;
+		
+			$digits = inputclassbase::load_query("SELECT MAX(digitsafterdot) AS digits FROM reportcalc");
+			
+			// get the digits for period and final per subject
+			$digmidq = "SELECT digitsafterdotperiod,digitsafterdotfinal,mid from class left join coursepasscriteria using(masterlink) WHERE gid=". $group->get_id(). " UNION SELECT MAX(digitsafterdotperiod),MAX(digitsafterdotfinal),0 FROM coursepasscriteria";
+			$digmidqr = inputclassbase::load_query($digmidq);
+			foreach($digmidqr['mid'] AS $dmix => $mid)
+			{
+				$digmidp[$mid] = $digmidqr['digitsafterdotperiod'][$dmix];
+				$digmidf[$mid] = $digmidqr['digitsafterdotfinal'][$dmix];
+			}
+		
+		// Create an array of subjects per student so we can mark absence of result different from having and not having the subject
+		$shassq = "SELECT sid,mid FROM sgrouplink LEFT JOIN student USING(sid) LEFT JOIN (SELECT sid,mid FROM class LEFT JOIN sgrouplink USING(gid) GROUP BY sid,mid) AS t1 USING(sid) WHERE gid=". $group->get_id();
+		$shassqr = inputclassbase::load_query($shassq);
+		if(isset($shassqr['mid']))
+		{
+			foreach($shassqr['sid'] AS $six => $ssid)
+			{
+				$shass[$ssid][$shassqr['mid'][$six]] = true;
+			}
+		}
+		 
+			echo("<font size=+2><center>" . $dtext['grdo_title'] . " ". $dtext['group']. " ". $_SESSION['CurrentGroup']. "</font><p>");
+			echo("<br><div align=left>" . $dtext['grdo_expl_1'] );
+		if(!isset($_GET['showallsubs']) && !$me->has_role("admin"))
+			echo(" <a href='". $_SERVER['REQUEST_URI']. "&showallsubs=1'>". $dtext['Showallsubs']. "</a>");
+		echo("</div><br>"); 
+		// Show a box for sorting selection
+		$ssortbox = new studentsorter();
+		$ssortbox->show();
+
+			// Now create a table with all students in the group to enable to go to their grade details
+			// Create the first heading row for the table
+		$seqno = 1;
+			echo("<table border=1 cellpadding=0 ID=gradeTable>");
+			echo("<tr><th ROWSPAN=2>". $dtext['numb_token']. "</th><th ROWSPAN=2><center>" . $dtext['Lastname'] . "</th>");
+			echo("<th ROWSPAN=2><center>" . $dtext['Firstname'] . "</th>");
+			// Now add the heading for the subjects
+		if(isset($subjects))
+		 foreach($subjects['cid'] AS $sbix => $cid)
+			{
+			// Add inline style hiding results
+			$mid = $subjects['mid'][$sbix];
+			echo("<STYLE> .mgrade". $mid. " { font-size: 0; } </STYLE>");
+			
+				echo("<th COLSPAN=" . ($showperiod == 0 ? COUNT($periods['id'])+1 : COUNT($periods['id'])) . "><center>");
+				echo("<a href=". $_SERVER['REQUEST_URI']. "&cid=" . $cid . " onMouseover='unhide(". $mid. ");' title='". $subjects['fullname'][$sbix]. "'>");
+				echo($subjects['shortname'][$sbix]);
+				echo("</a>");
+			if(isset($subjects['tcode'][$sbix]) && $subjects['tcode'][$sbix] != "")
+			{
+				echo("<span class=mgrade". $mid. ">(". $subjects['tcode'][$sbix]. ")</span>");
+			}
+			echo("</th>");
+			}
+			echo("</tr>");
+			// Create the second heading row for the table
+			echo("<tr>");
+			// Now add the periods below each subject
+		if(isset($subjects))
+		foreach($subjects['cid'] AS $sbix => $cid)
+			{
+			$mid = $subjects['mid'][$sbix];
+				foreach($periods['id'] AS $pix => $pid)
+				{
+				if($pid != $showperiod)
+						echo("<td class=mgrade". $mid. "><center><a href=". $_SERVER['REQUEST_URI']. "&period=$pid&cid=" . $cid . ">". $dtext['Period_marker']. $pid . "</a></td>");
+				else
+						echo("<td><center><a href=". $_SERVER['REQUEST_URI']. "&period=$pid&cid=" . $cid . ">". $dtext['Period_marker']. $pid . "</a></td>");
+				}
+			if($showperiod == 0)
+					echo("<td><center>" . $dtext['fin_per_ind'] . "</td>");
+			}
+			echo("</tr>");
+
+			// Create a row in the table for every existing student in the group
+		$altrow = false;
+		$lastsortval = "";
+		if(isset($stud_list))
+		foreach($stud_list AS $cstud)
+			{
+		 if($cstud <> null)
+		 { 
+				$sid = $cstud->get_id();
+			// See if carecodes are applicable and define the prefix for it if so
+			if(isset($carecodetable))
+			{
+			$careprefix = inputclassbase::load_query("SELECT `". $carecodecolors. "`.tekst AS pref FROM `". $carecodetable. "` LEFT JOIN `". $carecodecolors. "` ON(data=id) WHERE sid=". $sid);
+				// See what label the carecode field has
+				$cclabelqr = inputclassbase::load_query("SELECT label FROM student_details WHERE table_name='". $carecodetable. "'");
+			if(isset($cclabelqr['label']))
+					$cctitle = $cclabelqr['label'][0]. ": ". $cstud->get_student_detail($carecodetable);
+			}
+			if(isset($_SESSION['ssortertable']) && $_SESSION['ssortertable'] != '' && $_SESSION['ssortertable'] != '-')
+					$lastsortval = $cstud->get_student_detail($_SESSION['ssortertable']);
+				echo("<tr". ($altrow ? ' class=altbg' : ''). (isset($careprefix['pref'][0]) ? " style='". $careprefix['pref'][0]. "'" : ''). (isset($cctitle) ? " title='". $cctitle. "'" : ''). "><td style='text-align: right'>". $seqno++. "</td>");
+				echo("<td onClick='window.location=\"teacherpage.php?Page=Grades&sid=" . $sid ."\";'>");
+				echo($cstud->get_lastname(). "</td>");
+				echo("<td onClick='window.location=\"teacherpage.php?Page=Grades&sid=" . $sid ."\";'>");
+				echo($cstud->get_firstname(). "</td>");
+				// Add the Grades
+			if(isset($subjects))
+			foreach($subjects['mid'] AS $sbix => $mid)
+				{ // each subject
+					foreach($periods['id'] AS $pix => $pp)
+					{ // add the grades for regular periods
+				if($pp > 0)
+				{
+					if($pp != $showperiod)
+								echo("<td class=mgrade". $mid. ">");
+					else
+								echo("<td onMouseover='unhide(". $mid. ");'>");
+				echo("<center><a href=". $_SERVER['REQUEST_URI']. "&period=$pp&sid=$sid&mid=$mid>");
+							if(isset($results_array[$pp][$mid][$sid]))
+							{ 
+								$result = $results_array[$pp][$mid][$sid];
+								// Colour depends on pass criteria
+					if($result < '@')
+					{ //Numeric result
+						if(isset($wfps[$sid][$pp]) && $wfps[$sid][$pp] == 0.0) echo("<font color=gray>");
+									else if($passpoint[$mid] > $result) echo("<font color=red>");
+									else echo("<font color=blue>");
+									if($periods['status'][$pix] == 'final') echo("<b>"); else echo("<i>");
+									echo(number_format($results_array[$pp][$mid][$sid],(isset($digmidp[$mid]) ? $digmidp[$mid] : $digmidp[0]),$dtext['dec_sep'],$dtext['mil_sep']));
+									if($periods['status'][$pix] == 'final') echo("</b>"); else echo("</i>");
+									echo("</font>");
+					// Maintain the partial average
+						if(isset($part_average[$pp][$mid]))
+						{
+							$part_average[$pp][$mid] += $result;
+							$part_avg_count[$pp][$mid] += 1.0;
+						}
+						else
+						{
+							$part_average[$pp][$mid] = $result;
+							$part_avg_count[$pp][$mid] = 1.0;
+						}
+					}
+					else // Alpha result
+						echo($result);
+							}
+							else
+								echo("-");
+							echo("</a></td>");
+						}
+			}
+					// Add the final grade
+			if($showperiod == 0)
+			{
+				echo("<td onMouseover='unhide(". $mid. ");'><center>");
+				if(isset($final_results_array[$mid][$sid]))
+				{
+					$result = $final_results_array[$mid][$sid];
+					// Colour depends on pass criteria
+					if($result < '@')
+					{ // Numeric result
+					if($passpoint[$mid] > $result) echo("<font color=red>");
+					else echo("<font color=blue>");
+					if($any_open == 'N') echo("<b>"); else echo("<i>");
+					echo($final_results_array[$mid][$sid]);
+					if($any_open == 'N') echo("</b>"); else echo("</i>");
+					echo("</font>");
+					// Maintain the partial average
+					if(isset($part_average[0][$mid]))
+					{
+						$part_average[0][$mid] += $result;
+						$part_avg_count[0][$mid]+= 1.0;
+					}
+					else
+					{
+						$part_average[0][$mid] = $result;
+						$part_avg_count[0][$mid] = 1.0;
+					}
+					}
+					else //Alpha result
+					echo($result);
 				}
 				else
 				{
-				  $part_average[0][$mid] = $result;
-				  $part_avg_count[0][$mid] = 1.0;
+					if(isset($shass[$sid][$mid]))
+					echo("<font color=red>". $dtext['no_result']);
+					else
+					echo("-");
 				}
-			  }
-			  else //Alpha result
-				echo($result);
+				echo("</td>");
 			}
-			else
+				}
+				echo("</tr>");
+			$altrow = !$altrow;
+		 }
+			 else
 			{
-			  if(isset($shass[$sid][$mid]))
-				echo("<font color=red>". $dtext['no_result']);
-			  else
-				echo("-");
+				// Convert the partial averages to a single array
+			 if(isset($part_average))
+				foreach($part_average AS $ppid => $padata)
+				{
+				foreach($padata AS $pmid => $pres)
+					$part_average[$ppid][$pmid] = $part_average[$ppid][$pmid] / $part_avg_count[$ppid][$pmid];
+				}
+					$this->main_grade_avg_row($dtext['Partial_average'],$subjects,$periods,(isset($part_average) ? $part_average : NULL),($showperiod == 0 && isset($part_average[0]) ? $part_average[0] : NULL),$digits,$passpoint,$any_open,$lastsortval,$showperiod);
+				unset($part_average);
+				unset($part_avg_count);
+				$segregationlineadded=true;
+			}	 
 			}
-			echo("</td>");
+		if(isset($segregationlineadded))
+		{
+				// Convert the partial averages to a single array
+				if(isset($part_average))
+				 foreach($part_average AS $ppid => $padata)
+				 {
+					foreach($padata AS $pmid => $pres)
+					$part_average[$ppid][$pmid] = $part_average[$ppid][$pmid] / $part_avg_count[$ppid][$pmid];
+				 }
+					$this->main_grade_avg_row($dtext['Partial_average'],$subjects,$periods,isset($part_average) ? $part_average : NULL,$showperiod == 0 && isset($part_average[0]) ? $part_average[0] : NULL,$digits,$passpoint,$any_open,$lastsortval,$showperiod);
 		}
-      }
-      echo("</tr>");
-	  $altrow = !$altrow;
-	 }
-     else
-	  {
-		  // Convert the partial averages to a single array
-		 if(isset($part_average))
-			foreach($part_average AS $ppid => $padata)
-			{
-			foreach($padata AS $pmid => $pres)
-				$part_average[$ppid][$pmid] = $part_average[$ppid][$pmid] / $part_avg_count[$ppid][$pmid];
-			}
-	      $this->main_grade_avg_row($dtext['Partial_average'],$subjects,$periods,(isset($part_average) ? $part_average : NULL),($showperiod == 0 && isset($part_average[0]) ? $part_average[0] : NULL),$digits,$passpoint,$any_open,$lastsortval,$showperiod);
-		  unset($part_average);
-		  unset($part_avg_count);
-		  $segregationlineadded=true;
-	  }	 
-    }
-	if(isset($segregationlineadded))
-	{
-		  // Convert the partial averages to a single array
-		  if(isset($part_average))
-		   foreach($part_average AS $ppid => $padata)
-		   {
-		    foreach($padata AS $pmid => $pres)
-			  $part_average[$ppid][$pmid] = $part_average[$ppid][$pmid] / $part_avg_count[$ppid][$pmid];
-		   }
-	      $this->main_grade_avg_row($dtext['Partial_average'],$subjects,$periods,isset($part_average) ? $part_average : NULL,$showperiod == 0 && isset($part_average[0]) ? $part_average[0] : NULL,$digits,$passpoint,$any_open,$lastsortval,$showperiod);
-	}
-  
-    // Add the averages
-	$this->main_grade_avg_row($dtext['Group_average'],$subjects,$periods,isset($average_array) ? $average_array : NULL,isset($final_average_array) ? $final_average_array : NULL,$digits,$passpoint,$any_open,"",$showperiod);
+		
+			// Add the averages
+		$this->main_grade_avg_row($dtext['Group_average'],$subjects,$periods,isset($average_array) ? $average_array : NULL,isset($final_average_array) ? $final_average_array : NULL,$digits,$passpoint,$any_open,"",$showperiod);
     echo("</table>");
 
     // Now we show links for each period to print the results for each student
