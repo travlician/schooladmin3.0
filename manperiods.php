@@ -31,6 +31,15 @@
   $CurrentGroup = $_SESSION['CurrentGroup'];
 
   $uid = intval($uid);
+	if(!isset($pngsource))
+		$pngsource="PNG";
+	
+	// If schoolyear changed, we do that first thing!
+	if(isset($_POST['newyear']))
+	{
+		mysql_query("UPDATE period SET year='". $_POST['newyear']. "',status='open',startdate=DATE_ADD(startdate, INTERVAL 1 YEAR),enddate=DATE_ADD(enddate,INTERVAL 1 YEAR)");
+		echo(mysql_error());
+	}
 
   // First we get all the data from existing periods in an array.
   $sql_query = "SELECT * FROM period ORDER BY id";
@@ -103,21 +112,24 @@
     echo(">" . $dtext['Final'] . "</option>");
     echo("</select></td>");
     // Add the year field
-    echo("<td><input type=text size=20 name='year' value='" . $grade_array['year'][$r] . "'></td>");
+    echo("<td><input type=hidden size=20 name='year' value='" . $grade_array['year'][$r] . "'>". $grade_array['year'][$r] . "</td>");
     // Add the start date field
     echo("<td><input type=text size=20 name='startdate' value='" . $grade_array['startdate'][$r] . "'></td>");
     // Add the enddate field
     echo("<td><input type=text size=20 name='enddate' value='" . $grade_array['enddate'][$r] . "'></td>");
     // Add the change button
     //echo("<td><center><input type=submit value=" . $dtext['Change'] . "></td></form>");
-    echo("<td><center><img src='PNG/action_check.png' title='". $dtext['Change']. "' onclick='document.up". $r. ".submit();'></td></form>");
+    echo("<td><center><img src='". $pngsource. "/action_check.png' title='". $dtext['Change']. "' onclick='document.up". $r. ".submit();'></td>");
+		// Add the recalc button
+    echo("<td><center><input type=hidden name=recalc value=0 id=recalc". $r. "><img src='". $pngsource. "/calc.png' title='". $dtext['Recalc_submit']. "' onclick=' document.getElementById(\"recalc". $r. "\").value=1; document.up". $r. ".submit();'></td></form>");
+
     // Add the delete button
     if($r == $row_n)
     { // last entry, can delete!
       echo("<form method=post action=delperiod.php name=delper><input type=hidden name=id value=");
       echo($grade_array['id'][$r]);
       //echo("><td><center><input type=submit value=" . $dtext['Delete'] . "></td></form></tr>");
-      echo("><td><center><img src='PNG/action_delete.png' title='". $dtext['Delete']. "' onclick='if(confirm(\"". $dtext['perman_expl_6']. "\")) { document.delper.submit(); }'></td></form></tr>");
+      echo("><td><center><img src='". $pngsource. "/action_delete.png' title='". $dtext['Delete']. "' onclick='if(confirm(\"". $dtext['perman_expl_6']. "\")) { document.delper.submit(); }'></td></form></tr>");
     }
     else
     { // Not last entry, can NOT delete
@@ -137,18 +149,22 @@
   echo("<option value=final>" . $dtext['Final'] . "</option>");
   echo("</select></td>");
   // Add the year field
-  echo("<td><input type=text size=20 name='year'></td>");
+  echo("<td><input type=hidden size=20 name='year' value='". $grade_array['year'][1] . "'>". $grade_array['year'][1] . "</td>");
   // Add the year field
   echo("<td><input type=text size=20 name='startdate'></td>");
   // Add the year field
   echo("<td><input type=text size=20 name='enddate'></td>");
   // Add the ADD button
   //echo("<td><center><input type=submit value=" . $dtext['ADD_CAP'] . "></td></form>");
-  echo("<td><center><img src='PNG/action_add.png' title='". $dtext['ADD_CAP']. "' onclick='document.newper.submit();'></td></form>");
+  echo("<td><center><img src='". $pngsource. "/action_add.png' title='". $dtext['ADD_CAP']. "' onclick='document.newper.submit();'></td></form>");
   // Here we don't have a delete button!
   echo("<td></td></tr>");
   
   // close the table
-  echo("</table></html>");
+  echo("</table>");
+	
+	// Show the dialog part to create a new schoolyear
+	echo("<BR><BR><FORM METHOD=POST NAME=newyearform>". $dtext['New_year']. " : <INPUT TYPE=TEXT NAME=newyear onChange='document.newyearform.submit();'></FORM>");
+  echo("</html>");
 
 ?>

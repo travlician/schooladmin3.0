@@ -36,6 +36,11 @@
   $id = trim($HTTP_POST_VARS['id']);
   $status = trim($HTTP_POST_VARS['status']);
   $year = trim($HTTP_POST_VARS['year']);
+	
+	if($id != "")
+		$perdets = SA_loadquery("SELECT * FROM period WHERE id=". $id);
+
+	
 
   if ($status == "")
   {
@@ -59,10 +64,17 @@
 
   // Recalculate all grades for this period
   if($id != "")
-    SA_calcGradePeriod($id);
+	{
+		// Now only recalcalc if status had changed or calc button was pressed.
+		if((isset($perdets['status']) && $perdets['status'][1] != $status) || $_POST['recalc'] == 1)
+		{
+			if($_POST['recalc'] == 1) // Forced recalc, so remove gradestore first
+				mysql_query("DELETE FROM gradestore WHERE (period=0 OR period=". $id. ") AND year='". $perdets['year'][1]. "'");
+			SA_calcGradePeriod($id);
+		}
+	}
 
   SA_closeDB();
-  
   if($sql_result == 1)
   {	// operation succeeded, back to the mangroups page!
     header("Location: " . $livesite ."manperiods.php");
