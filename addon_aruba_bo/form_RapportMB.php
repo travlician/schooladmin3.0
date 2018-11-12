@@ -300,6 +300,11 @@ foreach($lllist AS $stud)
 			echo("<tr><td class=tablespace colspan=4></td></tr>");
 			show_result("Verkeersexamen","vk",true,false);			
 		}
+		if($curyear == 3 || $curyear == 4)
+		{ // Show papiamento as letter
+			echo("<tr><td class=tablespace colspan=4></td></tr>");			
+			show_result("Papiaments","pa",true,true);			
+		}
 		if($curyear >= 5) // Show foreign languages
 		{
 			echo("<tr><td class=tablespace colspan=4></td></tr>");			
