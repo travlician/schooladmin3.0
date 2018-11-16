@@ -40,7 +40,7 @@
   
  // Voorkant KlasKaart:
     echo("<html><head><title>EX Personalia</title></head><body link=blue vlink=blue>");
-		echo("Reset exam numbers force is ". (isset($_GET['force']) ? "set" : "not set"). "<BR>");
+		// echo("Reset exam numbers force is ". (isset($_GET['force']) ? "set" : "not set"). "<BR>");
 // Clear existing exam numbers if in month august or september
 	if(date('m') == 8 || date('m') == 9 || isset($_GET['force']))
 	{ // Autogen exam numbers
