@@ -40,9 +40,9 @@
   
  // Voorkant KlasKaart:
     echo("<html><head><title>EX Personalia</title></head><body link=blue vlink=blue>");
-
+		echo("Reset exam numbers force is ". (isset($_GET['force']) ? "set" : "not set"). "<BR>");
 // Clear existing exam numbers if in month august or september
-	if(date('m') == 8 || date('m') == 9)
+	if(date('m') == 8 || date('m') == 9 || isset($_GET['force']))
 	{ // Autogen exam numbers
 	  // First delete any exiting exam number
 	  mysql_query("DELETE FROM s_exnr", $userlink);
@@ -87,7 +87,7 @@
 			echo("<tr><td class = opmaakCenter>");
 			// Get or create exam number depending on date!
 			$nextexnr = str_pad(++$Nr,3,"0",STR_PAD_LEFT);
-			if(date('m') == 8 || date('m') == 9)
+			if(date('m') == 8 || date('m') == 9 || isset($_GET['force']))
 			{ // Autogen exam numbers
 			  // Insert next number for this student
 			  mysql_query("INSERT INTO s_exnr (sid,data) VALUES(". $student->get_id(). ",'". $nextexnr. "')", $userlink);
