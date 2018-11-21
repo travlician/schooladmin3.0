@@ -251,8 +251,9 @@ foreach($lllist AS $stud)
 		show_result("Mondeling taalgebruik","mo",false,true);
 		if($curyear > 1)
 		{
-			show_result("Stellen","st",false,false);
-			show_result("Taalbeschouwing","tb",false,false);
+			//show_result("Stellen","st",false,false);
+			//show_result("Taalbeschouwing","tb",false,false);
+			show_result("Taalverkennen","tv",false,false);
 		}
 		show_result("Leesbegrip","lb",false,false,$curyear==1);
 		show_result("Woordenschat","ws",false,false,$curyear==1);
