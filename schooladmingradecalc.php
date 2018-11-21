@@ -51,8 +51,8 @@ function SA_calcGrades($sid,$cid,$period)
   mysql_free_result($sql_result);
 	
 	// See if special formulas are applicable and handle these first
-	if(isset($sid) && $sid > 0)
-		SA_CalcSpecialFormula($sid,$mid,$gid,$period);
+	//if(isset($sid) && $sid > 0)
+		//SA_CalcSpecialFormula($sid,$mid,$gid,$period);
 
   // Get the list of test definitions with their details
   $sql_query = "SELECT * FROM testdef LEFT JOIN class USING (cid) LEFT JOIN period ON(period.id=period) WHERE mid='$mid' AND period='$period' AND period.year=testdef.year AND testdef.type <> '0' ORDER BY tdid";
@@ -294,6 +294,10 @@ function SA_calcGrades($sid,$cid,$period)
     echo("<br>" . $dtext['gcalc_w2'] . " " . mysql_error($userlink));
   }
   
+	// See if special formulas are applicable and handle these first
+	if(isset($sid) && $sid > 0)
+		SA_CalcSpecialFormula($sid,$mid,$gid,$period);
+
   // Adjust the final period grade
   SA_calcFinal($sid,$cid);
   // Adjust the results for the Meta subject
@@ -344,7 +348,8 @@ function SA_calcGradePeriod($period)
 
   ini_set('max_execution_time',300);
  // Changed on nov 30 2013: Make sure meta subjects come last to ensure these are not unduly overwritten by sub-subjects
-  $sql_query = "SELECT cid FROM class LEFT JOIN subject USING(mid) LEFT JOIN sgroup USING(gid) WHERE active=1 ORDER BY `type` DESC";
+ // Changed on nov 21st 2018: make sure subjects that are used in special formulas come first (ticket 40)
+  $sql_query = "SELECT cid,shortname,groupname FROM class LEFT JOIN subject USING(mid) LEFT JOIN sgroup USING(gid) LEFT JOIN (SELECT sourcemid AS mid, COUNT(targetmid) AS fcnt FROM specialformulas GROUP BY sourcemid) AS t1 USING(mid) WHERE active=1 ORDER BY fcnt DESC,`type` DESC";
   //$sql_query = "SELECT cid FROM class";
   $mysql_query = $sql_query;
   //echo $sql_query;
@@ -357,14 +362,19 @@ function SA_calcGradePeriod($period)
     {
      $nrows++;
        $cids[$nrows]=mysql_result($sql_result,$r,'cid');
+       $subj[$nrows]=mysql_result($sql_result,$r,'shortname');
+       $grps[$nrows]=mysql_result($sql_result,$r,'groupname');
     } //for $r
     mysql_free_result($sql_result);
   }//If numrows != 0
   $cidcnt = $nrows;
   
-  // Now traverse all students to call the basic routine
+  // Now traverse all classes to call the basic routine
   for($c=1;$c<=$cidcnt;$c++)
+	{
+		//echo("Calculating subject ". $subj[$c]. " for group ". $grps[$c]. "<BR>");
     SA_calcGradeGroup($cids[$c], $period);
+	}
   
 }
 
