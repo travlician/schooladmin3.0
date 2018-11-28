@@ -19,14 +19,15 @@
   $vakhead["Individu"] = array("KGL","pv","lo");
   $vakhead["Maatschappij"] = array("Asw-cb2","asw-asw","Eco-Asw");
   $vakhead["Taal & Communicatie"] = array("pa","ne","en","sp");
-  $vakhead["Kunst & Cultuur"] = array("da","bv","mu","th","ckv");
+  //$vakhead["Kunst & Cultuur"] = array("da","bv","mu","th","Ckv");
+  $vakhead["Kunst & Cultuur"] = array("Ckv");
   $vakhead["Natuur"] = array("n&t");
   $vakhead["Wiskunde"] = array("wi","rek");
   $vakhead["Onderw. Onderst."] = array("ik");
   $newan = array("ne","en","wi","Asw-cb2","n&t");
   $newanp = array("ne","en","wi","Asw-cb2","n&t","pv");
 	$new = array("ne","en","wi");
-  $ptvakken = array("KGL","pv","lo","Asw-cb2","pa","ne","en","sp","ckv","n&t","wi","ik");
+  $ptvakken = array("KGL","pv","lo","Asw-cb2","pa","ne","en","sp","Ckv","n&t","wi","ik");
   
   /* Test systeem 
   $vakhead["Individu"] = array("kgl","pv","lo");

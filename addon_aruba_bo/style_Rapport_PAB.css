@@ -43,6 +43,12 @@ TD
   border-collapse: collapse;
   border: none;
 }
+.cijferlijst11   
+{ 
+  border-collapse: collapse;
+  border: none;
+	width: 90%;
+}
 .thickfullcenter
 {
   border: 2px solid black;
@@ -129,12 +135,25 @@ TD
 	height: 100px;
 	vertical-align: top;
 }
+.opmcontent11
+{
+	border: 2px solid black;
+	border-top: none;
+	height: 400px;
+	vertical-align: top;
+}
 
 
 .rapdblock
 {
   padding-top: 50px;
   margin-left: 15%;
+  border: none;
+}
+.rapdblock11
+{
+  padding-top: 50px;
+	text-align: center;
   border: none;
 }
 .raplabel
@@ -152,6 +171,14 @@ TD
 	text-align: left;
   display: inline-block;
 }
+.raplabel211
+{
+	margin-top: 10px;
+  font-size: 14px;
+	text-align: left;
+  display: inline-block;
+	font-weight: bold;
+}
 .rapdata
 {
   font-size: 17px;
@@ -167,6 +194,13 @@ TD
   width: 70%;
   display: inline-block;
 	margin-left: 20px;
+}
+.rapname11
+{
+  font-size: 20px;
+	font-family: "Lucida Calligraphy";
+  display: inline-block;
+	text-decoration: underline;
 }
 .rapname2
 {
@@ -229,6 +263,20 @@ TD
 	text-align: center;
 	margin-top: 10%;
 }
+.raptitle11
+{
+	font-family: "Lucida Calligraphy";
+	font-size: 40px;
+	text-align: center;
+	margin-top: 10%;
+}
+.yeartitle11
+{
+	font-family: "Lucida Calligraphy";
+	font-size: 30px;
+	text-align: center;
+	margin-top: -5%;
+}
 .headinfo
 {
 	border: 1px solid black;	
@@ -265,7 +313,7 @@ TD
 .subjectcol
 {
 	border: 1px solid black;
-	width: 60%;
+	width: 80%;
 }
 
 .signname

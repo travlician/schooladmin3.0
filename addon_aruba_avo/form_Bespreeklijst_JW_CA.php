@@ -20,9 +20,10 @@
   $vakhead["Maatschappij"] = array("gs","ak");
   $vakhead["Exacte vakken"] = array("wi","rek","na","sk","bio");
   $vakhead["Onderw. Onderst."] = array("ecmo","ik");
-  $vakhead["Kunst & Cultuur"] = array("bv","da","mu","th","ckv");
+  //$vakhead["Kunst & Cultuur"] = array("bv","da","mu","th","Ckv");
+  $vakhead["Kunst & Cultuur"] = array("Ckv");
   $vakhead["Individu"] = array("go","lo");
-  $ptvakken = array("lo","gs","ak","ecmo","pa","ne","en","sp","ckv","na","sk","wi","bio","ik");
+  $ptvakken = array("lo","gs","ak","ecmo","pa","ne","en","sp","Ckv","na","sk","wi","bio","ik");
 	$new = array("ne","en","wi");
   
   /* TEST systeem 
