@@ -404,6 +404,7 @@ foreach($lllist AS $stud)
 function show_result($subjfull,$subjid,$normalsubj,$showletters,$showletters12=false,$noproc=false,$subfinal=false,$maini=false,$per4=false)
 {
 	global $stres;
+	if(date("n") > 8) $per4show=false;
 	if($normalsubj)
 	{
 		if($maini)
@@ -470,7 +471,7 @@ function show_result($subjfull,$subjid,$normalsubj,$showletters,$showletters12=f
 		else
 			$p=0;
 		echo("<td class=resultcol>");
-		if(isset($stres[$subjid][$p]))
+		if(isset($stres[$subjid][$p]) && $per4show)
 		{
 			if($noproc)
 			{

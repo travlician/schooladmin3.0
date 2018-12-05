@@ -171,7 +171,7 @@
 				
 				// Behavioural aspects
 				echo("<TR><TD class=spacerrow colpan=2><SPAN class=raplabel211>Gedrag</span></td></tr>");
-				echo("<TR><TD class=subjectcol1>Contact met leerkracht</TD>");
+				echo("<TR><TD class=subjectcol>Contact met leerkracht</TD>");
 				show_behave($students['sid'][$llnoffset+1],'ContactLK');
 				echo("</TR><TR><TD class=subjectcol>Contact met leerling</TD>");
 				show_behave($students['sid'][$llnoffset+1],'ContactLL');
