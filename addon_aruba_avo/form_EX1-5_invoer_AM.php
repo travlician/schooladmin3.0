@@ -231,7 +231,8 @@
   {
     echo("<th><center>". $sname. "<div><center>". $sname. "</div></th>");
   }
-  echo("<th><center>I&S</center><div><center>I&S</center></div></th><th><center>PFW</center><div><center>PFW</center></div></th><th><center>Uitslag</center><div><center>Uitslag</center></div></th></tr></thead><tbody>");
+  //echo("<th><center>I&S</center><div><center>I&S</center></div></th><th><center>PFW</center><div><center>PFW</center></div></th><th><center>Uitslag</center><div><center>Uitslag</center></div></th></tr></thead><tbody>");
+  echo("<th><center>PFW</center><div><center>PFW</center></div></th><th><center>Uitslag</center><div><center>Uitslag</center></div></th></tr></thead><tbody>");
 
   // Create a row in the table for each student
   $negix = 0;
@@ -248,7 +249,7 @@
       {
         echo("<td><center>". $sname. "</td>");
       }
-      echo("<td><center>I&S</center><td><center>Pfw</center></td><td><center>Uitslag</center></td></tr>");
+      echo("<td><center>I&S</center>></td><td><center>Pfw</center></td><td><center>Uitslag</center></td></tr>");
 	}
     echo("<tr><td>". $students['exnr'][$six]. "</td><td>". $students['name'][$six]. "</td>");
 	
@@ -284,7 +285,7 @@
       echo("</TD>");
 	}
 	// add a column for the I&S and Pfw result entry
-	  echo("<TD>");
+/*	  echo("<TD>");
 	  $mid=$ismid;
 	  if(isset($ahxs[$sid][$mid]))
 	  {
@@ -298,7 +299,7 @@
 		$statfield->set_extrafield("year", $curyear);
 	  }
 	  $statfield->echo_html();	    
-      echo("</TD>");
+      echo("</TD>"); */
 	  echo("<TD>");
 	  $mid=$pfwmid;
 	  if(isset($ahxs[$sid][$mid]))
