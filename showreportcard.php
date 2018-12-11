@@ -280,7 +280,7 @@
 	if(isset($msgs))
 		echo("<IFRAME width=80% height=70% style='margin-top:5%; border: 3px solid green; z-index=3000; position: fixed; top: 10%; left: 10%; background-color: white;' src=showmessages.php>");
 	else
-		echo("no messages for ". $_SESSION['usertype']. " ". $_SESSION['userid']);
+		//echo("no messages for ". $_SESSION['usertype']. " ". $_SESSION['userid']);
   // close the page
   echo("</html>");
 
