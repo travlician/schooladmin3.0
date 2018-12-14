@@ -16,7 +16,7 @@
   // Operational definitions
   $vakcats = array("ALL");
  
-  $vakhead["ALL"] = array("go","ne","en","sp","pa","gs","ak","wi","rek","na","sk","bio","ecmo","ik","ckv","lo");
+  $vakhead["ALL"] = array("go","ne","en","sp","pa","gs","ak","wi","rek","na","sk","bio","ecmo","ik","Ckv","lo");
   $vakdesc["ALL"] = array("kgl"=>"<B>Kennis van het Geestelijk Leven</B> <i>(Formacion Spiritual y Religioso)</i>",
                           "pv"=>"<B>Persoonlijke vorming</B> <i>(Formacion Personal)</i>",
 						  "lo"=>"<B>Lichamelijke oefening</B> <i>(Formacion Fisico)</i>",
@@ -25,7 +25,7 @@
 						  "ne"=>"<B>Nederlands</B> <i>(Hulandes)</i>",
 						  "en"=>"<B>Engels</B> <i>(Ingles)</i>",
 						  "sp"=>"<B>Spaans</B> <i>(Spaño)</i>",
-						  "ckv"=>"<B>Culturele en Kunstzinnige Vorming</B> <i>(Formacion Cultural y Artistico)</i>",
+						  "Ckv"=>"<B>Culturele en Kunstzinnige Vorming</B> <i>(Formacion Cultural y Artistico)</i>",
 						  "n&t"=>"<B>Natuur en Techniek</B> <i>(Naturalesa i technologia)</i>",
 						  "wi"=>"<B>Wiskunde</B> <i>(Matematica)</i>",
 						  "rek"=>"<B>Rekenen</B> <i>(Aritmetica)</i>",
