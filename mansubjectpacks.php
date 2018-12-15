@@ -32,10 +32,16 @@
   $CurrentGroup = $_SESSION['CurrentGroup'];
 
   $uid = intval($uid);
+	if(!isset($pngsource))
+		$pngsource="PNG";
 
   // First we get all the data from existing subjects in an array.
   $subjects = SA_loadquery("SELECT subject.*,AVG(show_sequence) AS avg FROM `class` LEFT JOIN subject USING(mid) LEFT JOIN subjectfiltergroups ON (`group`=`class`.gid) WHERE `group` IS NOT NULL GROUP BY subject.mid ORDER BY avg");
-  if(!isset($subjects['shortname'])) // If none of the groups is selected for filtering, the above query yields no results, so give all subjects
+  if(!isset($subjects['shortname']))
+	{ // So, we don't have subjects in filtergroups, see if we get them from situation where multiple group students are assign the subjects
+		$subjects = SA_loadquery("SELECT subject.*,AVG(show_sequence) AS avg FROM (SELECT gid FROM sgrouplink LEFT JOIN (select sid,count(gid) as gcnt from sgrouplink GROUP BY sid) AS t1 USING(sid) WHERE gcnt>4 GROUP BY gid) AS t2 LEFT JOIN sgroup USING(gid) LEFT JOIN class USING(gid) LEFT JOIN subject USING(mid) WHERE active=1 AND cid IS NOT NULL GROUP BY mid");
+	}
+	if(!isset($subjects['shortname'])) // If none of the groups is selected for filtering, the above query yields no results, so give all subjects
     $subjects = SA_loadquery("SELECT subject.*,AVG(show_sequence) AS avg FROM subject LEFT JOIN `class` USING(mid) GROUP BY subject.mid ORDER BY avg");
   
   // Get all defined packages
