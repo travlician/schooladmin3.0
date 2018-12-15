@@ -26,6 +26,7 @@
   function print_head($subjectindex,$gid)
   {
     global $schoolyear,$schoolname,$subjects,$subtotal,$studs, $packages, $pexdata;
+		global $tests;
 		$subjecttext = $subjects['fullname'][$subjectindex];
     echo("<div class=do>Cijferlijst voor controle</div>");
  	  // Period depends on period being selected.
@@ -50,9 +51,14 @@
 		echo("</p>");
     echo("<p>Schooljaar <u>". $schoolyear. "</u></p>");
     echo("<p>Naam van de school: <u>". $schoolname. "</u></p>");
-    echo("<table class=studlist><TR><TH class=studhead2 COLSPAN=2>Naam (in alfabetische volgorde)</TH>");
-		echo("<TH class=tabhead ROWSPAN=2>Cijfer</TH>");
-    echo("</TR><TR><TH class=studheadln>Achternaam</TH><TH class=studheadfn>Voornamen</TH></TR>");
+    echo("<table class=studlist><TR><TH class=studheadln>Achternaam</TH><TH class=studheadfn>Voornamen</TH>");
+		if(isset($tests))
+		{ // Make a column for each test
+			foreach($tests['short_desc'] AS $sdes)
+				echo("<TH class=tabhead>". $sdes. "</TH>");
+		}
+		echo("<TH class=tabhead>Cijfer</TH>");
+    echo("</TR><TR></TR>");
   }
   
   function print_foot()
@@ -124,10 +130,20 @@ if(isset($_POST['Print']))
 			$classqr = SA_loadquery("SELECT cid FROM `class` WHERE gid=". $gid. " AND mid=". $subjects['mid'][$subjix]);
 			if(isset($classqr['cid']) && isset($_POST["gcb". $gid]))
 			{
+				// Find out which tests are there..
+				unset($tests);
+				if(isset($_POST['showtests']))
+					$tests = SA_loadquery("SELECT tdid,short_desc FROM testresult LEFT JOIN testdef USING(tdid) LEFT JOIN sgrouplink USING(sid) LEFT JOIN class USING(cid) WHERE period=". $period. " AND year='". $schoolyear. "' AND sgrouplink.gid=". $gid. " AND mid=". $subjects['mid'][$subjix]. " GROUP BY tdid");
+				if(isset($tests['tdid']))
+				{ // Need to load testresults too
+					$testresqr = SA_loadquery("SELECT tdid,sid,result FROM testresult LEFT JOIN testdef USING(tdid) LEFT JOIN sgrouplink USING(sid) LEFT JOIN class USING(cid) WHERE period=". $period. " AND year='". $schoolyear. "' AND sgrouplink.gid=". $gid. " AND mid=". $subjects['mid'][$subjix]);
+					foreach($testresqr['tdid'] AS $trix => $tdid)
+						$testres[$tdid][$testresqr['sid'][$trix]] = $testresqr['result'][$trix];
+				}
 				print_head($subjix,$gid);
 				
 				// Get our list of students
-				$studs = SA_loadquery("SELECT sid,lastname,firstname FROM student LEFT JOIN sgrouplink USING(sid) WHERE gid=". $gid);
+				$studs = SA_loadquery("SELECT sid,lastname,firstname FROM student LEFT JOIN sgrouplink USING(sid) WHERE gid=". $gid. " ORDER BY lastname,firstname");
 
 				$linecount = 0;
 			
@@ -145,6 +161,13 @@ if(isset($_POST['Print']))
 					{
 						echo("<TR class=manualfill>");
 						echo("<TD class=studname>". $studs['lastname'][$six]. "</TD><TD class=studname>". $studs['firstname'][$six]. "</TD>");
+						if(isset($tests))
+						{ // Need to show testresults too
+							foreach($tests['tdid'] AS $tdid)
+							{
+								echo("<TD class=result>". (isset($testres[$tdid][$studs['sid'][$six]]) ? $testres[$tdid][$studs['sid'][$six]] : "-"). "</td>");
+							}
+						}
 						// Show result
 						echo("<TD class=result>");
 							if(isset($resarray[$studs['sid'][$six]][$mid]) && $resarray[$studs['sid'][$six]][$mid] > 0.9)
@@ -195,9 +218,12 @@ else
   for($period=1; $period < 4; $period++)
   {
     echo("<SPAN style='width: 200px; display: inline-block'><INPUT TYPE=checkbox NAME=pcb". $period);
-	echo("> Trimester ". $period. "</SPAN>");
+		echo("> Trimester ". $period. "</SPAN>");
   }
   echo("<BR>");
+  echo("<SPAN style='width: 200px; display: inline-block'><INPUT TYPE=checkbox NAME=showtests CHECKED>Toon toetsresultaten</SPAN>");
+  echo("<BR>");
+	
    echo("<INPUT TYPE=SUBMIT NAME='Print' VALUE='Afdrukken'>");
   echo("</FORM>");
 }
